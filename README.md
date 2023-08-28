@@ -1,6 +1,4 @@
 
-A MODIFIER
-==========
 
 Mathgame : Mathématiques pour les jeux vidéo 
 ============================================
@@ -8,7 +6,7 @@ Mathgame : Mathématiques pour les jeux vidéo
 Livre
 =====
 
-Vous pouvez télécharger le livre sur ce site : [Livre 'Mathgame' (50 Mo)](livre-mathgame.pdf).
+Vous pouvez télécharger le livre sur ce site : [Livre 'Mathgame' (60 Mo)](livre-mathgame.pdf).
 
 
 Chapitres
@@ -42,7 +40,7 @@ Partie III - Applications
 
 * [Mouvement](mouvement/mouvement.pdf)
 * [Approximation et interpolation](approx/approx.pdf)
-* [Equations différentielles](equadiff/equadiff.pdf)
+* [Équations différentielles](equadiff/equadiff.pdf)
 * [Fractales](fractales/fractales.pdf)
 * [Physique](physique/physique.pdf)
 
@@ -58,7 +56,7 @@ Partie IV - Théorie des jeux
 Codes
 =====
 
-Vous trouverez les fichiers sources en naviguant dans les répertoires de [GitHub "mathgame"](https://github.com/exo7math/mathgame-exo7).
+Vous trouverez les fichiers sources en naviguant dans les répertoires de [GitHub "Mathgame"](https://github.com/exo7math/mathgame-exo7).
 
 
 Erreurs
