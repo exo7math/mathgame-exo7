@@ -1,0 +1,34 @@
+﻿\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% la courbe
+\path
+  (0,0) coordinate (P0)
+  (1,2) coordinate (P1)
+  (	2,-1)  coordinate (P2)
+  (4,0) coordinate (P3)
+;
+\draw[red, line]
+  (P0)  .. controls (P1) and (P2) .. (P3)
+;
+\draw[gray]
+  (P0) edge[vector] node[left]{$\vec{v_A}$} (P1)
+  (P3) edge[vector] node[below right]{$\vec{v_B}$} (P2)
+;
+\path
+  (P0) [dot] node[below]{$A$}
+  (P3) [dot] node[below]{$B$}
+;
+
+\end{tikzpicture}

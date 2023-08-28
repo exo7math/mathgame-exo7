@@ -1,0 +1,35 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\begin{scope}
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+
+  \node at (5,-1) {\bf Écran avant};
+\end{scope}
+
+
+\begin{scope}[xshift=11cm]
+  \begin{scope}[xshift=4cm, yshift=5cm,xscale=-1, ]
+  \duck
+  \draw (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+  \node at (3,4) {\bf Image};
+\end{scope}
+
+
+\begin{scope}[xshift=22cm]
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+  \begin{scope}[xshift=4cm, yshift=1.5cm,xscale=-1, ]
+  \duck
+  %\draw (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+  \node at (5,-1) {\bf Écran après};
+\end{scope}
+
+\draw[->,>=latex,red!20,line width=4 pt] (12.5,6)  to[bend right=25] (2,2);
+\draw[->,>=latex,blue!20,line width=4 pt] (12,2) -- ++(8,0);
+
+\node[right] at (0,8) {\bf (b) Copie de l'image};
+
+\end{tikzpicture}

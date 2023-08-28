@@ -1,0 +1,43 @@
+\begin{tikzpicture}[scale=5,cap=round,>=latex]
+ % Unit circle
+% Author: Supreme Aryal
+% A unit circle with cosine and sine values for some
+% common angles.
+
+        % draw the coordinates
+        \draw[->] (-1.2cm,0cm) -- (1.2cm,0cm); % node[right,fill=white] {$x$};
+        \draw[->] (0cm,-1.2cm) -- (0cm,1.2cm); % node[above,fill=white] {$y$};
+
+        % draw the unit circle
+        \draw[thick] (0cm,0cm) circle(1cm);
+
+        \foreach \x in {-150, -120, ...,180} {
+                % lines from center to point
+                \draw[gray] (0cm,0cm) -- (\x:1cm);
+                % dots at each point
+                \filldraw[black] (\x:1cm) circle(0.4pt);
+                % draw each angle in degrees
+                \draw (\x:0.6cm) node[fill=white,scale=0.8] {$\x^\circ$};
+        }
+
+        % draw each angle in radians
+        \foreach \x/\xtext in {
+            30/\frac{\pi}{6},
+            45/\frac{\pi}{4},
+            60/\frac{\pi}{3},
+            90/\frac{\pi}{2},
+            120/\frac{2\pi}{3},
+            135/\frac{3\pi}{4},
+            150/\frac{5\pi}{6},
+            180/\pi,
+            210/-\frac{5\pi}{6},
+            225/-\frac{3\pi}{4},
+            240/-\frac{2\pi}{3},
+            270/-\frac{\pi}{2},
+            300/-\frac{\pi}{3},
+            315/-\frac{\pi}{4},
+            330/-\frac{\pi}{6},
+            360/0}
+                \draw (\x:0.85cm) node[fill=white,scale=0.8] {$\xtext$};
+
+\end{tikzpicture}

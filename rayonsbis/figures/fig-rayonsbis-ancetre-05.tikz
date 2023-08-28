@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=0.5]
+
+\tikzstyle{arrow} = [->,>=latex,thick]
+
+\foreach \i in {0,...,7}{
+  \foreach \j in {0,...,5}{
+    \fill[gray!50] (\i+0.5,\j+0.5) circle (2pt);
+  }
+}
+\fill[red!30] (3,2) rectangle ++(1,1);
+\fill (3.5,2.5) circle (2pt);
+\node[scale=0.8] at (3.8,2.9) {$E_{i,j}$};
+
+\draw[gray, thick] (0,0) rectangle (8,6);
+\draw[gray, step=1] (0,0) grid (8,6);
+
+
+\draw[arrow] (-0.5,0.5)--++(10,0) node[right]{$x$};
+\draw[arrow] (0.5,-0.5)--++(0,8) node[left]{$y$};
+
+\draw[arrow,<->,blue] (0,-1) -- ++(8,0) node[midway,below,text width=4cm,align=center]{$a$ \\ $N_x$ pixels};
+\draw[arrow,<->,blue] (-1,0) -- ++(0,6) node[midway,left,text width=2cm,align=center]{$b$ \\ $N_y$ pixels};
+
+
+\end{tikzpicture}

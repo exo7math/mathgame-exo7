@@ -1,0 +1,18 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\def\mytheta{35}
+
+\coordinate(A) at ({-4/cos(\mytheta)},0);
+
+\draw[very thick] (0,0) -- (A) node[midway, below]{$d/\cos(\theta)$};
+\draw[very thick] (0,0) -- ({180-\mytheta}:4) node[midway, above right]{$d$};
+\draw[very thick] (A) -- ({180-\mytheta}:4); 
+
+\draw (A) -- ++(0,3);
+\draw[red,double] (A) ++(90-\mytheta:1) arc({90-\mytheta}:90:1) node[midway, above]{$\theta$};
+
+\draw[red,double] (0,0) ++(180:1) arc(180:{180-\mytheta}:1) node[midway, left]{$\theta$};
+
+\draw[] ({180-\mytheta}:4) -- ++(-\mytheta:0.25) --++({-90-\mytheta}:0.25)--++({-180-\mytheta}:0.25);
+
+\end{tikzpicture}

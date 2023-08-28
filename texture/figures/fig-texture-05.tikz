@@ -1,0 +1,68 @@
+\begin{tikzpicture}[scale=1.5]
+
+\begin{scope}[xshift=-0.5cm,scale=1]
+% Axes
+\draw[->,>=latex,thick, gray] (-0.25,0)--(1.5,0) node[below,black] {$u$};
+
+\draw[thick] (0,0.1) -- (0,-0.1) node [below] {$0$};
+\draw[thick] (1,0.1) -- (1,-0.1) node [below] {$1$};
+
+\fill[red!10,smooth,samples=50,domain=0:1] (0,0) -- plot({\x},{0.4+0.15*sin(2*3.14*\x r)}) -- (1,0) -- cycle;
+\draw[red, ultra thick,smooth,samples=50,domain=0:1] plot({\x},{0.4+0.15*sin(2*3.14*\x r)}) node[above]{$\mathcal{C}(u)$};
+\draw[very thick, gray] (0,0) -- (1,0);
+
+\end{scope}
+
+
+
+\begin{scope}[xshift=4cm,yshift=-1cm,scale=1,]
+\draw[->,>=latex,thick, gray] (-0.25,0)--(8.0,0) node[below,black] {$x$};
+\draw[->,>=latex,thick, gray] (0,-0.25)--(0,2.75) node[right,black] {$y$};
+
+% Second copy
+\begin{scope}[xshift=2.79cm,yshift=1.35cm,rotate=5,xscale=2.5,]
+
+\fill[black!10,smooth,samples=50,domain=0:1] (0,0) -- plot({\x},{0.4+0.15*sin(2*3.14*\x r)}) -- (1,0) -- cycle;
+\draw[gray, ultra thick,smooth,samples=50,domain=0:1] plot({\x},{0.4+0.15*sin(2*3.14*\x r)});
+\draw[very thick, gray] (0,0) -- (1,0);
+
+  \end{scope}
+
+% Third copy
+\begin{scope}[xshift=5.26cm,yshift=1.57cm,rotate=-10,xscale=2.5,]
+
+\fill[black!5,smooth,samples=50,domain=0:1] (0,0) -- plot({\x},{0.4+0.15*sin(2*3.14*\x r)}) -- (1,0) -- cycle;
+\draw[gray!50, ultra thick,smooth,samples=50,domain=0:1] plot({\x},{0.4+0.15*sin(2*3.14*\x r)});
+\draw[very thick, gray] (0,0) -- (1,0);
+
+  \end{scope}
+
+% First copy
+  \begin{scope}[xshift=0.5cm,yshift=0.5cm,rotate=20,xscale=2.5,]
+
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (1,0);
+
+\fill[red!10,smooth,samples=50,domain=0:1] (0,0) -- plot({\x},{0.4+0.15*sin(2*3.14*\x r)}) -- (1,0) -- cycle;
+\draw[red, ultra thick,smooth,samples=50,domain=0:1] plot({\x},{0.4+0.15*sin(2*3.14*\x r)});
+\draw[very thick, gray] (0,0) -- (1,0);
+
+  \end{scope}
+
+
+
+  \node[black,scale=3] at (A) {.};
+  \node at (A) [below left] {$A$};
+  \node[black,scale=3] at (B) {.};
+  \node at (B) [below right] {$B$};
+
+
+
+
+\end{scope}
+
+
+
+\draw[->,>=latex,line width =3pt, blue!20] (0.75,0.25) to[bend left=25] node[midway, above,black]{$\Phi$}++ (4.5,0.2) ;
+
+\end{tikzpicture}

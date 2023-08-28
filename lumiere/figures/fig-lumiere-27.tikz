@@ -1,0 +1,40 @@
+﻿\begin{tikzpicture}[scale=2]
+
+	\draw[->,>=latex, black] (-2,0) -- (3,0) node[below] {angle $\omega$};
+	\draw[->,>=latex, black] (0,-0.2) -- (0,1.5) node[left] {intensité};
+
+
+  \def\mytheta{1.5707}
+
+  \coordinate (A) at (-\mytheta,0);
+  \coordinate (B) at (\mytheta,0);
+
+  \draw[very thick, blue] 
+      (-2.5,0)--(A)
+      (2.5,0)--(B)
+;
+
+ \def\mye{50}
+	\draw[domain=-\mytheta:\mytheta, blue!100, very thick, samples=200, smooth] (A) -- plot ( \x, { exp(\mye*ln(cos(\x r))) } ) -- (B);
+
+ \def\mye{10}
+	\draw[domain=-\mytheta:\mytheta, blue!70, very thick, samples=200, smooth] (A) -- plot ( \x, { exp(\mye*ln(cos(\x r))) } ) -- (B);
+
+ \def\mye{3}
+	\draw[domain=-\mytheta:\mytheta, blue!40, very thick, samples=200, smooth] (A) -- plot ( \x, { exp(\mye*ln(cos(\x r))) } ) -- (B);
+
+ \def\mye{1}
+	\draw[domain=-\mytheta:\mytheta, blue!20, very thick, samples=200, smooth] (A) -- plot ( \x, { exp(\mye*ln(cos(\x r))) } ) -- (B);
+
+
+	\fill (0,0) circle (1pt) node[below right] {$0$};
+	\fill (0,1) circle (1pt) node[above right] {$1$};
+	\fill (1.57,0) circle (1pt) node[below] {$+\frac\pi2$};
+	\fill (-1.57,0) circle (1pt) node[below] {$-\frac\pi2$};
+
+% \draw[red, very thick] (5,2) -- ++(1,0) node[right,black]{$e=0$};
+ \draw[blue!20, very thick] (3.1,1) -- ++(0.5,0) node[right,black]{$e=1$};
+ \draw[blue!40, very thick] (3.1,0.75) -- ++(0.5,0) node[right,black]{$e=3$};
+ \draw[blue!70, very thick] (3.1,0.5) -- ++(0.5,0) node[right,black]{$e=10$};
+ \draw[blue!100, very thick] (3.1,0.25) -- ++(0.5,0) node[right,black]{$e=50$};
+\end{tikzpicture}

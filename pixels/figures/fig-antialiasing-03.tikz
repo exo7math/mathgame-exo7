@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\begin{scope}
+    \coordinate (A) at (-4,0);
+    \coordinate (B) at (3,0);
+    
+    \coordinate (G) at (-1,0);
+    
+    \fill[orange] (A) circle (2);
+    \fill[orange] (B) circle (1);
+    \fill[orange] (-4,-0.2) rectangle (3,0.2);
+    
+    \node[scale=3] at (A) {.};
+    \node[below] at (A) {$A$};
+    
+    \node[scale=3] at (B) {.};
+    \node[below] at (B) {$B$};
+    
+    \node[scale=3] at (G) {.};
+    \node[below=3pt] at (G) {$G$};
+    
+    \node[below] at (-4,-2) {$m_A$};
+    \node[below] at (3,-1) {$m_B$};
+\end{scope}
+
+\begin{scope}[xshift=15cm]
+    
+    \coordinate (G) at (0,0);
+    
+    \fill[orange] (G) circle (2.3);
+    
+    \node[scale=3] at (G) {.};
+    \node[below=3pt] at (G) {$G$};
+    
+    \node[below] at (0,-2.5) {$m_A+m_B$};
+\end{scope}
+
+\end{tikzpicture}

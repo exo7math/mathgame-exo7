@@ -1,0 +1,74 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\def\r{3}
+
+\newcommand{\pixel}[3]{\fill[#3] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);}
+\newcommand{\cross}[3]{
+\draw[black,very thick] (#1-0.2,#2)--++(0.4,0);
+\draw[black,very thick] (#1,#2-0.2)--++(0,0.4);
+\node[black, below right] at (#1,#2) {#3};
+}
+
+
+
+% Arc de cercle de rayon r
+\pgfmathtruncatemacro\i{0}
+\pgfmathtruncatemacro\j{\r}
+\pgfmathtruncatemacro\d{3-2*\r}
+
+\foreach\i in {0,...,\r}{
+    \pixel{\j}{\i}{black!70}   % copies
+    \pixel{-\i}{\j}{black!70}
+    \pixel{-\j}{\i}{black!70}
+    \pixel{\i}{-\j}{black!70}
+    \pixel{\j}{-\i}{black!70}
+    \pixel{-\i}{-\j}{black!70}
+    \pixel{-\j}{-\i}{black!70}
+
+    \pixel{\i}{\j}{black!70};    % original
+
+    \ifnum\d<0
+         \pgfmathtruncatemacro\d{\d+4*\i+6}
+         \global\let\d\d
+   
+
+    \else
+         \pgfmathtruncatemacro\d{\d+4*\i-4*\j+10}
+         \global\let\d\d
+         \pgfmathtruncatemacro\j{\j-1}
+         \global\let\j\j
+
+    \fi
+
+    \ifnum\i>\j
+        \breakforeach
+    \fi
+        
+}
+
+% Grille
+\pgfmathtruncatemacro\xmax{\r +1}
+\pgfmathtruncatemacro\ymax{\r +1}
+
+\draw[thin,gray,xshift=-0.5cm,yshift=-0.5cm] (-\xmax+1,-\ymax+1) grid (\xmax,\ymax);
+
+%\draw[->,>=latex,thick] (-\xmax-1,0)--(\xmax+1,0) node[above]{$i$};
+%\draw[->,>=latex,thick] (0,-\ymax-1)--(0,\ymax+1) node[left]{$j$};
+
+% \foreach \x in {0,...,\r}{
+%     \node[below] at (\x,-0.2) {\tiny $\x$};
+% }
+% \foreach \y in {0,...,\r}{
+%     \node[left] at (-0.2,\y) {\tiny $\y$};
+% }
+
+
+% Vrai cercle
+\draw[blue, ultra thick, opacity=1] (0,0) circle (\r);
+
+% Arc
+% \draw[red, ultra thick, opacity=0.9] (0,0) -- (90:\r);
+% \draw[red, ultra thick, opacity=0.9] (0,0) -- (45:\r);
+% \draw[red, ultra thick, opacity=0.9] (0,\r) arc (90:45:\r);
+
+\end{tikzpicture}

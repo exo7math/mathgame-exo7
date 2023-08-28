@@ -1,0 +1,41 @@
+\begin{tikzpicture}[scale=3]
+
+
+% projection parallele 
+\begin{scope}[scale=1]
+
+\draw[green!70!black, very thick,->,>=latex] (0,0) -- ++(1,0) node[below]{$\vec i$};
+\draw[green!70!black, very thick,->,>=latex] (0.01,0) -- ++(0,1) node[below left]{$\vec j$};
+
+\def\myalpha{105}
+\def\mybeta{125}
+\def\kx{0.5}
+\def\ky{0.5}
+\def\kz{0.5}
+
+\coordinate (f1) at ({90+\myalpha}:1);
+\coordinate (f2) at (90-\mybeta:1);
+\coordinate (f3) at (90:1);
+
+\coordinate (ff1) at (90+\myalpha:\kx);
+\coordinate (ff2) at (90-\mybeta:\ky);
+\coordinate (ff3) at (90:\kz);
+
+
+
+\draw[red,  thick,->,>=latex] (0,0) -- (f1) node[below]{$\vec {f_1}$};
+\draw[red,  thick,->,>=latex] (0,0) -- (f2) node[below]{$\vec {f_2}$};
+\draw[red,  thick,->,>=latex] (0,0) -- (f3) node[above right]{$\vec {f_3}$};
+
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff1) node[midway, above,black] {$k_x$} node[below]{$\vec {f_1'}$};
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff2) node[midway, above,black] {$k_y$}  node[below]{$\vec {f_2'}$};
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff3) node[midway, left,black] {$k_z$}  node[right]{$\vec {f_3'}$};
+
+
+\draw[double, blue] (90:1-0.2) arc (90:90+\myalpha:1-0.2) node[midway, left]{$\alpha$};
+\draw[double, blue] (90:1-0.3) arc (90:90-\mybeta:1-0.3) node[midway, right]{$\beta$};
+\end{scope}
+
+
+
+\end{tikzpicture}

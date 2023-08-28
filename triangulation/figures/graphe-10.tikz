@@ -1,0 +1,126 @@
+﻿\usetikzlibrary{patterns}
+\begin{tikzpicture}
+
+\tikzstyle{edge} = [draw,very thick,black!50]
+\tikzstyle{vertex} = [draw] 
+
+
+\begin{scope}[yshift= 0cm, xshift=0cm]
+\coordinate (A) at (0,0);
+\coordinate (B) at (0,1.5);
+\coordinate (C) at (-30:1.5);
+\coordinate (D) at (-150:1.5);
+
+\draw[edge] (A) -- (B);
+\draw[edge] (A) -- (C);
+\draw[edge] (A) -- (D);
+\draw[edge] (B) -- (C) -- (D) -- cycle;
+
+\fill[black!70] (A) circle (0.1);
+\fill[black!70] (B) circle (0.1);
+\fill[black!70] (C) circle (0.1);
+\fill[black!70] (D) circle (0.1);
+
+
+\end{scope}
+
+
+\begin{scope}[yshift= -0.5cm, xshift=4cm]
+\coordinate (A) at (-1.5,0);
+\coordinate (B) at (0,0);
+\coordinate (C) at (1.5,0);
+\coordinate (D) at (0,2);
+
+\draw[edge] (A) to[bend left] (B);
+\draw[edge] (A) to[bend right] (B);
+\draw[edge] (C) to[bend left] (B);
+\draw[edge] (C) to[bend right] (B);
+\draw[edge] (A) to[bend left] (D);
+\draw[edge] (B) to (D);
+\draw[edge] (C) to[bend right] (D);
+
+\fill[black!70] (A) circle (0.1);
+\fill [black!70](B) circle (0.1);
+\fill [black!70](C) circle (0.1);
+\fill[black!70] (D) circle (0.1);
+
+\end{scope}
+
+
+
+\begin{scope}[xshift=8cm]
+\coordinate (A) at (0,0);
+\coordinate (B) at (2,0);
+\coordinate (C) at (1,1);
+\coordinate (D) at (-1,1);
+\coordinate (E) at (1,-1);
+\coordinate (F) at (3,1);
+\coordinate (G) at (3,-1);
+
+\draw[edge] (C) -- (A) -- (E);
+\draw[edge] (D) -- (A) -- (B) -- (F);
+\draw[edge] (B) -- (G);
+
+\fill [black!70](A) circle (0.1);
+\fill [black!70](B) circle (0.1);
+\fill[black!70] (C) circle (0.1);
+\fill[black!70] (D) circle (0.1);
+\fill [black!70](E) circle (0.1);
+\fill[black!70] (F) circle (0.1);
+\fill[black!70] (G) circle (0.1);
+
+\end{scope}
+
+
+
+\begin{scope}[xshift=14cm,yshift= 1cm,]
+\coordinate (A) at (-1,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (0,1);
+\coordinate (D) at (0,-1);
+\coordinate (E) at (0,-2.5);
+
+\draw[edge] (A) -- (B);
+\draw[edge] (A) -- (C) -- (B) -- (D) -- cycle;
+\draw[edge] (A) to[bend right] (E);
+\draw[edge] (B) to[bend left] (E);
+\draw[edge] (B) to[bend left] (E);
+\draw[edge] ($(D)+(0,-0.4)$) ellipse (0.3 and 0.4);
+
+\fill [black!70](A) circle (0.1);
+\fill[black!70] (B) circle (0.1);
+\fill[black!70] (C) circle (0.1);
+\fill [black!70](D) circle (0.1);
+\fill [black!70](E) circle (0.1);
+
+\end{scope}
+
+\begin{scope}[yshift= 0.2cm, xshift=18.5cm, scale = 0.8, ]
+\coordinate (A) at (-1,-1);
+\coordinate (B) at (1,-1);
+\coordinate (C) at (1,1);
+\coordinate (D) at (-1,1);
+\coordinate (AA) at (-2,-2);
+\coordinate (BB) at (2,-2);
+\coordinate (CC) at (2,2);
+\coordinate (DD) at (-2,2);
+
+\draw[edge] (A)--(B) -- (C) -- (D) -- cycle;
+\draw[edge] (AA)--(BB) -- (CC) -- (DD) -- cycle;
+\draw[edge] (A) -- (AA);
+\draw[edge] (B) -- (BB);
+\draw[edge] (C) -- (CC);
+\draw[edge] (D) -- (DD);
+
+\fill [black!70](A) circle (0.1);
+\fill[black!70] (B) circle (0.1);
+\fill [black!70](C) circle (0.1);
+\fill [black!70](D) circle (0.1);
+\fill[black!70] (AA) circle (0.1);
+\fill [black!70](BB) circle (0.1);
+\fill [black!70](CC) circle (0.1);
+\fill [black!70](DD) circle (0.1);
+
+\end{scope}
+
+\end{tikzpicture}

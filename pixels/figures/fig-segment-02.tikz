@@ -1,0 +1,18 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\coordinate (P1) at (0.5,0.5);
+\coordinate (P2) at (4.5,1.5);
+
+\draw[very thick, blue] (P1)--(P2);
+
+\coordinate (M) at (4.5,0.5);
+\draw[thick, gray] (P1)--(M) node[midway, below, black]{$\Delta x$};
+\draw[thick, gray] (P2)--(M) node[midway, right, black]{$\Delta y$};
+
+\node[blue, scale=3] at (P1) {.};
+\node[blue, scale=3] at (P2) {.};
+
+\node[left] at (P1) {$P_1$};
+\node[above] at (P2) {$P_2$};
+
+\end{tikzpicture}

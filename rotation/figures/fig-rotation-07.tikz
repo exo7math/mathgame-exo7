@@ -1,0 +1,67 @@
+﻿%https://tex.stackexchange.com/questions/438688/
+\makeatletter
+%along x axis
+\define@key{x sphericalkeys}{radius}{\def\myradius{#1}}
+\define@key{x sphericalkeys}{theta}{\def\mytheta{#1}}
+\define@key{x sphericalkeys}{phi}{\def\myphi{#1}}
+\tikzdeclarecoordinatesystem{x spherical}{% %%%rotation around x
+	\setkeys{x sphericalkeys}{#1}%
+	\pgfpointxyz{\myradius*cos(\mytheta)}{\myradius*sin(\mytheta)*cos(\myphi)}{\myradius*sin(\mytheta)*sin(\myphi)}}
+
+%along y axis
+\define@key{y sphericalkeys}{radius}{\def\myradius{#1}}
+\define@key{y sphericalkeys}{theta}{\def\mytheta{#1}}
+\define@key{y sphericalkeys}{phi}{\def\myphi{#1}}
+\tikzdeclarecoordinatesystem{y spherical}{% %%%rotation around x
+	\setkeys{y sphericalkeys}{#1}%
+	\pgfpointxyz{\myradius*sin(\mytheta)*cos(\myphi)}{\myradius*cos(\mytheta)}{\myradius*sin(\mytheta)*sin(\myphi)}}
+
+%along z axis
+\define@key{z sphericalkeys}{radius}{\def\myradius{#1}}
+\define@key{z sphericalkeys}{theta}{\def\mytheta{#1}}
+\define@key{z sphericalkeys}{phi}{\def\myphi{#1}}
+\tikzdeclarecoordinatesystem{z spherical}{% %%%rotation around x
+	\setkeys{z sphericalkeys}{#1}%
+	\pgfpointxyz{\myradius*sin(\mytheta)*cos(\myphi)}{\myradius*sin(\mytheta)*sin(\myphi)}{\myradius*cos(\mytheta)}}
+
+\makeatother
+
+% definitions to make your life easier
+\tikzset{rotate axes about y axis/.code={
+		\path (y spherical cs:radius=1,theta=90,phi=0+#1) coordinate(xpp)
+		(y spherical cs:radius=1,theta=00,phi=90+#1) coordinate(ypp) 
+		(y spherical cs:radius=1,theta=90,phi=90+#1) coordinate(zpp);
+	},rotate axes about x axis/.code={
+		\path (x spherical cs:radius=1,theta=00,phi=90+#1) coordinate(xpp)
+		(x spherical cs:radius=1,theta=90,phi=00+#1) coordinate(ypp) 
+		(x spherical cs:radius=1,theta=90,phi=90+#1) coordinate(zpp);
+	},
+	rotate axes about z axis/.code={
+		\path (z spherical cs:radius=1,theta=90,phi=#1) coordinate(xpp)
+		(z spherical cs:radius=1,theta=90,phi=90+#1) coordinate(ypp) 
+		(z spherical cs:radius=1,theta=00,phi=#1) coordinate(zpp);
+	},
+	pitch/.style={rotate axes about z axis=#1,x={(xpp)},y={(ypp)},z={(zpp)}},
+	roll/.style={rotate axes about x axis=#1,x={(xpp)},y={(ypp)},z={(zpp)}},
+	yaw/.style={rotate axes about y axis=#1,x={(xpp)},y={(ypp)},z={(zpp)}}
+}
+
+\tdplotsetmaincoords{70}{-30}
+\begin{tikzpicture}[tdplot_main_coords, scale=2]
+
+\draw[very thick,->,>=latex] (0,0,0) -- (1.5,0,0) node[below right]{$x$};
+\draw[very thick,->,>=latex] (0,0,0) -- (0,1.3,0) node[above]{$y$};
+\draw[very thick,->,>=latex] (0,0,0) -- (0,0,1.5) node[right]{$z$};
+
+\begin{scope}[yaw=90]	
+	\draw[fill=red!50,opacity=0.6] (1,0,0) --(-0.5,0.5,0) -- (-0.5,-0.5,0) -- cycle;
+	\draw[fill=blue!50,opacity=0.6] (-0.5,0,0) --  (-0.2,0,0) -- (-0.5,0,0.25) -- cycle;
+
+ \draw[very thick,->,>=latex, red] (0,0.04,0.02) -- ++(1.45,0,0) node[left]{$x''$};
+ \draw[very thick,->,>=latex, red] (-0.04,0.07,0) -- ++(0,1.3,0) node[left]{$y''$};
+ \draw[very thick,->,>=latex, red] (0,0,0) -- ++(0,0,1.3) node[below]{$z''$};
+
+
+\end{scope}
+
+\end{tikzpicture}

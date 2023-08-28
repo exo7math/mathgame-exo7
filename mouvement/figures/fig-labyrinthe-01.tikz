@@ -1,0 +1,16 @@
+﻿\begin{tikzpicture}[scale=4]
+
+\draw[ultra thick] (0,0) rectangle (1,1);
+
+\foreach \x in  {0,0.1,...,0.9}{
+  \draw (\x+0.085, 0.05) -- ++ (0,0.9);
+}
+\foreach \x in  {0,0.2,...,0.7}{
+  \draw (\x+0.085, 0.95) -- ++ (0.1,0);
+}
+\foreach \x in  {0.1,0.3,...,0.8}{
+  \draw (\x+0.085, 0.05) -- ++ (0.1,0);
+}
+
+\draw[very thick,-latex] (0.085,0.05) -- ++(0,0.3);
+\end{tikzpicture}

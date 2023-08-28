@@ -1,0 +1,130 @@
+﻿\begin{tikzpicture}
+		
+\tikzstyle{mytrianglemax}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=90,
+  fill=violet!10,
+  minimum size =1.1cm]	
+  
+\tikzstyle{mytrianglemin}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=-90,
+  fill=teal!10,
+  minimum size =1.1cm]		
+	
+\tikzstyle{mymax}=[above=-2pt, black!50, scale=0.8]	
+
+\tikzstyle{mymin}=[right=2pt, black!50, scale=0.8]
+	
+	
+% define points
+\path
+  (0,0) coordinate(R)
+  (-5,-2.5) coordinate (V1)
+  (0,-2.5) coordinate (V2)
+  (5,-2.5) coordinate (V3)
+  (-8,-6) coordinate (V11)
+  (-6,-6) coordinate (V12)
+  (-4,-6) coordinate (V13)
+  (-1,-6) coordinate (V21)
+  (1,-6) coordinate (V22)
+  (4,-6) coordinate (V31)
+  (6,-6) coordinate (V32)
+  (8,-6) coordinate (V33)
+  ;
+
+\node[mytrianglemax] (T) at (R) {6};
+\node[mymax] at (T.315) {max};
+
+\node[mytrianglemin] (T1) at (V1) {3};
+\node[mymin] at (T1.280) {min};
+
+\node[mytrianglemin] (T2) at (V2) {6};
+\node[mymin] at (T2.280) {min};
+
+\node[mytrianglemin] (T3) at (V3) {$\le 2$};
+\node[mymin] at (T3.280) {min};
+
+\node[mytrianglemax] (T11) at (V11) {3};
+\node[mymax] at (T11.315) {max};
+
+\node[mytrianglemax] (T12) at (V12) {$\ge 5$};
+\node[mymax] at (T12.315) {max};
+
+\node[mytrianglemax] (T13) at (V13) {$\ge 4$};
+\node[mymax] at (T13.315) {max};
+
+\node[mytrianglemax] (T21) at (V21) {6};
+\node[mymax] at (T21.315) {max};
+
+\node[mytrianglemax] (T22) at (V22) {$\ge 8$};
+\node[mymax] at (T22.315) {max};
+
+\node[mytrianglemax] (T31) at (V31) {2};
+\node[mymax] at (T31.315) {max};
+
+\node[mytrianglemax] (T32) at (V32) {?};
+\node[mymax] at (T32.315) {max};
+
+\node[mytrianglemax] (T33) at (V33) {?};
+\node[mymax] at (T33.315) {max};
+
+
+
+% draw lines
+\draw[thick]
+  (T) -- (T1)
+  (T) -- (T2)
+  (T) -- (T3)
+  (T1) -- (T11)
+  (T1) -- (T12)
+  (T1) -- (T13)
+  (T2) -- (T21)
+  (T2) -- (T22)
+  (T3) -- (T31)
+  (T3) -- (T32)
+  (T3) -- (T33)
+  ;
+
+% leaves
+\draw[thick]
+  (T11) -- ++(-90:2.95) node[below] {$3$}
+
+  (T12) -- ++(-100:3) node[below] {$5$}
+  (T12) -- ++(-90:2.95) node[below] {?}
+  (T12) -- ++(-80:3) node[below] {?}
+
+  (T13) -- ++(-100:3) node[below] {$4$}
+  (T13) -- ++(-80:3) node[below] {?}
+
+
+  (T21) -- ++(-100:3) node[below] {$3$}
+  (T21) -- ++(-80:3) node[below] {$6$}
+
+  (T22) -- ++(-100:3) node[below] {$8$}
+  (T22) -- ++(-80:3) node[below] {?}
+
+
+  (T31) -- ++(-90:2.95) node[below] {$2$}
+
+  (T32) -- ++(-100:3) node[below] {?}
+  (T32) -- ++(-80:3) node[below] {?}
+
+  (T33) -- ++(-100:3) node[below] {?}
+  (T33) -- ++(-80:3) node[below] {?}
+  ;
+
+
+% Cut
+\draw[red, ultra thick, double, double distance=3pt] (5,-4.7) -- ++(30:2);
+
+\draw[red, ultra thick, double, double distance=3pt] (1,-8.4) -- ++(30:1);
+
+\draw[red, ultra thick, double, double distance=3pt] (-4,-8.4) -- ++(30:1);
+
+\draw[red, ultra thick, double, double distance=3pt] (-6.2,-8.4) -- ++(30:1);
+\end{tikzpicture}

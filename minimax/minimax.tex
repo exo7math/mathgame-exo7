@@ -1,0 +1,919 @@
+\documentclass[11pt,class=report,crop=false]{standalone}
+\usepackage[screen]{../mathgame}
+
+
+\include{figures/tictactoe}  % pour le morpion
+
+
+\begin{document}
+
+
+%====================================================================
+\chapitre{Minimax}
+%====================================================================
+
+%
+%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
+%
+%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
+%
+%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+
+\objectifs{L'algorithme minimax permet de choisir le meilleur coup à jouer en anticipant les mouvements de l'adversaire.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Arbres}
+
+\index{graphe!arbre}
+
+%--------------------------------------------------------------------
+\subsection{Vocabulaire}
+
+Voici le vocabulaire de base sur les arbres.
+\begin{itemize}
+	\item Un \defi{arbre} est un graphe sans cycle.
+	\item Comme un graphe, un arbre est donc formé par des \defi{sommets} (aussi appelés \defi{n\oe uds}) reliés par des \defi{arêtes}.
+	\item La \defi{racine} est un sommet privilégié qui sert d'origine. Cela définit une orientation naturelle sur l'arbre issue de la racine.
+	\item Les sommets reliés à la racine sont les \defi{enfants} ; les sommets reliés aux enfants (autres que la racine) sont les \defi{petits-enfants}\ldots
+	\item Plus généralement les \defi{enfants d'un sommet} $s$ sont les sommets  $s'$ reliés à $s$ avec $s'$ plus éloigné de la racine que $s$.
+	\item Une \defi{feuille} (ou \defi{sommet terminal}) est  un sommet sans enfant.
+	\item Une \defi{donnée} sera généralement associée à chaque sommet (un nombre, une configuration\ldots).
+\end{itemize}
+
+
+\myfigure{0.8}{
+	\tikzinput{arbre-01}
+} 
+	
+
+%--------------------------------------------------------------------
+\subsection{Parcours en profondeur}
+
+\index{algorithme!parcours en profondeur}
+
+Nous souhaitons parcourir tous les sommets d'un arbre. Le \defi{parcours en profondeur} permet d'atteindre tous les sommets en partant de la racine puis en balayant l'arbre de haut (la racine) en bas (les feuilles) et de la gauche vers la droite.
+
+\myfigure{0.8}{
+	\tikzinput{arbre-02}
+} 
+
+L'algorithme est assez court mais comme c'est un algorithme récursif c'est toujours un peu délicat à comprendre.
+L'algorithme est donné sous la forme d'une fonction récursive \ci{parcours_profondeur(sommet)}. Pour parcourir tout l'arbre on l'appelle par 
+\ci{parcours_profondeur(racine)}. Dans cet algorithme, on peut effectuer une action sur le sommet à l'aide d'une fonction \ci{traiter(sommet)} à personnaliser : par exemple on affiche la donnée attachée à ce sommet.
+
+
+\begin{algorithme}
+	Fonction : \ci{parcours_profondeur(sommet)}	
+	
+	Entrée : un sommet d'un arbre.
+	
+	Action : traite tous les descendants de ce sommet par un parcours en profondeur.
+	
+	\begin{itemize}
+		\item \ci{traiter(sommet)}
+        \item pour chaque \ci{'enfant'} de \ci{sommet}:
+        \begin{itemize}			
+	       \item \ci{parcours_profondeur(enfant)}
+        \end{itemize}		
+	\end{itemize}  
+\end{algorithme}
+
+L'idée est la suivante : on part de la racine, on effectue l'action voulue sur ce sommet par une fonction \ci{traiter(sommet)}, puis on considère l'ensemble des enfants de la racine. On considère le premier enfant (celui le plus à gauche), l'appel récursif fait que l'on traite ce sommet, puis on considère ses enfants de la gauche vers la droite (c'est-à-dire les petits-enfants de la racine) et on descend ainsi dans l'arbre. Une fois qu'on a traité tous les descendants du premier enfant, on passe au second enfant de la racine\ldots{}
+Comme l'algorithme est récursif il est important de bien comprendre la condition d'arrêt : ici tout simplement si un sommet n'a pas d'enfant (c'est une feuille) alors on effectue juste l'action sur ce sommet (sans appel récursif) car la boucle \og{}pour chaque \ci{'enfant'}\fg{} est vide.
+
+
+Le mieux est de programmer soi-même cette fonction pour en comprendre vraiment son mécanisme, voir la section \og{}Avec Python\fg{} un peu plus loin.
+
+
+%--------------------------------------------------------------------
+\subsection{Parcours en largeur}
+
+\index{algorithme!parcours en largeur}
+	
+C'est la façon qui semble humainement naturelle de parcourir un arbre mais un peu plus difficile pour un ordinateur. 
+Le but est de partir de la racine, puis de traiter tous les enfants (de gauche à droite), puis l'ensemble de tous les petits-enfants, puis l'ensemble des petits-petits-enfants\ldots
+
+\myfigure{0.8}{
+	\tikzinput{arbre-03}
+} 
+
+
+Avant d'étudier l'algorithme il faut comprendre la notion de \og{}file\fg{}.
+Une \defi{file} (\emph{queue}) est une suite de données à laquelle on peut ajouter des éléments d'un côté et en retirer de l'autre. C'est comme une file d'attente : le premier arrivé sera le premier servi (\emph{fifo}: \emph{first in, first out}).
+Plus précisément voici les trois opérations de base :
+\begin{itemize}
+	\item \ci{file_vide()} : est-ce que la file est vide ? 
+	\item \ci{ajouter_file(element)} : ajoute un élément à la gauche  de la file,
+    \item \ci{retirer_file()} : renvoie l'élément le plus à droite de la file, et le retire de la file.
+\end{itemize}
+
+
+\myfigure{0.7}{
+	\tikzinput{fig-file}
+} 
+
+Il ne faut pas confondre une file avec une \og{}pile\fg{} (\emph{stack}) où le dernier élément ajouté à la pile est le premier à être retiré (\emph{filo}: \emph{first in, last out}).
+
+Voici l'algorithme de parcours en largeur. Dans cet algorithme la file sert de stockage pour mémoriser les enfants d'un sommet, car il faut auparavant passer aux frères et s\oe urs de ce sommet. 
+
+\begin{algorithme}
+	Fonction : \ci{parcours_largeur(racine)}
+	
+	Entrée : un sommet (la racine de l'arbre).
+	
+	Action : traite tous les sommets par un parcours en largeur. 
+	
+	\begin{itemize}
+		\item Partir d'une file qui contient uniquement le sommet \ci{racine}.
+		
+		\item Tant que la file n'est pas vide :
+		\begin{itemize}
+			\item \ci{sommet = retirer_file()} 
+			\item \ci{traiter(sommet)}
+			\item pour chaque \ci{'enfant'} de \ci{sommet}:
+     		\begin{itemize}			
+     			\item \ci{ajouter_file(enfant)}
+     		\end{itemize}	
+     	\end{itemize}		
+	\end{itemize}  
+\end{algorithme}
+
+
+%--------------------------------------------------------------------
+\subsection{Avec Python}
+
+
+On commence par définir une classe d'objet \ci{Noeud} qui correspond à un sommet avec une valeur et une liste d'enfants (qui sont eux-mêmes des \ci{Noeud}).
+
+\begin{lstlisting}
+class Noeud:
+    def __init__(self, val):
+        self.enfants = []
+        self.val = val	
+\end{lstlisting}
+
+Voici comment initialiser l'arbre suivant : 
+
+\myfigure{0.8}{
+	\tikzinput{arbre-04}
+} 
+
+
+\begin{lstlisting}
+racine = Noeud(1)
+enfant1 = Noeud(2)
+enfant2 = Noeud(3)
+enfant3 = Noeud(4)
+racine.enfants = [enfant1, enfant2, enfant3]
+petitenfant1 = Noeud(5)
+petitenfant2 = Noeud(6)
+enfant2.enfants = [petitenfant1, petitenfant2]
+petitenfant3 = Noeud(7)
+petitenfant4 = Noeud(8)
+enfant3.enfants = [petitenfant3, petitenfant4]
+\end{lstlisting}
+
+
+Voici la fonction récursive qui permet un parcours d'arbre en profondeur (ici elle affiche juste la valeur associée à chaque sommet) :
+\begin{lstlisting}	
+def parcours_arbre_profondeur(noeud):
+	print(noeud.val)
+	for enfant in noeud.enfants:
+	    parcours_arbre_profondeur(enfant)
+\end{lstlisting}
+
+Sur l'arbre de notre exemple, cela affiche la valeur de chaque sommet :
+\mycenterline{
+\ci{1 2 3 5 6 4 7 8}
+}
+
+Voici la fonction qui permet un parcours d'arbre en largeur :	
+\begin{lstlisting}
+def parcours_arbre_largeur(noeud):
+    file = [noeud]
+    while file != []:
+        noeud = file.pop()
+        print(noeud.val)
+        for enfant in noeud.enfants:
+            file = [enfant] + file	
+\end{lstlisting}
+
+Rappelons que la commande \ci{file.pop()} correspond à \ci{retirer_file()} et renvoie le dernier élément de la liste et le retire de cette liste.
+
+Toujours pour le même exemple, voici maintenant l'ordre d'affichage (racine, puis enfants, puis petits-enfants) :
+\mycenterline{
+	\ci{1 2 3 4 5 6 7 8}
+}	
+		
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algorithme minimax}
+
+\index{algorithme!minimax}
+
+%--------------------------------------------------------------------
+\subsection{Jeux}
+
+
+\textbf{Morpion.}
+
+Voyons comment les différentes successions de coups possibles d'une partie peuvent être codées sous la forme d'un arbre. Prenons l'exemple du jeu de morpion : sur une grille de 9 cases, il s'agit pour un joueur d'aligner 3 croix et pour son adversaire d'aligner 3 ronds.
+
+\begin{center}
+	\tictactoe{ ,X, ,
+		, ,O,
+		, , }  
+\end{center}
+
+
+La racine de l'arbre correspond à la position de départ (grille vide), la racine a $9$ enfants qui correspondent aux $9$ possibilités du premier joueur pour placer sa première croix. Chacun de ces enfants a lui-même 8 enfants qui correspondent aux 8 possibilités (les 8 cases vides restantes) pour le second joueur de placer son premier rond\ldots
+
+\myfigure{0.9}{
+	\tikzinput{morpion-01}
+} 
+
+Les feuilles de l'arbre (les sommets sans enfants) correspondent soit à une configuration où l'un des joueurs a gagné, soit à une grille remplie sans vainqueur. 
+
+Dans une partie il y a au plus $9$ coups. Le nombre total de parties est donc inférieur à $9! = 362\,880$ ($9$ choix pour le premier coup, $8$ pour le second, $7$ pour le troisième\ldots). Si on tenait compte des symétries, alors il y aurait beaucoup moins de configurations possibles. Ainsi le morpion est un jeu aux possibilités plutôt limitées (mais vous le saviez déjà).
+
+
+\bigskip
+
+\textbf{Échecs.}
+
+L'arbre des configurations pour décrire toutes les parties d'échecs possibles est immense !
+Chaque joueur a 16 pièces, et il y a 64 cases, donc (en théorie) il y a jusqu'à $16 \times 64 = 1024$ possibilités, donc chaque sommet pourrait avoir plus de mille enfants. Dans la pratique on estime qu'un joueur a en moyenne 30 coups possibles et qu'une partie dure 80 coups. Cela fait un total de $30\times 30 \times \cdots = 30^{80} \simeq 10^{120}$ parties possibles. Ce nombre, $10^{120}$, s'appelle le nombre de Shannon, il est gigantesque, pensez qu'il y a \og{}seulement\fg{} $10^{80}$ atomes dans l'univers !  Ainsi il est impossible de calculer toutes les parties d'échecs possibles.
+
+\begin{center}
+	\setchessboard{boardfontsize=13pt, showmover=false, label=false}
+	\newgame
+	\chessboard	
+\end{center}
+
+Ce que l'on peut faire avec un ordinateur, c'est chercher toutes les possibilités pour le prochain coup (disons $30$ choix), puis pour chacun de ces coups chercher toutes les possibilités de l'adversaire ($30$ coups pour chacune des $30$ possibilités, soit $30 \times 30 = 900$). Si on veut anticiper sur une profondeur de $n$ coups, il faut calculer $30^n$ possibilités. 
+Par exemple pour $n=5$ cela fait environ $25$ millions de parties à calculer ce qui est accessible. Par contre, pour $n=7$ cela fait plus de $10$ milliards de possibilités à calculer, ce qui n'est plus raisonnable. 
+
+Nous allons faire un double travail :
+\begin{itemize}
+	\item comment, parmi toutes ces possibilités, sélectionner la suite des coups les plus avantageux (tout en déjouant les stratégies de l'adversaire) ?
+	\item ne pourrait-on pas accélérer le processus en écartant les configurations les plus défavorables ?
+\end{itemize}
+
+
+
+%--------------------------------------------------------------------
+\subsection{Fonction d'évaluation}
+
+
+\textbf{Morpion.}
+
+Pour pouvoir décider du meilleur coup il faut pouvoir évaluer la qualité de chaque configuration de jeu. Reprenons l'exemple du morpion, je suis dans la situation suivante :
+
+\begin{center}
+\tictactoe{ , , ,
+		   X, , ,
+	    	, ,O}  
+\end{center}
+
+
+C'est à mon tour de placer une croix, j'ai donc 7 possibilités :
+
+\begin{center}
+\def\k{0.6}
+\footnotesize
+\begin{minipage}{0.12\textwidth}	\center
+\tictactoe[\k]{
+x, , ,
+X, , ,
+ , ,O} 
+
+$f(C) = +10$
+\end{minipage}\quad
+\begin{minipage}{0.12\textwidth}	\center
+\tictactoe[\k]{
+ ,x, ,
+X, , ,
+ , ,O} 
+
+$f(C) = +2$
+\end{minipage}\quad
+\begin{minipage}{0.12\textwidth}	\center	
+\tictactoe[\k]{
+ , ,x,
+X, , ,
+ , ,O} 
+
+$f(C) = +5$
+\end{minipage}\quad
+\begin{minipage}{0.12\textwidth}	\center
+\tictactoe[\k]{
+ , , ,
+X,x, ,
+, ,O}
+ 
+ $f(C) = +15$
+\end{minipage}\quad
+\begin{minipage}{0.12\textwidth}	\center
+\tictactoe[\k]{
+ , , ,
+X, ,x,
+ , ,O} 
+
+$f(C) = +10$
+\end{minipage}\quad
+\begin{minipage}{0.12\textwidth}	\center	
+\tictactoe[\k]{
+ , , ,
+X, , ,
+x, ,O}
+ 
+ $f(C) = +10$
+\end{minipage}\quad
+\begin{minipage}{0.12\textwidth}	\center	
+\tictactoe[\k]{
+ , , ,
+X, , ,
+ ,x,O}
+
+$f(C) = +2$
+\end{minipage}
+\end{center}
+
+
+On va attribuer (ici un peu arbitrairement) une note $f(C)$ à chacune de ces configurations, une valeur haute désignant une configuration qui m'est favorable et me place en position de gagner la partie. Je veux éviter les valeurs basses (généralement négatives) qui sont des configurations favorables à mon adversaire. 
+
+
+Ainsi une \defi{fonction d'évaluation} est une fonction $f$ qui à chaque configuration de jeu associe un nombre réel. 
+Plus ce nombre est grand, plus la configuration m'est favorable.
+Pour une configuration dans laquelle la partie est terminée et que j'ai gagné on peut attribuer la valeur $+\infty$ (ou bien un réel très grand). De même $-\infty$ (ou un réel très négatif) désigne une configuration où c'est mon adversaire qui a gagné.
+
+\begin{center}
+\begin{minipage}{0.3\textwidth}
+	\center
+	\tictactoe[1]{
+		 , ,x,
+		O,x, ,
+		x, ,O} 
+	
+	$f(C) = +\infty$
+\end{minipage}	
+	\quad
+\begin{minipage}{0.3\textwidth}
+	\center
+	\tictactoe[1]{
+	X, ,X,
+	o,o,o,
+	X, , } 	
+	
+	$f(C) = -\infty$
+\end{minipage}	
+\end{center}
+
+
+
+\bigskip
+
+\textbf{Échecs.}
+
+Créer une fonction d'évaluation pertinente est difficile et nécessite une bonne connaissance du jeu. Par exemple aux échecs on attribue souvent une valeur spécifique à chaque pièce comme ceci :
+
+\begin{center}
+\setlength{\tabcolsep}{20pt}	
+	\begin{tabular}{*{6}{c}}
+		\Large\symking  & \Large\symqueen & \Large\symrook & \Large\symbishop & \Large\symknight & \Large\sympawn \\ \hline
+		roi       & reine     & tour     & fou        & cavalier   & pion     \\ \hline
+		$\infty$  & 10        & 5        & 3          & 3          & 1        \\
+	\end{tabular}
+\end{center}
+La valeur du roi est infinie car cette pièce ne peut pas être capturée, elle est donc exclue de la fonction d'évaluation.
+Une fonction d'évaluation basique d'une configuration $C$ est donc :
+$$f(C) = \text{somme des valeurs des pièces blanches} \ - \ \text{somme des valeurs des pièces noires}$$
+
+Par exemple, pour la configuration suivante la valeur des pièces blanches est $10+5+1+1=17$, la valeur des pièces noires est aussi $17$, la fonction d'évaluation de cette configuration est donc $f(C) = 17-17 = 0$. Ce qui signifie que la situation est équilibrée. (D'ailleurs le prochain joueur qui joue gagne.)
+
+\begin{center}
+	\def\mylist{Kg1, Rc1, Qd2, Pa4, Pc7, kb7, qg3, rf5, pg2, pa7}
+	\setchessboard{boardfontsize=13pt, setpieces=\mylist, showmover=false, label=false}
+	\chessboard	
+	
+	$f(C) = 0$
+	
+\end{center}
+
+Mais pour être plus pertinent, il faudrait aussi tenir compte de la position des pièces : par exemple un cavalier sur l'une des $4$ cases centrales est dangereux, alors que placé dans un coin il ne sert à rien. 
+
+\begin{center}
+
+\begin{minipage}{0.4\textwidth}
+	\center
+	\def\mylist{ne4}
+	\setchessboard{boardfontsize=13pt, setpieces=\mylist, showmover=false, label=false, pgfstyle=border, backregions={d4-e5}}
+	\chessboard	
+\end{minipage}\qquad
+\begin{minipage}{0.4\textwidth}	
+	\center
+	\def\mylist{nh8}
+	\setchessboard{boardfontsize=13pt, setpieces=\mylist, showmover=false, label=false, pgfstyle=border, markfields={a1, h1, a8, h8}}
+	\chessboard	
+\end{minipage}
+\end{center}
+
+
+
+Noter que la fonction d'évaluation est commune aux deux joueurs, sauf que j'ai intérêt à trouver une configuration avec la valeur la plus grande possible alors que mon adversaire veut une configuration avec la valeur la plus petite possible.
+
+\bigskip
+
+\textbf{Maximum et minimum.}
+
+Si c'est à mon tour de jouer et si je ne veux (ou peux) que prévoir un coup à l'avance, alors :
+\begin{itemize}
+	\item pour chaque coup numéro $i$ possible, je calcule la configuration $C_i$ obtenue,
+	\item je lui attribue une valeur $v_i$, en calculant $v_i = f(C_i)$ par la fonction d'évaluation,
+	\item je décide de jouer le coup qui réalise la plus grande valeur des $v_i$, c'est-à-dire je choisis $i_{\text{max}}$ tel que $v_{i_{\text{max}}} = \max_i (v_i)$.
+\end{itemize}
+
+Voici comment on note cette situation en termes d'arbre. La racine sera dessinée sous la forme d'un triangle pointe vers le haut (pour signifier que le joueur cherche à maximiser), les enfants désignent toutes les configurations possibles pour mon prochain coup, ils sont représentés par la valeur $v_i$ issue de la fonction d'évaluation.
+
+\begin{center}	
+\begin{minipage}{0.4\textwidth}
+\myfigure{1}{
+	\tikzinput{minimax-01}
+}
+\end{minipage}\qquad
+\begin{minipage}{0.4\textwidth}	
+\myfigure{1}{
+	\tikzinput{minimax-03}
+}
+\end{minipage}
+\end{center}
+
+Évidemment si c'est à mon adversaire de jouer, il calcule aussi tous ses coups possibles mais cette fois il cherche la configuration ayant la fonction d'évaluation la plus petite possible. Il choisit $i_{\text{min}}$ tel que $v_{i_{\text{min}}} = \min_i (v_i)$. On représente cette fois la racine de l'arbre avec un triangle pointe en bas.
+
+\begin{center}	
+	\begin{minipage}{0.4\textwidth}
+		\myfigure{1}{
+			\tikzinput{minimax-02}
+		}
+	\end{minipage}\qquad
+	\begin{minipage}{0.4\textwidth}	
+		\myfigure{1}{
+			\tikzinput{minimax-04}
+		}
+	\end{minipage}
+\end{center}
+
+
+
+%--------------------------------------------------------------------
+\subsection{Algorithme minimax}
+
+Avant de détailler l'algorithme donnons les explications générales.
+
+%-----
+\subsubsection{Construction de l'arbre}
+
+On va décider du meilleur coup à jouer en anticipant sur les $n$ prochains coups.
+Pour cela on commence par construire l'arbre de toutes les configurations possibles :
+\begin{itemize}
+	\item la racine correspond à la configuration actuelle,
+	\item les enfants correspondent aux coups que je peux jouer ; plus précisément chaque enfant est la configuration obtenue après un des mes coups possibles,
+	\item les petits-enfants correspondent aux configurations après un de mes coups suivi d'un coup de mon adversaire,
+	\item etc.
+\end{itemize}
+
+\myfigure{0.8}{
+	\tikzinput{minimax-05}
+}
+
+%-----
+\subsubsection{Évaluation sur les feuilles}
+
+Les feuilles de notre arbre correspondent aux différentes configurations possibles dans $n$ coups. Nous attribuons une valeur à chacune de ces configurations à l'aide de la fonction d'évaluation. (Nous évaluons seulement les configurations sur les feuilles, il est inutile d'évaluer les configurations intermédiaires.)
+
+
+Bien sûr, parmi toutes ces configurations j'aimerais arriver à la position ayant la valeur maximale mais mon adversaire fait tout ce qu'il peut pour m'en empêcher.
+
+
+
+\begin{exemple}
+Je joue au morpion, voici la situation actuelle.
+\begin{center}
+\tictactoe{ ,X,X,
+		   O,O,,
+		   X,O, }  
+\end{center}
+
+C'est à mon tour de jouer. Voici la liste des coups possibles. Pour chaque nouvelle situation possible, j'attribue une évaluation (ici donnée arbitrairement à titre d'exemple). L'évaluation est haute lorsque la configuration m'est favorable et l'évaluation est basse (et même négative) lorsque la situation est favorable à mon adversaire. 
+L'évaluation $+\infty$ signifie une configuration gagnante (la partie est terminée, j'ai gagné) et $-\infty$ un situation perdante (la partie est terminée, j'ai perdu).
+
+
+
+\myfigure{0.9}{
+	\tikzinput{morpion-02}
+} 
+
+
+Voici maintenant tous les coups possibles de mon adversaire, ainsi que l'évaluation.
+
+\myfigure{0.9}{
+	\tikzinput{morpion-03}
+} 	
+
+
+\end{exemple}	
+
+
+
+
+
+%-----
+\subsubsection{Appliquer l'algorithme minimax}
+
+Voici le déroulement de l'algorithme minimax expliqué avec des mots.
+
+\begin{itemize}
+	\item On part des feuilles (tout en bas de l'arbre), à chaque feuille est associée une valeur obtenue par la fonction d'évaluation. On va remplir l'arbre avec des valeurs, du bas vers le haut. 
+	
+	\item Pour chaque sommet de type \og{}max\fg{} (avec un triangle vers le haut, qui correspond à mon tour de jouer) la valeur associée est le maximum de la valeur de ses enfants.
+	
+	\item Pour chaque sommet de type \og{}min\fg{} (avec un triangle vers le bas, qui correspond à un coup à jouer par l'adversaire) la valeur associée est le minimum de la valeur de ses enfants.
+	
+	\item Partant des feuilles on associe, en remontant du bas vers le haut, une valeur à chaque sommet en terminant par la racine. On mémorise le chemin de la racine vers la feuille qui a permis de réaliser la valeur maximale : cela donne le prochain coup à jouer (ainsi que les coups suivants).
+	
+\end{itemize}
+
+Noter qu'en général je ne peux pas espérer obtenir le maximum possible des valeurs aux feuilles, car mon adversaire va tout faire pour m'en empêcher.
+Pour cet algorithme, je suppose que mon adversaire fait la même évaluation que moi, mais sans prévoir plus de coups que moi.
+
+%-----
+\subsubsection{Exemples}
+
+Voici l'arbre à remplir, seules les évaluations des positions dans trois coups sont notées.
+\myfigure{0.7}{
+	\tikzinput{minimax-06a}
+}
+
+On remplit cet arbre du bas vers le haut, d'abord la ligne des maximums juste au-dessus des feuilles, puis la ligne des minimums et on termine par le maximum tout en haut qui nous donne la meilleure valeur que je puisse espérer.
+\myfigure{0.7}{
+	\tikzinput{minimax-06b}
+}
+
+
+Ainsi en prévoyant 3 coups à l'avance, je peut atteindre une position de valeur 6. Je ne peux pas espérer atteindre la meilleure position (de valeur 10) sauf si mon adversaire joue mal.
+
+
+
+
+\textbf{Horizon et sacrifice de la reine.}
+Bien sûr le fait de ne pouvoir prévoir qu'un nombre limité de coups à l'avance ne garantit pas la victoire. Soit l'adversaire anticipe davantage de coups que nous, soit une stratégie qui s'avère bonne à court terme est en fait désastreuse à long terme.
+
+Voici un exemple, dans lequel (arbre du haut) je prévois 2 coups à l'avance et pour lequel je vais choisir la branche de gauche qui semble m'apporter une position favorable (par exemple je prends la reine de mon adversaire), mais si j'avais pu prévoir 3 coups à l'avance (arbre du bas) alors je me serai aperçu que c'était un piège et que la branche de gauche me place dans une position très défavorable.
+
+\myfigure{0.7}{
+	\footnotesize
+	\tikzinput{minimax-07a}
+}
+
+
+\myfigure{0.7}{
+	\footnotesize	
+    \tikzinput{minimax-07b}	
+}
+
+
+
+%-----
+\subsubsection{L'algorithme en détail}
+
+Pour l'algorithme minimax nous aurons besoin de deux fonctions :
+\begin{itemize}
+	\item la fonction d'évaluation, \ci{evaluation(jeu)}, renvoie une valeur pour une configuration \ci{jeu}. Cette fonction sert à évaluer les configurations sur les feuilles, ce sera notre étape terminale de la fonction récursive. 
+	
+	\item Une fonction \ci{joue_un_coup(jeu, coup)} qui renvoie le nouveau jeu correspondant au coup.
+\end{itemize}
+
+
+
+\begin{algorithme}
+	Fonction : \ci{minimax(jeu, profondeur, joueur_maximise)}
+	
+	Entrée : 
+	\begin{itemize}
+		\item \ci{jeu} : une configuration, c'est-à-dire un sommet d'un arbre.
+	    \item \ci{profondeur} : le nombre de coups à anticiper.
+	    \item \ci{joueur_maximise} : vrai ou faux, selon que le joueur cherche à maximiser la fonction d'évaluation ou à la minimiser.
+    \end{itemize}   
+
+	Sortie : le score maximal que je peux espérer (ou bien le score minimal que mon adversaire peut espérer).
+	
+	\begin{itemize}
+		\item Si \ci{profondeur = 0} alors renvoyer \ci{evaluation(jeu)}.
+		
+		\item Si \ci{joueur_maximise} est Vrai :
+		\begin{itemize}
+			\item \ci{score_max} $= -\infty$		
+			\item Pour chaque \ci{coup} possible :
+		    \begin{itemize}			
+				\item \ci{nouveau_jeu = joue_un_coup(jeu, coup)}
+				\item \ci{score = minimax(nouveau_jeu, profondeur-1, Faux)}
+				\item Si \ci{score > score_max}, faire \ci{score_max = score}.
+		    \end{itemize}	    	
+			\item Renvoyer \ci{score_max}
+	    \end{itemize}
+    			
+		\item Si \ci{joueur_maximise} est Faux :
+		\begin{itemize}
+			\item \ci{score_min} $= +\infty$		
+			\item Pour chaque \ci{coup} possible :
+			\begin{itemize}			
+				\item \ci{nouveau_jeu = joue_un_coup(jeu, coup)}
+				\item \ci{score = minimax(nouveau_jeu, profondeur-1, Vrai)}
+					\item Si \ci{score < score_min}, faire \ci{score_min = score}.
+			\end{itemize}	
+				\item Renvoyer \ci{score_min}
+	    \end{itemize}		
+					
+	\end{itemize}  
+\end{algorithme}
+
+
+L'appel initial se fait par \ci{minimax(jeu, profondeur, Vrai)}
+à partir de la position \ci{jeu} actuelle et du nombre de coups \ci{profondeur} que je veux anticiper.
+On verra dans l'implémentation concrète comment renvoyer la liste des coups qui permettent de réaliser ce maximum (ou minimum).
+
+
+%--------------------------------------------------------------------
+\subsection{Avec Python}
+
+Préliminaires :
+\begin{itemize}
+	\item Une fonction \ci{evaluation(jeu)} ; pour nos tests ci-dessous cette fonction renvoie une valeur aléatoire (entre 1 et 20).
+	\item Une fonction \ci{joue_un_coup(jeu, coup)} qui calcule et renvoie la nouvelle configuration du jeu après le coup. Pour nos tests elle renvoie le jeu sans modifications.
+\end{itemize}
+
+\begin{lstlisting}
+def minimax(jeu, prof, coups_prec, joueur_maximise):
+    M = 3 # Ici M coups possibles à chaque fois
+	if prof == 0:              # On est à une feuille
+		score = evaluation(jeu)
+		print('Coups :',coups_prec, 'score :', score)
+		return (score, coups_prec)
+	else:
+		if joueur_maximise:
+			score_max = -math.inf
+			for coup in range(M):
+				nouv_jeu = joue_un_coup(jeu, coup)
+				score, nouv_coups_prec = 
+				              minimax(nouv_jeu,prof-1,coups_prec+[coup],False)
+				if score > score_max:
+					score_max = score
+					coups_max = nouv_coups_prec
+			return (score_max, coups_max)
+		else:
+			score_min = +math.inf
+			for coup in range(M):
+				nouv_jeu = joue_un_coup(jeu, coup)
+				score, nouv_coups_prec = 
+				               minimax(nouv_jeu,prof-1,coups_prec+[coup],True)
+				if score < score_min:
+					score_min = score
+					coups_min = nouv_coups_prec
+			return (score_min, coups_min)
+\end{lstlisting}
+
+Avec \ci{jeu = None} (car on ne teste pas notre algorithme sur un vrai jeu), l'appel de la fonction est par exemple : \ci{minimax(jeu, 3, [], True)} afin d'anticiper sur les 3 prochains coups.
+Ici la fonction renvoie le meilleur score attendu (comme l'algorithme vu précédemment) mais aussi la suite des coups qui permet d'atteindre ce maximum.
+
+
+Voici un exemple correspondant à l'arbre :
+
+\myfigure{0.7}{
+	\footnotesize
+	\tikzinput{minimax-08a}
+}
+
+Il y a deux enfants à chaque branche ($M=2$) et le nombre de coups anticipés est $3$.
+
+\begin{lstlisting}
+Coups : [0, 0, 0] score : 1
+Coups : [0, 0, 1] score : 13
+Coups : [0, 1, 0] score : 15
+Coups : [0, 1, 1] score : 10
+Coups : [1, 0, 0] score : 2
+Coups : [1, 0, 1] score : 16
+Coups : [1, 1, 0] score : 8
+Coups : [1, 1, 1] score : 19
+
+Coups à jouer  (16, [1, 0, 1])
+\end{lstlisting}
+
+
+\myfigure{0.7}{
+	\footnotesize	
+	\tikzinput{minimax-08b}	
+}
+
+La valeur \og{}minimax\fg{} est bien 16 et s'obtient par le chemin \ci{[1, 0, 1]} c'est-à-dire branche de droite (1), puis branche de gauche (0) puis branche de droite (1 de nouveau).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Élagage alpha-beta}
+
+\index{algorithme!elagage alpha-beta@élagage alpha-beta}
+
+%--------------------------------------------------------------------
+\subsection{Idée}
+
+Rien ne sert de prévoir toutes les successions de coups lorsque de toute façon on a déjà trouvé mieux. Cela permet de réduire drastiquement le nombre de coups à évaluer. 
+Si à chaque position il y a $n$ possibilités et que l'on veut prévoir les $d$ prochains coups, alors la complexité est en $O(n^d)$. 
+La méthode dite \og{}élagage alpha-beta\fg{} a pour complexité en moyenne $O(n^{\frac d2})$. Cela signifie qu'au lieu d'avoir à étudier $n$ branches à chaque sommet, il y a seulement $\sqrt{n}$ branches en moyenne à considérer.
+Par exemple si à chaque fois il y a $36$ coups possibles, avec l'élagage alpha-beta il n'y a plus, en moyenne, que $6$ branches à étudier.
+
+%--------------------------------------------------------------------
+\subsection{Cas de base}
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\footnotesize	
+\myfigure{0.7}{
+	\tikzinput{alphabeta-01}
+}
+\end{minipage}\qquad\qquad
+\begin{minipage}{0.45\textwidth}
+\footnotesize	
+\myfigure{0.7}{
+	\tikzinput{alphabeta-02}
+}
+\end{minipage}
+\end{center}
+
+\begin{exemple}
+Sur les deux exemples ci-dessous, vous pouvez compléter la valeur finale dans le triangle du haut sans avoir besoin de connaître les valeurs (marquées par des \og{}?\fg{}) issues des branches coupées.
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\footnotesize	
+		\myfigure{0.6}{
+			\tikzinput{alphabeta-03}
+		}
+	\end{minipage}\qquad\qquad
+	\begin{minipage}{0.45\textwidth}
+		\footnotesize	
+		\myfigure{0.6}{
+			\tikzinput{alphabeta-04}
+		}
+	\end{minipage}
+\end{center}
+\end{exemple}
+	
+
+%--------------------------------------------------------------------
+\subsection{Exemple}
+
+Voici les branches que l'on pourrait élaguer pour l'exemple rencontré précédemment.
+
+\myfigure{0.7}{
+	\tikzinput{minimax-06c}
+}
+
+Cela signifie que l'on peut éviter $8$ évaluations sur les $15$.
+Ces évaluations non faites sont les feuilles marquées par des \og{}?\fg{} ci-dessous. Quelles que soient les valeurs qui remplacent ces \og{}?\fg{} le résultat final de l'algorithme (la valeur dans le triangle supérieur) est le même.
+ 
+\myfigure{0.7}{
+	\tikzinput{minimax-06d}
+}
+
+
+	
+%--------------------------------------------------------------------
+\subsection{Algorithme}
+
+L'algorithme d'élagage est une adaptation de l'algorithme minimax. La fonction \ci{alphabeta()} renvoie la même valeur que \ci{minimax()} mais avec moins de calculs.  
+$\alpha$ et $\beta$ sont deux paramètres (on aura toujours $\alpha \le \beta$). Lorsqu'on appelle la fonction la première fois on pose $\alpha=-\infty$ et $\beta=+\infty$ (ou bien des très grands nombres).
+
+\begin{algorithme}
+	Fonction : \ci{alphabeta(jeu, profondeur, alpha, beta, joueur_maximise)}
+	
+	\begin{itemize}
+		\item Si \ci{profondeur = 0} alors renvoyer \ci{evaluation(jeu)}.
+		
+		\item Si \ci{joueur_maximise} est Vrai :
+		\begin{itemize}
+			\item \ci{score_max} $= -\infty$		
+			\item Pour chaque \ci{coup} possible :
+			\begin{itemize}			
+				\item \ci{nouveau_jeu = joue_un_coup(jeu, coup)}
+				\item \ci{score = alphabeta(nouveau_jeu, profondeur-1, alpha, beta, Faux)}
+				\item Si \ci{score > score_max}, faire \ci{score_max = score}.
+				\item Si \ci{score} $\ge$ \ci{beta}, arrêter ici la boucle \og{}pour\fg{}.
+				\item \ci{alpha = max(alpha, score)}
+			\end{itemize}
+			    	
+			\item Renvoyer \ci{score_max}
+		\end{itemize}
+		
+		\item Si \ci{joueur_maximise} est Faux :
+		\begin{itemize}
+       	    \item \ci{score_min} $= +\infty$		
+			\item Pour chaque \ci{coup} possible :
+			\begin{itemize}			
+		\item \ci{nouveau_jeu = joue_un_coup(jeu, coup)}
+		\item \ci{score = alphabeta(nouveau_jeu, profondeur-1, alpha, beta, Vrai)}
+		\item Si \ci{score < score_min}, faire \ci{score_min = score}.
+		\item Si \ci{score} $\le$ \ci{alpha}, arrêter ici la boucle \og{}pour\fg{}.
+		\item \ci{beta = min(beta, score)}
+	\end{itemize}
+			
+			\item Renvoyer \ci{score_min}
+		\end{itemize}		
+		
+	\end{itemize}  
+\end{algorithme}
+
+L'élagage $\alpha$ correspond à la première partie (lorsque le joueur chercher à maximiser le score), l'élagage $\beta$ à la seconde partie (lorsque le joueur chercher à minimiser le score).
+	
+	
+%--------------------------------------------------------------------
+\subsection{Avec Python}
+
+L'implémentation ne pose pas de difficulté particulière, il suffit de modifier le code précédent lorsque le joueur cherche à maximiser (faire une modification similaire pour minimiser) :
+\begin{lstlisting}
+				if score > score_max:
+					score_max = score
+					coups_max = nouv_coups_prec
+				if score >= beta:  # Coupure alpha
+					break          # On arrête de chercher les coups suivants
+\end{lstlisting}
+
+
+%\begin{lstlisting}
+%def alphabeta(jeu, prof, alpha, beta, coups_prec, joueur_maximise):
+%	M = 3
+%	if prof == 0:
+%		score = evaluation(jeu)
+%		return (score, coups_prec)
+%	else:
+%		if joueur_maximise:
+%			score_max = -math.inf
+%			for coup in range(M):
+%				nouv_jeu = joue_un_coup(jeu, coup)
+%				score, nouv_coups_prec = 
+%				  alphabeta(nouv_jeu, prof-1, alpha, beta, coups_prec + [coup], False)
+%				if score > score_max:
+%					score_max = score
+%					coups_max = nouv_coups_prec
+%				if score >= beta:  # Coupure beta
+%					break          # On arrête de chercher les coups suivants
+%				alpha = max(alpha, score)
+%			return (score_max, coups_max)
+%		else:
+%			score_min = +math.inf
+%			for coup in range(M):
+%				nouv_jeu = joue_un_coup(jeu, coup)
+%				score, nouv_coups_prec = 
+%				  alphabeta(nouv_jeu, prof-1, alpha, beta, coups_prec + [coup], True)
+%				if score < score_min:
+%					score_min = score
+%					coups_min = nouv_coups_prec
+%				if score <= alpha: # Coupure alpha
+%					break          # On arrête de chercher les coups suivants
+%				beta = min(beta, score)
+%			return (score_min, coups_min)
+%\end{lstlisting}
+%
+
+Voici un exemple avec une profondeur de $3$ et $M=3$ coups possibles à chaque fois.
+Sur les $3^3 = 27$ possibilités, l'élagage alpha-beta permet ici d'évaluer seulement $16$ configurations.
+
+\myfigure{0.8}{
+	\tikzinput{alphabeta-05a}
+}
+
+
+\begin{lstlisting}
+Coups : [0, 0, 0] score : 20 
+Coups : [0, 0, 1] score : 17 
+Coups : [0, 0, 2] score : 14
+Coups : [0, 1, 0] score : 5
+Coups : [0, 1, 1] score : 10 
+Coups : [0, 1, 2] score : 10 
+Coups : [0, 2, 0] score : 16
+Coups : [1, 0, 0] score : 6 
+Coups : [1, 0, 1] score : 9
+Coups : [1, 0, 2] score : 4
+Coups : [2, 0, 0] score : 10 
+Coups : [2, 0, 1] score : 17 
+Coups : [2, 0, 2] score : 16
+Coups : [2, 1, 0] score : 5 
+Coups : [2, 1, 1] score : 18
+Coups : [2, 2, 0] score : 19
+
+Coups à jouer  (17, [2, 0, 1])	
+\end{lstlisting}
+
+
+\myfigure{0.8}{
+	\tikzinput{alphabeta-05b}
+}
+\end{document}

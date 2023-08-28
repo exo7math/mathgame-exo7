@@ -1,0 +1,61 @@
+﻿\tdplotsetmaincoords{75}{115}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\tikzset{
+  line/.style = {
+    shorten <=-3mm, shorten >=-10mm
+  },
+  vector/.style = {
+    thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=2]{.}
+    }
+  },
+}
+
+% \draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[left]{$x$};
+% \draw[thick,->,>=latex] (0,0,0) -- (0,7,0) node[below right]{$y$};
+% \draw[thick,->,>=latex] (0,0,0) -- (0,0,4) node[right]{$z$};
+
+
+
+
+
+
+
+ \path
+   (-1,-2,-3) coordinate (S)
+   (0,3.3,-0.5) coordinate (Pin)
+   ($(S)!6.7cm!(Pin)$) coordinate (Pout)
+   ($(S)!1cm!(Pin)$) coordinate (v)
+ ;
+ % les droites
+ \draw
+   (S) edge[thick,shorten >=-10mm] (Pout)
+   ;
+
+ % les vecteurs
+ \draw
+   (S) edge[vector] node[above left]{$\vec{v}$} (v)
+   ;
+
+ % les points
+ \path
+   (S) [dot] node[below]{$S$}
+   (Pin) [dot] node[above left]{$P_{\text{in}}$}
+   (Pout) [dot] node[below right]{$P_{\text{out}}$}
+   ;
+
+
+\begin{scope}[scale=3]
+\pgfmathsetmacro{\cube}{1}
+\tikzstyle{mycube}=[draw=red, thick, fill=red!50, opacity=0.3]
+\draw[mycube] (\cube,0,0) -- (\cube,2*\cube,0) -- (\cube,2*\cube,0.5*\cube) -- (\cube, 0, 0.5*\cube) -- cycle;
+\draw[mycube] (\cube,0,0.5*\cube) -- (\cube,2*\cube,0.5*\cube) -- (0,2*\cube,0.5*\cube) -- (0, 0, 0.5*\cube) -- cycle;
+\draw[mycube] (0, 2*\cube, 0) -- (0, 2*\cube, 0.5*\cube) -- (\cube,2*\cube,0.5*\cube) -- (\cube, 2*\cube, 0) -- cycle;
+\end{scope}
+
+
+\end{tikzpicture}

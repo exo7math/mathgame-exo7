@@ -1,0 +1,88 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% coordinates
+\def\xa{0}
+\def\ya{0}
+\def\xb{1}
+\def\yb{3}
+\def\xc{6}
+\def\yc{3}
+\def\xd{6}
+\def\yd{0}
+
+% la courbe
+\path
+  (\xa,\ya) coordinate (P0)
+  (\xb,\yb) coordinate (P1)
+  (\xc,\yc) coordinate (P2)
+  (\xd,\yd) coordinate (P3)
+;
+
+
+\draw[gray!50, line]
+  (P0)  -- (P1) -- (P2) -- (P3)
+;
+
+\draw[red!50, line]  
+  (P0)  .. controls (P1) and (P2) .. (P3)
+;
+
+    \pgfmathsetmacro{\t}{0.3}  % paramter t in [0,1]
+
+    \pgfmathsetmacro{\xQa}{ (1-\t)*\xa+\t*\xb }
+    \pgfmathsetmacro{\yQa}{  (1-\t)*\ya+\t*\yb }
+    \pgfmathsetmacro{\xQb}{ (1-\t)*\xb+\t*\xc }
+    \pgfmathsetmacro{\yQb}{  (1-\t)*\yb+\t*\yc }
+    \pgfmathsetmacro{\xQc}{ (1-\t)*\xc+\t*\xd }
+    \pgfmathsetmacro{\yQc}{  (1-\t)*\yc+\t*\yd }
+
+    \pgfmathsetmacro{\xRa}{ (1-\t)*\xQa+\t*\xQb }
+    \pgfmathsetmacro{\yRa}{  (1-\t)*\yQa+\t*\yQb }
+    \pgfmathsetmacro{\xRb}{ (1-\t)*\xQb+\t*\xQc }
+    \pgfmathsetmacro{\yRb}{  (1-\t)*\yQb+\t*\yQc }
+    \pgfmathsetmacro{\xS}{ (1-\t)*\xRa+\t*\xRb }
+    \pgfmathsetmacro{\yS}{  (1-\t)*\yRa+\t*\yRb }
+    \path
+      (\xQa,\yQa) coordinate (Q0)
+      (\xQb,\yQb) coordinate (Q1)
+      (\xQc,\yQc) coordinate (Q2)
+      (\xRa,\yRa) coordinate (R0)
+      (\xRb,\yRb) coordinate (R1)
+      (\xS,\yS) coordinate (S)
+    ;
+
+     \draw[gray, line]
+        (Q0)  -- (Q1) -- (Q2)
+    ;
+
+     \draw[blue, line]
+        (R0)  -- (R1)
+    ;
+
+
+\path
+  (P0) [dot] node[below]{$P_0$}
+  (P1) [dot] node[above left]{$P_1$}
+  (P2) [dot] node[below]{$P_2$}
+  (P3) [dot] node[below]{$P_3$}
+  (Q0) [dot] node[above left] {$Q_0(t)$}
+  (Q1) [dot] node[above] {$Q_1(t)$}
+  (Q2) [dot] node[right] {$Q_2(t)$}
+  (R0) [blue, dot] node[above left] {$R_0(t)$}
+  (R1) [blue, dot] node[above right] {$R_1(t)$}
+  (S) [red, dot] node[below right] {$S(t)$}
+;
+
+\end{tikzpicture}

@@ -1,0 +1,48 @@
+﻿% https://tex.stackexchange.com/questions/584931/
+% Answer by 'gernot'
+\begin{tikzpicture}[scale=1.2]
+
+\newcommand*{\angA}{30}
+\newcommand*{\rA}{2.0}
+\newcommand*{\rB}{1.0}
+
+
+\draw[very thick] (0,0) circle (4*\rB);   
+
+% \draw[lightgray, very thick, domain=0.5*pi:1.5*pi,smooth, samples=100]
+% plot[smooth]
+% (
+% {((\rA+\rB)*cos(\x r))-(\rB*cos(\x*((\rA+\rB)/\rB) r))},
+% {((\rA+\rB)*sin(\x r))-(\rB*sin(\x*((\rA+\rB)/\rB) r))}
+% );
+
+% Lines from infinity
+
+\foreach \theY in {-3.75,-3.50,...,3.75}{
+	%\newcommand*{\theY}{1.0}
+	\pgfmathsetmacro{\theAngle}{asin(\theY/(4*\rB))}
+	\coordinate (R) at (\theAngle:4*\rB);
+	%\draw[black,fill=white,] (R)  circle (2pt);
+	\draw (R) -- (R-| {(-8,0)});
+	\draw (R) -- ++(2*\theAngle:-4);
+}
+
+  \newcommand*{\theY}{2.5}
+	\pgfmathsetmacro{\theAngle}{asin(\theY/(4*\rB))}
+	\coordinate (R) at (\theAngle:4*\rB);
+	\draw[black,fill] (R)  circle (3pt);
+	\draw[-<,>=latex,very thick, orange] (R) -- (R-| {(-8,0)}) node[left]{rayon};
+	\draw[->,>=latex,very thick, blue]  (R) -- ++(2*\theAngle:-4);
+
+
+\draw[red,very thick,domain=-0.5*pi:0.5*pi,smooth, samples=100]
+plot[smooth]
+(
+{((\rA+\rB)*cos(\x r))-(\rB*cos(\x*((\rA+\rB)/\rB) r))},
+{((\rA+\rB)*sin(\x r))-(\rB*sin(\x*((\rA+\rB)/\rB) r))}
+);
+
+
+
+
+\end{tikzpicture}

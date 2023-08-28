@@ -1,0 +1,89 @@
+﻿% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{55}{135}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\tdplotsetrotatedcoords{0}{30}{-20};
+\begin{scope}[tdplot_rotated_coords]
+% Oeil
+% eye from Izaak Neutelings https://tikz.net/hyperbola/
+\def\le{0.8}  % eye size eye
+\def\ange{25} % eye opening angle
+\def\lb{1.2}  % outgoing beam length
+\def\ang{0} % outgoing beam scattering
+\begin{scope}[shift={(0,0)},scale=2,shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+  \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+  \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+  %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+  \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+  \coordinate (O) at (0,0);
+\end{scope}
+\end{scope}
+
+\draw[thick,<-,>=latex] (-9,0,0) -- (3,0,0); % node[pos=0,above left]{$z$};  %x
+\draw[thick,->,>=latex] (0,0,0) -- (0,6,0); % node[below right]{$x$};  %y
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,5.5); % node[left]{$y$};  %z
+
+\tikzstyle{myplane}=[draw=gray, thick, fill=white, opacity=0.8]
+% plan à plat
+\draw[myplane] (0,0,0) -- ++(-8,0,0) -- ++(0,4,0) -- ++(8,0,0) -- cycle;
+
+% ligne des figures
+\draw[myplane,dotted] (-5.5,0,0) --  ++(0,4,0);
+\draw[myplane,dotted] (-4.2,0,0) --  ++(0,4,0);
+\draw[myplane,dotted] (-3,0,0) --  ++(0,4,0);
+
+\tdplotsetrotatedcoords{0}{90}{90};
+
+% Cube 3D
+\begin{scope}[shift={(-7.5,1.3)},scale=1.1]
+\coordinate (T) at (0,0,0); % translation du cube
+
+% cube
+\coordinate (P1) at ($(T)+(0,0,0)$);
+\coordinate (P2) at ($(T)+(1,0,0)$);
+\coordinate (P3) at ($(T)+(1,1,0)$);
+\coordinate (P4) at ($(T)+(0,1,0)$);
+\coordinate (P5) at ($(T)+(0,0,1)$);
+\coordinate (P6) at ($(T)+(1,0,1)$);
+\coordinate (P7) at ($(T)+(1,1,1)$);
+\coordinate (P8) at ($(T)+(0,1,1)$);
+
+\tikzstyle{mycube}=[fill=blue!80]
+%\draw[mycube] (P1) -- (P2) -- (P3) --(P4) -- cycle;
+\draw[mycube] (P5) -- (P6) -- (P7) --(P8) -- cycle;
+%\draw[mycube] (P1) -- (P5) -- (P6) --(P2) -- cycle;
+\draw[mycube] (P2) -- (P6) -- (P7) --(P3) -- cycle;
+\draw[mycube] (P3) -- (P7) -- (P8) --(P4) -- cycle;
+%\draw[mycube] (P4) -- (P8) -- (P5) --(P1) -- cycle;
+\end{scope}
+
+% Pyramide 3D
+\filldraw[tdplot_rotated_coords,fill=green!70!black] (1.5,0.25,-4.2) -- ++ (60:2) -- ++(-70:2) -- cycle;
+\filldraw[tdplot_rotated_coords,fill=green!70!black] (1.5,0.25,-4.2)  ++ (60:2) -- ++(-70:2) -- ++(60:2) -- cycle;
+
+% Ball 3D
+\tdplotsetrotatedcoords{40}{80}{0}
+\filldraw[tdplot_rotated_coords,ball color = red] (-2.25,2.75) circle (0.95);  % ball
+
+% Soleil
+\begin{scope}[shift={(-7,-5)},scale=1.5]
+    \coordinate (S) at (0,0);
+    \foreach \a in {0,15,...,360}{
+      \draw[orange,tdplot_rotated_coords] (\a:0.23) -- (\a:0.4);
+    }
+    \draw[ball color = orange] (0,0) circle (0.2cm);
+\end{scope}
+
+\tdplotsetrotatedcoords{0}{90}{90};
+% plan de projection (y=0)
+\draw[myplane] (0,0,0) -- ++(0,4,0) -- ++(0,0,3) -- ++(0,-4,0) -- cycle;
+
+\fill[tdplot_rotated_coords,blue] (1.5,1.1) --  ++ (1.5,0) -- ++(0,1.5) -- ++(-1.5,0) -- cycle;
+\fill[tdplot_rotated_coords,green!70!black] (1.5,0.25) -- ++ (60:2) -- ++(-60:2) -- cycle;
+\fill[tdplot_rotated_coords,red] (1.25,1.25) circle (1);
+
+
+
+% Pyramide
+
+\end{tikzpicture}

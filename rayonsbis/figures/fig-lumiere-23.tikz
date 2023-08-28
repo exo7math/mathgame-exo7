@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}[scale=2]
+
+
+\def\mytheta{35};
+
+\draw[ultra thick, lightgray] (-2,0) -- (2,0);
+
+\draw[red,double] (90-\mytheta:1) arc({90-\mytheta}:90:1);
+\draw[red,double] (90+\mytheta:0.9) arc({90+\mytheta}:90:0.9);
+
+\draw[->,>=latex, very thick, orange] (0,0) -- (90+\mytheta:2) node[above]{$\vec \ell$};
+\draw[->,>=latex, very thick, blue] (0,0) -- (90:2) node[above]{$\vec n$};
+\draw[->,>=latex,  very thick, green!70!black] (0,0) -- (90-\mytheta:2) node[above]{$\vec r$};
+
+
+\coordinate (P) at (0,0);
+\node[blue, scale=3] at (P) {.};
+
+
+
+\end{tikzpicture}

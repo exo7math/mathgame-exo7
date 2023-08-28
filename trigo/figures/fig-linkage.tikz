@@ -1,0 +1,44 @@
+﻿\begin{tikzpicture}[scale=2]
+
+% Axes
+     \draw[->,>=latex,thick, gray] (-0.5,0)--(4,0) node[below,black] {$x$};
+     \draw[->,>=latex,thick, gray] (0,-0.5)--(0,2.2) node[right,black] {$y$};
+
+  \def\thetaone{40}
+  \def\rone{2.5}
+  \coordinate(M1) at (\thetaone:\rone);
+
+  \draw[very thick, blue] (0,0)--(M1) node[above]{$M_1$};
+
+   \node[blue, above,scale=0.8] at (\thetaone+2:0.5*\rone) {$r_1$};
+
+%  \draw[->,>=latex, red] (0,0)--+(30:1) node[midway, above]{$\overrightarrow{u_{\theta}}$};
+    \draw[->, >=latex, blue] (0:1.5) arc(0:\thetaone:1.5) ;
+    \node[blue,scale=0.8] at (0.5*\thetaone:1.6) {$\theta_1$};
+
+ \def\thetatwo{-25}
+ \def\rtwo{1}
+
+  \coordinate(M2) at ($(M1) + (\thetatwo:\rtwo)$);
+
+  \draw[very thick, red] (M1) -- (M2) node[right]{$M_2$};
+  \draw[dashed] (M1) -- ++(1.3,0); 
+
+   \fill[blue] (M1) circle (1pt);
+   \fill[red] (M2) circle (1pt);
+
+  \node[red, below,scale=0.8] at ($(M1)!0.5!(M2)$) {$r_2$};
+
+%  \draw[->,>=latex, red] (0,0)--+(30:1) node[midway, above]{$\overrightarrow{u_{\theta}}$};
+    \draw[->, >=latex, red] ($(M1)+(0:0.7)$) arc(0:\thetatwo:0.7) ;
+    \node[red,right,scale=0.8] at ($(M1)+(0.5*\thetatwo:0.7)$) {$\theta_2$};
+
+
+    \fill (0:0) circle (1pt)  node[below left] {$O$};
+
+
+
+
+
+
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\draw [densely dashed] (-1,-1) grid ++(3,3);
+\draw [thick] (-1,-1) rectangle ++(3,3);
+
+
+\foreach \vx/\vy/\N/\i in {0/0/\frac{16}{36}/0, 0/1/\frac{4}{36}/1, 1/1/\frac{1}{36}/2, 1/0/\frac{4}{36}/3, 1/-1/\frac{1}{36}/4, 0/-1/\frac{4}{36}/5, -1/-1/\frac{1}{36}/6, -1/0/\frac{4}{36}/7, -1/1/\frac{1}{36}/8 }
+{
+  \node at ($(0.5,0.5) + (\vx, \vy)$) {$w_\i = \N$};
+};
+
+\end{tikzpicture}

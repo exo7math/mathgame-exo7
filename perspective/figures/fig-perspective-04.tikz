@@ -1,0 +1,29 @@
+﻿% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{50}{50}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,6,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,5.5) node[left]{$z$};
+
+\draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$X$};
+\draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,0,4.5) node[left]{$Y$};
+
+% plan de projection (y=0)
+\tikzstyle{myplane}=[draw=blue, thick, fill=red!10, opacity=0.5]
+\draw[myplane] (0,0,0) -- ++(0,4,0) -- ++(0,0,3) -- ++(0,-4,0) -- cycle;
+\node[above] at (0,4,3) {plan $\mathcal{P} : (x=0)$};
+
+
+\coordinate (P) at (4,2,2);
+\node[red, scale=3] at (P) {.};
+\node at (P) [below] {$P$};
+
+\coordinate (Q) at (0,2,2);
+\node[red, scale=3] at (Q) {.};
+\node at (Q) [below left] {$P'$};
+
+\draw[red, thick] (P) -- (Q);
+
+\draw[->,>=latex,orange] (0,-0.3,0) -- (,-0.3,0) node[midway, below left] {$\vec n$};
+\end{tikzpicture}

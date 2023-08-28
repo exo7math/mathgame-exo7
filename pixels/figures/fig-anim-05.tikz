@@ -1,0 +1,98 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+% Ecran vide
+\begin{scope}[xshift=14cm]
+  \draw (0,0)  rectangle (10,6);
+  \node[scale=0.9] at (5,7) {\bf Écran};
+\end{scope}
+
+
+% Arriere-plan
+\begin{scope}[yshift=-2cm]
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+  \node[scale=0.9] at (5,-1) {\bf Arrière-plan};
+\end{scope}
+
+
+% Ecran avec arriere-plan
+\begin{scope}[xshift=14cm,yshift=-8cm]
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+\end{scope}
+
+% Image
+\begin{scope}[xshift=5cm,yshift=-15cm]
+  \begin{scope}[xshift=4cm, yshift=5cm,xscale=-1, ]
+  \duck
+  \draw (0.07,0.05)  rectangle (2.13,2.17);
+  \node[scale=0.9] at (1,-0.75) {\bf Image};
+  \end{scope}
+\end{scope}
+
+% Ecran avec image
+\begin{scope}[xshift=14cm,yshift=-16cm]
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+  \begin{scope}[xshift=4cm, yshift=1.5cm,xscale=-1, ]
+  \duck
+  %\draw (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+\end{scope}
+
+% Sous-image arriere-plan
+\begin{scope}[yshift=-20cm]
+  \draw (0,0)  rectangle (10,6);
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+
+  \begin{scope}[xshift=4cm, yshift=1cm,xscale=-1, ]
+  %\duck
+  \draw[thin, dashed] (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+\end{scope}
+
+% Ecran Effacement
+\begin{scope}[xshift=14cm,yshift=-24cm]
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+
+  \begin{scope}[xshift=4cm, yshift=1cm,xscale=-1, ]
+  %\duck
+  \draw[thin, dashed] (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+\end{scope}
+
+% Image déplacée
+\begin{scope}[xshift=5cm,yshift=-31cm]
+  \begin{scope}[xshift=4cm, yshift=5cm,xscale=-1, ]
+  \duck
+  \draw (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+\end{scope}
+
+\begin{scope}[xshift=14cm,yshift=-32cm]
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+  \begin{scope}[xshift=4cm, yshift=1.5cm,xscale=-1,opacity=0.8]
+  \duck[body=gray!10!white,bill=gray!30!white,]
+  %\draw (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+  \begin{scope}[xshift=5cm, yshift=1.5cm,xscale=-1, ]
+  \duck
+  %\draw (0.07,0.05)  rectangle (2.13,2.17);
+  \end{scope}
+\end{scope}
+
+
+\draw[->,>=latex,blue!20,line width=3 pt] (19,-0.1) -- ++(0,-1.8);
+\draw[->,>=latex,blue!20,line width=3 pt] (19,-8-0.1) -- ++(0,-1.8);
+\draw[->,>=latex,blue!20,line width=3 pt] (19,-16-0.1) -- ++(0,-1.8);
+\draw[->,>=latex,blue!20,line width=3 pt] (19,-24-0.1) -- ++(0,-1.8);
+%\draw[->,>=latex,blue!20,line width=3 pt] (19,-32-0.1) -- ++(0,-1.8);
+
+\draw[->,>=latex,red!20,line width=4 pt] (10.3,0)  to[bend left=25] node[midway,above,red!60]{(a)} ++(3.5,-2.5);
+\draw[->,>=latex,red!20,line width=4 pt] (9,-8.5)  to[bend left=25] node[pos=0.40,above,red!60]{(b)} ++(7,-4.5);
+
+\draw[->,>=latex,red!20,line width=4 pt] (4,-18)  to[bend left=25] node[pos=0.65,above,red!60]{(c)} ++(12,-4);
+\draw[->,>=latex,red!20,line width=4 pt] (9,-24.5)  to[bend left=25] node[pos=0.35,above,red!60]{(d)} ++(8.5,-4.5) ;
+\end{tikzpicture}

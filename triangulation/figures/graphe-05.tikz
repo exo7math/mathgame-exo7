@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\coordinate (P) at (0,0);
+\foreach \a in {10,40,80, 150,260,-30} {
+  \draw[ultra thick, black!50] (P) -- ++(\a:1);  
+}
+\path (P) node[scale=5,black!70]{.};
+\end{scope}
+
+\begin{scope}[xshift=4cm]
+\coordinate (P) at (0,0);
+\draw[ultra thick, black!50] (P) .. controls (1,1) and (2,-1) .. (P);
+\path (P) node[scale=5,black!70]{.};
+\end{scope}
+
+\end{tikzpicture}

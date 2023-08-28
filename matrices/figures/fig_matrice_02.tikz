@@ -1,0 +1,32 @@
+﻿\begin{tikzpicture}[baseline=(L.center)]
+\tikzset{node style ge/.style={circle}}
+\tikzset{BarreStyle/.style =  {opacity=.4,line width=6 mm, color=#1}}
+
+\begin{scope}
+\matrix (L) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	x_1 & x_2 & \dots & x_i & \dots & x_n \\
+};
+ \draw [BarreStyle=orange,line cap=round] (L-1-1.west)  to (L-1-6.east) ;
+\end{scope}
+
+
+
+\begin{scope}[xshift=4cm,yshift=4cm]
+\matrix (C) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	y_1 \\ y_2 \\ \vdots \\ y_i \\ \vdots \\ y_n \\
+};
+ \draw [BarreStyle=blue,line cap=round] (C-1-1.north)  to (C-6-1.south) ;
+
+\end{scope}
+
+\draw[<->,>=latex,green!70!black!50,line width=3pt] (L-1-1) to[bend left] (C-1-1);
+\draw[<->,>=latex,green!70!black!50,line width=3pt] (L-1-2) to[bend left] (C-2-1);
+\draw[<->,>=latex,green!70!black!20,line width=3pt] (L-1-3) to[bend left] (C-3-1);
+\draw[<->,>=latex,green!70!black!50,line width=3pt] (L-1-4) to[bend left] (C-4-1);
+\draw[<->,>=latex,green!70!black!20,line width=3pt] (L-1-5) to[bend left] (C-5-1);
+\draw[<->,>=latex,green!70!black!50,line width=3pt] (L-1-6) to[bend left] (C-6-1);
+\end{tikzpicture}

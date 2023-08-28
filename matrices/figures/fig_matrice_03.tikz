@@ -1,0 +1,46 @@
+﻿\begin{tikzpicture}[baseline=(A.center)]
+\tikzset{node style ge/.style={circle}}
+\tikzset{BarreStyle/.style =  {opacity=.4,line width=6 mm, color=#1}}
+
+
+\begin{scope}[xshift=0cm]
+
+\matrix (A) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	a_{11} & \dots & a_{1j}& \dots & a_{1p}\\
+	\dots &  \dots & \dots & \dots & \dots \\
+	a_{i1}&  \dots & a_{ij}& \dots &a_{ip} \\
+	\dots & \dots & \dots & \dots & \dots \\
+	a_{n1}&  \dots & a_{nj}& \dots & a_{np}\\
+};
+
+ \draw [BarreStyle=orange!50,line cap=round] (A-1-1.west)  to (A-1-5.east) ;
+ \draw [BarreStyle=orange,line cap=round] (A-3-1.west) node[left=3mm,black,opacity=1]{$L_i$} to (A-3-5.east) ;
+ \draw [BarreStyle=orange!50,line cap=round] (A-5-1.west)  to (A-5-5.east) ;
+\end{scope}
+
+\begin{scope}[xshift=4cm,yshift=5cm]
+\matrix (X) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	x_1 \\   \vdots \\ x_i \\ \vdots \\ x_p \\
+};
+ \draw [BarreStyle=blue,line cap=round] (X-1-1.north)  node[above,black,opacity=1]{$X$} to (X-5-1.south) ;
+
+\end{scope}
+
+\begin{scope}[xshift=4cm,yshift=0cm]
+\matrix (Y) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	y_1 \\   \vdots \\ y_i \\ \vdots \\ y_n \\
+};
+ \draw [BarreStyle=green!70!black!50,line cap=round] (Y-1-1.north)  to (Y-5-1.south) ;
+ \fill [green!70!black,opacity=0.5] (Y-3-1)  circle(3mm) ;
+\node at (Y-3-1.east) [right=5mm]{$y_i = L_i \cdot X$};
+\end{scope}
+
+\draw[<->,>=latex,green!70!black!20,line width=3pt] (A-3-3) to[bend left] node[midway, above left,black]{$L_i \cdot X$} (X-3-1) ;
+
+\end{tikzpicture}

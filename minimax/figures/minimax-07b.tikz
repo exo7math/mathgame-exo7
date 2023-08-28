@@ -1,0 +1,85 @@
+﻿\begin{tikzpicture}
+		
+\tikzstyle{mytrianglemax}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=90,
+  fill=violet!10,
+  minimum size =1.2cm,
+]	
+  
+\tikzstyle{mytrianglemin}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=-90,
+  fill=teal!10,
+  minimum size =1.2cm]		
+	
+\tikzstyle{mymax}=[above=-2pt, black!50, scale=0.8]	
+
+\tikzstyle{mymin}=[right=2pt, black!50, scale=0.8]
+	
+	
+% define points
+\path
+  (0,0) coordinate(R)
+  (-3,-2.5) coordinate (V1)
+  (3,-2.5) coordinate (V2)
+  (-5,-6) coordinate (V11)
+  (-2,-6) coordinate (V12)
+  (2,-6) coordinate (V21)
+  (5,-6) coordinate (V22)
+  ;
+
+\node[mytrianglemax] (T) at (R) {$3$};
+\node[mymax] at (T.315) {max};
+
+\node[mytrianglemin] (T1) at (V1) {$-10$};
+\node[mymin] at (T1.280) {min};
+
+\node[mytrianglemin] (T2) at (V2) {$3$};
+\node[mymin] at (T2.280) {min};
+
+\node[mytrianglemax] (T11) at (V11) {$-10$};
+\node[mymax] at (T11.315) {max};
+
+\node[mytrianglemax] (T12) at (V12) {$-20$};
+\node[mymax] at (T12.315) {max};
+
+\node[mytrianglemax] (T21) at (V21) {$10$};
+\node[mymax] at (T21.315) {max};
+
+\node[mytrianglemax] (T22) at (V22) {$3$};
+\node[mymax] at (T22.315) {max};
+
+
+% draw lines
+\draw[thick]
+  (T) -- (T1)
+  (T) -- (T2)
+  (T1) -- (T11)
+  (T1) -- (T12)
+  (T2) -- (T21)
+  (T2) -- (T22)
+  ;
+
+% leaves
+\draw[thick]
+  (T11) -- ++(-105:3) node[below] {$-30$}
+  (T11) -- ++(-75:3) node[below] {$-10$}
+
+  (T12) -- ++(-105:3) node[below] {$-100$}
+  (T12) -- ++(-75:3) node[below] {$-20$}
+
+  (T21) -- ++(-105:3) node[below] {$10$}
+  (T21) -- ++(-75:3) node[below] {$2$}
+
+  (T22) -- ++(-105:3) node[below] {$-5$}
+  (T22) -- ++(-75:3) node[below] {$3$}
+  ;
+
+ \fill[red!20] (7,1) rectangle ++(0.5,-11);
+\node at (8,-4.5)[right] {3 coups};
+\end{tikzpicture}

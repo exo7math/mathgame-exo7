@@ -1,0 +1,61 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\fill[black!0] (0,0) rectangle ++ (1,1);
+\node[scale=1] at (0.5,0.5) {$0$};
+
+\fill[black!25] (1,0) rectangle ++ (1,1);
+\node[scale=1] at (1.5,0.5) {$25$};
+
+\fill[black!50] (0,1) rectangle ++ (1,1);
+\node[scale=1] at (0.5,1.5) {$50$};
+
+\fill[black!75] (1,1) rectangle ++ (1,1);
+\node[scale=1] at (1.5,1.5) {$75$};
+
+\draw[black, thick] (0,0) grid ++(2,2);
+
+\coordinate (A) at (0.5,0.5);
+
+\end{scope}
+
+
+\begin{scope}[xshift=5cm, yshift=-1cm]
+\fill[black!0] (0,0) rectangle ++ (2,2);
+\node[scale=1] at (0.5,0.5) {$0$};
+\node[scale=1] at (1.5,0.5) {$0$};
+\node[scale=1] at (0.5,1.5) {$0$};
+\node[scale=1] at (1.5,1.5) {$0$};
+
+\fill[black!25] (2,0) rectangle ++ (2,2);
+\node[scale=1] at (2.5,0.5) {$25$};
+\node[scale=1] at (3.5,0.5) {$25$};
+\node[scale=1] at (2.5,1.5) {$25$};
+\node[scale=1] at (3.5,1.5) {$25$};
+
+\fill[black!50] (0,2) rectangle ++ (2,2);
+\node[scale=1] at (0.5,2.5) {$50$};
+\node[scale=1] at (1.5,2.5) {$50$};
+\node[scale=1] at (0.5,3.5) {$50$};
+\node[scale=1] at (1.5,3.5) {$50$};
+
+
+\fill[black!75] (2,2) rectangle ++ (2,2);
+\node[scale=1] at (2.5,2.5) {$75$};
+\node[scale=1] at (3.5,2.5) {$75$};
+\node[scale=1] at (2.5,3.5) {$75$};
+\node[scale=1] at (3.5,3.5) {$75$};
+
+\draw[black, thick] (0,0) grid ++(4,4);
+
+\coordinate (B1) at (0.5,0.5);
+\coordinate (B2) at (1.5,0.5);
+\coordinate (B3) at (0.5,1.5);
+\coordinate (B4) at (1.5,1.5);
+\end{scope}
+
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 2mm, shorten <=2mm] (A) to[bend right] (B1);
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 2mm, shorten <=2mm] (A) to[bend right=35] (B2);
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 2mm, shorten <=2mm] (A) to[bend right] (B3);
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 2mm, shorten <=2mm] (A) to[bend right=35] (B4);
+\end{tikzpicture}

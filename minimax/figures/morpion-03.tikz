@@ -1,0 +1,82 @@
+﻿\include{tictactoe.tex}  % pour le morpion
+\begin{tikzpicture}
+
+\node (R) at (0,0) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,,
+		   X,O, }
+ \end{tikzpicture}};
+
+
+\node (V1) at (-3,-3) {\begin{tikzpicture}
+\tictactoe[0.4]{ x,X,X,
+		   O,O,,
+		   X,O, }
+ \end{tikzpicture}};
+
+
+\node (V2) at (0,-3) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,x,
+		   X,O, }
+\end{tikzpicture}};
+
+
+\node (V3) at (3,-3) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,,
+		   X,O,x}
+\end{tikzpicture}};
+
+
+\node (V21) at (-1.5,-6) {\begin{tikzpicture}
+\tictactoe[0.4]{ o,X,X,
+		   O,O,X,
+		   X,O, }
+ \end{tikzpicture}};
+
+\node (V22) at (0.25,-6) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,X,
+		   X,O,o}
+
+\end{tikzpicture}};
+\node (V31) at (2.75,-6) {\begin{tikzpicture}
+\tictactoe[0.4]{o,X,X,
+		   O,O,,
+		   X,O,X}
+ \end{tikzpicture}};
+
+
+\node (V32) at (4.5,-6) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,o,
+		   X,O,X}
+ \end{tikzpicture}};
+
+
+% draw lines
+    \draw[thick]
+      (R) -- (V1)
+      (R) -- (V2)
+      (R) -- (V3)
+      (V2) -- (V21)
+      (V2) -- (V22)
+      (V3) -- (V31)
+      (V3) -- (V32)
+    ;
+
+
+% evaluations
+ \path[blue, scale=1.1, below]
+%       (V1.south) node{$+\infty$}
+%       (V2.south) node{$+10$}
+%       (V3.south) node{$-10$}
+      (V21.south) node{$10$}
+      (V22.south) node{$10$}
+      (V31.south) node{$10$}
+      (V32.south) node{$-\infty$}
+    ;
+
+
+\end{tikzpicture}

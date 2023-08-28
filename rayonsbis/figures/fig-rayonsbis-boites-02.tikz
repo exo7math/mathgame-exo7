@@ -1,0 +1,31 @@
+﻿\tdplotsetmaincoords{75}{115}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[left]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,6,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,4) node[right]{$z$};
+
+\tikzstyle{mycube}=[draw=blue, very thick, fill=blue!50, opacity=0.5]
+\pgfmathsetmacro{\cubex}{3}
+\pgfmathsetmacro{\cubey}{3}
+\pgfmathsetmacro{\cubez}{1.5}
+
+\begin{scope}[xshift=2cm, yshift=1.5cm]
+	
+\draw[mycube, fill=none] (0,0,0) -- (\cubex,0,0);
+\draw[mycube, fill=none] (0,0,0) -- (0,\cubey,0);
+\draw[mycube, fill=none] (0,0,0) -- (0,0,\cubez);
+
+\draw[mycube] (\cubex,0,0) -- (\cubex,\cubey,0) -- (\cubex,\cubey,\cubez) -- (\cubex, 0, \cubez) -- cycle;
+\draw[mycube] (\cubex,0,\cubez) -- (\cubex,\cubey,\cubez) -- (0,\cubey,\cubez) -- (0, 0, \cubez) -- cycle;
+\draw[mycube] (0, \cubey, 0) -- (0, \cubey, \cubez) -- (\cubex,\cubey,\cubez) -- (\cubex, \cubey, 0) -- cycle;
+
+\coordinate (A) at (\cubex,0,0);
+\coordinate (B) at (0,\cubey,\cubez);
+
+\end{scope}
+
+\fill (A) circle (2pt) node[below left]{$A$};
+\fill (B) circle (2pt) node[above right]{$B$};
+
+\end{tikzpicture}

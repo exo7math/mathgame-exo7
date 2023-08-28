@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}[scale=1]
+
+    \coordinate (A) at (-4,0);
+    \coordinate (B) at (3,0);
+    
+    \coordinate (G) at (-1.5,0);
+    
+    \fill[orange] (A) circle (0.6);
+    \fill[orange] (B) circle (0.4);
+    \draw[orange, ultra thick] (A) -- (B);
+    
+    \node[scale=3] at (A) {.};
+    \node[below] at (A) {$A$};
+    
+    \node[scale=3] at (B) {.};
+    \node[below] at (B) {$B$};
+    
+    \node[scale=3] at (G) {.};
+    \node[below=3pt] at (G) {$G$};
+    
+    \node[below] at (-4,-1) {$m_A$};
+    \node[below] at (3,-1) {$m_B$};
+
+    \draw[<->, >=latex,shorten <=1pt,shorten >=2pt,thick, gray] (-1.5,0.2)--(-4,0.2) node[midway, above, black]{$\ell_A$};
+
+    \draw[<->, >=latex,shorten <=1pt,shorten >=2pt,thick, gray] (-1.5,0.2)--(3,0.2) node[midway, above, black]{$\ell_B$};
+
+\end{tikzpicture}

@@ -1,0 +1,16 @@
+\begin{tikzpicture}[scale=2]
+
+\draw [blue, very thick, fill=blue!10] plot [smooth cycle] coordinates {(0,0) (1,1) (3,1) (2,-1)};
+
+\coordinate (A) at (0.4,0.15);
+\coordinate (B) at (2.5,1);
+
+\draw[red, very thick] (A) -- (B);
+\path (A) node[scale=3,red]{.};
+\path (B) node[scale=3,red]{.};
+
+\node at (A) [below] {$A$};
+\node at (B) [below] {$B$};
+
+\node at (2.7,-0.5) {$E$};
+\end{tikzpicture}

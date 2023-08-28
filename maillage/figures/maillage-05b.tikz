@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=3]
+
+\begin{scope}[rotate=00]
+
+\coordinate (A) at (1,0);
+\coordinate (B) at (-1,0);
+\clip (-2,0) rectangle (2,1.1);
+
+\foreach \y in {0.05, 0.25, 0.5, 1, 2, 3} {
+  %\def\y{1}
+  \pgfmathsetmacro{\R}{sqrt(1+\y*\y)};
+  \coordinate (O) at (0,-\y);
+  \draw[very thick, black!50]  (O) circle (\R);
+ % \fill[black!30] (O) circle (0.03);
+}
+
+\end{scope}
+
+\fill[red!80] (A) circle (0.02); %node[black,belo]{$B$};
+\fill[red!80] (B) circle (0.02); %node[black,left]{$A$};
+
+
+\end{tikzpicture}

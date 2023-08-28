@@ -1,0 +1,52 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Ampoule
+\begin{scope}[scale=0.5]
+    \foreach \a in {60,45,...,-240}{
+      \draw[orange] (\a:1.1) -- (\a:1.5);
+    }
+
+    \draw[thick, orange, fill=white] (110-360:1) arc (110-360:70:1);
+    \draw[thick, orange] (70:1) -- ++(0,1);
+    \draw[thick, orange] (110-360:1) -- ++(0,1);
+\end{scope}
+
+% Pyramide
+\begin{scope}[shift={(8,-2)},scale=2]
+\draw (0,0) -- ++(-1,0) -- +(60:1) -- +(0:1);
+\draw (0,0) -- ++(45:0.5);
+\draw (45:0.5) -- (120:1);
+
+\draw[blue, fill=blue!20] (-0.6,0.15) -- ++(80:0.2) -- ++(0.2,0) -- ++(-100:0.2) -- +(-0.2,0) -- cycle;
+
+
+\end{scope}
+
+% Oeil
+% eye from Izaak Neutelings https://tikz.net/hyperbola/
+\def\le{0.8}  % eye size eye
+\def\ange{25} % eye opening angle
+\def\lb{1.2}  % outgoing beam length
+\def\ang{230} % outgoing beam scattering
+\begin{scope}[shift={(5.5,-3.75)},scale=2,shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+  \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+  \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+  %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+  \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+\end{scope}
+
+% Texte
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1.5pt] (char) {\bf #1};}}
+
+\node at (0,-1.5) {\circled{1} Source lumineuse};
+\node at (10.5,-1) {\circled{2} Objet};
+\draw[<-,>=latex,blue] (7,-1.5) to[bend right] (10,-2) node[right,black]{Élément de surface};
+\node at (3.25,-7.75) {\circled{3} Observateur};
+
+\draw[->,>=latex,red!50,line width=4pt,sloped] (1.5,0) -- ++(-15:4.5) node[midway,above] {éclairage};
+\draw[->,>=latex,red!50,line width=4pt,sloped] (6.5,-2.5) -- ++(-130:4) node[pos=0.2,above] {réfléxion};
+
+\node[red!50] at (5,-6) {réception};
+
+\end{tikzpicture}

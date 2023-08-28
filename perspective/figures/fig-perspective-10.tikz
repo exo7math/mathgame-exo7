@@ -1,0 +1,35 @@
+\tdplotsetmaincoords{50}{60}
+\begin{tikzpicture}[tdplot_main_coords,scale=1.5]
+
+% \draw[thick,->,>=latex] (0,0,0) -- (6.5,0,0) node[below]{$x$};
+% \draw[thick,->,>=latex] (0,0,0) -- (0,6,0) node[below right]{$y$};
+% \draw[thick,->,>=latex] (0,0,0) -- (0,0,5.5) node[right]{$z$};
+
+
+% cube
+\coordinate (T) at (0,0,0); % translation du cube
+
+% cube
+\coordinate (P1) at ($(T)+(0,0,0)$);
+\coordinate (P2) at ($(T)+(1,0,0)$);
+\coordinate (P3) at ($(T)+(1,1,0)$);
+\coordinate (P4) at ($(T)+(0,1,0)$);
+\coordinate (P5) at ($(T)+(0,0,1)$);
+\coordinate (P6) at ($(T)+(1,0,1)$);
+\coordinate (P7) at ($(T)+(1,1,1)$);
+\coordinate (P8) at ($(T)+(0,1,1)$);
+
+\tikzstyle{mycube}=[draw=blue, thick, fill=blue!10, opacity=0.5]
+\draw[mycube] (P1) -- (P2) -- (P3) --(P4) -- cycle;
+\draw[mycube] (P5) -- (P6) -- (P7) --(P8) -- cycle;
+\draw[mycube] (P1) -- (P5) -- (P6) --(P2) -- cycle;
+\draw[mycube] (P2) -- (P6) -- (P7) --(P3) -- cycle;
+\draw[mycube] (P3) -- (P7) -- (P8) --(P4) -- cycle;
+\draw[mycube] (P4) -- (P8) -- (P5) --(P1) -- cycle;
+
+\draw[red, ultra thick,->,>=latex] (0,0,0) -- (1,0,0) node[below]{$\vec {e_1}$};
+\draw[red, ultra thick,->,>=latex] (0,0,0) -- (0,1,0) node[below right]{$\vec {e_2}$};
+\draw[red, ultra thick,->,>=latex] (0,0,0) -- (0,0,1) node[right]{$\vec {e_3}$};
+
+
+\end{tikzpicture}

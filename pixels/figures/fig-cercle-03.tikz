@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\def\r{4}
+
+\draw[->,>=latex,thick] (-\r-0.5,0)--(\r+1,0) node[above]{$x$};
+\draw[->,>=latex,thick] (0,-\r-0.5)--(0,\r+1) node[left]{$y$};
+
+% Vrai cercle
+\draw[blue, ultra thick, opacity=1] (0,0) circle (\r);
+
+\coordinate (A) at (30:\r+0.6);
+\node[red,scale=4] at (A) {.};
+%\node[right] at (A) {$(x,y)$};
+\draw[very thick, red] (30:\r) -- (A) node[right] {$E(x,y)>0$};
+
+\coordinate (A) at (120:\r-1);
+\node[red,scale=4] at (A) {.};
+%\node[right] at (A) {$(x,y)$};
+\draw[very thick, red] (120:\r) -- (A) node[below] {$E(x,y)<0$};
+
+\coordinate (A) at (60:\r);
+\node[red,scale=4] at (A) {.};
+\node[red, above right] at (A) {$E(x,y)=0$};
+%\draw[red] (60:\r) -- (A) node[midway,below right] {$E(x,y)>0$};
+
+\end{tikzpicture}

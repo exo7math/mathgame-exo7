@@ -1,0 +1,71 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\begin{scope}[xshift=0cm]
+% projection parallele 
+\def\myalpha{100}
+\def\mybeta{120}
+\def\kx{{sqrt(2)/sqrt(3)}}
+\def\ky{{sqrt(2)/sqrt(3)}}
+\def\kz{{sqrt(2)/sqrt(3)}}
+
+\coordinate (ff1) at (90+\myalpha:\kx);
+\coordinate (ff2) at (90-\mybeta:\ky);
+\coordinate (ff3) at (90:\kz);
+
+\tikzstyle{myplane}=[draw=red, thick, fill=none, opacity=0.5]
+
+\draw[myplane] (0,0) -- ++(ff1) -- ++(ff2) -- (ff2) -- cycle;
+\draw[myplane] (ff3) -- ++(ff1) -- ++(ff2) -- ($(ff2)+(ff3)$) -- cycle;
+\draw[myplane] (0,0) -- ++(ff3);
+\draw[myplane] (ff1) -- ++(ff3);
+\draw[myplane] (ff2) -- ++(ff3);
+\draw[myplane] ($(ff1)+(ff2)$) -- ++(ff3);
+\end{scope}
+
+\begin{scope}[xshift=2.5cm, yshift=-0.25cm]
+% projection parallele 
+\def\myalpha{100}
+\def\mybeta{100}
+\def\kx{{sqrt(2)/sqrt(2)}}
+\def\ky{{sqrt(2)/sqrt(3)}}
+\def\kz{{sqrt(2)/sqrt(2)}}
+
+\coordinate (ff1) at (90+\myalpha:\kx);
+\coordinate (ff2) at (90-\mybeta:\ky);
+\coordinate (ff3) at (90:\kz);
+
+\tikzstyle{myplane}=[draw=red, thick, fill=none, opacity=0.5]
+
+\draw[myplane] (0,0) -- ++(ff1) -- ++(ff2) -- (ff2) -- cycle;
+\draw[myplane] (ff3) -- ++(ff1) -- ++(ff2) -- ($(ff2)+(ff3)$) -- cycle;
+\draw[myplane] (0,0) -- ++(ff3);
+\draw[myplane] (ff1) -- ++(ff3);
+\draw[myplane] (ff2) -- ++(ff3);
+\draw[myplane] ($(ff1)+(ff2)$) -- ++(ff3);
+\end{scope}
+
+
+\begin{scope}[xshift=5cm]
+% projection parallele 
+\def\myalpha{135}
+\def\mybeta{90}
+\def\kx{{sqrt(2)/sqrt(3)}}
+\def\ky{{sqrt(2)/sqrt(3)}}
+\def\kz{{sqrt(2)/sqrt(3)}}
+
+\coordinate (ff1) at (90+\myalpha:\kx);
+\coordinate (ff2) at (90-\mybeta:\ky);
+\coordinate (ff3) at (90:\kz);
+
+\tikzstyle{myplane}=[draw=red, thick, fill=none, opacity=0.5]
+
+\draw[myplane] (0,0) -- ++(ff1) -- ++(ff2) -- (ff2) -- cycle;
+\draw[myplane] (ff3) -- ++(ff1) -- ++(ff2) -- ($(ff2)+(ff3)$) -- cycle;
+\draw[myplane] (0,0) -- ++(ff3);
+\draw[myplane] (ff1) -- ++(ff3);
+\draw[myplane] (ff2) -- ++(ff3);
+\draw[myplane] ($(ff1)+(ff2)$) -- ++(ff3);
+\end{scope}
+
+
+\end{tikzpicture}

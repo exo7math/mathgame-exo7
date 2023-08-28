@@ -1,0 +1,22 @@
+\begin{tikzpicture}[scale=1]
+
+   \fill[lime!20] (0,0) rectangle (5,4);
+   \fill[orange!20] (0,0) rectangle (5,-4);
+   \fill[magenta!20] (0,0) rectangle (-5,-4);
+   \fill[teal!20] (0,0) rectangle (-5,4);
+
+	\draw[->,>=latex, thick, black] (-5,0) -- (-2.7,0) (-2.3,0) -- (2.3,0) (2.7,0) -- (5.5,0) node[above] {$x$};
+	\draw[->,>=latex, thick, black] (0,-4) -- (0,-2.3) (0,-1.7) -- (0,1.7) (0,2.3) -- (0,4.5) node[left] {$y$};
+
+    \draw[thin, fill=white] (0,0) circle (3pt);
+
+    \node at (2.5,2) {$\arctan \left| \frac y x \right|$};
+    \node at (-2.5,2) {$-\arctan \left| \frac y x \right| \ +\pi$};
+    \node at (2.5,-2) {$-\arctan \left| \frac y x \right|$};
+    \node at (-2.5,-2) {$\arctan \left| \frac y x \right| \ -\pi$};
+
+   \node[scale=0.9] at (2.5,0) {$0$};
+   \node[scale=0.9]  at (-2.5,0) {$\pi$};
+   \node[scale=0.9]  at (0,2) {$\frac\pi2$};
+   \node[scale=0.9]  at (-0.13,-2) {$-\frac\pi2$};
+\end{tikzpicture}

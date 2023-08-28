@@ -1,0 +1,46 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\tikzset{pics/home/.style={
+  code={
+%
+\fill [x=1ex/6, y=1ex/6]
+  (-1, 3) -- (-1, 0) -- (-5, 0) -- (-5, 4) -- (0,4+5*tan 35) --
+  ( 5, 4) -- ( 5, 0) -- ( 1, 0) -- ( 1, 3) -- cycle  
+  (-6, 4) -- (0, 4+6*tan 35) -- 
+  ( 6, 4) -- (6+sin 35, 4+cos 35) -- 
+  ( 5, 4+1*tan 35+sec 35) -- 
+  ( 5, 4+5*tan 35+sec 35) -- 
+  ( 3, 4+5*tan 35+sec 35) -- 
+  ( 3, 4+3*tan 35+sec 35) -- 
+  ( 0, 4+6*tan 35+sec 35) -- 
+  (-6-sin 35, 4+cos 35) -- cycle;
+%
+  }
+}}
+
+
+
+\fill[fill=blue!20] (0,0) rectangle (10,6);
+
+
+\filldraw[green!10!black!20] (0,0) -- (0,4.5) .. controls ++(1,-0.5) and ++(-2,1) .. (10,4) --(10,0) --cycle;
+
+\filldraw[green!20!black!30] (0,0) -- (0,4) .. controls ++(2,0.5) and ++(-3,0.5) .. (10,3.5) --(10,0) --cycle;
+
+\filldraw[green!30!black!50] (0,0) -- (0,3) .. controls ++(2,1) and ++(-3,0.5) .. (10,2.5) --(10,0) --cycle;
+
+\filldraw[green!60!black!80] (0,0) -- (0,2) .. controls ++(1,0.5) and ++(-2,-1) .. (10,2) --(10,0) --cycle;
+
+
+\pic[scale=6,black!80] at (2,1.5) {home};
+
+\pic[scale=3,black!65] at (8.2,2.5) {home};
+
+\pic[scale=1.5,black!40] at (3.4,3.7) {home};
+\pic[scale=1.5,black!40] at (5.5,3.4) {home};
+
+\pic[scale=1,black!30] at (7.5,4) {home};
+
+\draw[] (0,0) rectangle (10,6);
+
+\end{tikzpicture}

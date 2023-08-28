@@ -1,0 +1,24 @@
+﻿\begin{tikzpicture}
+
+
+\draw[thick] (0,0) --(2,0) -- (0,2) --cycle;
+\draw[dashed] (0,0) -- (1,1);
+\draw[] (1,1) -- ++(0.2,-0.2) -- ++(0.2,0.2) -- ++(-0.2,0.2) -- cycle ;
+\draw[->,>=latex,ultra thick,blue] (1,1) -- ++ (1,1);
+
+\begin{scope}[xshift=10cm]
+
+\begin{scope}[xscale=2]
+\draw[red, very thick, double] (1.2,1.2) arc(45:-27:0.4);
+\draw[thick] (0,0) --(2,0) -- (0,2) --cycle;
+\draw[dashed] (0,0) -- (1,1);
+
+
+\draw[->,>=latex,ultra thick,blue] (1,1) -- ++ (1,1);
+\end{scope}
+
+\end{scope}
+
+\draw[->,>=latex,line width=4pt,green!70!black!50] (4,0.8) --  ++(4,0) node[midway, below, black] {$(x,y) \longmapsto (2x,y)$};
+
+\end{tikzpicture}

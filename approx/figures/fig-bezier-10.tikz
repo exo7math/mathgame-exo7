@@ -1,0 +1,80 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% coordinates
+\def\xa{1}
+\def\ya{0}
+\def\xb{4}
+\def\yb{2}
+\def\xc{0}
+\def\yc{2}
+\def\xd{3}
+\def\yd{0}
+
+% la courbe
+\path
+  (\xa,\ya) coordinate (P0)
+  (\xb,\yb) coordinate (P1)
+  (	\xc,\yc)  coordinate (P2)
+  (\xd,\yd) coordinate (P3)
+;
+\draw[gray, line]
+%  (P0)  -- (P1) -- (P2) -- (P3)
+;
+\draw[gray, line]
+%  (P0)  .. controls (P1) and (P2) .. (P3)
+;
+
+% Bezier curve by its parameterization!
+\draw [red, thick,  domain=0:1, variable=\t, samples=40] 
+ plot ( {(1-\t)^3*\xa+3*(1-\t)^2*\t*\xb+3*(1-\t)*\t^2*\xc+\t^3*\xd}  , {(1-\t)^3*\ya+3*(1-\t)^2*\t*\yb+3*(1-\t)*\t^2*\yc+\t^3*\yd} );
+
+\foreach \t in {0,0.00999,...,1}{
+    %\pgfmathsetmacro{\t}{0.3}  % paramter t in [0,1]
+    \pgfmathsetmacro{\xP}{ (1-\t)^3*\xa+3*(1-\t)^2*\t*\xb+3*(1-\t)*\t^2*\xc+\t^3*\xd }
+    \pgfmathsetmacro{\yP}{ (1-\t)^3*\ya+3*(1-\t)^2*\t*\yb+3*(1-\t)*\t^2*\yc+\t^3*\yd }
+    \pgfmathsetmacro{\vxP}{  3*(1-\t)^2*(\xb-\xa) + 6*(1-\t)*\t*(\xc-\xb) + 3*\t^2*(\xd-\xc) }
+    \pgfmathsetmacro{\vyP}{  3*(1-\t)^2*(\yb-\ya) + 6*(1-\t)*\t*(\yc-\yb) + 3*\t^2*(\yd-\yc)  }
+    
+    \path
+      (\xP,\yP) coordinate (P)
+    ;
+    \path
+ %     (P) [blue, dot] node[below right] {}
+    ;
+    
+    % tangent vector
+    %\draw[vector, ultra thick, green!70!black]
+     % (\xP,\yP) -- ++ ($0.2*(\vxP,\vyP)$) node[above]{$\vec{v_P} = \gamma'(t)$}
+    %;
+    % normal vector
+  \pgfmathsetmacro{\vxnP}{ \vxP/sqrt(\vxP*\vxP+\vyP*\vyP) }
+  \pgfmathsetmacro{\vynP}{ \vyP/sqrt(\vxP*\vxP+\vyP*\vyP) }
+ 
+    
+    \draw[thin, brown]
+      (\xP,\yP) -- ++ ($0.5*(-\vynP,\vxnP)$)
+    ;
+}
+
+
+\path
+  (P0) [dot] node[below]{$P_0$}
+%  (P1) [dot] node[above]{}
+%  (P2) [dot] node[above]{}
+  (P3) [dot] node[below]{$P_3$}
+%  (P) [blue, dot] node[below right] {$P=\gamma(t)$}
+;
+
+\end{tikzpicture}

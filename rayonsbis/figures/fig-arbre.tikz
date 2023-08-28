@@ -1,0 +1,40 @@
+﻿\begin{tikzpicture}
+		
+
+% define points
+\path
+  (0,0) coordinate(R)
+  (-3,-2.5) coordinate (V1)
+  (3,-2.5) coordinate (V2)
+  (-4.5,-5.5) coordinate (V11)
+  (-1.5,-5.5) coordinate (V12)
+  (1.5,-5.5) coordinate (V21)
+  (4.5,-5.5) coordinate (V22)
+  ;
+
+% draw lines
+\draw[thick]
+  (R) -- (V1)
+  (R) -- (V2)
+  (V1) -- (V11)
+  (V1) -- (V12)
+  (V2) -- (V21)
+  (V2) -- (V22)
+  (V11) -- ++(-1,-2)
+  (V11) -- ++(1,-2)
+  (V12) -- ++(-1,-2)
+  (V12) -- ++(1,-2)
+  (V21) -- ++(-1,-2)
+  (V21) -- ++(1,-2)
+  (V22) -- ++(-1,-2)
+  (V22) -- ++(1,-2)
+  ;
+
+\node[circle,fill=white]  at (R) {$P$};
+\node[circle,fill=white]  at (V1) {$Q_1$};
+\node[circle,fill=white]  at (V2) {$Q_2$};
+\node[circle,fill=white]  at (V11) {$Q_{11}$};
+\node[circle,fill=white]  at (V12) {$Q_{12}$};
+\node[circle,fill=white]  at (V21) {$Q_{21}$};
+\node[circle,fill=white]  at (V22) {$Q_{22}$};
+\end{tikzpicture}

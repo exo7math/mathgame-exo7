@@ -1,0 +1,44 @@
+﻿\begin{tikzpicture}[scale=1.4]
+
+% Patron
+\def\deltaz{-0.25}
+\draw[blue, fill=blue!5, very thick] (0,\deltaz,0) +(0,0,0) -- +(0,0,1) -- +(1,0,1) -- +(1,0,0) -- cycle;% Bottom Face
+\draw[blue, fill=blue!5, very thick] (1,\deltaz,0) +(0,0,0) -- +(0,0,1) -- +(1,0,1) -- +(1,0,0) -- cycle;
+\draw[blue, fill=blue!5, very thick] (-1,\deltaz,0) +(0,0,0) -- +(0,0,1) -- +(1,0,1) -- +(1,0,0) -- cycle;
+\draw[blue, fill=blue!5, very thick] (-2,\deltaz,0) +(0,0,0) -- +(0,0,1) -- +(1,0,1) -- +(1,0,0) -- cycle;
+\draw[blue, fill=blue!5, very thick] (0,\deltaz,1) +(0,0,0) -- +(0,0,1) -- +(1,0,1) -- +(1,0,0) -- cycle;
+\draw[blue, fill=blue!5, very thick] (0,\deltaz,-1) +(0,0,0) -- +(0,0,1) -- +(1,0,1) -- +(1,0,0) -- cycle;
+
+% Cube
+\newcommand{\Depth}{1}
+\newcommand{\Height}{1}
+\newcommand{\Width}{1}
+
+\coordinate (O) at (0,0,0);
+\coordinate (A) at (0,\Width,0);
+\coordinate (B) at (0,\Width,\Height);
+\coordinate (C) at (0,0,\Height);
+\coordinate (D) at (\Depth,0,0);
+\coordinate (E) at (\Depth,\Width,0);
+\coordinate (F) at (\Depth,\Width,\Height);
+\coordinate (G) at (\Depth,0,\Height);
+
+\draw[thick,blue,fill=blue!10,opacity=0.8] (O) -- (C) -- (G) -- (D) -- cycle;% Bottom Face
+\draw[thick,blue,fill=blue!10,opacity=0.8] (O) -- (A) -- (E) -- (D) -- cycle;% Back Face
+\draw[thick,blue,fill=red!10,opacity=0.8] (O) -- (A) -- (B) -- (C) -- cycle;% Left Face
+\draw[thick,blue,fill=red!10,opacity=0.8] (D) -- (E) -- (F) -- (G) -- cycle;% Right Face
+\draw[thick,blue,fill=red!10,opacity=0.6] (C) -- (B) -- (F) -- (G) -- cycle;% Front Face
+\draw[thick,blue,fill=red!10,opacity=0.8] (A) -- (B) -- (F) -- (E) -- cycle;% Top Face
+
+%% Following is for debugging purposes so you can see where the points are
+%% These are last so that they show up on top
+%\foreach \xy in {O, A, B, C, D, E, F, G}{
+%    \node at (\xy) {\xy};
+%}
+
+
+
+
+%\draw[blue, fill=blue!5, very thick]  (0,\deltaz,0) -- ++(0,\deltaz,1) --  (1,\deltaz,1) -- (1,\deltaz,0) -- cycle;% Bottom Face
+
+\end{tikzpicture}

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=2]
+
+\draw[densely dashed, step=0.335] (0,0) grid ++(1,1);
+
+\draw (-1,-1) grid ++(3,3);
+%\draw[thick] (-1,-1) rectangle ++(3,3);
+
+
+
+
+%\fill[blue!75] (0.5,0.5) circle (0.3);
+
+%0, 0, 1, 1, 1, 0,-1,-1,-1])
+%0, 1, 1, 0,-1,-1,-1, 0, 1
+
+\foreach \vx/\vy in {0/1, 1/1, 1/0, 1/-1, 0/-1, -1/-1, -1/0, -1/1}{
+  \draw[->,>=latex,red, very thick, shorten <=0.9cm] (0.5,0.5) -- ++(\vx, \vy);
+};
+
+\foreach \vx/\vy/\N in {0/0/16, 0/1/4, 1/1/1, 1/0/4, 1/-1/1, 0/-1/4, -1/-1/1, -1/0/4, -1/1/1}{
+  \node at ($(0.5,0.5) + 0.33*(\vx, \vy)$) {$\N$};
+};
+
+\end{tikzpicture}

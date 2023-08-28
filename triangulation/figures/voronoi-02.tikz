@@ -1,0 +1,40 @@
+\begin{tikzpicture}[scale=1]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (150:2);
+\coordinate (B) at (-130:2);
+\coordinate (C) at (-20:2);
+
+%\fill[blue!50!green!10] (4,-2) rectangle (0,2);
+
+
+\fill[green!50!red!10] (O) -- ++(65:2.2) -- ++(2,0) -- ++(0,-5.0) -- (-75:3.2) -- cycle ;
+\fill[red!10] (O) -- ++(65:2.2) -- ++(-4.4,0) -- (190:3.5) -- cycle ;
+\fill[blue!10] (O) -- ++(190:3.5) -- ++(0,-2.5) -- (-75:3.2) -- cycle ;
+
+\draw[gray!50, ultra thick] (A)  -- (B) -- (C) -- cycle;
+%\draw[gray!50, ultra thick] (O) circle (2);
+
+
+\draw[green!70!black, ultra thick] (0,0)  -- ($(A)!0.5!(B)$) -- ([turn]0:2) node (c){};
+\draw[green!70!black, ultra thick] (0,0)  -- ($(A)!0.5!(C)$) -- ([turn]0:2) node (b){};
+\draw[green!70!black, ultra thick] (0,0)  -- ($(B)!0.5!(C)$) -- ([turn]0:2) node (a){};
+
+
+%\fill[orange!70!blue!10] (a) -- (O) -- (c) -- cycle;
+%\fill[green!50!red!10] (c) -- (O) -- (b) -- cycle;
+
+\draw[green!70!black, ultra thick] (0,0)  -- ($(A)!0.5!(B)$) -- ([turn]0:2) node (c){};
+\draw[green!70!black, ultra thick] (0,0)  -- ($(A)!0.5!(C)$) -- ([turn]0:2) node (b){};
+\draw[green!70!black, ultra thick] (0,0)  -- ($(B)!0.5!(C)$) -- ([turn]0:2) node (a){};
+
+\node at (A) [above left] {$A$};
+\node at (B) [below left] {$B$};
+\node at (C) [above right] {$C$};
+\node at (O) [below left] {$O$};
+\foreach \P in {A,B,C} {
+  \fill[black!80] (\P) circle (3pt);
+}
+\fill[green!70!black] (O) circle (3pt);
+
+\end{tikzpicture}

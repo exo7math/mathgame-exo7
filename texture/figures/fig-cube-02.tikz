@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\newcommand{\Depth}{2}
+\newcommand{\Height}{2}
+\newcommand{\Width}{2}
+
+\coordinate (O) at (0,0,0);
+\coordinate (A) at (0,\Width,0);
+\coordinate (B) at (0,\Width,\Height);
+\coordinate (C) at (0,0,\Height);
+\coordinate (D) at (\Depth,0,0);
+\coordinate (E) at (\Depth,\Width,0);
+\coordinate (F) at (\Depth,\Width,\Height);
+\coordinate (G) at (\Depth,0,\Height);
+
+\draw[thick,blue,fill=blue!10] (O) -- (C) -- (G) -- (D) -- cycle;% Bottom Face
+\draw[thick,blue,fill=blue!10] (O) -- (A) -- (E) -- (D) -- cycle;% Back Face
+\draw[thick,blue,fill=red!10] (O) -- (A) -- (B) -- (C) -- cycle;% Left Face
+\draw[thick,blue,fill=red!10,opacity=0.8] (D) -- (E) -- (F) -- (G) -- cycle;% Right Face
+\draw[thick,blue,fill=red!10,opacity=0.6] (C) -- (B) -- (F) -- (G) -- cycle;% Front Face
+\draw[thick,blue,fill=red!10,opacity=0.8] (A) -- (B) -- (F) -- (E) -- cycle;% Top Face
+
+%% Following is for debugging purposes so you can see where the points are
+%% These are last so that they show up on top
+%\foreach \xy in {O, A, B, C, D, E, F, G}{
+%    \node at (\xy) {\xy};
+%}
+\end{tikzpicture}

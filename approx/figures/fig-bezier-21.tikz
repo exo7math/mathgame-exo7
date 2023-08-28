@@ -1,0 +1,51 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% coordinates
+\def\xa{0}
+\def\ya{0}
+\def\xb{2}
+\def\yb{1}
+
+% la courbe
+\path
+  (\xa,\ya) coordinate (P0)
+  (\xb,\yb) coordinate (P1)
+
+;
+\draw[red, line]
+  (P0)  -- (P1)
+;
+
+    \pgfmathsetmacro{\t}{0.3}  % paramter t in [0,1]
+
+    \pgfmathsetmacro{\xP}{ (1-\t)*\xa+\t*\xb }
+    \pgfmathsetmacro{\yP}{  (1-\t)*\ya+\t*\yb }
+
+    \path
+      (\xP,\yP) coordinate (P)
+    ;
+
+    \draw[<->,>=latex]
+      ($(P0)+(-0.05,0.1)$) -- ($(\xP,\yP)+(-0.05,0.1)$) node[midway,above]{$t$}
+    ;
+
+
+\path
+  (P0) [dot] node[below]{$P_0$}
+  (P1) [dot] node[above]{$P_1$}
+  (P) [blue, dot] node[below right] {$P=\gamma(t)$}
+;
+
+\end{tikzpicture}

@@ -1,0 +1,34 @@
+\tdplotsetmaincoords{75}{115}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[left]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,4) node[right]{$z$};
+
+\tikzstyle{mycube}=[draw=blue, thick, fill=blue!50, opacity=0.5]
+\pgfmathsetmacro{\cube}{1}
+
+\draw[mycube] (\cube,0,0) -- (\cube,\cube,0) -- (\cube,\cube,\cube) -- (\cube, 0, \cube) -- cycle;
+\draw[mycube] (\cube,0,\cube) -- (\cube,\cube,\cube) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+\draw[mycube] (0, \cube, 0) -- (0, \cube, \cube) -- (\cube,\cube,\cube) -- (\cube, \cube, 0) -- cycle;
+
+\coordinate (A) at (\cube,0,\cube);
+
+\tikzstyle{mycube}=[draw=red, thick, fill=red!50, opacity=0.5]
+
+\begin{scope}[xshift=3cm, yshift=2.5cm]
+	
+\draw[mycube, fill=none] (0,0,0) -- (\cube,0,0);
+\draw[mycube, fill=none] (0,0,0) -- (0,\cube,0);
+\draw[mycube, fill=none] (0,0,0) -- (0,0,\cube);
+
+\draw[mycube] (\cube,0,0) -- (\cube,\cube,0) -- (\cube,\cube,\cube) -- (\cube, 0, \cube) -- cycle;
+\draw[mycube] (\cube,0,\cube) -- (\cube,\cube,\cube) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+\draw[mycube] (0, \cube, 0) -- (0, \cube, \cube) -- (\cube,\cube,\cube) -- (\cube, \cube, 0) -- cycle;
+
+\coordinate (B) at (\cube,0,\cube);
+\end{scope}
+
+\draw[->,>=latex,red,very thick] (A) -- (B);
+
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+\tdplotsetmaincoords{90}{90}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+	
+% plan de projection (y=0)
+\tikzstyle{myplane}=[draw=blue, thick, fill=red!10, opacity=0.5]
+\draw[myplane] (0,0,0) -- ++(0,4,0) -- ++(0,0,3) -- ++(0,-4,0) -- cycle;
+\node[above] at (0,4,3) {plan $\mathcal{P}$ de projection};
+	
+\draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$X$};
+\draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,0,4.5) node[right]{$Y$};
+\node[black, scale=3] at (0,0) {.};
+\node at (0,0) [below left] {$O$};
+\end{tikzpicture}

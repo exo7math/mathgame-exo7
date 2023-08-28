@@ -1,0 +1,19 @@
+\begin{tikzpicture}[scale=2]
+
+\foreach \i in {0,...,5} {
+  \coordinate (P\i) at (60*\i:1);
+}
+
+\foreach \i in {0,...,5} {
+  \foreach \j in {\i,...,5} {
+  \draw[ultra thick, black!50] (P\i) -- (P\j);
+  }
+}
+
+
+\foreach \i in {0,...,5}{
+  \path (P\i) node[scale=5,black!70]{.};
+}
+
+\node at (0,-1.5) {\bf Le graphe complet $K_6$};
+\end{tikzpicture}

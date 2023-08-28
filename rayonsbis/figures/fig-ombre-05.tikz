@@ -1,0 +1,62 @@
+\begin{tikzpicture}[scale=1]
+
+
+% Ampoule
+\begin{scope}[shift={(0,6)},scale=0.5]
+    \coordinate (S) at (0,0);
+
+    \foreach \a in {60,45,...,-240}{
+      \draw[orange] (\a:1.1) -- (\a:1.5);
+    }
+
+    \draw[thick, orange, fill=white] (110-360:1) arc (110-360:70:1);
+    \draw[thick, orange] (70:1) -- ++(0,1);
+    \draw[thick, orange] (110-360:1) -- ++(0,1);
+\end{scope}
+
+\coordinate (A) at (-1,3);
+\coordinate (B) at (2,3);
+
+\coordinate (X) at (-5,0);
+\coordinate (XX) at (5,0);
+
+\coordinate (AA) at (intersection of  S--A and X--XX);
+\coordinate (BB) at (intersection of  S--B and X--XX);
+
+% Objet intercale
+\filldraw[thick, fill=blue!10] (-1,2) rectangle ++ (3,1);
+\node at (2,3.05)[above] {objet transparent};
+
+% Surface
+\fill[red!10] (-5,0) rectangle ++ (11,-1);
+
+% Texte
+\node[blue, scale=3] at (S) {.};
+\node[below left] at (S) {$S$};
+
+%\node[black, scale=2] at (A) {.};
+\draw[lightgray] (S) -- (AA);
+%\node[black, scale=2] at (AA) {.};
+
+%\node[black, scale=2] at (B) {.};
+\draw[lightgray] (S) -- (BB);
+%\node[black, scale=2] at (BB) {.};
+
+\coordinate (P) at (0.5,3);
+%\draw[gray] (P) -- (S);
+%\node[black, scale=2] at (P) {.};
+\coordinate (PP) at (intersection of  S--P and X--XX);
+\node[black, scale=2] at (PP) {.};
+\node[black, above right] at (PP) {$P$};
+\draw[->,>=latex, shorten >= 8mm] (PP) -- (S) node[pos=0.2, right]{$\vec{\ell_P}$};
+
+
+
+% Ombre/lumiere
+\fill[red!50] (AA |- 0,-0.1) rectangle (BB |- 0,0) node[midway,below] {partiellement éclairé};
+\fill[red!70] (-5,-0.1) rectangle (AA |- 0,0) node[midway,below] {éclairé};
+\fill[red!70] (6,-0.1) rectangle (BB |- 0,0) node[midway,below] {éclairé};
+
+\draw (AA |- 0,-0.1) -- ++(0,-0.7);
+\draw (BB |- 0,-0.1) -- ++(0,-0.7);
+\end{tikzpicture}

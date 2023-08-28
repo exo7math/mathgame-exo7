@@ -1,0 +1,46 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\draw[gray!50,thick] (0,0) grid ++(5,4);
+
+\foreach \i in {0,...,4} {
+  \foreach \j in {0,...,3} {
+  \coordinate (P\i\j) at (\i+0.5,\j+0.5);
+%  \draw[fill=white, draw=gray, very thick] (P\i\j) circle (2mm);
+  }
+}
+
+\draw[very thick, gray]  (P00) -- (P10) -- (P20) -- (P30) -- (P40);
+\draw[very thick, gray]  (P02) -- (P12) -- (P22) -- (P32) -- (P42);
+\draw[very thick, gray]  (P03) -- (P13) (P33)--(P43);
+
+\draw[very thick, gray]  (P02) -- (P03);
+\draw[very thick, gray]  (P12) -- (P13);
+\draw[very thick, gray]  (P20) -- (P21) -- (P22);
+\draw[very thick, gray]  (P32) -- (P33);
+\draw[very thick, gray]  (4.5,-0.5) -- (P40) -- (P41) -- (P42) --(P43);
+
+
+\draw[fill=white, draw=gray, very thick] (P00) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P02) circle (2mm);
+\draw[fill=green!70!black, draw=gray, very thick] (P03) circle (2mm);
+
+
+\draw[fill=white, draw=gray, very thick] (P10) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P12) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P13) circle (2mm);
+
+\draw[fill=white, draw=gray, very thick] (P20) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P21) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P22) circle (2mm);
+
+\draw[fill=white, draw=gray, very thick] (P30) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P32) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P33) circle (2mm);
+
+\draw[fill=white, draw=gray, very thick] (P40) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P41) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P42) circle (2mm);
+\draw[fill=white, draw=gray, very thick] (P43) circle (2mm);
+
+\draw[fill=red!50, draw=gray, very thick] (4.5,-0.5) circle (2mm);
+\end{tikzpicture}

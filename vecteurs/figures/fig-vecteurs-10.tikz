@@ -1,0 +1,15 @@
+﻿\begin{tikzpicture}
+ \begin{scope}[rotate=15]
+  \draw (0.3,0) -- ++(0,0.3) -- ++(-0.3,0);
+
+  \draw[gray,dashed] (0,2) -- (3,2) -- (3,0);
+
+   \draw[->,>=latex,thick, blue] (0,-0.05)--++(3,0) node[right] {$\vec{v_{/\!\!/}}$};
+   \draw[->,>=latex,thick, blue] (0,0)--++(0,2) node[left] {$\vec{v_\perp}$};
+
+   \draw[->,>=latex,thick, red] (0,0)--(2,0) node[above right] {$\vec u$};
+   \draw[->,>=latex,thick, red] (0,0)--(3,2) node[above right] {$\vec v$};
+
+   \fill[gray] (0,0) circle (1.5pt);
+\end{scope}
+\end{tikzpicture}

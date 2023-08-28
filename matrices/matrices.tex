@@ -1,0 +1,914 @@
+\documentclass[11pt,class=report,crop=false]{standalone}
+\usepackage[screen]{../mathgame}
+
+\begin{document}
+
+%====================================================================
+\chapitre{Matrices}
+%====================================================================
+
+%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
+%
+%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
+%
+%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+\objectifs{Les matrices sont des tableaux de nombres très pratiques pour encoder des transformations du plan et de l'espace.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Multiplication}
+
+
+%---------------------------------------------------------------
+\subsection{Définition}
+
+Une \defi{matrice}\index{matrice} $A$ est un tableau rectangulaire
+de nombres réels. 
+Elle est dite de \defi{taille} $n \times p$ si le tableau possède $n$ lignes et $p$ colonnes.
+Les éléments de ce tableau sont appelés les \defi{coefficients} de la matrice $A$.
+Le coefficient situé à  la $i$-ème ligne et à la $j$-ème colonne est noté $a_{i,j}$ (ou simplement $a_{ij}$).
+
+
+$$A=\begin{pmatrix}
+	a_{1,1}& a_{1,2}& \dots & a_{1,j}& \dots & a_{1,p}\cr
+	a_{2,1}& a_{2,2}& \dots & a_{2,j}& \dots &a_{2,p}\cr
+	\dots & \dots & \dots & \dots & \dots & \dots \cr
+	a_{i,1}& a_{i,2} & \dots & a_{i,j}& \dots &a_{i,p} \cr
+	\dots & \dots & \dots & \dots & \dots & \dots \cr
+	a_{n,1}& a_{n,2}& \dots & a_{n,j}& \dots & a_{n,p}\cr
+\end{pmatrix}
+\quad \text{ ou } \quad
+A= \big(a_{i,j}\big)_{\substack{1\leq i \leq n \\ 1\leq j \leq p}}
+\quad \text{ ou } \quad
+\big(a_{i,j}\big).
+$$
+
+L'ensemble des matrices à $n$ lignes et $p$ colonnes à
+coefficients réels est noté $M_{n,p}(\Rr)$ ou simplement $M_{n,p}$.
+
+\begin{exemple}
+$ A  =  \left(
+\begin{array}{ccc}
+	4 & -1 \\
+	2 & 5  \\
+	-1 & 0 \\
+\end{array}
+\right) \in M_{3,2}$
+est une matrice $3\times 2$ avec, par exemple, $a_{1,1}=4$ et $a_{3,2}=0$.
+\end{exemple}
+
+
+%--------------------------------------------------------------------
+\subsection{Vecteurs}
+
+\textbf{Vecteur ligne/vecteur colonne.}
+Un vecteur de longueur $n$ peut être à la fois vu comme un vecteur colonne ou bien un vecteur ligne.
+Un vecteur colonne de longueur $n$ est un cas particulier d'une matrice à $n$ lignes et $1$ colonne.
+Un vecteur ligne de longueur $n$ est une matrice à $1$ ligne et $n$ colonnes.
+$$\begin{pmatrix} x_1\\ x_2 \\ \vdots \\ x_n \end{pmatrix} \in M_{n,1}
+\qquad \qquad 
+\begin{pmatrix} x_1 & x_2 & \cdots & x_n \end{pmatrix} \in M_{1,n}
+$$
+
+
+\textbf{Matrice comme juxtaposition de vecteurs.}
+Il est pratique de considérer qu'une matrice est la juxtaposition de vecteurs colonnes. Plus précisément une matrice $A \in M_{n,p}$ est composée de $p$ vecteurs colonnes $C_1,\ldots,C_p$ chacun de longueur $n$.
+
+
+\myfigure{1}{\tikzinput{fig_matrice_01}}
+
+
+Bien sûr on peut aussi considérer que cette même matrice est la superposition de $n$ vecteurs lignes $L_1,\ldots,L_n$ chacune de longueur $p$.
+
+
+\textbf{Produit scalaire.}
+Rappelons que le \defi{produit scalaire} de $u=(x_1,\ldots ,x_n)$ et $v=(y_1,\ldots ,y_n)$, noté $u \cdot v$ (ou parfois $\langle u \mid v\rangle$), est défini par
+$$u \cdot v= x_1y_1+\dots +x_ny_n.$$
+Expliquons le produit scalaire $u \cdot v$ en termes de vecteur ligne/vecteur colonne : on considère $u$ comme un vecteur ligne et $v$ comme un vecteur colonne, puis on multiplie entre eux les deux premiers coefficients, ensuite on multiplie entre eux les deuxièmes coefficients, etc. Le produit scalaire est la somme de tous ces produits.
+
+\myfigure{0.7}{\tikzinput{fig_matrice_02}}
+
+
+\textbf{Multiplication d'une matrice par un vecteur.}
+Soit $A \in M_{n,p}$ une matrice ayant $n$ lignes et $p$ colonnes.
+Soit $X$ un vecteur de longueur $p$, considéré comme un vecteur colonne.
+Le produit $AX$ est un vecteur colonne $Y$ de longueur $n$ défini ainsi:
+
+\begin{equation*}
+	\begin{array}{cccc}
+		\underbrace{
+			\left(
+			\begin{array}{ccc}
+				a_{11} & \dots & a_{1p}\\
+				a_{21} & \dots & a_{2p}\\
+				\vdots &&\vdots\\
+				a_{n1} &\dots & a_{np}
+			\end{array}
+			\right)
+		}
+		&
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				x_1\\
+				x_2\\
+				\vdots\\
+				x_p
+			\end{array}
+			\right)
+		}
+		& = &
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				a_{11}x_1+a_{12}x_2+\cdots + a_{1p}x_p \\
+				a_{21}x_1+a_{22}x_2+\cdots + a_{2p}x_p \\
+				\vdots\\
+				a_{n1}x_1+a_{n2}x_2+\cdots + a_{np}x_p 
+			\end{array}
+			\right).
+		}
+		\\
+		A & X & &Y
+\end{array}\end{equation*}
+
+Considérons $A$ comme une superposition de vecteur lignes $L_1,\ldots,L_n$.
+Le premier coefficient de $Y=AX$ est en fait le produit scalaire $L_1 \cdot X$, le deuxième coefficient est $L_2 \cdot X$,\ldots{}
+
+\myfigure{1}{\tikzinput{fig_matrice_03}}
+
+
+Il faut bien comprendre que le vecteur $X$ est de longueur $p$ mais le vecteur $Y$ est de longueur $n$.
+Ainsi une matrice $A$ correspond à une transformation : $X \mapsto Y = AX$.
+
+
+\begin{exemple}
+La matrice de la rotation\index{matrice!rotation} d'angle $\theta$ (centrée à l'origine) est :
+$$R_\theta = 
+\begin{pmatrix}
+	\cos \theta & -\sin \theta \\ 
+	\sin\theta & \cos \theta\\ 
+\end{pmatrix}$$
+
+\myfigure{0.7}{\tikzinput{fig_ifs03bis}}
+
+Notons 
+$$X = \begin{pmatrix}x \\ y \end{pmatrix}
+\qquad \text{ et } \qquad
+Y = R_\theta X$$
+On calcule :
+$$Y = \begin{pmatrix}x \cos \theta - y \sin \theta \\ x\sin \theta + y \cos \theta \end{pmatrix}$$
+Ainsi en coordonnées cartésiennes la rotation d'angle $\theta$ s'écrit :
+	$$\begin{pmatrix}x \\ y \end{pmatrix} \longmapsto \begin{pmatrix} x \cos \theta - y \sin \theta \\ x\sin \theta + y \cos \theta\end{pmatrix}$$
+\end{exemple}
+
+
+%---------------------------------------------------------------
+\subsection{Produit de matrices}
+
+
+Le produit $AB$ de deux matrices $A$ et $B$ est défini si et seulement si le nombre de colonnes de
+$A$ est égal au nombre de lignes de $B$.
+
+\begin{definition}[Produit de deux matrices]
+	\index{matrice!produit}
+	Soient $A=(a_{ij})$ une matrice $n\times p$ et $B=(b_{ij})$ une matrice $p\times q$.
+	Alors le \defi{produit} $C=AB$ est une matrice $n\times q$ dont les coefficients $c_{ij}$
+	sont définis par :
+	
+	\mybox{$\displaystyle
+		c_{ij} = \sum_{k=1}^p a_{ik}b_{kj}
+		$}
+\end{definition}
+
+On peut écrire le coefficient de façon plus développée, à savoir :
+$$c_{ij}=a_{i1}b_{1j}+a_{i2}b_{2j}+ \dots +
+a_{ik}b_{kj}+ \dots + a_{ip}b_{pj}.$$
+
+
+Si on note $L_i$ la $i$-ème ligne de la matrice $A$ et $C_j$ la $j$-ème colonne de la matrice $B$, alors 
+$$c_{ij} = L_i \cdot C_j.$$
+Ainsi chaque coefficient de $C$  est le résultat d'un produit scalaire entre une ligne de $A$ avec une colonne de $B$.
+
+\myfigure{1}{\tikzinput{fig_matrice_04}}
+
+
+%$$\begin{array}{ccl}
+%	&\begin{pmatrix}
+%		&&&{\color{myred}\times}&&\\
+%		&&&{\color{myred}\times}&&\\
+%		\hphantom{-}&\hphantom{-}&\hphantom{-}&{\color{myred}\times}&\hphantom{-}&\hphantom{-}\\
+%		&&&{\color{myred}\times}&&
+%	\end{pmatrix}&\leftarrow B\\
+%	A\to\begin{pmatrix}
+%		&&&\\
+%		&&&\\
+%		{\color{myred}\times}&{\color{myred}\times}&{\color{myred}\times}&{\color{myred}\times}\\
+%		&&&
+%	\end{pmatrix}
+%	&\begin{pmatrix}
+%		&&&|&&\\
+%		&&&|&&\\
+%		-&-&-&{\color{blue}c_{ij}}&\hphantom{-}&\hphantom{-}\\
+%		&&&&&
+%	\end{pmatrix}&\leftarrow AB\\
+%\end{array}
+%$$
+
+
+
+\begin{exemple}		
+		$$A =\begin{pmatrix}
+		1 & 5 & -1\cr
+		4 & 0 & 2\cr
+	\end{pmatrix}\qquad B =
+	\begin{pmatrix}
+		2&0\cr
+		1&3 \cr
+		-1&1\cr
+	\end{pmatrix}
+	$$
+	
+	
+	On dispose d'abord le produit correctement (ci-dessous à gauche) : la matrice obtenue
+	sera de taille $2\times2$.
+	Puis on calcule chacun des coefficients,
+	en commençant par le premier coefficient $c_{11} = L_1 \cdot C_1 = 1\times 2\ +\ 5\times 1\ +\ (-1)\times(-1) = 8$ (au milieu),
+	puis les autres (à droite).
+	
+	$$\begin{array}{cc}
+		&  \begin{pmatrix}
+			2&0\cr
+			1&3 \cr
+			-1&1\cr
+		\end{pmatrix} \\
+		\begin{pmatrix}
+			1 & 5 & -1\cr
+			4 & 0 & 2\cr
+		\end{pmatrix}
+		&\!\!
+		\begin{pmatrix} c_{11} & c_{12} \\ c_{21} & c_{22} \end{pmatrix}
+	\end{array}
+	\qquad
+	\begin{array}{cc}
+		& \begin{pmatrix}
+			{\color{myred}2}&0\cr
+			{\color{myred}1}&3 \cr
+			{\color{myred}-1}&1\cr
+		\end{pmatrix}  \\
+		\begin{pmatrix}
+			{\color{myred}1} & {\color{myred}5} & {\color{myred}-1}\cr
+			4 & 0& 2\cr
+		\end{pmatrix}
+		&\!\! \begin{pmatrix} {\color{blue}8} & c_{12} \\ c_{21} & c_{22} \end{pmatrix}
+	\end{array}
+	\qquad
+	\begin{array}{cc}
+		&
+		\begin{pmatrix}
+			2&0\cr
+			1&3 \cr
+			-1&1\cr
+		\end{pmatrix}\\
+		\begin{pmatrix}
+			1 & 5 & -1\cr
+			4 & 0& 2\cr
+		\end{pmatrix}
+		&\!\! \begin{pmatrix} 8 & 14 \cr 6 & 2 \end{pmatrix}
+	\end{array}
+	$$
+	
+Ainsi $AB = \begin{pmatrix} 8 & 14 \cr 6 & 2 \end{pmatrix}$.
+
+\end{exemple}
+
+%---------------------------------------------------------------
+\subsection{$AB \neq BA$}
+
+
+Le produit de matrices n'est pas commutatif.
+Même dans le cas où $AB$ et $BA$ sont définis et de la même taille, on a en général $AB\neq BA$.
+
+\begin{exemple}
+	$$\begin{pmatrix}
+		1&4\\2&-3
+	\end{pmatrix}
+	\begin{pmatrix}
+		0&2\\2&5
+	\end{pmatrix}=
+	\begin{pmatrix}
+		8&22\\-6&-11
+	\end{pmatrix}
+	\qquad \text{ mais } \qquad
+	\begin{pmatrix}
+		0&2\\2&5
+	\end{pmatrix}
+	\begin{pmatrix}
+	1&4\\2&-3
+	\end{pmatrix}=
+	\begin{pmatrix}
+		4&-6\\12&-7
+	\end{pmatrix}.
+	$$
+\end{exemple}
+
+
+
+%---------------------------------------------------------------
+\subsection{Opérations sur les matrices}
+
+Le produit de deux matrices est une opération compliquée mais la somme de deux matrices est une opération simple.
+Soient $A$ et $B$ deux matrices ayant la même taille $n\times p$.
+Leur \defi{somme} $C=A+B$ est la matrice de taille $n\times p$ définie par
+	\[c_{ij}=a_{ij}+b_{ij}.\]
+	
+En d'autres termes, on somme coefficients par coefficients. On a bien $A+B = B+A$.
+
+
+\begin{exemple}
+	$$\text{Si} \qquad
+	A  =  \begin{pmatrix}
+		5 & 8\\
+		-1 & 2
+	\end{pmatrix}
+	\qquad \text{et} \qquad
+	B = \begin{pmatrix}
+		4 & 0 \\
+		3 & 3
+	\end{pmatrix}
+	\qquad \text{alors} \qquad A + B = \begin{pmatrix}
+		9 & 8\\
+		2 & 5
+	\end{pmatrix}.
+	$$
+\end{exemple}
+
+Par contre souvenez-vous que $AB$ et $BA$ sont en général deux matrices différentes. 
+Si on fait bien attention à l'ordre alors l'addition et la multiplication se comportent bien :
+$$A (BC) = (AB) C  \qquad \text{(associativité)}$$
+$$A(B+C) = AB + AC \quad \text{ et } \quad  (B+C) A = BA + CA \qquad \text{(distributivité)}$$
+
+En particulier pour un vecteur $X$ et deux matrices $A$, $B$, on peut écrire $Y = ABX$ qui se calcule indifféremment par 
+$Y = (AB) X$ ou $Y = A(BX)$.
+
+
+
+
+Il est aussi facile de multiplier une matrice par un facteur $\alpha \in \Rr$ :
+le produit d'une matrice $A=\big(a_{ij}\big)$ de $M_{n,p}$
+	par un scalaire $\alpha \in \Rr$ est la matrice
+	$\big(\alpha a_{ij}\big)$ formée en
+	multipliant chaque coefficient de $A$ par $\alpha$. Elle est notée $\alpha \cdot A$ (ou simplement $\alpha A$).
+
+\begin{exemple}
+	$$
+	\text{Si} \qquad
+	A  = \begin{pmatrix}
+		4& 3 & 2\cr
+		2& -1& 0\cr
+	\end{pmatrix}
+	\qquad \text{et} \qquad \alpha = 2
+	\qquad \text{alors} \qquad
+	\alpha A =
+	\begin{pmatrix}
+		8& 6 & 4\cr
+		4& -2& 0\cr
+	\end{pmatrix}.$$
+
+La matrice $-A$ c'est $(-1)A$. Sur l'exemple ci-dessus on obtient :
+$-A  = \begin{pmatrix}
+	-4& -3 & -2\cr
+	-2& 1& 0\cr
+\end{pmatrix}$.
+
+\end{exemple}
+
+
+%---------------------------------------------------------------
+\subsection{Matrice d'un système linéaire}
+
+Un système d'équations linéaires peut s'écrire simplement à l'aide d'une matrice.
+Considérons le système linéaire ayant $n$ équations et $p$ inconnues $(x_1,\ldots,x_p)$ :
+\[ \left\{
+\begin{array}{ccccccccc}
+	a_{11} \  x_1 &+& a_{12}\  x_2 &+& \cdots &+& a_{1p}\  x_p & = & b_1\\
+	a_{21}\  x_1 &+& a_{22}\  x_2 &+& \cdots &+& a_{2p}\  x_p & = & b_2\\
+	&&\dots  && &&\\
+	a_{n1}\  x_1 &+& a_{n2}\  x_2 &+& \cdots &+& a_{np}\  x_p & = & b_n
+\end{array} \right.
+\]
+Il s'écrit :
+$$AX=B$$
+où 
+\begin{equation*}
+	\begin{array}{cccc}
+		\underbrace{
+			\left(
+			\begin{array}{ccc}
+				a_{11} & \dots & a_{1p}\\
+				a_{21} & \dots & a_{2p}\\
+				\vdots &&\vdots\\
+				a_{n1} &\dots & a_{np}
+			\end{array}
+			\right)
+		}
+		&
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				x_1\\
+				x_2\\
+				\vdots\\
+				x_p
+			\end{array}
+			\right)
+		}
+		& = &
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				b_1\\
+				b_2\\
+				\vdots\\
+				b_n
+			\end{array}
+			\right).
+		}
+		\\
+		A & X & &B
+\end{array}\end{equation*}
+
+La matrice $A \in M_{n,p}$ s'appelle la matrice des coefficients du système ;
+$B\in M_{n,1}$ est le vecteur du second membre ;
+le vecteur $X \in M_{p,1}$ est une solution du système si et seulement si $AX = B$.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vocabulaire}
+
+
+%---------------------------------------------------------------
+\subsection{Matrices carrées}
+
+Si $n=p$ (même nombre de lignes que de colonnes), la matrice est dite 
+\defi{matrice carrée}\index{matrice!carrée}.
+On note alors simplement $M_{n}$ au lieu de $M_{n,n}$ :
+
+
+\myfigure{0.7}{\tikzinput{fig_matrice_05}}
+
+
+%\[
+%\begin{pmatrix}
+%	{\color{myred}a_{1,1}} & a_{1,2} & \dots & a_{1,n}\\
+%	a_{2,1} & {\color{myred}a_{2,2}} & \dots & a_{2,n}\\
+%	\vdots& \vdots & {\color{myred}\ddots}  & \vdots\\
+%	a_{n,1} & a_{n,2} & \dots & {\color{myred}a_{n,n}}
+%\end{pmatrix}
+%\]
+
+
+Les éléments $a_{11}, a_{22}, \ldots, a_{nn}$ forment la \defi{diagonale principale}
+de la matrice.
+
+
+La matrice carrée suivante s'appelle la \defi{matrice identité}\index{matrice!identité} :
+\[
+I_n = \left(
+\begin{array}{cccc}
+	1 & 0 & \dots & 0\\
+	0& 1& \dots & 0\\
+	\vdots& \vdots & \ddots  & \vdots\\
+	0 & 0 & \dots &1
+\end{array}
+\right)
+\]
+
+La matrice identité joue le rôle de l'unité pour la multiplication des matrices (comme la valeur $1$ pour la multiplication des réels). Soit $A \in M_{n,p}$ :
+$$A \times I_p = A \qquad \text{ et } \qquad I_n \times A = A$$
+
+\medskip
+
+La matrice (de taille $n\times p$) dont tous les coefficients sont des zéros
+est appelée la \defi{matrice nulle} et est notée $0_{n,p}$ ou plus simplement $0$.
+Dans le calcul matriciel, la matrice nulle joue le rôle du nombre $0$ pour les réels.
+
+
+%---------------------------------------------------------------
+\subsection{Matrices triangulaires, matrices diagonales}
+
+\index{matrice!triangulaire}
+
+Soit $A$ une matrice de taille $n \times n$. On dit que $A$ est \defi{triangulaire inférieure}
+si ses éléments au-dessus de la diagonale sont nuls, autrement dit :
+$$
+i < j \  \Longrightarrow \ a_{ij} = 0.$$
+
+Une matrice triangulaire inférieure a la forme suivante:
+$$\begin{pmatrix}
+	a_{11} & 0 &\cdots&\cdots& 0\\
+	a_{21}&a_{22}&\ddots&&\vdots\\
+	\vdots&\vdots&\ddots&\ddots&\vdots\\
+	\vdots & \vdots &&\ddots&0\\
+	a_{n1}&a_{n2}&\cdots&\cdots&a_{nn}
+\end{pmatrix}
+$$
+
+\bigskip
+
+On dit que $A$ est \defi{triangulaire supérieure} si ses éléments en-dessous
+de la diagonale sont nuls, elle a la forme suivante :
+$$\begin{pmatrix}
+	a_{11} & a_{12} &\dots&\dots&\dots & a_{1n}\\
+	0&a_{22}&\dots&\dots&\dots&a_{2n}\\
+	\vdots&\ddots&\ddots&&&\vdots\\
+	\vdots&&\ddots&\ddots&&\vdots\\
+	\vdots & &&\ddots&\ddots&\vdots\\
+	0&\dots&\dots&\dots&0&a_{nn}
+\end{pmatrix}
+$$
+
+Une matrice est \defi{diagonale}\index{matrice!diagonale}
+lorsque elle est à la fois triangulaire inférieure et triangulaire supérieure.
+Autrement dit en dehors de la diagonale tous les coefficients sont nuls.
+
+\begin{exemple}
+	Une matrice triangulaire inférieure (à gauche), une matrice triangulaire supérieure (au centre), une matrice diagonale (à droite) :
+	$$
+	\begin{pmatrix}
+		3 & 0 & 0\\
+		0 & 1 & 0\\
+		-1 & 5 & -3
+	\end{pmatrix}\qquad\qquad
+	\begin{pmatrix}
+		2 & 3 & -4\\
+		0 & 0 & -2\\
+		0 & 0 & 7
+	\end{pmatrix}\qquad\qquad
+	\begin{pmatrix}
+		4 &  0 & 0\\
+		0 & -4 & 0\\
+		0 & 0  & 8
+	\end{pmatrix}$$
+\end{exemple}
+
+
+%--------------------------------------------------------------------
+\subsection{Transposée}
+
+Soit $A$ la matrice de taille $n\times p$
+$$
+A = \left(
+\begin{array}{cccc}
+	a_{11} & a_{12} & \dots & a_{1p}\\
+	a_{21} & a_{22} & \dots & a_{2p}\\
+	\vdots & \vdots &&\vdots\\
+	a_{n1} & a_{n2} & \dots & a_{np}
+\end{array}\right).
+$$
+
+La \defi{matrice transposée}\index{matrice!transposee@transposée} de $A$, notée $A^T$ est la matrice de taille $p \times n$ définie par :
+$$
+A^T = \left(
+\begin{array}{cccc}
+	a_{11} & a_{21} & \dots & a_{n1}\\
+	a_{12} & a_{22} & \dots & a_{n2}\\
+	\vdots & \vdots &&\vdots\\
+	a_{1p} & a_{2p} &\dots & a_{np}
+\end{array}\right)\, .
+	$$
+
+Autrement dit : le coefficient à la place $(i,j)$ de $A^T$  est $a_{ji}$.
+Ou encore la $i$-ème ligne de $A$ devient la $i$-ème colonne de $A^{T}$
+(et réciproquement la $j$-ème colonne de $A^T$ est la $j$-ème ligne de $A$).
+
+Remarque : il existe aussi la notation $^{t\!}A$ pour la transposée de la matrice $A$.
+
+
+En particulier la transposition transforme un vecteur ligne en un vecteur colonne et réciproquement :
+ 
+$$\text{ Si } \quad X = \begin{pmatrix}x_1 & x_2 & \cdots & x_n \end{pmatrix}
+\qquad\text{ alors }\qquad 
+X^T = \begin{pmatrix}x_1 \\ x_2 \\ \vdots \\ x_n \end {pmatrix}.$$
+	
+	
+\bigskip
+
+\begin{exemple}
+	
+	$$
+	\begin{pmatrix}
+		1&2&3\\
+		4&5&6\\
+		7&8&9\\
+	\end{pmatrix}^T
+	=
+	\begin{pmatrix}
+		1&4&7\\
+		2&5&8\\
+		3&6&9\\
+	\end{pmatrix}$$
+	$$\begin{pmatrix}
+		1 & 8\\
+		0 & -5\\
+		-2 & 3
+	\end{pmatrix}^T=
+	\begin{pmatrix}
+		1 & 0 & -2\\
+		8 &-5 & 3
+	\end{pmatrix}
+	\qquad\qquad
+	(5\quad 3\quad -1)^T  =
+	\begin{pmatrix}
+		5 \\
+		3\\
+		-1
+	\end{pmatrix}
+	$$
+\end{exemple}
+
+L'opération de transposition obéit aux règles suivantes:
+	\begin{enumerate}
+		\item $(A + B)^T = A^T + B^T$
+		\item $(\alpha A)^T = \alpha A^T $
+		\item $(A^T)^T = A$
+		\item \myboxinline{$(AB)^T = B^T A^T$}
+	\end{enumerate}
+
+Notez bien l'inversion : $(AB)^T = B^T A^T$.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transformations du plan}
+
+Voyons comment les matrices permettent de décrire beaucoup de transformations du plan.
+Dans les chapitres suivants \og{}Transformations de l'espace\fg{} et \og{}Rotations de l'espace\fg{} nous passerons à la dimension supérieure.
+
+
+Une \defi{transformation affine} du plan est l'application $F : \Rr^2 \to \Rr^2$ définie par :
+$$
+\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}a & b \\ c & d \\  \end{pmatrix}
+\begin{pmatrix}x \\ y \end{pmatrix} +\begin{pmatrix} e \\ f \end{pmatrix},$$
+où $a,b,c,d, e, f$ sont des réels quelconques.
+
+En d'autres termes, l'image d'un point $(x,y)$ du plan
+est le point $F(x,y) = (x',y')$ avec
+$$\left \{
+\begin{array}{rcl}
+	x' &=& ax + by + e \\
+	y' &=& cx + dy + f \\
+\end{array}
+\right..$$
+
+En fait, une transformation affine $F$ est la composée d'une transformation
+linéaire 
+$$
+\begin{pmatrix}x \\ y \end{pmatrix} \mapsto A \begin{pmatrix}x \\ y \end{pmatrix} \qquad \text{ où } \  A =\begin{pmatrix}a & b \\ c & d \\  \end{pmatrix}$$
+suivie d'une translation 
+$$
+\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}x \\ y \end{pmatrix} + B  \qquad \text{ où } \ B =\begin{pmatrix} e \\ f \\  \end{pmatrix}.$$
+
+
+
+
+Voici quelques transformations élémentaires.
+
+\begin{exemple}
+	\sauteligne
+	\begin{enumerate}
+		\item \textbf{Translation.}\index{translation}
+		
+		
+		\begin{minipage}{0.55\textwidth}
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}x \\ y \end{pmatrix} + \begin{pmatrix} e \\ f \end{pmatrix}$$
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			%\commentfigure{
+				\myfigure{0.5}{\tikzinput{fig_ifs02}}
+				%}
+		\end{minipage}
+		
+		\item \textbf{Rotation.}\index{rotation}
+		
+		\begin{minipage}{0.55\textwidth}
+			La \defi{rotation} de centre l'origine et d'angle $\theta$
+			est l'application de $\Rr^2$ dans $\Rr^2$ définie par
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}\cos \theta & -\sin \theta \\ 
+				\sin\theta & \cos \theta\\ \end{pmatrix}\begin{pmatrix}x \\ y \end{pmatrix}$$
+			Autrement dit :
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix} x \cos \theta - y \sin \theta \\ x\sin \theta + y \cos \theta\end{pmatrix}$$
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			%\commentfigure{
+				\myfigure{0.5}{\tikzinput{fig_ifs03}}
+				%}
+		\end{minipage}
+		
+		\item \textbf{Homothétie.}\index{homothetie@homothétie}
+		
+		\begin{minipage}{0.55\textwidth}
+			L'\defi{homothétie} de centre l'origine et de rapport $k \in \Rr\setminus\{0\}$ est l'application 
+			de $\Rr^2$ dans lui-même définie par :
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix} kx \\ ky \end{pmatrix}$$
+			En termes de matrice, l'écriture est la suivante :
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}k & 0 \\ 0 & k\end{pmatrix}\begin{pmatrix}x \\ y \end{pmatrix}$$
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			%\commentfigure{
+				\myfigure{0.5}{\tikzinput{fig_ifs04}}
+				%}
+		\end{minipage}
+		
+		\item \textbf{Réflexion.}\index{reflexion@réflexion}
+		
+		
+		\begin{minipage}{0.55\textwidth}
+			Nous commençons par regarder la réflexion par rapport à l'axe des abscisses :
+			c'est l'application de $\Rr^2$ dans $\Rr^2$ définie par
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}x \\ -y \end{pmatrix}$$
+			En termes de matrice, l'écriture est la suivante :
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}1 & 0 \\ 0 & -1\end{pmatrix}\begin{pmatrix}x \\ y \end{pmatrix}$$
+			
+			Plus généralement l'expression d'une réflexion par rapport à un axe passant par l'origine et faisant un angle $\frac\theta2$ avec l'axe des abscisses est
+			$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}\cos \theta & \sin \theta \\ 
+				\sin\theta & -\cos \theta\\ \end{pmatrix}\begin{pmatrix}x \\ y \end{pmatrix}$$
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			%\commentfigure{
+				\myfigure{0.5}{\tikzinput{fig_ifs05}}
+				%}
+		\end{minipage}
+		\item \textbf{Projection sur un axe.}\index{projection}
+		
+		\begin{minipage}{0.55\textwidth}
+			Pour $M=\left(\begin{smallmatrix} 1 & 0 \\ 0 & 0 \\ 
+			\end{smallmatrix} \right)$ 
+			et $e=f=0$. La transformation affine est alors la projection $(x,y) \mapsto x$.
+		\end{minipage}
+		\begin{minipage}{0.45\textwidth}
+			%\commentfigure{
+				\myfigure{0.5}{\tikzinput{fig_ifs09}}
+				%}
+		\end{minipage}
+		
+	\end{enumerate}
+\end{exemple}
+
+
+\subsubsection*{Exemple général}
+
+Oublions la translation et concentrons-nous sur l'application $F$ définie par
+$$\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}a & b \\ c & d \\  \end{pmatrix}
+\begin{pmatrix}x \\ y \end{pmatrix}.$$
+Nous avons $F(0,0)=(0,0)$, $F(1,0) = (a,c)$, $F(0,1)=(b,d)$.
+En termes de vecteurs, nous avons juste écrit que l'image du vecteur $\begin{pmatrix}1 \\ 0 \end{pmatrix}$ était le premier vecteur colonne $\begin{pmatrix}a \\ c \end{pmatrix}$, alors que l'image du vecteur $\begin{pmatrix}0 \\ 1 \end{pmatrix}$ est le second vecteur colonne $\begin{pmatrix}b \\ d \end{pmatrix}$.
+L'image du carré unitaire est donc un parallélogramme.
+
+%\commentfigure{
+	\myfigure{1}{\tikzinput{fig_ifs06}}
+	%}
+
+Remarquer que sur ce dessin, un côté vertical du carré est envoyé sur
+un petit côté du parallélogramme, et un côté horizontal sur un grand côté.
+Ni les longueurs ni les proportions ne sont conservées.
+Voici notre personnage et sa déformation:
+
+%\commentfigure{
+	\myfigure{1}{\tikzinput{fig_ifs07}}
+	%}
+
+\subsubsection*{Déterminant}
+\index{determinant@déterminant}
+Soit $F$ une transformation affine de matrice $A = \left(\begin{smallmatrix} a & b \\ c & d \\ 
+\end{smallmatrix} \right)$.
+Le déterminant $\det(A) = ad-bc$ de cette matrice joue un rôle particulièrement important dans l'étude la transformation affine $F$.
+
+\begin{proposition}
+	La transformation $F$ est bijective si et seulement si $\det(A) \neq 0$.
+\end{proposition}
+
+\begin{proposition}
+	Si $E$ est un ensemble dont l'aire vaut $\mathcal{A}$ alors $F(E)$ est un ensemble dont l'aire vaut $|\det(A)| \times \mathcal{A}$.
+\end{proposition}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Inverse}
+
+%--------------------------------------------------------------------
+\subsection{Inverse d'une matrice}
+
+
+\index{matrice!inverse}
+Soit $A$ une matrice  carrée de taille $n \times n$. S'il existe une matrice carrée
+$B$ de taille $n \times n$ telle que
+$$ AB = I\qquad \text{et} \qquad BA = I, $$
+alors on dit que $A$ est \defi{inversible}. On appelle $B$ l'\defi{inverse de $A$}
+et on la note $A^{-1}$.
+
+
+
+\begin{proposition}[Cas des matrices $2 \times 2$]
+Soit $A = \begin{pmatrix}
+	a & b\\
+	c & d
+\end{pmatrix}$.	
+Si $ad - bc \not= 0$,  alors $A$ est inversible et
+\mybox{$A^{-1} = \frac{1}{ad-bc} \begin{pmatrix}
+		d & -b\\
+		-c & a
+	\end{pmatrix}$}
+\end{proposition}
+
+
+Nous n'expliquerons pas ici comment calculer l'inverse d'une matrice en général.
+
+\begin{proposition}
+\sauteligne
+\begin{enumerate}
+	\item 	
+	Soit $A$ une matrice inversible. Alors
+	$A^{-1}$ est aussi inversible et on a :
+	\mybox{$(A^{-1})^{-1}=A$}
+	
+	\item 
+	Soient $A$ et $B$ deux matrices inversibles de même taille. Alors
+	$AB$ est inversible et
+	\mybox{$\displaystyle (AB)^{-1} = B^{-1} A^{-1}$}
+\end{enumerate}
+\end{proposition}
+
+Pour l'inverse d'un produit il faut bien faire attention à l'inversion de l'ordre !
+
+
+
+%---------------------------------------------------------------
+\subsection{Matrices inversibles et systèmes linéaires}
+
+
+Considérons le cas où le nombre d'équations égale le nombre d'inconnues :
+
+\begin{equation*}\begin{array}{cccc}
+		\underbrace{
+			\left(
+			\begin{array}{ccc}
+				a_{11} & \dots & a_{1n}\\
+				a_{21} & \dots & a_{2n}\\
+				\vdots &&\vdots\\
+				a_{n1} &\dots & a_{nn}
+			\end{array}
+			\right)
+		}
+		&
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				x_1\\
+				x_2\\
+				\vdots\\
+				x_n
+			\end{array}
+			\right)
+		}
+		& = &
+		\underbrace{
+			\left(
+			\begin{array}{c}
+				b_1\\
+				b_2\\
+				\vdots\\
+				b_n
+			\end{array}
+			\right).
+		}
+		\\
+		A & X & & B
+\end{array}\end{equation*}
+
+
+Alors $A \in M_n$ est une matrice carrée et
+$B$ un vecteur de $M_{n,1}$.
+Pour tout second membre, nous pouvons utiliser les matrices
+pour trouver la solution du système linéaire.
+\begin{proposition}
+	Si la matrice $A$ est inversible, alors
+	la solution du système $AX=B$ est unique et est :
+	\mybox{$X = A^{-1}B$}
+\end{proposition}
+
+
+
+\bigskip
+\bigskip
+
+\emph{
+Les matrices sont un vaste sujet, ici nous avons présenté les notions indispensables à ce livre, mais vous trouverez plein d'autres propriétés (comme par exemple comment calculer l'inverse) dans n'importe quel ouvrage d'algèbre linéaire, par exemple le tome \href{http://exo7.emath.fr/cours/livre-algebre-1.pdf}{\emph{Algèbre}} d'Exo7 dont certains paragraphes de ce chapitre sont tirés.
+}
+
+
+
+\end{document}

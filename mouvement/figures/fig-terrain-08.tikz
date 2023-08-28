@@ -1,0 +1,53 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\fill[red!20] (1,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(3,3);  % grille
+
+\node[blue,scale=0.9] at (0.5,0.5) {$-1$};
+\node[blue,scale=0.9] at (0.5,1.5) {$-1$};
+\node[blue,scale=0.9] at (0.5,2.5) {$0$};
+
+\node[blue,scale=0.9] at (1.5,0.5) {$0$};
+\node[blue,scale=0.9] at (1.5,1.5) {$0$};
+\node[blue,scale=0.9] at (1.5,2.5) {$1$};
+
+\node[blue,scale=0.9] at (2.5,0.5) {$0$};
+\node[blue,scale=0.9] at (2.5,1.5) {$1$};
+\node[blue,scale=0.9] at (2.5,2.5) {$2$};
+
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (0.3,0.3)  -- ++ (-1,-1);
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (0.3,1.5)  -- ++ (-1,0);
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (0.3,2.7)  -- ++ (-1,1);
+
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (1.5,0.3)  -- ++ (0,-1);
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (1.5,2.7)  -- ++ (0,1);
+
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (2.7,0.3)  -- ++ (1,-1);
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (2.7,1.5)  -- ++ (1,0);
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (2.7,2.7)  -- ++ (1,1);
+\end{scope}
+
+
+\begin{scope}[xshift=7cm]
+\fill[red!20] (1,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(3,3);  % grille
+
+\node[blue,scale=0.9] at (0.5,0.5) {$-1$};
+\node[blue,scale=0.9] at (0.5,1.5) {$-1$};
+\node[blue,scale=0.9] at (0.5,2.5) {$0$};
+
+\node[blue,scale=0.9] at (1.5,0.5) {$0$};
+\node[blue,scale=0.9] at (1.5,1.5) {$0$};
+\node[blue,scale=0.9] at (1.5,2.5) {$1$};
+
+\node[blue,scale=0.9] at (2.5,0.5) {$0$};
+\node[blue,scale=0.9] at (2.5,1.5) {$1$};
+\node[blue,scale=0.9] at (2.5,2.5) {$2$};
+
+\draw[->,>=latex,opacity=0.7,gray, ultra thick] (1.5,1.5)  -- ++ (5/2,4/2) node[below,black]{$\vec g$};
+\end{scope}
+
+\end{tikzpicture}

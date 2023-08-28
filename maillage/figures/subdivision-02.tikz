@@ -1,0 +1,48 @@
+\begin{tikzpicture}[scale=2]
+
+\coordinate (P1) at (1.0,0.3);
+\coordinate (P2) at (0.9,-1);
+\coordinate (P3) at (2.2,-1.2);
+\coordinate (P4) at (2.4,0.2);
+
+%\coordinate (A1) at ($(P1)!0.5!(P2)$);
+% \coordinate (A2) at ($(P2)!0.5!(P3)$);
+% \coordinate (A3) at ($(P3)!0.5!(P4)$);
+% \coordinate (A4) at ($(P4)!0.5!(P1)$);
+
+\coordinate (F) at (1.65,-0.4);
+
+\draw[ultra thick, black!50]
+  (P1) to node[midway](A1){} (P2)  
+       to node[midway](A2){} (P3)
+       to node[midway](A3){} (P4)
+       to node[midway](A4){} (P1)
+;  
+
+
+\draw[ultra thick, red!50]
+  (F)  to (A1.center)
+  (F) to (A2.center)
+  (F) to (A3.center)
+  (F) to (A4.center)
+;
+
+\foreach \P in {P1,P2,P3,P4,A1,A2,A3,A4,F}{
+  \path (\P) node[scale=3,black!70]{.};
+}
+
+\node at (P1) [above left,black!70]{$s_1$};
+\node at (P2) [below left,black!70]{$s_2$};
+\node at (P3) [below right,black!70]{$s_3$};
+\node at (P4) [above right,black!70]{$s_4$};
+
+\node at (A1) [left]{$a_1$};
+\node at (A2) [below]{$a_2$};
+\node at (A3) [right]{$a_3$};
+\node at (A4) [above]{$a_4$};
+
+\node at (F) [above right,black!70]{$f$};
+
+\node at (1.6,-1.6) {\bf Subdivision};
+
+\end{tikzpicture}

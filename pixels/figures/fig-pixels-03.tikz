@@ -1,0 +1,12 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\tikzstyle{line} = [draw,gray,thick]
+\tikzstyle{arrow} = [<->,>=latex,thick]
+
+\draw[gray, step=0.5] (0,0) grid (16,9);
+
+
+\draw[arrow] (-0.5,0)--(-0.5,9) node[midway, left]{hauteur};
+\draw[arrow] (0,-0.5)--(16,-0.5) node[midway, below]{largeur};
+
+\end{tikzpicture}

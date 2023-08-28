@@ -1,0 +1,32 @@
+\tdplotsetmaincoords{75}{115}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (4.6,0,0) node[left]{$\vec{e_1}$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,4,0) node[below right]{$\vec{e_2}$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,3) node[right]{$\vec{e_3}$};
+
+\tikzstyle{mycube}=[draw]
+\pgfmathsetmacro{\cube}{0.7}
+
+\draw[mycube] (\cube,0,0) -- (\cube,\cube,0) -- (\cube,\cube,\cube) -- (\cube, 0, \cube) -- cycle;
+\draw[mycube] (\cube,0,\cube) -- (\cube,\cube,\cube) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+\draw[mycube] (0, \cube, 0) -- (0, \cube, \cube) -- (\cube,\cube,\cube) -- (\cube, \cube, 0) -- cycle;
+
+\begin{scope}[xshift=10cm, yshift=1cm]
+\tdplotsetrotatedcoords{0}{43}{25}
+\begin{scope}[tdplot_rotated_coords,red]
+\tikzstyle{mycube}=[draw]
+%\pgfmathsetmacro{\cube}{0.5}
+
+\draw[mycube] (\cube,0,0) -- (\cube,\cube,0) -- (\cube,\cube,\cube) -- (\cube, 0, \cube) -- cycle;
+\draw[mycube] (\cube,0,\cube) -- (\cube,\cube,\cube) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+\draw[mycube] (0, \cube, 0) -- (0, \cube, \cube) -- (\cube,\cube,\cube) -- (\cube, \cube, 0) -- cycle;
+
+\draw[thick,->,>=latex] (0,0,0) -- (4,0,0) node[left]{$\vec{f_1}$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,4,0) node[below right]{$\vec{f_2}$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,3.3) node[right]{$\vec{f_3}$};
+\end{scope}
+\end{scope}
+
+\draw[->,>=latex,line width=4pt,green!70!black!50] (0,5) to[bend right] ++(-1,5);
+\end{tikzpicture}

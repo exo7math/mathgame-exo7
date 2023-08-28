@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=2]
+
+% Axes
+     \draw[->,>=latex,thick, gray] (-0.5,0)--(4,0) node[below,black] {$x$};
+     \draw[->,>=latex,thick, gray] (0,-0.5)--(0,2.5) node[right,black] {$y$};
+
+  \def\myalpha{60}
+  \def\r{2.5}
+  \coordinate(M) at (\myalpha:\r);
+
+  \draw[->, >=latex, very thick, blue] (0,0)--(M)  node[midway, above left]{$v_0$} ;
+
+    \draw[->, >=latex, double, blue] (0:1.) arc(0:\myalpha:1.);
+    \node[blue,scale=0.8] at (0.5*\myalpha:1.1) {$\alpha$};
+
+ 
+
+
+    \fill (0:0) circle (1pt)  node[below left] {$O$};
+
+
+
+
+
+
+\end{tikzpicture}

@@ -1,0 +1,66 @@
+%\usetikzlibrary{calc, angles}
+\begin{tikzpicture}[scale=1]
+
+\tikzset{
+  line/.style = {
+    shorten >=-10mm
+  },
+  vector/.style = {
+    thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=4]{.}
+    }
+  },
+  perp/.style = {
+    draw,
+    angle eccentricity=.5,
+    angle radius=2mm,
+  }
+}
+
+ % les coordonnées des points
+ \path
+   (0,0) coordinate (O)
+   (160:3) coordinate (P1)
+   (60:3) coordinate (P2)
+   ($(P1)!-5cm!(P2)$) coordinate (S)
+   ($(S)!2cm!(P1)$) coordinate (v)
+   ($(P1)!(O)!(P2)$) coordinate (H)
+ ;
+
+% cercle
+\draw[thick, red] (O) circle (3);
+\draw[] (O) -- ++(P1) node[midway, below left]{$R$};
+\draw[] (O) -- ++(P2);
+
+ % les droites
+ \draw
+   (S) edge[line, thick] (P2)
+   (O) edge[thick]node[right]{$d$} (H) 
+   (O) edge[thick] (S)
+   ;
+
+ % les vecteurs
+ \draw
+   (S) edge[vector, very thick] node[above left]{$\vec{v}$} (v)
+ ;
+
+ \draw
+   pic[perp,gray]{right angle=S--H--O}
+ ;
+
+ % les points
+ \path
+   (S) [dot] node[left]{$S$}
+   (O) [dot] node[below right]{$O$}
+   (H) [dot] node[above]{$H$}
+   (P1) [dot] node[above left]{$P_1$}
+   (P2) [dot] node[above]{$P_2$}
+ ;
+
+\node[above] at ($(H)!0.5!(P1)$) {$h$};
+\node[above] at ($(H)!0.5!(P2)$) {$h$};
+
+\end{tikzpicture}

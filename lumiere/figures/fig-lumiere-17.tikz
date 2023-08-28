@@ -1,0 +1,34 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\draw[|-|,very thick] (0,0) -- (4,0);
+\foreach \x in {0,0.5,...,4}{
+  \draw[->,>=latex, orange] (\x,4) -- ++(0,-1);
+}
+\draw[dashed] (0,0) -- ++(0,3);
+\draw[dashed] (4,0) -- ++(0,3);
+\draw[<->,>=latex] (0,-0.5) -- ++(4,0) node[midway, below]{$d$};
+\draw[<->,>=latex] (0,4.5) -- ++(4,0) node[midway, above]{$d$};
+\end{scope}
+
+\def\mytheta{35}
+
+\begin{scope}[xshift=10cm]
+\draw[|-|,very thick] (0,0) -- ({4/cos(\mytheta)},0);
+\draw (0,0) -- ++(0,3);
+\draw[red,double] (90-\mytheta:1) arc({90-\mytheta}:90:1) node[midway, above]{$\theta$};
+\draw[<->,>=latex] (0,-0.5) -- ++({4/cos(\mytheta)},0) node[midway, below]{$d/\cos(\theta)$};
+  \begin{scope}[rotate=-\mytheta]
+    \foreach \x in {0,0.5,...,4}{
+      \draw[->,>=latex, orange] (\x,6) -- ++(0,-1);
+    }
+
+\draw[<->,>=latex] (0,6.5) -- ++(4,0) node[midway, above]{$d$};
+  \end{scope}
+
+\draw[dashed] (0,0) -- ++(90-\mytheta:5);
+\draw[dashed] ({4/cos(\mytheta)},0) -- ++(90-\mytheta:2.3);
+
+\end{scope}
+
+\end{tikzpicture}

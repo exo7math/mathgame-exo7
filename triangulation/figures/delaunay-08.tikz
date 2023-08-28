@@ -1,0 +1,76 @@
+\begin{tikzpicture}[scale=1]
+\begin{scope}
+\coordinate (O) at (0,0);
+\coordinate (A) at (180:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+
+
+\begin{scope}
+\clip (-5,-3) rectangle (10,3);
+% Second cercle à la main
+\coordinate (O1) at (1.0,-2.1);
+\def\r{4.48}
+\draw[gray!50,thick] (O1) circle (\r);
+
+
+% Second cercle à la main
+\coordinate (O2) at (0.98,1.8);
+\def\rr{4.38}
+\draw[gray!50,thick] (O2) circle (\rr);
+\end{scope}
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (A) -- (D);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!70] (\P) circle (3pt);
+}
+
+%\node at (220:3.5) {$\mathcal{C}_1$};
+%\node at (4.5,-2.5) {$\mathcal{C}_2$};
+\node at (1.5,-4) {\bf Mauvaise diagonale};
+\end{scope}
+
+
+\begin{scope}[xshift=15cm]
+\coordinate (O) at (0,0);
+\coordinate (A) at (180:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+
+
+\draw[gray!50,thick] (0,0) circle (3);
+
+
+% Second cercle à la main
+\coordinate (O2) at (2.45,-0.2);
+\def\r{2.58}
+\draw[gray!50,thick] (O2) circle (\r);
+
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!70] (\P) circle (3pt);
+}
+
+
+\node at (1.5,-4) {\bf Bonne diagonale};
+\end{scope}
+
+\draw[->,>=latex,line width=3pt,red!50] (7,0) -- ++(3,0) node[midway,below,black]{\bf basculement};
+\end{tikzpicture}

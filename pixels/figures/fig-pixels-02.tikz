@@ -1,0 +1,23 @@
+﻿\begin{tikzpicture}[scale=3]
+
+\draw[blue, double] (30:0.7) arc (30:35:0.7)node[midway, below right]{$\theta$};
+
+\draw (0,0) -- (30:1);
+\draw (0,0) -- (35:1) node[pos=0.45,above]{$d$};
+
+
+\draw[red] (30:1) -- (35:1) node[midway, above right]{$\ell$};
+
+
+  % eye from Izaak Neutelings https://tikz.net/hyperbola/
+  \def\le{0.2}  % eye size eye
+  \def\ange{25} % eye opening angle
+  \def\lb{0}  % outgoing beam length
+  \def\ang{180+30} % outgoing beam scattering
+  \begin{scope}[shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+    \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+    \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+    %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+    \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+  \end{scope}
+\end{tikzpicture}

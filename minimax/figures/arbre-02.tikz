@@ -1,0 +1,65 @@
+﻿  \begin{tikzpicture}[scale=2]
+    % define points
+    \path
+      (0,0) coordinate(R)
+      +(-2,-1) coordinate(V1)
+      +(0,-1) coordinate(V2)
+      +(2,-1) coordinate(V3)
+      (V1)
+      +(-1,-1) coordinate(V11)
+     +(1,-1) coordinate(V12)
+      (V2)
+      +(0,-1) coordinate(V21)      
+      (V3)
+      +(-1,-1) coordinate(V31)      
+      +(0,-1) coordinate(V32)      
+      +(1,-1) coordinate(V33)   
+      (V32)
+      +(-0.5,-1) coordinate(V321)
+      +(0.5,-1) coordinate(V322)
+    ;
+    % draw lines
+    \draw[thick]
+      (R) -- (V1)
+      (R) -- (V2)
+      (R) -- (V3)
+      (V1) -- (V11)
+      (V1) -- (V12)
+      (V2) -- (V21)
+      (V3) -- (V31)
+      (V3) -- (V32)
+      (V3) -- (V33)
+      (V32) -- (V321)
+      (V32) -- (V322)
+    ;
+    % draw points
+    \path  foreach \v in {R,V1,V2,V3,V11,V12,V21,V31,V32,V33,V321,V322}{
+      (\v) node[scale=4,black]{.}
+    };
+    % path
+   \draw [red, very thick, ->,-latex] 
+   plot [smooth, tension=0.5] coordinates { 
+   ($(R)+(-0.2,0)$)  
+   ($(V1)+(-0.2,0)$)
+   ($(V11)+(-0.2,-0.2)$)  
+   ($(V1)+(0.1,-0.5)$)
+   ($(V12)+(-0,-0.2)$)
+   ($(R)+(-0.5,-0.8)$)  
+   ($(V2)+(-0.2,0)$)  
+   ($(V21)+(-0.2,0)$)
+   ($(V21)+(0,-0.2)$)
+   ($(V2)+(0.6,0)$)  
+   ($(V3)+(-0.3,0)$)  
+   ($(V31)+(-0.2,0)$)
+   ($(V31)+(-0.1,-0.2)$)
+   ($(V3)+(-0.2,-0.5)$) 
+   ($(V32)+(-0.1,0)$) 
+   ($(V321)+(-0.2,-0.1)$) 
+   ($(V321)+(0,-0.2)$) 
+   ($(V32)+(0,-0.5)$) 
+   ($(V322)+(-0.05,-0.15)$) 
+   ($(V322)+(0.15,-0.15)$) 
+   ($(V32)+(0.25,0.2)$) 
+   ($(V33)+(0,-0.15)$) 
+  };
+  \end{tikzpicture}

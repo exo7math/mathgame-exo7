@@ -1,0 +1,30 @@
+\begin{tikzpicture}[scale=2]
+
+\coordinate (P1) at (0,0.4);
+\coordinate (P2) at (0.5,-0.75);
+\coordinate (P3) at (3.5,-0.2);
+\coordinate (P4) at (3.4,0.2);
+\coordinate (P5) at (2.9,1.0);
+\coordinate (P6) at (0.8,1.4);
+
+\coordinate (P7) at (1.5,0.9);
+\coordinate (P8) at (1.3,-0.25);
+\coordinate (P9) at (2.7,0.25);
+\coordinate (P10) at (0.5,0.25);
+\coordinate (P11) at (1.75,0.15);
+
+\draw [black!50, very thick] (P1) -- (P6);
+% \draw [black!80, densely dashed, very thick] (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6);
+
+\draw[->, >=latex, red, very thick] (P6) -- ($ (P11)!-0.8!(P6)$);
+
+\foreach \i in {1,...,11} {
+  \path (P\i) node[scale=3,black!70]{.};
+}
+
+\node at (P1) [left]{$P_1$};
+\node at (P6) [above left]{$P_2$};
+\node at (P11) [below]{$P$};
+
+\node at (1.75,-1.25) {\bf (a) Un point $P$ au hasard};
+\end{tikzpicture}

@@ -1,0 +1,70 @@
+﻿%\usetikzlibrary{calc, angles}
+\begin{tikzpicture}[scale=1]
+
+\tikzset{
+  line/.style = {
+    shorten <=-3mm, shorten >=-10mm
+  },
+  vector/.style = {
+    thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=2]{.}
+    }
+  },
+  perp/.style = {
+    draw,
+    angle eccentricity=.5,
+    angle radius=2mm,
+    pic text=.
+  }
+}
+
+ % les coordonnées des points
+ \path
+   (0,0) coordinate (A)
+   (5,3) coordinate (B)
+   (0,1.3) coordinate (Pin)
+   (2.9,3) coordinate (Pout)
+   ($(Pin)!-5cm!(Pout)$) coordinate (S)
+   ($(S)!1cm!(Pin)$) coordinate (v)
+    ;
+
+\coordinate (X)  at (intersection of {S--Pout} and {0,5--A});
+\coordinate (Y)  at (intersection of {S--Pout} and {-5,0--A});
+
+
+ % les droites
+ \draw
+   (S) edge[line, shorten >=-25mm] (Pout)
+   ;
+
+\draw (-6,0) -- (7,0);
+\draw (-6,3) -- (7,3);
+\draw (0,-2) -- (0,5);
+\draw (5,-2) -- (5,5);
+
+\draw[thick, red]
+   (A) rectangle (B)
+ ;
+
+ % les vecteurs
+ \draw
+   (S) edge[vector] node[above left]{$\vec{v}$} (v)
+ ;
+
+ % les points
+ \path
+   (S) [dot] node[below]{$S$}
+   (A) [dot] node[below left]{$A$}
+   (B) [dot] node[above right]{$B$}
+   (Pin) [dot] node[above left]{$P_{\text{in}}$}
+   (Pout) [dot] node[above left]{$P_{\text{out}}$}
+;
+ \path[blue]
+     (X) [dot] node[below right]{$t_{x_A}$}
+   (Y) [dot] node[below]{$t_{y_A}$}
+ ;
+
+\end{tikzpicture}

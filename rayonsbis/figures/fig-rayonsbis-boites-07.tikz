@@ -1,0 +1,70 @@
+﻿\begin{tikzpicture}[scale=2]
+    % define points
+    \path
+      (0,0) coordinate(R)
+      +(-2,-1) coordinate(V1)
+      +(2,-1) coordinate(V2)
+      (V1)
+      +(-1,-1) coordinate(V11)
+     +(1,-1) coordinate(V12)
+      (V2)
+      +(-1,-1) coordinate(V21)     
+      +(1,-1) coordinate(V22)      
+      (V11)
+      +(-0.5,-1) coordinate(V111)
+     +(0.5,-1) coordinate(V112)
+       (V12)
+      +(-0.5,-1) coordinate(V121)
+     +(0.5,-1) coordinate(V122)   
+      (V21)
+      +(-0.5,-1) coordinate(V211)
+     +(0.5,-1) coordinate(V212)
+       (V22)
+      +(-0.5,-1) coordinate(V221)
+     +(0.5,-1) coordinate(V222)   
+;
+    % draw lines
+    \draw[thick]
+      (R) -- (V1)
+      (R) -- (V2)
+      (V1) -- (V11)
+      (V1) -- (V12)
+      (V2) -- (V21)
+      (V2) -- (V22)
+      (V11) -- (V111)
+      (V11) -- (V112)
+      (V12) -- (V121)
+      (V12) -- (V122)
+      (V11) -- (V111)
+      (V11) -- (V112)
+      (V12) -- (V121)
+      (V12) -- (V122)
+      (V21) -- (V211)
+      (V21) -- (V212)
+      (V22) -- (V221)
+      (V22) -- (V222)
+    ;
+    % draw points
+\draw[ultra thick,gray,fill=white] (R)+(-0.2,-0.2) rectangle +(0.2,0.2);
+\draw[ultra thick,red!50,fill=white] (V1)+(-0.2,-0.2) rectangle +(0.2,0.2);
+\draw[ultra thick,red!50,fill=white] (V2)+(-0.2,-0.2) rectangle +(0.2,0.2);
+
+\foreach \v in {V11,V12,V21,V22}{
+  \draw[ultra thick,green!70!black!50,fill=white] (\v)+(-0.2,-0.2) rectangle +(0.2,0.2);
+};
+
+\foreach \v in {V111,V112,V121,V122,V211,V212,V221,V222}{
+  \draw[ultra thick,blue!50,fill=white] (\v)+(-0.2,-0.2) rectangle +(0.2,0.2);
+};
+
+\fill[orange,scale=0.14] (V111) circle (1);
+\fill[magenta,scale=0.14] (V112) circle (1);
+\fill[yellow,scale=0.13] ($(V121) + (-1,-0.75)$) -- ++ (60:2) -- ++(-60:2) -- cycle;
+\fill[cyan!50,scale=0.12] ($(V122) + (-0.75,-1.3)$) rectangle ++ (1.5,2.5);
+
+\fill[lime,scale=0.13] (V211) ellipse (0.5 and 1);
+\fill[brown,scale=0.13] (V212) ellipse (0.5 and 1);
+\fill[blue!30,scale=0.13] (V221) ellipse (0.75 and 1.23);
+\fill[red!50,scale=0.20] (V222) ellipse (0.5 and 0.25);
+
+\end{tikzpicture}

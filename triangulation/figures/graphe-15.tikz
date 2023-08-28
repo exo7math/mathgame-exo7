@@ -1,0 +1,20 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\draw[ultra thick, red!70]  (-1,-1) -- (1,1);
+\draw[ultra thick, blue!50]  (-1,1) -- (1,-1);
+
+\node[text width=4cm, align=center] at (0,-1.5) {\bf interdit : croisement de deux arêtes};
+\end{scope}
+
+\begin{scope}[xshift=5cm]
+\draw[ultra thick, red!70]  (0,0) -- (1,1);
+\draw[ultra thick, green!70!black]  (0,0) -- (1,-1);
+\draw[ultra thick, blue!70]  (0,0) -- (-1,1);
+\draw[ultra thick, orange]  (0,0) -- (-1,-1);
+\path (0,0) node[scale=7,black!70]{.};
+
+\node[text width=4cm, align=center] at (0,-1.5) {\bf autorisé : 4 arêtes arrivant en un sommet};
+\end{scope}
+
+\end{tikzpicture}

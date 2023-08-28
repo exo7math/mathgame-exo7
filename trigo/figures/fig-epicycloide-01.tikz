@@ -1,0 +1,53 @@
+﻿% https://tex.stackexchange.com/questions/584931/
+% Answer by 'gernot'
+\begin{tikzpicture}[scale=1.0]
+
+\newcommand*{\angA}{30}
+\newcommand*{\rA}{2.0}
+\newcommand*{\rB}{1.0}
+
+% define the equations for P(x,y)
+\pgfmathsetmacro{\epicycloidX}%
+{((\rA+\rB)*cos(\angA))-(\rB*cos((\rA+\rB)/(\rB)*\angA))}
+\pgfmathsetmacro{\epicycloidY}%
+{((\rA+\rB)*sin(\angA))-(\rB*sin((\rA+\rB)/(\rB)*\angA))}
+
+\coordinate (O) at (0,0);
+\coordinate (P) at (\epicycloidX,\epicycloidY);
+\coordinate (F) at ({(\rA+\rB)*cos(\angA)},{(\rA+\rB)*sin(\angA)});
+
+%\draw[gray,->,>=latex] (-4, 0) -- (5,0);           % x-axis
+%\draw[gray,->,>=latex] ( 0,-4.5) -- (0,5);           % y-axis
+
+\draw[thick] (0, 0) circle (\rA);       % circle A at origin
+\draw[thick] (F) circle (\rB);           % circle B
+%\draw (O) -- (F);                 % show the angle phi
+
+% code that does not do as expected. it compiles fine.
+\draw[red,ultra thick,domain=0*pi:0.17*pi,smooth]
+plot[smooth]
+(
+{((\rA+\rB)*cos(\x r))-(\rB*cos(\x*((\rA+\rB)/\rB) r))},
+{((\rA+\rB)*sin(\x r))-(\rB*sin(\x*((\rA+\rB)/\rB) r))}
+);
+
+% code that does not do as expected. it compiles fine.
+\draw[red,thin,domain=0*pi:2*pi,smooth, samples=100]
+plot[smooth]
+(
+{((\rA+\rB)*cos(\x r))-(\rB*cos(\x*((\rA+\rB)/\rB) r))},
+{((\rA+\rB)*sin(\x r))-(\rB*sin(\x*((\rA+\rB)/\rB) r))}
+);
+
+
+% draw the point P and label the node. this plots correctly.
+\draw[very thick] (O) -- (0:\rA) node[midway, above] {$R$};
+\draw[very thick] (F) -- ++(180+\angA:\rB) node[midway, above] {$r$};
+
+\draw[red,fill=white,] (P)  circle (2pt) node[above left]{$M$};
+\draw[black,fill=white,] (O)  circle (2pt) node[above left]{$O$};
+\draw[black,fill=white,] (F)  circle (2pt); % node[above left]{$P$};
+\node[above left] at (120:\rA) {$\mathcal{C}$};
+\node[above right] at (\angA:\rA+2*\rB) {$\mathcal{C}'$};
+
+\end{tikzpicture}

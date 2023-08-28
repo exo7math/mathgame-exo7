@@ -1,0 +1,48 @@
+% Sudoku
+% Author: Roberto Bonvallet
+
+\makeatletter
+\ifx\c@row\undefined\newcounter{row}\fi
+\ifx\c@col\undefined\newcounter{col}\fi
+\makeatother
+
+% \newcounter{row}
+% \newcounter{col}
+
+\newcommand\setrow[9]{
+  \setcounter{col}{1}
+  \foreach \n in {#1, #2, #3, #4, #5, #6, #7, #8, #9} {
+    \edef\x{\value{col} - 0.5}
+    \edef\y{9.5 - \value{row}}
+    \node[anchor=center,scale=0.9] at (\x, \y) {\n};
+    \stepcounter{col}
+  }
+  \stepcounter{row}
+}
+
+
+\begin{tikzpicture}[scale=0.5]
+
+  \begin{scope}
+    \draw (0, 0) grid (9, 9);
+    \draw[very thick, scale=3] (0, 0) grid (3, 3);
+
+    \setcounter{row}{1}
+    \setrow { }{4}{ }  {5}{ }{1}  { }{9}{ }
+    \setrow {7}{ }{ }  {4}{ }{3}  { }{ }{6}
+    \setrow { }{3}{ }  { }{6}{ }  { }{8}{ }
+
+    \setrow { }{ }{1}  { }{ }{ }  {6}{ }{ }
+    \setrow {5}{2}{ }  { }{ }{ }  { }{1}{9}
+    \setrow { }{ }{4}  { }{ }{ }  {8}{ }{ }
+
+    \setrow { }{9}{ }  { }{3}{ }  { }{7}{ }
+    \setrow {4}{ }{ }  {7}{ }{2}  { }{ }{8}
+    \setrow { }{1}{ }  {9}{ }{8}  { }{6}{ }
+
+    \node[anchor=center] at (4.5, -0.5) {Grille de sudoku};
+  \end{scope}
+
+
+
+\end{tikzpicture}

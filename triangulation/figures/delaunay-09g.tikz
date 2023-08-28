@@ -1,0 +1,26 @@
+\begin{tikzpicture}[scale=1]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (165:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+\coordinate (E) at (5.5,2.5);
+\coordinate (F) at (6,-3);
+
+
+\draw[red, ultra thick] (A) -- (B) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (D) -- (C);
+\draw[red, ultra thick] (D) -- (E) -- (C);
+\draw[red, ultra thick] (B) -- (F) -- (D);
+\draw[red, ultra thick] (F) -- (E);
+
+
+
+\foreach \P in {A,B,C,D,E,F} {
+  \fill[black!70] (\P) circle (3pt);
+}
+
+\node at (2.5,-5) {\bf Triangulation de Delaunay};
+
+\end{tikzpicture}

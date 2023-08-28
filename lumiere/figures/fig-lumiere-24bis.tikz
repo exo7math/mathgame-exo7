@@ -1,0 +1,70 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\def\mytheta{10};
+\coordinate (S) at (90+\mytheta:3);
+
+
+\begin{scope}
+\coordinate (P1) at (0,0);
+\draw[very thick] (-3.5,0) -- (2,0);
+
+\foreach\a in {-50,-43,...,60}{
+  \draw[->,>=latex, shorten <= 3pt, thick, orange] (0,0) -- ({90-\mytheta + \a}:{1.2*cos(\a)^2});
+}
+
+\draw[densely dotted] (0,0) -- (90-\mytheta:1.5);
+%\draw[very thick,->,>=latex,green!70!black] (0,0) -- (90-\mytheta:0.8) node[above]{$\vec{r_1}$};
+
+\node[blue, scale=3] at (P1) {.};
+\node[below] at (P1) {$P_1$};
+
+%\draw[very thick,->,>=latex,blue] (-1.5,0) -- ++(0,0.7) node[midway,left]{$\vec{n_1}$};
+%\draw[gray] (-1.5,0) +(0,.15)-|+(.15,0);
+\end{scope}
+
+\begin{scope}[shift={(3.41,1.41)}, rotate=45]
+\def\mytheta{30};
+\coordinate (P2) at (0,0);
+\draw[very thick] (-2,0) -- (2,0);
+
+
+\foreach\a in {-50,-43,...,60}{
+  \draw[->,>=latex, shorten <= 3pt, thick, orange] (0,0) -- ({90-\mytheta + \a}:{1.2*cos(\a)^2});
+}
+
+\draw[densely dotted] (0,0) -- (90-\mytheta:1.5);
+%\draw[very thick,->,>=latex,green!70!black] (0,0) -- (90-\mytheta:0.8) node[above]{$\vec{r_2}$};
+
+\node[blue, scale=3] at (P2) {.};
+\node[below right] at (P2) {$P_2$};
+
+%\draw[very thick,->,>=latex,blue] (-1.5,0) -- ++(0,0.7) node[midway,left]{$\vec{n_2}$};
+%\draw[gray] (-1.5,0) +(0,.15)-|+(.15,0);
+\end{scope}
+
+
+\node[red, scale=3] at (S) {.};
+\node[above left] at (S) {$S$};
+
+
+\draw[thin, dashed,gray] (P1) -- (S);
+%\draw[very thick,->,>=latex,red] (P1) -- ($(S)!0.73!(P1)$) node[above left]{$\vec{\ell_1}$};
+
+\draw[thin,dashed,gray] (P2) -- (S);
+%\draw[very thick,->,>=latex,red] (P2) -- ($(S)!0.8!(P2)$) node[above]{$\vec{\ell_2}$};
+
+
+% \coordinate (O) at (-2,2);
+% \node[magenta, scale=3] at (O) {.};
+% \node[above] at (O) {$O$};
+% 
+% \coordinate (V1) at ($(P1)!0.3!(O)$);
+% \draw[thin,dashed,gray] (P1) -- (O);
+% \draw[very thick,->,>=latex,magenta] (P1) -- (V1) node[below left]{$\vec{v_1}$};
+% 
+% 
+% \coordinate (V2) at ($(P2)!0.15!(O)$);
+% \draw[thin,dashed,gray] (P2) -- (O);
+% \draw[very thick,->,>=latex,magenta] (P2) -- (V2) node[below]{$\vec{v_2}$};
+
+\end{tikzpicture}

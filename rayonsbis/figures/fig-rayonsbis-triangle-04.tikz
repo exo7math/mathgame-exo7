@@ -1,0 +1,24 @@
+﻿\begin{tikzpicture}[baseline=(A.center)]
+\tikzset{node style ge/.style={circle}}
+\tikzset{BarreStyle/.style =  {opacity=.4,line width=6 mm, color=#1}}
+
+\begin{scope}
+
+\matrix (A) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	a_{11}& a_{12}&  a_{13}\\
+	a_{21}& a_{22}& a_{23}\\
+	a_{31}& a_{32}& a_{33}\\
+};
+
+\coordinate (O) at (A.west);
+\node[left=2ex] at (O) {$M=$};
+
+ \draw [BarreStyle=blue,line cap=round] (A-1-1.north) node[above,black,opacity=1]{$\vec u$} to (A-3-1.south) ;
+ \draw [BarreStyle=blue,line cap=round] (A-1-2.north) node[above,black,opacity=1]{$\vec v$} to (A-3-2.south) ;
+ \draw [BarreStyle=blue,line cap=round] (A-1-3.north) node[above,black,opacity=1]{$\vec w$} to (A-3-3.south) ;
+\end{scope}
+
+
+\end{tikzpicture}

@@ -1,0 +1,12 @@
+﻿\tdplotsetmaincoords{65}{25}
+\begin{tikzpicture}[tdplot_main_coords,scale=3]
+
+\draw[thick,->,>=latex] (0,0,0) -- (1.5,0,0) node[right]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,1.5,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,1.2) node[right]{$z$};
+
+\tdplotsetrotatedcoords{90}{90}{00}
+\tdplotdrawarc[tdplot_rotated_coords,->,>=latex,red,very thick]{(0,0,1.5)}{0.25}{-90}{-90-180}{above right}{$R_y$}
+
+
+\end{tikzpicture}

@@ -1,0 +1,85 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\begin{scope}[rotate=15]
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (1.4,1);
+\coordinate (D) at (0.2,0.9);
+
+\draw[ultra thick, black!50]  
+  (A) -- (B) -- (C) -- (D) -- cycle;
+
+\path (A) node[scale=4,black!70]{.};
+\path (B) node[scale=4,black!70]{.};
+\path (C) node[scale=4,black!70]{.};
+\path (D) node[scale=4,black!70]{.};
+\end{scope}
+\node at (0.5,-0.5) {\bf face non triangulaire};
+\end{scope}
+
+
+\begin{scope}[xshift=2.5cm]
+\begin{scope}[rotate=25]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (1,1);
+\coordinate (D) at (0,1);
+
+\draw[ultra thick, black!50]  
+  (A) -- (B) -- (C) -- (D) -- cycle
+  (A) -- (C)
+  (B) -- (D);
+
+\path (A) node[scale=4,black!70]{.};
+\path (B) node[scale=4,black!70]{.};
+\path (C) node[scale=4,black!70]{.};
+\path (D) node[scale=4,black!70]{.};
+\end{scope}
+\node at (0.25,-0.5) {\bf croisement d'arêtes};
+\end{scope}
+
+
+\begin{scope}[xshift=4.5cm]
+\begin{scope}[rotate=10]
+
+\coordinate (A) at (0.5,-0.2);
+\coordinate (B) at (2,0);
+\coordinate (C) at (1.2,1);
+\coordinate (D) at (0,1);
+
+\draw[ultra thick, black!50]  
+  (D) -- (A) -- (C) -- cycle 
+  (A) -- (B)
+  (B)   .. controls ++(45:0.7) and ++(-0:0.7) .. (C);
+
+\path (A) node[scale=4,black!70]{.};
+\path (B) node[scale=4,black!70]{.};
+\path (C) node[scale=4,black!70]{.};
+\path (D) node[scale=4,black!70]{.};
+\end{scope}
+\node at (1,-0.5) {\bf arête non rectiligne};
+\end{scope}
+
+
+
+\begin{scope}[xshift=7.5cm]
+\begin{scope}[yshift=0cm,rotate=10]
+\coordinate (A) at (0.5,-0.2);
+\coordinate (B) at (1.5,-0.3);
+\coordinate (C) at (1.2,1);
+\coordinate (D) at (0,1);
+
+\draw[ultra thick, black!50]  
+  (D) -- (A) -- (C) -- cycle 
+  (A) -- (B);
+
+\path (A) node[scale=4,black!70]{.};
+\path (B) node[scale=4,black!70]{.};
+\path (C) node[scale=4,black!70]{.};
+\path (D) node[scale=4,black!70]{.};
+\end{scope}
+\node at (0.7,-0.5) {\bf sommet sans triangle};
+\end{scope}
+\end{tikzpicture}

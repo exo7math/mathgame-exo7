@@ -1,0 +1,35 @@
+﻿\tdplotsetmaincoords{50}{120}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+% centre de la projection
+\coordinate (O) at (0,0,0);
+\node[red, scale=3] at (O) {.};
+\node at (O) [below] {$O$};
+
+% Ball 3D
+\tdplotsetrotatedcoords{25}{75}{0}
+\filldraw[tdplot_rotated_coords,ball color = blue!40] (-5.0,6.75) circle (0.95);  % ball
+
+\coordinate (P) at (-4,2.25,1.25);
+\draw[->,>=latex,red, thick] (P) -- ($(P)!-0.55!(O)$);
+
+\coordinate (Q) at (-6.5,3.6,2);
+\fill[black] (Q) circle (1pt);
+\node at (Q)[below]{$P$};
+
+\draw[red, thick] (O) -- (P);
+
+% Soleil
+\begin{scope}[shift={(-12,-2)},scale=1.5]
+    \coordinate (S) at (0,0);
+    \foreach \a in {0,15,...,360}{
+      \draw[orange,tdplot_rotated_coords] (\a:0.23) -- (\a:0.4);
+    }
+    \draw[ball color = orange] (0,0) circle (0.2cm);
+\end{scope}
+
+\fill[black] (S) circle (1pt);
+\node at (S)[below left=5mm]{$S$};
+
+\draw[->,>=latex,red, thick] ($(Q)!0.05!(S)$) -- ($(S)!0.15!(Q)$) node[pos=0.6,right,black]{rayon d'ombre};
+\end{tikzpicture}

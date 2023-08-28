@@ -1,0 +1,42 @@
+% https://texample.net/tikz/examples/borromean-rings/
+\begin{tikzpicture}[scale=2]
+% drawing parameters
+\newcommand{\circdist}{1}  % distance from origin to center of circles
+\newcommand{\circrad}{7/4} % radius of the circles
+\newcommand{\circlethickness}{0.4cm} % uh, thickness of the circles
+
+% distance from the origin to the three "interior" intersections
+\pgfmathsetmacro{\intrad}{sqrt((\circrad)^2 - 3*(\circdist)^2/4) - \circdist/2}
+
+% distance from the origin to the three "exterior" intersections
+\pgfmathsetmacro{\extrad}{sqrt((\circrad)^2 - 3*(\circdist)^2/4) + \circdist/2}
+
+% so we can just specify an angle and get the correct color for the circle
+\colorlet{180}{blue}
+\colorlet{60}{red}
+\colorlet{300}{green!70!black}
+
+% draws one of our circles
+\newcommand{\mycircle}[1]{%
+  \draw[very thick, double distance=\circlethickness, double=#1]
+  (#1:\circdist) circle (\circrad);}
+
+  % draw the circles
+  \foreach \angle in {180, 60, 300}
+  {
+    \mycircle{\angle}
+  }
+
+  % we need to re-do two of the intersections so that the rings
+  % interlock and aren't just piled on top of one another
+  \foreach \angle/\rad in {60/\intrad, 240/\extrad}
+  {
+    \begin{scope}
+      \clip (\angle:\rad) circle (5/4*\circlethickness);
+      %                          you may need to adjust the 5/4 above so
+      %                          the clipping area is big enough
+      \mycircle{300}
+      \mycircle{180}
+    \end{scope}
+  }
+\end{tikzpicture}

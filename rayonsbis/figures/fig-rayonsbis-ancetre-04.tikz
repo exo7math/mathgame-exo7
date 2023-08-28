@@ -1,0 +1,56 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\draw[thick,->,>=latex] (0,0) -- (5,0) node[above left]{$x$};  %x
+\draw[thick,->,>=latex] (0,0) -- (0,4) node[below right]{$y$};  %y
+
+\draw[gray, thick, fill=white] (0,0) -- ++(4,0) -- ++(0,3) -- ++(-4,0) -- cycle;
+
+% Texte
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1.5pt,scale=0.9] (char) {\bf #1};}}
+
+\fill[blue] (1.5,1.1) --  ++ (1.5,0,0) -- ++(0,1.5,0) -- ++(-1.5,0,0) -- cycle;
+%\fill[green!70!black] (1.5,0.25) -- ++ (60:2) -- ++(-60:2) -- cycle;
+%\fill[red] (1.25,1.25) circle (1);
+
+\node at (2,-1) {\bf Étape \circled{1}};
+\end{scope}
+
+
+\begin{scope}[xshift=7cm]
+\draw[thick,->,>=latex] (0,0) -- (5,0) node[above left]{$x$};  %x
+\draw[thick,->,>=latex] (0,0) -- (0,4) node[below right]{$y$};  %y
+
+\draw[gray, thick, fill=white] (0,0) -- ++(4,0) -- ++(0,3) -- ++(-4,0) -- cycle;
+
+% Texte
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1.5pt,scale=0.9] (char) {\bf #1};}}
+
+\fill[blue] (1.5,1.1) --  ++ (1.5,0,0) -- ++(0,1.5,0) -- ++(-1.5,0,0) -- cycle;
+\fill[green!70!black] (1.5,0.25) -- ++ (60:2) -- ++(-60:2) -- cycle;
+%\fill[red] (1.25,1.25) circle (1);
+
+\node at (2,-1) {\bf Étape \circled{2}};
+\end{scope}
+
+
+\begin{scope}[xshift=14cm]
+\draw[thick,->,>=latex] (0,0) -- (5,0) node[above left]{$x$};  %x
+\draw[thick,->,>=latex] (0,0) -- (0,4) node[below right]{$y$};  %y
+
+\draw[gray, thick, fill=white] (0,0) -- ++(4,0) -- ++(0,3) -- ++(-4,0) -- cycle;
+
+% Texte
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1.5pt,scale=0.9] (char) {\small \bf #1};}}
+
+\fill[blue] (1.5,1.1) --  ++ (1.5,0,0) -- ++(0,1.5,0) -- ++(-1.5,0,0) -- cycle;
+\fill[green!70!black] (1.5,0.25) -- ++ (60:2) -- ++(-60:2) -- cycle;
+\fill[red] (1.25,1.25) circle (1);
+
+\node[] at (2,-1) {\bf Étape \circled{3}};
+\end{scope}
+
+\end{tikzpicture}

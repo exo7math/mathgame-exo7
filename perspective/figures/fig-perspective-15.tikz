@@ -1,0 +1,43 @@
+\begin{tikzpicture}[scale=2]
+
+
+% projection parallele 
+\def\myalpha{135}
+\def\mybeta{90}
+\def\kx{0.5}
+\def\ky{1}
+\def\kz{1}
+
+\begin{scope}[xshift=-3cm]
+\coordinate (ff1) at (90+\myalpha:\kx);
+\coordinate (ff2) at (90-\mybeta:\ky);
+\coordinate (ff3) at (90:\kz);
+
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff1);
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff2);
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff3);
+
+\draw[double, blue] (90:0.5) arc (90:90+\myalpha:0.5);
+\draw[double, blue] (90:0.45) arc (90:90-\mybeta:0.45);
+
+\node at (0,-0.6) {$\beta = \frac{\pi}{2}, k_y=k_z=1$};
+\node at (0,-1) {$\alpha = \frac{3\pi}{4}, k_x=\frac12$};
+\end{scope}
+
+\coordinate (ff1) at (90+\myalpha:\kx);
+\coordinate (ff2) at (90-\mybeta:\ky);
+\coordinate (ff3) at (90:\kz);
+
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff1);
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff2);
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff3);
+
+\draw (0,0) -- ++(ff1) -- ++(ff2) -- (ff2) -- cycle;
+\draw (ff3) -- ++(ff1) -- ++(ff2) -- ($(ff2)+(ff3)$) -- cycle;
+\draw (0,0) -- ++(ff3);
+\draw (ff1) -- ++(ff3);
+\draw (ff2) -- ++(ff3);
+\draw ($(ff1)+(ff2)$) -- ++(ff3);
+
+
+\end{tikzpicture}

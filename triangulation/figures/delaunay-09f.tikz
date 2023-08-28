@@ -1,0 +1,55 @@
+\begin{tikzpicture}[scale=1]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (165:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+\coordinate (E) at (5.5,2.5);
+\coordinate (F) at (6,-3);
+
+\draw[gray!50, very thick] (0,0) circle (3);
+
+% Second cercle à la main
+\coordinate (O2) at (2.48,-0.19);
+\def\r{2.64}
+\draw[gray!50, very thick] (O2) circle (\r);
+
+% Troisieme cercle à la main
+\coordinate (O3) at (3.75,1.55);
+\def\rr{1.95}
+\draw[gray!50, very thick] (O3) circle (\rr);
+
+% Quatrieme cercle à la main
+\coordinate (O4) at (3.82,-2.10);
+\def\rr{2.39}
+\draw[gray!50, very thick] (O4) circle (\rr);
+
+% Troisieme cercle à la main
+\begin{scope}
+\clip (0,-3.5) rectangle (7,3.5);
+\coordinate (O5) at (10.3,0.15);
+\def\rr{5.3}
+\draw[gray!50, very thick] (O5) circle (\rr);
+\end{scope}
+
+\draw[red, ultra thick] (A) -- (B) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (D) -- (C);
+\draw[red, ultra thick] (D) -- (E) -- (C);
+\draw[red, ultra thick] (B) -- (F) -- (D);
+\draw[red, ultra thick] (F) -- (E);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+\node at (E) [right] {$E$};
+\node at (F) [right] {$F$};
+
+\foreach \P in {A,B,C,D,E,F} {
+  \fill[black!70] (\P) circle (3pt);
+}
+
+\node at (2.5,-5) {\bf Cercles circonscrits};
+
+\end{tikzpicture}

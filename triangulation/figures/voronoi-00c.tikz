@@ -1,0 +1,78 @@
+﻿\begin{tikzpicture}
+
+\tikzstyle{line} = [draw,  thick]
+\tikzstyle{point} = [black]
+
+\coordinate (A) at (1,4);
+\coordinate (B) at (1,1);
+\coordinate (C) at (4,3.5);
+\coordinate (D) at (2,3);
+
+
+% \draw[line,black!30] (A)--(B)--(C)--(D)--(A)--(C);
+% \draw[line,black!30] (B)--(D);
+
+\foreach \point/\position in {A/above,B/below,C/below,D/below right}{
+  \fill[point] (\point) circle (2pt); % node[\position]{$\point$};
+}
+
+
+
+\coordinate (O) at (0.42,2.5);
+%\draw[line,gray] (O) circle (1.62);
+% 
+% \draw ($(A)!0.5!(B)$) --(O)-- ([turn]0:1cm);
+% \draw ($(A)!0.5!(D)$) --(O)-- ([turn]0:1cm);
+% \draw ($(B)!0.5!(D)$) -- (O)--([turn]0:1cm);
+
+\coordinate (OO) at (2.65,4.65);
+%\draw[line,gray] (OO) circle (1.75);
+
+% \draw ($(A)!0.5!(C)$) --(OO)-- ([turn]0:1cm);
+% \draw ($(A)!0.5!(D)$) --(OO)-- ([turn]0:1cm);
+% \draw ($(C)!0.5!(D)$) --(OO)-- ([turn]0:1cm);
+
+
+\coordinate (OOO) at (3.45,1.1);
+%\draw[line,gray] (OOO) circle (2.4);
+% 
+% \draw ($(B)!0.5!(C)$)-- (OOO) -- ([turn]0:1cm);
+% \draw ($(C)!0.5!(D)$)--(OOO) -- ([turn]0:1cm);
+% \draw ($(B)!0.5!(D)$)--(OOO) -- ([turn]0:1cm);
+
+
+%\coordinate (OOOO) at (2.3,2.45);
+% \draw[line,gray] (OOOO) circle (1.95);
+% 
+% \draw (OOOO)--($(A)!0.5!(B)$) -- ([turn]0:1cm);
+% \draw (OOOO)--($(A)!0.5!(C)$) -- ([turn]0:1cm);
+% \draw (OOOO)--($(B)!0.5!(C)$) -- ([turn]0:1cm);
+
+
+
+% \foreach \point in {O,OO,OOO}{
+%   \fill[point,blue] (\point) circle (2pt); % node{$\point$};
+% }
+
+\begin{scope}
+\clip (-1,0) rectangle ++(7,6);
+
+
+
+% Voronoi cells
+\fill[blue!50,opacity=0.5] (O)--(OO)--(OOO)--cycle;
+\fill[green!50,opacity=0.5] (O)--(OO)--++(80:2)--(-3,6)--($(O)+(-2,0)$)--cycle;
+\fill[orange!50,opacity=0.5] (O)--(OOO)--++(-50:2)--(-3,-2)--($(O)+(-2,0)$)--cycle;
+\fill[pink!50,opacity=0.5] (OO)--(OOO)--++(-50:4)--(8,7)--($(OO)+(80:2)$)--cycle;
+
+% Voronoi edges
+\draw[ultra thick, green!60!black] (O)--(OO)--(OOO)--cycle;
+\draw[ultra thick, green!60!black] (O)--++(-2,0);
+\draw[ultra thick, green!60!black] (OO)--++(80:2);
+\draw[ultra thick, green!60!black] (OOO)--++(-50:2);
+
+\end{scope}
+
+\draw (-1,0) rectangle ++(7,6);
+\node at (2.5,-0.5) {(e) Les cellules de Vorono\"\i.};
+\end{tikzpicture}

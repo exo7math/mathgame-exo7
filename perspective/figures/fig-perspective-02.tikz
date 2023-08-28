@@ -1,0 +1,69 @@
+﻿% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{65}{120}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (6.8,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,7,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,6) node[right]{$z$};
+
+% plan de projection (y=0)
+\tikzstyle{myplane}=[draw=blue, thick, fill=red!10, opacity=0.5]
+\draw[myplane] (0,0,0) -- ++(0,6,0) -- ++(0,0,5) -- ++(0,-6,0) -- cycle;
+\node[right] at (0,6,1.5) {plan $\mathcal{P} : (x=0)$};
+
+% projection du cube (calculs via python)
+
+ \coordinate (Q1) at (0 ,  2+0.9332608341504459, -1+3.5706740819423732);
+ \coordinate (Q2) at (0 ,  2+1.4332608341504458, -1+3.5706740819423732);
+ \coordinate (Q3) at (0 , 2+2.213522761772847, -1+4.004557821059931);
+ \coordinate (Q4) at (0 ,  2+1.7135227617728468, -1+4.004557821059931);
+ \coordinate (Q5) at (0 ,  2+0.5575064937856606, -1+4.471642949844792);
+ \coordinate (Q6) at (0 ,  2+1.0575064937856606, -1+4.471642949844792);
+ \coordinate (Q7) at (0 , 2+1.8377684214080614, -1+4.90552668896235);
+ \coordinate (Q8) at (0 , 2+1.3377684214080616, -1+4.90552668896235);
+
+
+\tikzstyle{mycube}=[draw=blue, thick, fill=red!50, opacity=0.5]
+\draw[mycube] (Q1) -- (Q2) -- (Q3) --(Q4) -- cycle;
+\draw[mycube] (Q5) -- (Q6) -- (Q7) --(Q8) -- cycle;
+\draw[mycube] (Q1) -- (Q5) -- (Q6) --(Q2) -- cycle;
+\draw[mycube] (Q2) -- (Q6) -- (Q7) --(Q3) -- cycle;
+\draw[mycube] (Q3) -- (Q7) -- (Q8) --(Q4) -- cycle;
+\draw[mycube] (Q4) -- (Q8) -- (Q5) --(Q1) -- cycle;
+
+
+% cube
+ \coordinate (P1) at (4+0.6158821445583569, 2+0.9332608341504459, -1+3.5706740819423732);
+ \coordinate (P2) at (4+1.4819075483427955, 2+1.4332608341504458, -1+3.5706740819423732);
+ \coordinate (P3) at (4+1.031423114391586, 2+2.213522761772847, -1+4.004557821059931);
+ \coordinate (P4) at (4+0.16539771060714736, 2+1.7135227617728468, -1+4.004557821059931);
+ \coordinate (P5) at (4+0.8328240141171358, 2+0.5575064937856606, -1+4.471642949844792);
+ \coordinate (P6) at (4+1.6988494179015745, 2+1.0575064937856606, -1+4.471642949844792);
+ \coordinate (P7) at (4+1.248364983950365, 2+1.8377684214080614, -1+4.90552668896235);
+ \coordinate (P8) at (4+0.3823395801659264, 2+1.3377684214080616, -1+4.90552668896235);
+
+
+
+\tikzstyle{mycube}=[draw=blue, thick, fill=blue!50, opacity=0.5]
+\draw[mycube] (P1) -- (P2) -- (P3) --(P4) -- cycle;
+\draw[mycube] (P5) -- (P6) -- (P7) --(P8) -- cycle;
+\draw[mycube] (P1) -- (P5) -- (P6) --(P2) -- cycle;
+\draw[mycube] (P2) -- (P6) -- (P7) --(P3) -- cycle;
+\draw[mycube] (P3) -- (P7) -- (P8) --(P4) -- cycle;
+\draw[mycube] (P4) -- (P8) -- (P5) --(P1) -- cycle;
+
+
+
+% axes de la projection
+\foreach \i in {1,...,8}{
+  \draw (P\i) -- (Q\i);
+  \draw ($(P\i)!-0.5!(Q\i)$)-- (Q\i);
+}
+
+\node[red, scale=3] at (P3) {.};
+\node at (P3) [below right] {$P$};
+
+\node[red, scale=3] at (Q3) {.};
+\node at (Q3) [below right] {$P'$};
+
+\end{tikzpicture}

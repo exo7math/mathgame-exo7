@@ -1,0 +1,33 @@
+﻿\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+very thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% la courbe
+\path
+  (0,0) coordinate (O)
+  (30:3) coordinate (P)
+  (0:3) coordinate (A)
+;
+
+\draw[line,blue] (O) circle (3);
+\draw[gray] (O) -- (A);
+\draw[thick] (O) -- (P) node[midway,above] {$r$};
+
+\draw[double] (0:1) arc (0:30:1) node[midway,right]{$\theta$};
+
+\path
+  (O) [dot] node[left]{$O$}
+  (P) [dot] node[right]{$P$}
+;
+
+\end{tikzpicture}

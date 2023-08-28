@@ -1,0 +1,64 @@
+\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+shorten <=-0mm, shorten >=-0mm
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=2]{.}
+}
+},
+perp/.style = {draw,angle eccentricity=.5, angle radius=2mm},
+}
+
+% le plan
+\draw[gray]
+  (0,0) coordinate (P1)
+  -- ++(0,3) coordinate (P2)
+  -- ++(4,-1) coordinate (P3)
+  -- ++(0,-4) coordinate (P4)
+  -- cycle
+  (P3) node[below left]{$\mathcal{P}$}
+;
+%les points A,B,C
+\path
+  (1.5,.4) coordinate[label={center,scale=2:.}] (A)
+  +(.2,1.4) coordinate[label={center,scale=2:.}] (B)
+  +(1.5,.5) coordinate[label={center,scale=2:.}] (C)
+;
+\draw
+  (B) edge[very thin, dashed] (C)
+  (A) edge[vector] (B)
+  (A) edge[vector] (C)
+;
+% le vecteur normal
+\path
+  (A) coordinate (N)
+  +(-1,-.25) coordinate (Na)
+  (B) coordinate (Nn)
+  (N) edge[-latex] node[above, pos=.55]{$\vec{n}$} (Na)
+  pic[perp,gray]{right angle=Nn--N--Na}
+;
+% le rayon
+\path
+  (-3,1) coordinate (S)
+  (2,1) coordinate (P)
+  ($(S)!1cm!(P)$) coordinate (v)
+;
+\draw
+  (S) edge[line, dashed] (P)
+;
+\draw
+  (S) edge[vector] node[above, sloped]{$\vec{v}$} (v)
+;
+\path
+  (S) [dot] node[below]{$S$}
+  (P) [dot] node[above]{$P$}
+  (A) [dot] node[below]{$A$}
+  (B) [dot] node[above left]{$C$}
+  (C) [dot] node[below right]{$B$}
+;
+\end{tikzpicture}

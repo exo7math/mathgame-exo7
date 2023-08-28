@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{skak}
+\usepackage{chessboard}
+
+\begin{document}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+	\hline
+	\Large\symking  & \Large\symqueen & \Large\symrook & \Large\symbishop & \Large\symknight & \Large\sympawn \\ \hline
+    roi       & reine     & tour     & fou        & cavalier   & pion     \\ \hline
+	$\infty$ & 10        & 5        & 3          & 3          & 3        \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{center}
+	\setchessboard{showmover=false, label=false}
+	\newgame
+	\chessboard	
+\end{center}
+
+	
+\begin{center}
+  \def\mylist{Ke1, qe2, kf3}
+  \setchessboard{setpieces=\mylist, showmover=false, label=false}
+  \chessboard	
+\end{center}
+
+
+\begin{center}
+	\def\mylist{Kg1, Rc1, Qd2, Pa4, Pc7, kb7, qg3, rf5, pg2, pa7}
+	\setchessboard{setpieces=\mylist, showmover=false, label=false}
+	\chessboard	
+\end{center}
+
+
+\begin{center}
+	\def\mylist{ne4}
+	\setchessboard{setpieces=\mylist, showmover=false, label=false, pgfstyle=border, backregions={\board,d4-e5}}
+	\chessboard	
+\end{center}
+
+\begin{center}
+	\def\mylist{nh8}
+	\setchessboard{setpieces=\mylist, showmover=false, label=false, pgfstyle=border,markfields={a1, h1, a8, h8}}
+	\chessboard	
+\end{center}
+
+%\begin{center}	
+%	\newgame
+%    \notationoff		
+%		\chessboard[setfen=8/8/8/3Q4/8/8/8/8 w - - 0 0,
+%		pgfstyle=border,markfields={d4,d6},
+%		color=blue!50,
+%		colorbackfield=c5,
+%		pgfstyle=color,
+%		opacity=0.5,
+%		color=red,
+%		markfield={d5}] 
+%\end{center}
+
+
+\end{document}
+
+
+\end{document}

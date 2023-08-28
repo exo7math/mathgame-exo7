@@ -1,0 +1,17 @@
+﻿
+\begin{tikzpicture}[scale=1]
+
+\foreach \a in {0,30,...,360}{
+  \draw[thick,->,>=latex, orange] (0,0) -- (\a:2);
+}
+
+
+\coordinate (P) at (-140:5);
+\draw[blue] (P) -- (0,0);
+\draw[->,>=latex,very thick,blue] (P) -- ++(40:1) node[midway, above left]{$\vec \ell_P$};
+\node[scale=4,blue] at (P){.};
+\node[below right, blue] at (P){$P$};
+
+\node[fill=white, circle,text=orange] at (0,0) {$S$};
+
+\end{tikzpicture}

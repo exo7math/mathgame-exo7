@@ -1,0 +1,39 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Ampoule
+\begin{scope}[shift={(8,-2)},scale=2]
+    \foreach \a in {60,45,...,-300}{
+      \draw[<-,>=latex,orange] (\a:1.1) -- (\a:1.5);
+    }
+\end{scope}
+
+% Tonneau
+\begin{scope}[shift={(8,-1)},scale=0.5]
+  \draw[thick] (0,0) ellipse (2 and 1);
+  \draw[thick] (-2,0.1) to[bend right=15] ++(0,-4.1);
+  \draw[thick] (2,0.1) to[bend left=15] ++(0,-4.1);
+  \draw[thick] (2,-4) arc (0:-180:2 and 1);
+  \draw[gray,dashed] (2,-4) arc (0:180:2 and 1);
+  \coordinate (P) at (-1,-2);
+\end{scope}
+
+
+
+% Oeil
+% eye from Izaak Neutelings https://tikz.net/hyperbola/
+\def\le{0.8}  % eye size eye
+\def\ange{25} % eye opening angle
+\def\lb{1.2}  % outgoing beam length
+\def\ang{210} % outgoing beam scattering
+\begin{scope}[shift={(5.5,-3.75)},scale=2,shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+  \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+  \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+  %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+  \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+  \coordinate (O) at (0,0);
+\end{scope}
+
+%\fill[blue] (P) circle(2pt);
+
+\node at (6,-7) {\bf Lumière ambiante};
+\end{tikzpicture}

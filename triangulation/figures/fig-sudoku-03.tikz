@@ -1,0 +1,48 @@
+\begin{tikzpicture}[scale=1]
+
+%\draw[very thick, gray] (0,0) grid (3,3);
+
+\fill[black!5] (-0.3,-0.3) rectangle ++ (1.6,1.6);
+\fill[black!5] (2-0.3,-0.3) rectangle ++ (1.6,1.6);
+\fill[black!5] (-0.3,2-0.3) rectangle ++ (1.6,1.6);
+\fill[black!5] (2-0.3,2-0.3) rectangle ++ (1.6,1.6);
+
+\foreach \i in {0,...,3} {
+  \foreach \j in {0,...,3} {
+  \coordinate (P\i\j) at (\i,\j);
+%  \draw[fill=white, draw=gray, very thick] (P\i\j) circle (2mm);
+  }
+}
+
+\draw[very thick, gray]  (P03) -- (P13);
+\draw[very thick, gray]  (P03) -- (P12);
+\draw[very thick, gray]  (P03) -- (P02);
+
+\draw[very thick, gray]  (P03) to[bend right] (P01);
+\draw[very thick, gray]  (P03) to[bend right] (P00);
+
+\draw[very thick, gray]  (P03) to[bend left] (P23);
+\draw[very thick, gray]  (P03) to[bend left] (P33);
+
+\foreach \i in {0,...,3} {
+  \foreach \j in {0,...,3} {
+%  \coordinate (P\i\j) at (\i,\j);
+  \draw[fill=white, draw=gray, very thick] (P\i\j) circle (2mm);
+  }
+}
+
+
+\node[red] at (0,3) {\bf 3};
+\node[blue] at (1,3) {\bf 4};
+\node[green!70!black] at (2,3) {\bf 2};
+
+\node[magenta] at (1,2) {\bf 1};
+
+\node[magenta] at (2,1) {\bf 1};
+
+\node[green!70!black] at (1,0) {\bf 2};
+\node[blue] at (2,0) {\bf 4};
+\node[red] at (3,0) {\bf 3};
+
+
+\end{tikzpicture}

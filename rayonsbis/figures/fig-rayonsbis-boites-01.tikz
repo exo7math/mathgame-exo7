@@ -1,0 +1,15 @@
+﻿\begin{tikzpicture}[scale=0.7]
+
+\draw[thick,->,>=latex] (0,0) -- (8,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0) -- (0,5) node[left]{$y$};
+
+\tikzstyle{mycube}=[draw=blue, very thick, fill=blue!50, opacity=0.5]
+
+\draw[mycube] (2,1) rectangle ++(4,2);
+\coordinate (A) at (2,1);
+\coordinate (B) at (6,3);
+
+\fill (A) circle (2pt) node[below left]{$A$};
+\fill (B) circle (2pt) node[above right]{$B$};
+
+\end{tikzpicture}

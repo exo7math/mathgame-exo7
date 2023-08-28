@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\begin{scope}
+  \draw (0,0)  rectangle (10,6);
+  \node at (5,-1) {\bf Écran avant};
+\end{scope}
+
+\begin{scope}[xshift=11cm,yshift=5cm]
+  \draw (0,0)  rectangle (10,6);
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+
+  \node at (5,-1) {\bf Arrière-plan};
+\end{scope}
+
+
+\begin{scope}[xshift=24cm]
+  \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+  \draw (0,0)  rectangle (10,6);
+
+  \node at (5,-1) {\bf Écran après};
+\end{scope}
+
+\draw[->,>=latex,red!20,line width=4 pt] (10.5,7)  to[bend right=25] (5,3);
+\draw[->,>=latex,blue!20,line width=4 pt] (14,2) -- ++(8,0);
+
+\node[right] at (0,10) {\bf (a) Copie de l'arrière-plan};
+
+\end{tikzpicture}

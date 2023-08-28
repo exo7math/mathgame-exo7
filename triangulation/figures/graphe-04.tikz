@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=2]
+\usetikzlibrary{decorations.markings}
+
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.5);
+\coordinate (P3) at (2.5,-0.8);
+\coordinate (P4) at (2.2,0.8);
+\coordinate (P5) at (3.3,0.3);
+\coordinate (P6) at (4.5,0.7);
+\coordinate (P7) at (0.6,-0.3);
+\coordinate (P8) at (1.5,-0.7);
+
+\draw[ultra thick, black!50]
+  (P1) -- (P2) -- (P3) -- (P5) -- (P6) 
+  (P2) -- (P7) -- (P8)
+  (P5) -- (P4)
+
+;  
+
+\foreach \i in {1,...,8}{
+  \path (P\i) node[scale=5,black!70]{.};
+}
+
+\end{tikzpicture}

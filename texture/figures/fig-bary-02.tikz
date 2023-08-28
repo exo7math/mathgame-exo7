@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}[scale=2]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.5);
+\coordinate (C) at (1.5,3);
+\draw[red, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+\node at (A) [below left] {$A$};
+\node at (B) [right] {$B$};
+\node at (C) [above] {$C$};
+
+\def\u{0.3}
+\def\v{0.5}
+
+% coord bary 1-u-v, u, v
+% Attention ! pas d'espace dans les coordonnées 
+\coordinate (Q) at (barycentric cs:A=0.2,B=0.3,C=0.5);
+
+\coordinate (QC) at ($(A)!\v!(C)$);
+\coordinate (QB) at ($(A)!\u!(B)$);
+\draw[dashed] (QC) -- (Q) -- (QB);
+
+\draw[->,>=latex,gray,ultra thick,shorten >=1mm] (A) -- (Q);
+
+\node[scale=4,red] at (Q) {.};
+\node[above right,red] at (Q) {$P$};
+
+\draw[->,>=latex,blue,ultra thick] (A) -- (QB) node[pos=0.7,below]{$u\vec{AB}$};
+\draw[->,>=latex,blue,ultra thick] (A) -- (QC) node[pos=0.7,left]{$v\vec{AC}$};
+\end{tikzpicture}

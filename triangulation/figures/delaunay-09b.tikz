@@ -1,0 +1,26 @@
+\begin{tikzpicture}[scale=1]
+
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (165:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+\coordinate (E) at (5.5,2.5);
+\coordinate (F) at (6,-3);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+\node at (E) [right] {$E$};
+\node at (F) [right] {$F$};
+
+\foreach \P in {A,B,C,D,E,F} {
+  \fill[black!70] (\P) circle (3pt);
+}
+
+\draw (-3.7,-3.5) rectangle ++(11,7);
+
+\node at (2.5,-4) {\bf Un ensemble de points};
+\end{tikzpicture}

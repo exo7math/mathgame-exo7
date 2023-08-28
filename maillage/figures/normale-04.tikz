@@ -1,0 +1,93 @@
+\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+
+\begin{scope}[xshift=0cm]
+\path
+  (-2,-1) coordinate (P0)
+  (0,0) coordinate (P1)
+  (2,0) coordinate (P2)
+  (4,-0.5) coordinate (P3)
+;
+
+\draw[red, line]  (P0)  -- (P1) -- (P2) -- (P3);
+
+ \draw[vector,thin, brown] ($(P0)!0.5!(P1)$) -- ++ (115:1) node[left]{$\vec{n_1}$};
+ \draw[vector,thin, brown] ($(P1)!0.5!(P2)$) -- ++ (90:1) node[left]{$\vec{n_2}$};
+ \draw[vector,thin, brown] ($(P2)!0.5!(P3)$) -- ++ (75:1) node[left]{$\vec{n_3}$};
+
+\path
+  (P0) [dot] node[below]{}
+  (P1) [dot] node[below]{$A$}
+  (P2) [dot] node[below]{$B$}
+  (P3) [dot] node[below]{}
+;
+\end{scope}
+
+
+
+\begin{scope}[xshift=8cm]
+\path
+  (-2,-1) coordinate (P0)
+  (0,0) coordinate (P1)
+  (2,0) coordinate (P2)
+  (4,-0.5) coordinate (P3)
+;
+
+\draw[red, line]  (P0)  -- (P1) -- (P2) -- (P3);
+
+ \draw[vector,thin, brown] (P1) -- ++ ({0.5*(90+115)}:1) node[left]{$\vec{n_A}$};
+ \draw[vector,thin, brown] (P2) -- ++ ({0.5*(90+75)}:1) node[right]{$\vec{n_B}$};
+
+\path
+  (P0) [dot] node[below]{}
+  (P1) [dot] node[below]{$A$}
+  (P2) [dot] node[below]{$B$}
+  (P3) [dot] node[below]{}
+;
+\end{scope}
+
+
+\begin{scope}[xshift=4cm, yshift=-3cm]
+\path
+  (-2,-1) coordinate (P0)
+  (0,0) coordinate (P1)
+  (2,0) coordinate (P2)
+  (4,-0.5) coordinate (P3)
+;
+
+\draw[red, line]  (P0)  -- (P1) -- (P2) -- (P3);
+
+\foreach \t in {0,0.04,...,1.01}{
+    \draw[vector,thin, brown] (2*\t,0) -- ++ ({102.5*(1-\t)+82.5*\t}:1);
+}
+\foreach \t in {0,0.04,...,1.01}{
+    \draw[vector,thin, brown!50] (-2*\t,-\t) -- ++ ({102.5*(1-\t)+140*\t}:1);
+}
+\foreach \t in {0,0.04,...,1.01}{
+    \draw[vector,thin, brown!50] (2+2*\t,-0.5*\t) -- ++ ({82.5*(1-\t)+50*\t}:1);
+}
+
+
+\path
+  (P0) [dot] node[below]{}
+  (P1) [dot] node[below]{$A$}
+  (P2) [dot] node[below]{$B$}
+  (P3) [dot] node[below]{}
+;
+\end{scope}
+
+
+
+\end{tikzpicture}

@@ -1,0 +1,56 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\coordinate (O) at (0,0);
+\coordinate (A) at (30:3);
+\coordinate (B) at (100:3);
+\coordinate (C) at (270:3);
+\coordinate (P) at (220:2);
+
+\draw[blue, very thick] (0,0) circle (3);
+
+\draw[red, ultra thick] (A) -- (C) -- (B) --cycle;
+
+%\node at (O) [below left] {$O$};
+\node at (A) [above right] {$A$};
+\node at (B) [above left] {$B$};
+\node at (C) [below] {$C$};
+\node at (P) [above] {$P$};
+
+\foreach \P in {A,B,C,P} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\draw[->,>=latex,gray!50,line width=4pt] (0:4) arc (0:60:4);
+
+\node at (0,-4.5) {\bf Triangle direct $ABC$};
+\end{scope}
+
+
+\begin{scope}[xshift=10cm]
+\coordinate (O) at (0,0);
+\coordinate (A) at (60:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (210:3);
+\coordinate (P) at (160:2);
+
+\draw[blue, very thick] (0,0) circle (3);
+
+\draw[red, ultra thick] (A) -- (C) -- (B) --cycle;
+
+%\node at (O) [below left] {$O$};
+\node at (A) [above right] {$A$};
+\node at (B) [below right] {$B$};
+\node at (C) [below left] {$C$};
+\node at (P) [above] {$P$};
+
+\foreach \P in {A,B,C,P} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\draw[<-,>=latex,gray!50,line width=4pt] (0:4) arc (0:60:4);
+
+\node at (0,-4.5) {\bf Triangle indirect $ABC$};
+\end{scope}
+
+\end{tikzpicture}

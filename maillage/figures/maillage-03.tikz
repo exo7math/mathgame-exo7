@@ -1,0 +1,35 @@
+\begin{tikzpicture}[scale=2]
+
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.3);
+\coordinate (P3) at (0.9,-1);
+\coordinate (P4) at (2.2,-0.9);
+\coordinate (P5) at (2.4,0.2);
+
+
+\draw[ultra thick, black!50]
+ (P2) to[bend right=10] (P1) to[bend right=10] (P3)
+  (P2) to[bend right=10] (P3)  to[bend right=10](P4) to[bend right=10] (P5) to[bend right=10] (P2)
+;  
+\foreach \i in {1,...,5}{
+  \path (P\i) node[scale=3,black!70]{.};
+t%  \path (P\i) node[below,black!70]{$s_\i$};
+}
+\node at (P1) [left,black!70]{$s_1$};
+\node at (P2) [above,black!70]{$s_2$};
+\node at (P3) [below,black!70]{$s_3$};
+\node at (P4) [below right,black!70]{$s_4$};
+\node at (P5) [above,black!70]{$s_5$};
+
+\node at ($(P1)!0.5!(P2)$) [above=3pt,black!70]{$a_1$};
+\node at ($(P1)!0.5!(P3)$) [below left=3pt,black!70]{$a_2$};
+\node at ($(P2)!0.5!(P3)$) [right=-2pt,black!70]{$a_3$};
+\node at ($(P3)!0.5!(P4)$) [below=4pt,black!70]{$a_4$};
+\node at ($(P4)!0.5!(P5)$) [right=3pt,black!70]{$a_5$};
+\node at ($(P5)!0.5!(P2)$) [above=3pt,black!70]{$a_6$};
+
+\node at (0.75,-0.2) [left,black!70]{$f_1$};
+\node at (1.8,-0.3) [left,black!70]{$f_2$};
+
+
+\end{tikzpicture}

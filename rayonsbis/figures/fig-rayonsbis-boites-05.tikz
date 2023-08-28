@@ -1,0 +1,45 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Slab
+\begin{scope}[yshift=-0.5cm]
+
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1,3);
+
+\fill[red!10] (P1) -- ($(P1)+(2,0)$) -- ($(P2)+(2,0)$) -- (P2) -- cycle;
+
+\draw[red,very thick] (P1) -- (P2);
+\draw[red,very thick] ($(P1)+(2,0)$) -- ($(P2)+(2,0)$);
+
+\node at (1,-0.5) {\bf Une tranche};
+\end{scope}
+
+
+
+\begin{scope}[xshift=6cm]
+
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1,3);
+
+\coordinate (PP1) at ($(P1)+(2,0)$);
+\coordinate (PP2) at ($(P2)+(2,0)$);
+
+\coordinate (A) at ($(P1)!0.1!(P2)$);
+\coordinate (B) at ($(PP1)!0.3!(PP2)$);
+\coordinate (AA) at ($(P1)!0.6!(P2)$);
+\coordinate (BB) at ($(PP1)!0.8!(PP2)$);
+
+\draw[gray, thick,shorten <=-0.5cm, shorten >=0.5cm] (P1) -- (P2);
+\draw[gray, thick,shorten <=-0.2cm, shorten >=-0cm] (PP1) -- (PP2);
+
+\draw[gray, thick,shorten <=-1cm, shorten >=-1cm] (A) -- (B);
+\draw[gray, thick,shorten <=-1cm, shorten >=-1cm] (AA) -- (BB);
+
+\draw[blue, very thick,fill=blue!10] (A) -- (B) -- (BB) -- (AA) -- cycle;
+
+
+
+\node[text width=5cm, align=center] at (1,-1) {\bf Intersection \\ de deux tranches};
+\end{scope}
+
+\end{tikzpicture}

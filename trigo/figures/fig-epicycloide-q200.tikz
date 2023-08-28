@@ -1,0 +1,23 @@
+﻿% https://tex.stackexchange.com/questions/584931/
+% Answer by 'gernot'
+\begin{tikzpicture}[scale=1.2]
+
+\newcommand*{\angA}{30}
+\newcommand*{\rA}{2.0}
+\newcommand*{\rB}{1.0}
+
+% define the equations for P(x,y)
+\pgfmathsetmacro{\epicycloidX}%
+{((\rA+\rB)*cos(\angA))-(\rB*cos((\rA+\rB)/(\rB)*\angA))}
+\pgfmathsetmacro{\epicycloidY}%
+{((\rA+\rB)*sin(\angA))-(\rB*sin((\rA+\rB)/(\rB)*\angA))}
+              % show the angle phi
+
+\draw[red,very thick,domain=0*pi:2*pi,smooth, samples=100]
+plot[smooth]
+(
+{((\rA+\rB)*cos(\x r))-(\rB*cos(\x*((\rA+\rB)/\rB) r))},
+{((\rA+\rB)*sin(\x r))-(\rB*sin(\x*((\rA+\rB)/\rB) r))}
+);
+
+\end{tikzpicture}

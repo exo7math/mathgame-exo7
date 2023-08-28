@@ -1,0 +1,39 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\fill[black!50] (0,0) rectangle ++ (1,1);
+\fill[black!50] (1,1) rectangle ++ (1,1);
+\fill[black!50] (2,2) rectangle ++ (1,1);
+\fill[black!50] (3,3) rectangle ++ (1,1);
+\fill[black!50] (2,0) rectangle ++ (1,1);
+\fill[black!50] (3,1) rectangle ++ (1,1);
+\fill[black!50] (0,2) rectangle ++ (1,1);
+\fill[black!50] (1,3) rectangle ++ (1,1);
+
+\draw[black, thick] (0,0) grid ++(4,4);
+
+\coordinate (B1) at (0.5,0.5);
+\coordinate (B2) at (2.5,0.5);
+\coordinate (B3) at (0.5,2.5);
+\coordinate (B4) at (2.5,2.5);
+\end{scope}
+
+
+\begin{scope}[xshift=7cm, yshift=1cm]
+\fill[black!50] (0,0) rectangle ++ (2,2);
+\draw[black, thick] (0,0) grid ++(2,2);
+
+\coordinate (A1) at (0.5,0.5);
+\coordinate (A2) at (1.5,0.5);
+\coordinate (A3) at (0.5,1.5);
+\coordinate (A4) at (1.5,1.5);
+\end{scope}
+
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 1mm, shorten <=1mm] (B1) to[bend right] (A1);
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 1mm, shorten <=1mm] (B2) to[bend right=35] (A2);
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 1mm, shorten <=1mm] (B3) to[bend right] (A3);
+\draw[->,>=latex,ultra thick, blue!70,opacity=0.5, shorten >= 1mm, shorten <=1mm] (B4) to[bend right=35] (A4);
+
+
+
+\end{tikzpicture}

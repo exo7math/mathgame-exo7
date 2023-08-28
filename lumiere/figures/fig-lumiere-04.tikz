@@ -1,0 +1,49 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Ampoule
+\begin{scope}[shift={(0,-3)},scale=0.5]
+    \coordinate (S) at (0,0);
+
+    \foreach \a in {60,45,...,-240}{
+      \draw[orange] (\a:1.1) -- (\a:1.5);
+    }
+
+    \draw[thick, orange, fill=white] (110-360:1) arc (110-360:70:1);
+    \draw[thick, orange] (70:1) -- ++(0,1);
+    \draw[thick, orange] (110-360:1) -- ++(0,1);
+\end{scope}
+
+% Surface
+\begin{scope}[shift={(8,-2)},scale=2]
+\coordinate (P) at (0,0);
+\draw[blue, fill=blue!20] (-0.3,-0.3) -- ++(80:0.6) -- ++(0.6,0) -- ++(-100:0.6) -- +(-0.6,0) -- cycle;
+
+
+\end{scope}
+
+
+% Texte
+\node[blue, scale=3] at (S) {.};
+\node[below left] at (S) {$S$};
+\node[blue, scale=3] at (P) {.};
+\node[below right] at (P) {$P$};
+
+\draw[gray,thin] (P) -- (S);
+
+
+\draw[very thick,->,>=latex,red] (P) -- ($(S)!0.74!(P)$) node[midway,below]{$\vec \ell$};
+
+
+
+\tikzset{
+perp/.style = {draw,angle eccentricity=.5, angle radius=2mm,pic text=.},
+}
+\path
+  (P)
+  ++ (0,0) coordinate (N)
+  +(-2,.7) coordinate (Na)
+  +(0,.25) coordinate (Nn)
+  (N) edge[-latex] node[above, pos=.75]{$\vec{n}$} (Na)
+  pic[perp,gray]{right angle=Nn--N--Na}
+;
+\end{tikzpicture}

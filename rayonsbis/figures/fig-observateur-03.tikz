@@ -1,0 +1,31 @@
+\tdplotsetmaincoords{55}{135}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\coordinate (O) at (5,2,1.5);
+
+
+\tikzstyle{myplane}=[draw=gray, thick,  opacity=0.8]
+
+\coordinate (A) at (0,0,0);
+\coordinate (B) at (0,4,0);
+\coordinate (C) at (0,4,3);
+\coordinate (D) at (0,0,3);
+
+\coordinate (AA) at ($(A)!-1.5!(O)$);
+\coordinate (BB) at ($(B)!-1.5!(O)$);
+\coordinate (CC) at ($(C)!-1.5!(O)$);
+\coordinate (DD) at ($(D)!-1.5!(O)$);
+
+
+\draw[myplane, thick, dashed] (AA) -- (BB) -- (CC) -- (DD) -- cycle;
+
+\draw[thick,lightgray]  (A) -- (AA);
+
+\draw[myplane, fill=white, thick] (A) -- (B) -- (C) -- (D) -- cycle;
+
+\draw[thick, gray] (B) -- (BB);
+\draw[thick, gray] (C) -- (CC);
+\draw[thick, gray] (D) -- (DD);
+
+\node at (-8,0,-6) [below] {\emph{frustrum}};
+\end{tikzpicture}

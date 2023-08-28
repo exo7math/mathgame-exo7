@@ -1,0 +1,25 @@
+﻿\tdplotsetmaincoords{70}{105}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+\tdplotsetrotatedcoords{0}{10}{0}
+\begin{scope}[tdplot_rotated_coords]
+
+\draw[thick,->,>=latex] (0,0,0) -- (2.5,0,0); % node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,3,0); % node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,2.5); % node[right]{$z$};
+
+       \draw[->,>=latex,thick, red] (0,0,0)--(1,0,0) node[midway, below] {$\vec i$};
+       \draw[->,>=latex,thick, red] (0,0,0)--(0,1,0) node[below] {$\vec j$};
+       \draw[->,>=latex,thick, red] (0,0,0)--(0,0,1) node[midway, left] {$\vec k$};
+
+\draw[thick,->,>=latex] (0,0,0) -- (1,1,0) node[below]{$\vec u$};
+\draw[thick,->,>=latex] (0,0,0) -- (1,1,1) node[above]{$\vec v$};
+\draw[thick,->,>=latex] (0,0,0) -- (1,2,3) node[left]{$\vec w$};
+
+\draw[thin] (1,1,1) -- ++ (1,2,3);
+
+ \filldraw[thick,fill=red!50,opacity=0.25] (1,2,3) -- (2,3,3) -- (3,4,4) -- (2,3,4) -- cycle;  
+ \filldraw[thick,fill=red!50,opacity=0.25] (0,0,0) -- (1,1,0) -- (2,3,3) -- (1,2,3) -- cycle;  
+ \filldraw[thick,fill=red!50,opacity=0.25] (1,1,0) -- (2,3,3) -- (3,4,4) -- (2,2,1) -- cycle;  
+ \filldraw[thick,fill=red!50,opacity=0.5] (0,0,0) -- (1,1,0) -- (2,2,1) -- (1,1,1) -- cycle;  
+\end{scope}
+\end{tikzpicture}

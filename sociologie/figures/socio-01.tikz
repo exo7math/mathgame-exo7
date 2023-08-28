@@ -1,0 +1,19 @@
+﻿  \begin{tikzpicture}[scale=1.5]
+    % define points
+    \path
+      (0,0) coordinate(R)
+      +(-0.8,-1) coordinate(V1)
+      +(0.8,-1) coordinate(V2)
+    ;
+
+    % draw lines
+    \draw[thick]
+      (R) -- (V1) node[midway,left,scale=0.8]{accepte}
+      (R) -- (V2)node[midway,right,scale=0.8]{refuse}
+    ;
+
+    % draw points
+   \path (V1) node[scale=0.8,below]{$p\times S$};
+   \path (V2) node[scale=0.8,below]{$0$};
+
+\end{tikzpicture}

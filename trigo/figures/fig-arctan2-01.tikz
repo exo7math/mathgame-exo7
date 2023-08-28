@@ -1,0 +1,30 @@
+\begin{tikzpicture}[scale=4]
+
+	\draw[->,>=latex, black] (-0.3,0) -- (1.4,0); % node[above] {$x$};
+	\draw[->,>=latex, black] (0,-0.3) -- (0,0.8); % node[left] {$y$};
+
+        % draw the unit circle
+%        \draw[very thick] (0,0) circle(1);
+
+      \def\x{30};
+       \coordinate (M) at ({\x}:1);
+       \coordinate (Cos) at ({cos(\x)},0);
+       \coordinate (Sin) at (0,{sin(\x)},0);
+       \coordinate (Tan) at (1,{sin(\x)/cos(\x)});
+
+       \draw[blue, very thick] (M)--(Cos) node[midway,right]{$y$};
+       \draw[red, very thick] (0,0.005)--++(Cos)node[midway,below]{$x$};
+
+
+
+        \draw[very thick] (0,0)--(M);
+
+     \draw[very thick, ->,>=latex] (0.5,0) arc(0:{\x}:0.5) ;
+      \node[right] at ({\x/2}:0.5) {$\theta$};
+
+     \draw[->,>=latex,ultra thick, green!70!black] (0,-0.01)--++(0.3,0) node[midway,below, green!70!black] {$\vec i$};
+     \draw[->,>=latex,ultra thick, green!70!black] (0,0)--(0,0.3) node[midway,left, green!70!black] {$\vec j$};
+     
+      \fill (M) circle (0.02) node[above] {$M(x,y)$};
+      \fill (0,0) circle (0.02) node[below left] {$O$};        	    
+\end{tikzpicture}

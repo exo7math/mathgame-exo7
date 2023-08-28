@@ -1,0 +1,60 @@
+\tdplotsetmaincoords{55}{70}
+\begin{tikzpicture}[tdplot_main_coords,scale=1.1]
+
+\begin{scope}
+
+\filldraw[blue, very thick, fill=blue!10, opacity=1] (0,0,0) -- (2,0,0) -- (2,2,0) -- (0,2,0) -- cycle;
+
+\coordinate (P) at (1,1,0);
+\draw[->,>=latex,ultra thick,blue] (P) -- ++(0,0,2) node[left]{$\vec{n_P}$};
+\node[blue,scale=4] at (P) {.};
+\node at (P) [below] {$P$};
+
+\draw[->,>=latex, red, ultra thick] (P) -- ++ (0.1,0.2,2) node[right]{$\vec{n_Q}$};
+
+\node at (2.5,0.5,-1) {\bf \emph{Bump map}};
+\end{scope}
+
+\begin{scope}[xshift=4cm]
+
+\filldraw[blue, very thick, fill=blue!10, opacity=1] (0,0,0) -- (2,0,0) -- (2,2,0) -- (0,2,0) -- cycle;
+
+\coordinate (P) at (1,1,0);
+\draw[->,>=latex,ultra thick,blue] (P) -- ++(0,0,2) node[left]{$\vec{n_P}$};
+\node[blue,scale=4] at (P) {.};
+\node at (P) [below] {$P$};
+
+\coordinate (Q) at (1,1.5,2.2);
+\draw[->,>=latex, red, ultra thick] (P) -- (Q) node[right]{$\vec{n_P'}$};
+
+\draw[<->,>=latex, line width=2pt, green!70!black,opacity=0.3] (0,1.5,2.2) to[bend left=10] ++(2,0,0);
+\draw[<->,>=latex, line width=2pt, green!70!black,opacity=0.3] (1,0.5,2.2) to[bend left=10] ++(0,2,0);
+\draw[<->,>=latex, line width=2pt, green!70!black,opacity=0.3] (1,1.5,1.2) to[] ++(0,0,2);
+
+\node at (2.5,0.5,-1) {\bf \emph{Normal map}};
+\end{scope}
+
+\begin{scope}[xshift=8cm]
+
+\filldraw[blue, very thick, fill=blue!10, opacity=1] (0,0,0) -- (2,0,0) -- (2,2,0) -- (0,2,0) -- cycle;
+
+\coordinate (P) at (1,1,0);
+\draw[->,>=latex,ultra thick,blue] (P) -- ++(0,0,2) node[left,pos=0.2]{$\vec{n_P}$};
+\node[blue,scale=4] at (P) {.};
+\node at (P) [below] {$P$};
+
+\coordinate (Q) at (1,1.4,2);
+
+
+\draw[->,>=latex, red, ultra thick] (P) -- (Q) node[right, midway]{$\vec{n_P'}$};
+
+\filldraw[red, very thick, fill=red!10, opacity=0.7] (0.2,0.2,2) to[bend left=15] ++(2,0,0) to[bend left=15] ++(0,2,0) to [bend right=15] ++(-2,0,0) to[bend right=15] cycle;
+
+\node[red,scale=4] at (Q) {.};
+\node at (Q) [above right] {$Q$};
+
+\node at (2.5,0.5,-1) {\bf \emph{Displacement map}};
+\end{scope}
+
+
+\end{tikzpicture}

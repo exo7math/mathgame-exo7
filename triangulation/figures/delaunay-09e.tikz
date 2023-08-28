@@ -1,0 +1,40 @@
+\begin{tikzpicture}[scale=1]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (165:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+\coordinate (E) at (5.5,2.5);
+\coordinate (F) at (6,-3);
+
+% Cercle à la main
+% \coordinate (O) at (2.48,-0.19);
+% \def\r{2.64}
+% \draw[gray!50, very thick] (O) circle (\r);
+
+
+
+\draw[gray, ultra thick] (A) -- (B) -- (F) -- (E) -- (C) -- cycle;
+%\draw[dashed,gray!20, ultra thick] (A) -- (E);
+\draw[gray, ultra thick] (B) -- (C);
+\draw[dashed,gray!50, ultra thick] (B) -- (E);
+\draw[black, ultra thick] (D) -- (C);
+\draw[gray, ultra thick] (B) -- (D);
+\draw[gray, ultra thick] (E) -- (D);
+\draw[gray, ultra thick] (F) -- (D);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+\node at (E) [right] {$E$};
+\node at (F) [right] {$F$};
+
+\foreach \P in {A,B,C,D,E,F} {
+  \fill[black!70] (\P) circle (3pt);
+}
+
+\node at (2.5,-4) {\bf Basculement de $[BE]$ vers $[CD]$};
+
+\end{tikzpicture}

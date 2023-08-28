@@ -1,0 +1,44 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\foreach \i in {0,...,4} {
+  \coordinate (P\i) at (72*\i:1);
+}
+
+\foreach \i in {0,...,4} {
+  \foreach \j in {\i,...,4} {
+  \draw[very thick, black!50] (P\i) -- (P\j);
+  }
+}
+
+
+\foreach \i in {0,...,4}{
+  \draw[fill=white,draw=black,thick] (P\i) circle (0.1);
+}
+\end{scope}
+
+\begin{scope}[xshift=2.5cm,yshift=-0.5cm]
+\foreach \i in {0,1,2} {
+  \coordinate (P\i) at (\i,1);
+}
+
+\foreach \j in {0,1,2} {
+  \coordinate (Q\j) at (\j,0);
+}
+
+
+\foreach \i in {0,1,2} {
+  \foreach \j in {0,1,2} {
+  \draw[very thick, black!50] (P\i) -- (Q\j);
+  }
+}
+
+
+\foreach \i in {0,1,2}{
+  \draw[fill=white,draw=black,thick] (P\i) circle (0.1);
+}
+\foreach \j in {0,1,2}{
+  \draw[fill=white,draw=black,thick] (Q\j) circle (0.1);
+}
+\end{scope}
+\end{tikzpicture}

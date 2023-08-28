@@ -1,0 +1,35 @@
+\begin{tikzpicture}[scale=2]
+
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.2);
+\coordinate (P3) at (0.9,-1);
+\coordinate (P4) at (2.5,-0.8);
+\coordinate (P5) at (2.2,0.8);
+\coordinate (P6) at (3.3,0.3);
+\coordinate (P7) at (4.5,0.7);
+
+
+\draw[ultra thick, black!50]
+  (P1) -- (P2) -- (P3) -- (P4) -- (P5)
+  (P2) to[bend left] (P5)
+  (P2) to[bend right] (P5)
+  (P4) -- (P6) -- (P7)
+  (P5) -- (P6)
+;  
+\foreach \i in {1,...,7}{
+  \path (P\i) node[scale=5,black!70]{.};
+}
+
+% labels
+\path[-latex, shorten > = 3mm]
+  (-2.5,-0.25) node(S){sommets}
+  (S) edge[bend right] (P1)
+  (S) edge[bend right] (P3)
+;
+\path[-latex, shorten > = 2mm]
+  (4,-.5) node(E){arêtes}
+  % (E) edge[bend left] (E0-2)
+  (E) edge[bend left] ($(P3)!0.5!(P4)$)
+  (E) edge[bend left=2mm]  ($(P4)!0.5!(P6)$)
+;
+\end{tikzpicture}

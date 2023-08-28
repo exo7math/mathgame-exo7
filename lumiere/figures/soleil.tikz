@@ -1,0 +1,10 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}[scale=2]
+    \foreach \a in {0,15,...,360}{
+      \draw[orange] (\a:0.23) -- (\a:0.4);
+    }
+    \draw[orange, fill=white] (0,0) circle (0.2cm);
+\end{scope}
+
+\end{tikzpicture}

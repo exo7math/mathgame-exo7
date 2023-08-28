@@ -1,0 +1,6 @@
+﻿\begin{tikzpicture}
+   \draw[->,>=latex,thick, red] (0,0)--(30:2) node[above right] {$\vec u$};
+   \draw[->,>=latex,thick, red] (0,0)--(60:3) node[above right] {$\vec v$};
+   \draw[->, >=latex, thick, blue] (30:1.2) arc(30:60:1.2) node[blue,midway,above right] {$\theta$};
+   \fill[gray] (0,0) circle (1.5pt);
+\end{tikzpicture}

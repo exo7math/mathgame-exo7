@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture}[scale=2]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.25);
+\coordinate (C) at (2,2);
+%\draw[black, very thick] (A) -- (B) -- (C) -- cycle;
+\node at (A) [below left] {$A$};
+\node at (B) [right] {$B$};
+\node at (C) [above] {$C$};
+
+
+% coord bary 1-u-v, u, v
+% Attention ! pas d'espace dans les coordonnées 
+\coordinate (Q) at (barycentric cs:A=0.35,B=0.5,C=0.15);
+
+\filldraw[draw=gray,  thick,fill=blue!20] (A) -- (B) -- (Q) -- cycle;
+\filldraw[draw=gray,  thick,fill=red!20] (B) -- (C) -- (Q) -- cycle;
+\filldraw[draw=gray,  thick,fill=green!70!black!20] (C) -- (A) -- (Q) -- cycle;
+
+\node[scale=4,red] at (A) {.};
+\node[scale=4,green!70!black] at (B) {.};
+\node[scale=4,blue] at (C) {.};
+
+
+\node[scale=4,black] at (Q) {.};
+\node[above,black,scale=0.8] at (Q) {$P(\alpha:\beta:\gamma)$};
+
+\node[red,scale=1.2] at (barycentric cs:A=0.3,B=1.1,C=1) {$\alpha$};
+\node[green!70!black,scale=1.2]  at (barycentric cs:A=1.1,B=0.4,C=1) {$\beta$};
+\node[blue,scale=1.2]  at (barycentric cs:A=1,B=1.3,C=0.15) {$\gamma$};
+
+\end{tikzpicture}

@@ -1,0 +1,68 @@
+﻿\begin{tikzpicture}[scale=2]
+
+
+% projection parallele 
+\begin{scope}[scale=1]
+\def\myalpha{105}
+\def\mybeta{125}
+\def\kx{0.5}
+\def\ky{0.5}
+\def\kz{0.5}
+
+\coordinate (f1) at ({90+\myalpha}:1);
+\coordinate (f2) at (90-\mybeta:1);
+\coordinate (f3) at (90:1);
+
+\coordinate (ff1) at (90+\myalpha:\kx);
+\coordinate (ff2) at (90-\mybeta:\ky);
+\coordinate (ff3) at (90:\kz);
+
+\draw[red,  thick,->,>=latex] (0,0) -- (f1) node[below]{$\vec {f_1}$};
+\draw[red,  thick,->,>=latex] (0,0) -- (f2) node[below]{$\vec {f_2}$};
+\draw[red,  thick,->,>=latex] (0,0) -- (f3) node[right]{$\vec {f_3}$};
+
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff1) node[midway, above,black] {$k_x$} node[below]{$\vec {f_1'}$};
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff2) node[midway, above,black] {$k_y$}  node[below]{$\vec {f_2'}$};
+\draw[red, ultra thick,->,>=latex] (0,0) -- (ff3) node[midway, left,black] {$k_z$}  node[right]{$\vec {f_3'}$};
+
+
+\draw[double, blue] (90:1-0.2) arc (90:90+\myalpha:1-0.2) node[midway, left]{$\alpha$};
+\draw[double, blue] (90:1-0.3) arc (90:90-\mybeta:1-0.3) node[midway, right]{$\beta$};
+
+\draw (0,0) -- ++(ff1) -- ++(ff2) -- (ff2) -- cycle;
+\draw (ff3) -- ++(ff1) -- ++(ff2) -- ($(ff2)+(ff3)$) -- cycle;
+\draw (0,0) -- ++(ff3);
+\draw (ff1) -- ++(ff3);
+\draw (ff2) -- ++(ff3);
+\draw ($(ff1)+(ff2)$) -- ++(ff3);
+
+\begin{scope}[xshift=-2cm,yshift=-2cm]
+
+
+\coordinate (e1) at (90+\myalpha:\kx);
+\coordinate (e2) at (90-\mybeta:\ky);
+\coordinate (e3) at (90:\kz);
+
+\draw (0,0) -- ++(e1) -- ++(e2) -- (e2) -- cycle;
+\draw (e3) -- ++(e1) -- ++(e2) -- ($(e2)+(e3)$) -- cycle;
+\draw (0,0) -- ++(e3);
+\draw (e1) -- ++(e3);
+\draw (e2) -- ++(e3);
+\draw ($(e1)+(e2)$) -- ++(e3);
+
+\draw[red, ultra thick,->,>=latex] (0,0) -- (e1) node[below]{$\vec {e_1}$};
+\draw[red, ultra thick,->,>=latex] (0,0) -- (e2) node[below]{$\vec {e_2}$};
+\draw[red, ultra thick,->,>=latex] (0,0) -- (e3) node[above left]{$\vec {e_3}$};
+
+
+\end{scope}
+
+\draw (e1) -- (ff1);
+\draw (e2) -- (ff2);
+\draw (e3) -- (ff3);
+
+\end{scope}
+
+
+
+\end{tikzpicture}

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=3]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (0:1);
+\coordinate (B) at (50:1);
+\coordinate (C) at (90:1);
+\coordinate (P) at (20:1);
+
+\draw[very thick,black!30] (A) -- (O) -- (B);
+\draw[very thick,black!30] (O) -- (C);
+\draw[very thick,black!30] (O) -- (P);
+\draw[ultra thick, black!20]  (A) arc(0:90:1);
+\draw[ultra thick, black!50]  (A) arc(0:50:1);
+
+\draw[double, black!30]  (0:0.3) arc(0:50:0.3) node[midway,above right]{$\omega$};
+\draw[double, black!30]  (0:0.5) arc(0:20:0.5) node[midway,right]{$\theta$};
+
+\fill[black!80] (O) circle (0.02) node[black,left=3pt]{$O$};
+\fill[red!80] (A) circle (0.02) node[black,right=3pt]{$A$};
+\fill[red!80] (B) circle (0.02) node[black,above right=2pt]{$B$};
+\fill[black!80] (C) circle (0.02) node[black,left=3pt]{$C$};
+\fill[blue!80] (P) circle (0.02) node[black,right=3pt]{$P$};
+
+\end{tikzpicture}

@@ -1,0 +1,47 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\draw[gray!50,thick] (-1,-1) grid ++(7,6);
+
+\fill[gray!50] (-1,-1) rectangle ++(7,1);
+\fill[gray!50] (-1,4) rectangle ++(7,1);
+\fill[gray!50] (0,0) rectangle ++(-1,4);
+\fill[gray!50] (5,0) rectangle ++(1,4);
+
+% 
+\fill[gray!50] (0,1) rectangle ++(2,1);
+\fill[gray!50] (2,3) rectangle ++(1,1);
+
+\fill[gray!50] (3,1) rectangle ++(1,1);
+
+\fill[green!70!black!20] (0.5,3.5) circle (0.3); 
+\fill[red!20] (4,0) rectangle ++ (1,-1); 
+
+\node[green!70!black] at (0.5,3.5) {\bf 0};
+
+\node[blue] at (0.5,2.5) {\bf 1};
+\node[blue] at (1.5,3.5) {\bf 1};
+
+\node[blue] at (1.5,2.5) {\bf 2};
+\node[blue] at (2.5,2.5) {\bf 3};
+
+\node[blue] at (3.5,2.5) {\bf 4};
+\node[blue] at (2.5,1.5) {\bf 4};
+
+% \node[blue] at (2.5,0.5) {\bf 5};
+% \node[blue] at (4.5,2.5) {\bf 5};
+% \node[blue] at (3.5,3.5) {\bf 5};
+% 
+% \node[blue] at (4.5,3.5) {\bf 6};
+% \node[blue] at (4.5,1.5) {\bf 6};
+% \node[blue] at (1.5,0.5) {\bf 6};
+% \node[blue] at (3.5,0.5) {\bf 6};
+% 
+% \node[blue] at (0.5,0.5) {\bf 7};
+% \node[blue] at (4.5,0.5) {\bf 7};
+% 
+% \node[red] at (4.5,-0.5) {\bf 8};
+
+\node at (3,-1.5){\bf Étape 4};
+
+
+\end{tikzpicture}

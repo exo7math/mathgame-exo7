@@ -1,0 +1,232 @@
+
+\pagestyle{empty}\thispagestyle{empty}
+\vspace*{\fill}
+\vspace*{5ex}
+\begin{center}
+	\fontsize{40}{40}\selectfont
+	\textsc{mathgame}
+	
+	\vspace*{1ex}
+	\textsc{\fontsize{24}{24}\selectfont 
+	mathématiques  \\[-1.5ex]
+	pour les jeux vidéo
+	}
+	
+	\vspace*{2ex}
+	
+	%\fontsize{32}{32}\selectfont
+	\Large
+	%\textsc{arnaud bodin}
+
+\end{center}
+\vfill
+\begin{center}
+	\Large
+	\textsc{algorithmes \  et \  mathématiques}
+\end{center}
+\begin{center}
+	\LogoExoSept{2}
+\end{center}
+
+%\clearemptydoublepage
+\clearpage
+
+\thispagestyle{empty}
+
+
+\vspace*{\fill}
+\section*{Mathématiques pour les jeux vidéo}
+
+%---------------------------
+%{\large\textbf{Introduction}}
+
+
+Bienvenue dans \og{}Mathgame\fg{} !
+
+\medskip
+
+L'univers du jeu vidéo est une source inépuisable de créativité, où chaque joueur peut explorer des mondes virtuels uniques. Les possibilités sont infinies, mais derrière chaque aspect visuel et mécanique se cachent des fondements mathématiques essentiels.
+
+\medskip
+
+Dans ce livre, nous vous invitons à plonger dans les mécanismes fondamentaux qui font naître la magie des jeux vidéo. Que vous soyez passionné de jeux, étudiant en sciences ou simplement curieux, ce livre vous permettra de comprendre les principes mathématiques qui donnent vie aux mondes imaginaires que vous explorez.
+
+\medskip
+
+Des représentations en perspective d'objets, à l'application des textures pour les illuminer, en passant par leur mise en mouvement ou les stratégies pour remporter la victoire, nous explorerons ensemble les concepts mathématiques de base qui sont au cœur de chaque étape de la création d'un jeu.
+
+\medskip
+
+Le contenu est accessible à tout étudiant ayant obtenu un bac scientifique. Vous pouvez lire les chapitres dans l'ordre que vous voulez : la première partie est la plus mathématique, la deuxième partie est consacrée à la construction des images, la troisième partie fournit des outils pour le mouvement, enfin la quatrième partie introduit la théorie des jeux.
+
+\medskip
+
+À vos manettes, prêts, partez !
+  
+
+~
+\bigskip
+\vfill
+\begin{center}
+%Le cours est aussi disponible en vidéos :\\
+%\href{https://www.youtube.com/}{Youtube : \og{}Mathgame\fg{}}.    
+    
+Le livre, l'intégralité des codes ainsi que tous les fichiers sources sont sur la page \emph{GitHub} d'Exo7 :\\
+\href{https://github.com/exo7math/mathgame-exo7}{\og{}GitHub : Mathgame\fg{}}.
+\end{center}
+\vfill
+
+
+%\vspace*{\fill}
+
+
+%\newpage
+\cleardoublepage
+\thispagestyle{empty}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+\tableofcontents
+
+\cleardoublepage
+\section*{Résumé des chapitres}
+
+
+\newcommand{\titrechapitre}[1]{{\textbf{#1}}\nopagebreak}
+\newcommand{\descriptionchapitre}[1]{%
+\smallskip\hfill
+\begin{minipage}{0.95\textwidth}\small#1\end{minipage}\medskip\smallskip}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\titrechapitre{Titre du chapitre}
+
+%\descriptionchapitre{Résumé.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Trigonométrie}
+
+\descriptionchapitre{Savoir mesurer et calculer les angles est fondamental !}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Vecteurs}
+
+\descriptionchapitre{Nous étudions les vecteurs du plan, de l'espace et en n'importe quelle dimension.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Matrices}
+
+\descriptionchapitre{Les matrices sont des tableaux de nombres très pratiques pour encoder des transformations du plan et de l'espace.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Transformations de l'espace}
+
+\descriptionchapitre{Nous étudions les transformations affines usuelles de l'espace: translations, homothéties, réflexions\ldots{} à l'aide des vecteurs et matrices. Nous décrivons les formules de changement de base et introduisons les coordonnées homogènes.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Rotations de l'espace}
+
+\descriptionchapitre{Nous étudions différentes façons d'obtenir une rotation de l'espace : en la décomposant par des rotations élémentaires ou bien à l'aide des quaternions.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Perspective}
+
+\descriptionchapitre{Nous expliquons différentes façons de représenter l'espace 3D sur un plan 2D.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Lancer de rayons I}
+
+\descriptionchapitre{Nous abordons les bases du \emph{ray-tracing} : nous lançons un rayon depuis une source et calculons en quel(s) point(s) ce rayon atteint un objet géométrique (plan, triangle, sphère...).}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Lumière}
+
+\descriptionchapitre{Comment une scène est-elle éclairée ? Quelle est la couleur des objets illuminés ?}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Pixels}
+
+\descriptionchapitre{Comment tracer, pixel par pixel, les figures géométriques de base ?}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Texture}
+
+\descriptionchapitre{Les textures permettent de rendre les objets 3D beaucoup plus réalistes en simulant la couleur et la forme d'une matière. Il s'agit principalement de transformer un carré du plan en une surface de l'espace.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Lancer de rayons II}
+
+\descriptionchapitre{Nous expliquons en détail la technique du \emph{ray-tracing} et présentons des outils pour accélérer cette méthode.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Triangulation}
+
+\descriptionchapitre{Nous découpons le plan en objets simples : des triangles.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Maillage}
+
+\descriptionchapitre{Cette fois nous découpons un objet de l'espace en figures géométriques simples.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Mouvement}
+
+\descriptionchapitre{Comment se déplacer dans le plan, dans l'espace, dans un labyrinthe, sur un terrain ?}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Approximation et interpolation}
+
+\descriptionchapitre{L'approximation a pour but de modéliser une situation à l'aide d'une fonction simple. 
+Avec une fonction simple, les calculs sont plus rapides. L'interpolation modélise des données partielles par une fonction. 
+On obtient ainsi une fonction qui permet de prédire des valeurs manquantes.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Équations différentielles}
+
+\descriptionchapitre{Les équations différentielles apparaissent naturellement dans de nombreux domaines au-delà des mathématiques.
+Elles permettent de modéliser des phénomènes d'évolution en physique, biologie, économie...
+Nous expliquons ici comment trouver des solutions approchées de ces équations grâce à des méthodes numériques de discrétisation.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Fractales}
+
+\descriptionchapitre{Les fractales sont des formes géométriques auto-similaires : lorsque l'on zoome sur une partie, on retrouve une image ressemblant à la figure globale. Les structures fractales permettent de dessiner des paysages et de la végétation. La méthode est facile à implémenter, permet de générer aléatoirement une grande variété de structures, utilise très peu de données, mais par contre nécessite des calculs.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Physique}
+
+\descriptionchapitre{Pour rendre des animations réalistes, il faut bien comprendre certains principes issus de la physique. Nous en illustrons quelques-uns.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Théorie des jeux}
+
+\descriptionchapitre{Nous survolons les différents types de jeux, leurs caractéristiques, les différentes stratégies possibles et les équilibres possibles entre adversaires.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Minimax}
+
+\descriptionchapitre{L'algorithme minimax permet de choisir le meilleur coup à jouer en anticipant les mouvements de l'adversaire.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titrechapitre{Sociologie du joueur}
+
+\descriptionchapitre{Quel est le comportement d'un joueur dans la \og{}vraie vie\fg{} et quels sont les paramètres qui permettent de créer un \og{}bon\fg{} jeu ?}

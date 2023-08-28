@@ -1,0 +1,47 @@
+\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+shorten <=-3mm, shorten >=-3mm
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=2]{.}
+}
+},
+perp/.style = {
+draw,
+angle eccentricity=.5,
+angle radius=2mm,
+pic text=.
+}
+}
+
+
+% les points A1,...
+\path
+  +(160:1.2)  coordinate (A)
+  +(-75:2)  coordinate (B)
+  +(30:2)  coordinate (C)
+;
+
+% le polygone
+\draw (A) -- (B) -- (C) -- cycle;
+
+
+% les points
+\path
+  (A) [dot] node[left]{$A$}
+  (B) [dot] node[right]{$B$}
+  (C) [dot] node[right]{$C$}
+;
+
+\draw[<-,>=latex, ultra  thick,red]  (0.3,0.1)  arc (90:-180:0.4);
+\node[red,scale=2]  at (0.3,-0.3) {$\oplus$};
+
+\node at (0.5,-2.5) { Triangle $ABC$ positif};
+
+\end{tikzpicture}
+

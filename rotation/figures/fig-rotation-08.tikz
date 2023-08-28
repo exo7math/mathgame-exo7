@@ -1,0 +1,34 @@
+﻿\tdplotsetmaincoords{60}{35}
+\begin{tikzpicture}[tdplot_main_coords,scale=3]
+
+\tdplotsetrotatedcoords{-80}{-90}{10}
+\begin{scope}[tdplot_rotated_coords]
+%\draw[thick,->,>=latex] (0,0,0) -- (1.5,0,0) node[right]{$x$};
+%\draw[thick,->,>=latex] (0,0,0) -- (0,1.5,0) node[left]{$y$};
+
+\draw[thick,->,>=latex] (0,0,-1) -- (0,0,3) node[right]{$\vec v$};
+
+\draw[fill=red!30,opacity=0.7] (-1,-1,1) --(-1,1,1) -- (1,1,1) -- (1,-1,1) -- cycle;
+
+\draw[thick] (0,0,-1) -- (0,0,1);
+
+\coordinate  (H) at (0,0,1);
+\coordinate  (P) at ({0.5*cos(40)},{0.5*sin(40)},1);
+\coordinate (Q) at ({0.5*cos(-50)},{0.5*sin(-50)},1);
+
+\draw[very thick, blue] 
+  (H)--(P)
+  (H)--(Q)
+;
+\node[right] at (P) {$p$};
+\node[above] at (Q) {$p'=qpq^{-1}$};
+
+\node[blue, scale=3] at (P) {.};
+\node[blue, scale=3] at (Q) {.};
+\node[scale=3] at (H) {.};
+
+\tdplotdrawarc[->,>=latex,red,very thick]{(0,0,1)}{0.3}{40}{-50}{above}{$\theta$};
+
+\end{scope}
+
+\end{tikzpicture}

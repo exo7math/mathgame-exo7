@@ -1,0 +1,35 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\coordinate (A) at (-3,0);
+\coordinate (B) at (120:2);
+\coordinate (C) at (-80:2);
+\coordinate (D) at (0:2);
+\coordinate (E) at (60:1.5);
+
+\draw[gray!50, very thick] (0,0) circle (2);
+
+% Second cercle à la main
+% \coordinate (O2) at (2.48,-0.19);
+% \def\r{2.64}
+% \draw[gray!50, very thick] (O2) circle (\r);
+
+
+\draw[gray, ultra thick] (A) -- (B) -- (E) -- (D)  -- (C) -- cycle;
+\draw[red, ultra thick] (A) -- (D);
+\draw[blue, ultra thick] (B) -- (D);
+%\draw[blue, ultra thick] (B) -- (C);
+
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+\node at (E) [right] {$E$};
+
+\foreach \P in {A,B,C,D,E} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\node at (2.5,-4) {\bf Cercles circonscrits};
+
+\end{tikzpicture}

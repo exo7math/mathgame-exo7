@@ -1,0 +1,31 @@
+
+\begin{tikzpicture}[scale=2]
+
+
+\draw[thick,->,>=latex] (-2.5,0) -- (2.5,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,-2.5) -- (0,2.5) node[left]{$y$};
+
+\coordinate (P) at (1.5,1);
+\draw[dashed] (P |- 0,0) -- (P) -- (P-| 0,0);
+\node[red, scale=3] at (P) {.};
+\node[above right] at (P) {$(x:y:1)$};
+
+
+\draw[ultra thick, blue!50] (0,0) circle (3);
+
+\draw[blue, very thick, ->,>=latex] (45:3) -- ++(45:1);
+\node[blue, scale=3] at (45:3) {.};
+\node[above] at (46:4) {$(v_x:v_y:0)$};
+
+\draw[blue, very thick, ->,>=latex] (0:3) -- ++(0:1);
+\node[blue, scale=3] at (0:3) {.};
+\node[below right] at (0:3) {$(1:0:0)$};
+
+\draw[blue, very thick, ->,>=latex] (90:3) -- ++(90:1);
+\node[blue, scale=3] at (90:3) {.};
+\node[above left] at (90:3) {$(1:0:0)$};
+
+\draw[<-,>=latex] (1.2,-1) to[bend left=10] (4,-1.5) node[right]{points du plan affine};
+\draw[<-,>=latex] (-45:3.1) to[bend right] (4,-2) node[right]{points à l'infini};
+
+\end{tikzpicture}

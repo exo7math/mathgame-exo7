@@ -1,0 +1,33 @@
+\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+very thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=2.5]{.}
+}
+}
+}
+% la courbe
+\path
+  (0,0) coordinate (O)
+  (20:1) coordinate (P)
+  (180+20:1) coordinate (Q)
+;
+
+\filldraw[very thick,blue!50,fill=blue!10,pattern=north east lines, pattern color=blue!30] (O) circle (1);
+
+\draw[-latex, thick,red] (P) -- ++ (90+20:1) node[pos=0.9,right]{$\vec{F_1}$};
+\draw[-latex, thick,red] (Q) -- ++ (-90+20:1) node[pos=0.9,left]{$\vec{F_2}$};
+
+\path
+  (O) [dot] 
+  (P) [dot] 
+  (Q) [dot]
+;
+
+\end{tikzpicture}

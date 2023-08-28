@@ -1,0 +1,4 @@
+﻿\begin{tikzpicture}[scale=1]
+\fill[red!50] (3,2) rectangle ++ (1,1);
+\draw[gray, step=1] (0,0) grid (6,4);
+\end{tikzpicture}

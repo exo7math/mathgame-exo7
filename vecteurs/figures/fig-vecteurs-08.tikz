@@ -1,0 +1,11 @@
+﻿\begin{tikzpicture}
+
+   \draw[thick, gray] (10:-3) -- (10:3) node[right, black]{$ax+by+c=0$};
+
+   \draw[->,>=latex,thick, red] (0,0)--(10:1.5) node[below] {$\vec u= \begin{pmatrix}-b\\a\end{pmatrix}$};  
+   \draw[->,>=latex,thick, red] (0,0)--(10+90:1.5) node[above] {$\vec n = \begin{pmatrix}a\\b\end{pmatrix}$};
+
+   \draw (10:0.3) -- ++(100:0.3) -- (100:0.3);
+
+   \fill[gray] (0,0) circle (1.5pt);
+\end{tikzpicture}

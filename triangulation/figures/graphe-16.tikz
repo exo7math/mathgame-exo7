@@ -1,0 +1,49 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}[rotate=45]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (1,1);
+\coordinate (D) at (0,1);
+
+\draw[ultra thick, black!50]  (A) -- (B);
+\draw[ultra thick, black!50]  (B) -- (C);
+\draw[ultra thick, black!50]  (C) -- (D);
+\draw[ultra thick, black!50]  (D) -- (A);
+
+\draw[ultra thick, red!70]  (A) -- (C);
+\draw[ultra thick, blue!50]  (B) -- (D);
+
+\path (A) node[scale=5,black!70]{.};
+\path (B) node[scale=5,black!70]{.};
+\path (C) node[scale=5,black!70]{.};
+\path (D) node[scale=5,black!70]{.};
+
+\node at (-0.25,-0.25) {\bf représentation non planaire};
+\end{scope}
+
+\begin{scope}[xshift=3cm,rotate=45]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (1,1);
+\coordinate (D) at (0,1);
+
+\draw[ultra thick, black!50]  (A) -- (B);
+\draw[ultra thick, black!50]  (B) -- (C);
+\draw[ultra thick, black!50]  (C) -- (D);
+\draw[ultra thick, black!50]  (D) -- (A);
+
+\draw[ultra thick, red!70]  (A)   .. controls ++(-45:1.4) and ++(-45:1.4) .. (C);
+\draw[ultra thick, blue!50]  (B) -- (D);
+
+\path (A) node[scale=5,black!70]{.};
+\path (B) node[scale=5,black!70]{.};
+\path (C) node[scale=5,black!70]{.};
+\path (D) node[scale=5,black!70]{.};
+
+\node at (-0.25,-0.25) {\bf représentation planaire};
+\end{scope}
+
+\end{tikzpicture}

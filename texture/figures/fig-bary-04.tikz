@@ -1,0 +1,39 @@
+\begin{tikzpicture}[scale=2]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.5);
+\coordinate (C) at (1,2);
+\draw[red, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+\node at (A) [below left] {$A(1:0:0)$};
+\node at (B) [right] {$B(0:1:0)$};
+\node at (C) [above] {$C(0:0:1)$};
+
+
+\def\u{0.3}
+\def\v{0.2}
+
+% coord bary 1-u-v, u, v
+% Attention ! pas d'espace dans les coordonnées 
+\coordinate (Q) at (barycentric cs:A=1,B=1,C=0);
+\draw[gray!50, very thick] (C) -- (Q);
+\node[scale=4,red] at (Q) {.};
+\node[below,red] at (Q) {$K(\frac12:\frac12:0)$};
+
+\coordinate (Q) at (barycentric cs:A=0,B=1,C=1);
+\draw[gray!50, very thick] (A) -- (Q);
+\node[scale=4,red] at (Q) {.};
+\node[above right,red] at (Q) {$I(0:\frac12:\frac12)$};
+
+\coordinate (Q) at (barycentric cs:A=1,B=0,C=1);
+\draw[gray!50, very thick] (B) -- (Q);
+\node[scale=4,red] at (Q) {.};
+\node[above left,red] at (Q) {$J(\frac12:0:\frac12)$};
+
+\coordinate (Q) at (barycentric cs:A=1,B=1,C=1);
+\node[scale=4,red] at (Q) {.};
+\node[below,red] at (Q) {$G(\frac13:\frac13:\frac13)$};
+
+\node[scale=4,red] at (A) {.};
+\node[scale=4,red] at (B) {.};
+\node[scale=4,red] at (C) {.};
+
+\end{tikzpicture}

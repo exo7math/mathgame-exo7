@@ -1,0 +1,74 @@
+% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{60}{120}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (9,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,11,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,8) node[left]{$z$};
+
+% plan de projection (y=0)
+\tikzstyle{myplane}=[draw=blue, thick, fill=red!10, opacity=0.5]
+\draw[myplane] (0,0,0) -- ++(0,10,0) -- ++(0,0,7) -- ++(0,-10,0) -- cycle;
+\node[right] at (0,4,-1.2) {plan $\mathcal{P} : (x=0)$};
+
+
+\tikzstyle{mycube}=[draw=blue, thick, fill=blue!50, opacity=0.5]
+
+\coordinate (T) at (3,2.5,1.5); % translation du cube
+
+% cube
+\coordinate (P1) at ($(T)+(0,0,0)$);
+\coordinate (P2) at ($(T)+(1,0,0)$);
+\coordinate (P3) at ($(T)+(1,1,0)$);
+\coordinate (P4) at ($(T)+(0,1,0)$);
+\coordinate (P5) at ($(T)+(0,0,1)$);
+\coordinate (P6) at ($(T)+(1,0,1)$);
+\coordinate (P7) at ($(T)+(1,1,1)$);
+\coordinate (P8) at ($(T)+(0,1,1)$);
+
+\draw[mycube] (P1) -- (P2) -- (P3) --(P4) -- cycle;
+\draw[mycube] (P5) -- (P6) -- (P7) --(P8) -- cycle;
+\draw[mycube] (P1) -- (P5) -- (P6) --(P2) -- cycle;
+\draw[mycube] (P2) -- (P6) -- (P7) --(P3) -- cycle;
+\draw[mycube] (P3) -- (P7) -- (P8) --(P4) -- cycle;
+\draw[mycube] (P4) -- (P8) -- (P5) --(P1) -- cycle;
+
+% projection du cube (calculs via python)
+\coordinate (Q1) at (0, 4.375, 2.625);
+\coordinate (Q2) at (0, 5.833, 3.5);
+\coordinate (Q3) at (0, 8.1666, 3.5);
+\coordinate (Q4) at (0, 6.125, 2.625);
+\coordinate (Q5) at (0, 4.375, 4.375);
+\coordinate (Q6) at (0, 5.8333, 5.8333);
+\coordinate (Q7) at (0, 8.1666, 5.8333);
+\coordinate (Q8) at (0, 6.125, 4.375);
+
+\tikzstyle{mycube}=[draw=blue, thick, fill=red!50, opacity=0.5]
+
+\draw[mycube] (Q1) -- (Q2) -- (Q3) --(Q4) -- cycle;
+\draw[mycube] (Q5) -- (Q6) -- (Q7) --(Q8) -- cycle;
+\draw[mycube] (Q1) -- (Q5) -- (Q6) --(Q2) -- cycle;
+\draw[mycube] (Q2) -- (Q6) -- (Q7) --(Q3) -- cycle;
+\draw[mycube] (Q3) -- (Q7) -- (Q8) --(Q4) -- cycle;
+\draw[mycube] (Q4) -- (Q8) -- (Q5) --(Q1) -- cycle;
+
+% centre de la projection
+\coordinate (C) at (7,0,0);
+\foreach \i in {1,...,8}{
+  \draw (C) -- (Q\i);
+}
+
+\node[red, scale=3] at (P3) {.};
+\node at (P3) [below right] {$P$};
+
+\node[red, scale=3] at (Q3) {.};
+\node at (Q3) [below right] {$P'$};
+
+\node[red, scale=3] at (C) {.};
+\node at (C) [below right] {$C$};
+\node[black, scale=3] at (0,0) {.};
+\node at (0,0) [above left] {$O$};
+\draw[<->,>=latex,orange] (0,-0.3,0) -- (7,-0.3,0) node[midway, above] {$f$};
+
+
+\end{tikzpicture}

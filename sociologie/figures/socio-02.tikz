@@ -1,0 +1,43 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\tikzstyle{block} = [draw, draw,fill=red!10, rounded corners, minimum width = 2.5em, minimum height = 1.4em,]
+\tikzstyle{arrow} = [thick,->,>=latex,shorten <=1mm,shorten >=1mm]
+
+
+\node[block,label={\tiny $J_1$}] (J1) at (0,0) {$100$};
+
+
+
+\node[draw,fill=red!10, rounded corners] (JJ1) at (0,-7.25) {$126$};
+\draw[arrow] (J1) -- (JJ1) node[midway,left,scale=0.7]{conserve $60$};
+\draw[arrow] (J1) -- (5,0) node[midway,above,scale=0.7]{donne $40$};
+
+\node[block,label={\tiny $J_2$}] (J2) at (1,-1) {$100$};
+\node[block] (JJ2) at (1,-6.5) {$66$};
+\draw[arrow] (J2) -- (JJ2) node[midway,left,scale=0.7]{$0$};
+\draw[arrow] (J2) -- (5,-1) node[midway,above,scale=0.7]{$100$};
+
+\node[block,label={\tiny $J_3$}] (J3) at (2,-2) {$100$};
+\node[block] (JJ3) at (2,-5.75) {$166$};
+\draw[arrow] (J3) -- (JJ3) node[midway,left,scale=0.7]{$100$};
+\draw[arrow] (J3) -- (5,-2) node[midway,above,scale=0.7]{$0$};
+
+\node[block,label={\tiny $J_4$}] (J4) at (3,-3) {$100$};
+\node[block] (JJ4) at (3,-5) {$86$};
+\draw[arrow] (J4) -- (JJ4) node[midway,left,scale=0.7]{$20$};
+\draw[arrow] (J4) -- (5,-3) node[midway,above,scale=0.7]{$80$};
+
+
+\node[block, minimum width = 1.5cm, minimum height = 4cm,label={\footnotesize Pot}] (P) at (6,-1.5) {$S=220$};
+
+\node[block,minimum width = 1.5cm, minimum height = 4cm,label={\footnotesize Pot revalorisé}] (PP) at (10,-1.5) {$S'=264$};
+
+\draw[arrow,shorten <=1mm,shorten >=1mm] (P) -- (PP) node[midway,above,scale=0.7]{$\times k = 1.2$};
+
+\draw[arrow] (PP.south) |- (JJ1); 
+\draw[arrow] (PP.south) |- (JJ2); 
+\draw[arrow] (PP.south) |- (JJ3); 
+\draw[arrow] (PP.south) |- (JJ4); 
+
+\node[right, scale=0.7] at (10,-6) {$66$ chacun};
+  \end{tikzpicture}

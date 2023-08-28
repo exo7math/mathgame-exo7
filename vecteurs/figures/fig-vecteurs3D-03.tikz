@@ -1,0 +1,20 @@
+﻿\tdplotsetmaincoords{70}{115}
+\begin{tikzpicture}[tdplot_main_coords,scale=3]
+
+\begin{scope}[xshift=0cm]
+\draw[thick,->,>=latex] (0,0,0) -- (1,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,1,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,0.8) node[right]{$z$};
+
+\node at (0,0.25,-0.75) {\bf Repère direct};
+\end{scope}
+
+\begin{scope}[xshift=2cm]
+\draw[thick,->,>=latex] (0,0,0) -- (1,0,0) node[below]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,1,0) node[below right]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,0.8) node[right]{$z$};
+
+\node at (0,0.25,-0.75) {\bf Repère indirect};
+\end{scope}
+
+\end{tikzpicture}

@@ -1,0 +1,9 @@
+﻿\tdplotsetmaincoords{70}{50}
+\begin{tikzpicture}[tdplot_main_coords,scale=3]
+\tdplotsetrotatedcoords{0}{20}{-10}
+\begin{scope}[tdplot_rotated_coords]
+\draw[thick,->,>=latex] (0,0,0) -- (1,0.5,0) node[below]{$\vec u$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,1.5,0) node[below right]{$\vec v$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,1.5) node[right]{$\vec u \wedge \vec v$};
+\end{scope}
+\end{tikzpicture}

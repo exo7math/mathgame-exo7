@@ -1,0 +1,66 @@
+%\usetikzlibrary{calc, angles}
+\begin{tikzpicture}[scale=1]
+
+\tikzset{
+  line/.style = {
+    shorten >=-10mm
+  },
+  vector/.style = {
+    thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=4]{.}
+    }
+  },
+  perp/.style = {
+    draw,
+    angle eccentricity=.5,
+    angle radius=2mm,
+    pic text=.
+  }
+}
+
+ % les coordonnées des points
+ \path
+   (0,0) coordinate (O)
+   (150:3) coordinate (P1)
+   (45:3) coordinate (P2)
+   ($(P1)!-7cm!(P2)$) coordinate (S)
+   ($(S)!2cm!(P1)$) coordinate (v)
+   ($(P1)!(O)!(P2)$) coordinate (H)
+ ;
+
+% cercle
+\draw[thick, red] (O) circle (3);
+\draw[densely dashed] (O) -- ++(-35:3) node[midway, above right]{$R$};
+
+ % les droites
+ \draw
+   (S) edge[line, thick] (P2)
+   (O) edge[thick] (H)
+   (O) edge[thick] (S)
+   ;
+
+ % les vecteurs
+ \draw
+   (S) edge[vector, very thick] node[above left]{$\vec{v}$} (v)
+ ;
+
+ \draw
+   pic[perp,gray]{right angle=S--H--O}
+ ;
+
+ % les points
+ \path
+   (S) [dot] node[below]{$S$}
+   (O) [dot] node[above right]{$O$}
+   (H) [dot] node[above]{$H$}
+   (P1) [dot] node[above left]{$P_1$}
+   (P2) [dot] node[above right]{$P_2$}
+ ;
+
+\node[] at (0,-4) {\bf Cas $OH \le R$};
+\node[] at (0,-5) {\bf deux solutions};
+
+\end{tikzpicture}

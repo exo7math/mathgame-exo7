@@ -1,0 +1,58 @@
+﻿%\usetikzlibrary{calc, angles}
+\begin{tikzpicture}[scale=1]
+
+\tikzset{
+  line/.style = {
+    shorten <=-3mm, shorten >=-20mm
+  },
+  vector/.style = {
+    thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=4]{.}
+    }
+  },
+  perp/.style = {
+    draw,
+    angle eccentricity=.5,
+    angle radius=2mm,
+    pic text=.
+  }
+}
+
+ % les coordonnées des points
+ \path
+   (0,0) coordinate (O)
+   (120:3) coordinate (P1)
+   (25:3) coordinate (P2)
+   ($(P1)!-6cm!(P2)$) coordinate (S)
+   ($(S)!2cm!(P1)$) coordinate (v)
+ ;
+
+% cercle
+\draw[thick, red] (O) circle (3);
+
+ % les droites
+ \draw
+   (S) edge[line, thick] (P2)
+   ;
+
+ % les vecteurs
+ \draw
+   (S) edge[vector, very thick] node[above left]{$\vec{v}$} (v)
+ ;
+
+ % les points
+ \path
+   (S) [dot] node[below]{$S$}
+   (P1) [dot] node[above]{}
+   (P2) [dot] node[above right]{}
+ ;
+
+\draw[<-,>=latex,shorten <=2mm] (P1) to[bend right] ++(-1.5,2) node[left] {visible};
+\draw[<-,>=latex,shorten <=2mm] (P2) to[bend left] ++(1.5,1) node[right] {invisible};
+
+
+
+\end{tikzpicture}

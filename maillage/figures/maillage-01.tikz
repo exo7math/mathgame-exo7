@@ -1,0 +1,36 @@
+\begin{tikzpicture}[scale=2]
+
+\coordinate (P1) at (0,0.5);
+\coordinate (P2) at (1.2,0.2);
+\coordinate (P3) at (0.9,-1);
+\coordinate (P4) at (2.5,-0.8);
+\coordinate (P5) at (2.2,0.8);
+\coordinate (P6) at (3.3,0.3);
+\coordinate (P7) at (1.5,1.3);
+
+\draw[ultra thick, black!50]
+  (P1) to[bend left=10](P2) -- (P3) -- (P4) -- (P5)
+  (P5) to[bend right=10] (P7) to[bend right=10] (P1)  to[bend right=10] (P3) 
+  (P2) to[bend right] (P5)
+  (P4) to[bend right=10] (P6)
+  (P5) to[bend right=10] (P6)
+;  
+\foreach \i in {1,...,7}{
+  \path (P\i) node[scale=4,black!80]{.};
+}
+
+% labels
+\path[-latex, shorten > = 3mm]
+  (-2,-0.75) node(S){sommet}
+  (S.east) edge[bend right=10] (P3)
+;
+\path[-latex, shorten > = 2mm]
+  (-2,-0.25) node(E){arête}
+  (E) edge[bend right=10] (0.40,-0.25)
+;
+
+\path[-latex, shorten > = 2mm]
+  (-2,0.25) node(E){face}
+  (E) edge[bend left=10] (0.75,0)
+;
+\end{tikzpicture}

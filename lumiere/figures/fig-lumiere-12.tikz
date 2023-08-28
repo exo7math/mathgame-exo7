@@ -1,0 +1,56 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Ampoule
+\begin{scope}[scale=0.5]
+    \foreach \a in {60,45,...,-240}{
+      \draw[orange, thick] (\a:1.1) -- (\a:1.5);
+    }
+
+    \draw[very thick, orange, fill=white] (110-360:1) arc (110-360:70:1);
+    \draw[very thick, orange] (70:1) -- ++(0,1);
+    \draw[very thick, orange] (110-360:1) -- ++(0,1);
+\end{scope}
+
+% Pyramide
+\begin{scope}[shift={(8,1)},scale=2]
+  \tikzstyle{mypyra}=[draw=blue, thick, fill=blue!50, opacity=0.5]
+  \draw[mypyra] (0,0) -- ++(-1,0) -- +(60:1) -- +(0:1);
+  \draw[mypyra] (0,0) -- (45:0.5) -- (120:1) -- cycle;
+  %\draw[blue, fill=blue!20] (-0.6,0.15) -- ++(80:0.2) -- ++(0.2,0) -- ++(-100:0.2) -- +(-0.2,0) -- cycle;
+\end{scope}
+
+%cube
+\pgfmathsetmacro{\cube}{1}
+\tikzstyle{mycube}=[draw=red, thick, fill=red!50, opacity=0.5]
+
+\begin{scope}[shift={(10,-3)},scale=1.5]
+%  \draw[mycube,fill=none] (0,-\cube,-\cube) -- (0,-\cube,0);
+% \draw[mycube,fill=none] (0,-\cube,-\cube) -- (\cube,-\cube,-\cube);
+% \draw[mycube,fill=none] (0,-\cube,-\cube) -- (0,0,-\cube);
+
+
+\draw[mycube] (\cube,0,0) -- (\cube,-\cube,0) -- (0,-\cube,0) -- (0, 0, 0) -- cycle;
+\draw[mycube] (0, 0, 0) -- (0, 0, -\cube) -- (\cube,0,-\cube) -- (\cube, 0, 0) -- cycle;
+\draw[mycube] (\cube,0,0) -- (\cube,-\cube,0) -- (\cube,-\cube,-\cube) -- (\cube, 0, -\cube) -- cycle;
+
+
+\end{scope}
+
+
+% Texte
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,thick,inner sep=1.5pt] (char) {\bf #1};}}
+
+
+\node at (9.25,2.25) {Objet 1};
+\node at (11,-5) {Objet 2};
+
+\draw[->,>=latex,red!50,line width=4pt,sloped] (1.5,-0.25) -- ++(-18:8.5) node[midway,above,black] {éclairage direct};
+
+\draw[->,>=latex,blue!50,line width=4pt,sloped] (1.5,0.25) -- ++(15:5.5);
+
+
+\draw[->,>=latex,blue!50,line width=4pt,sloped] (7,1.5) -- ++(-50:5) node[pos=0.55,above,black] {éclairage indirect};
+
+
+\end{tikzpicture}

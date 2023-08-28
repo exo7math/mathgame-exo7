@@ -1,0 +1,36 @@
+\tdplotsetmaincoords{55}{135}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\coordinate (O) at (5,2,1.5);
+
+
+\tikzstyle{myplane}=[draw=gray, thick,  opacity=0.8]
+
+\coordinate (A) at (0,0,0);
+\coordinate (B) at (0,4,0);
+\coordinate (C) at (0,4,3);
+\coordinate (D) at (0,0,3);
+
+\coordinate (AA) at ($(A)!-1.5!(O)$);
+\coordinate (BB) at ($(B)!-1.5!(O)$);
+\coordinate (CC) at ($(C)!-1.5!(O)$);
+\coordinate (DD) at ($(D)!-1.5!(O)$);
+
+
+\draw[myplane, thick, dashed] (AA) -- (BB) -- (CC) -- (DD) -- cycle;
+
+\draw[thick,lightgray]  (O) -- (AA);
+
+\draw[myplane, fill=red!10, thick] (A) -- (B) -- (C) -- (D) -- cycle;
+
+\draw[thick, gray] (O) -- (BB);
+\draw[thick, gray] (O) -- (CC);
+\draw[thick, gray] (O) -- (DD);
+
+\fill[black] (O) circle(2pt);
+\node at (O) [below] {$O$};
+
+\node at (-4,0,-4) [below] {écran};
+\node at (-8,0,-4) [below] {scène visible};
+
+\end{tikzpicture}

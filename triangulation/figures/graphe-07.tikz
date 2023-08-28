@@ -1,0 +1,50 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.2);
+\coordinate (P3) at (2.5,-0.8);
+\coordinate (P4) at (2.2,0.8);
+\coordinate (P5) at (3.3,0.3);
+\coordinate (P6) at (4.5,0.7);
+
+\begin{scope}[black!50,very thick] 
+  \draw[] (P1) -- (P2);
+  \draw[] (P2) to[bend right] (P3);
+  \draw[] (P3) to[bend right] (P2);
+  \draw[] (P3) -- (P4);
+  \draw[] (P4) -- (P5);
+  \draw[] (P3) -- (P5);
+  \draw[] (P5) -- (P6);
+\end{scope}
+
+\foreach \i in {1,...,6}{
+  \path (P\i) node[scale=5,black!80]{.};
+}
+
+\node at (2,-1.5) {\bf Graphe connexe};
+
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.2);
+\coordinate (P3) at (2.5,-0.8);
+\coordinate (P4) at (2.2,0.8);
+\coordinate (P5) at (3.3,0.3);
+\coordinate (P6) at (4.5,0.7);
+
+\begin{scope}[black!50,very thick] 
+  \draw[] (P1) -- (P2);
+  \draw[] (P2) to[bend right] (P3);
+  \draw[] (P3) to[bend right] (P2);
+  \draw[] (P4) -- (P5) -- (P6) -- cycle;
+\end{scope}
+
+\foreach \i in {1,...,6}{
+  \path (P\i) node[scale=5,black!70]{.};
+}
+
+\node at (2,-1.5) {\bf Graphe non connexe};
+\end{scope}
+\end{tikzpicture}

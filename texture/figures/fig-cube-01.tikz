@@ -1,0 +1,8 @@
+﻿\begin{tikzpicture}[scale=1]
+\draw[blue, fill=blue!5, very thick] (0,0) rectangle ++(1,1);
+\draw[blue, fill=blue!5, very thick] (1,0) rectangle ++(1,1);
+\draw[blue, fill=blue!5, very thick] (2,0) rectangle ++(1,1);
+\draw[blue, fill=blue!5, very thick] (3,0) rectangle ++(1,1);
+\draw[blue, fill=blue!5, very thick] (2,1) rectangle ++(1,1);
+\draw[blue, fill=blue!5, very thick] (2,-1) rectangle ++(1,1);
+\end{tikzpicture}

@@ -1,0 +1,61 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+% Axes
+     \draw[->,>=latex,thick, gray] (-0.5,0)--(25,0) node[below,black] {$x$};
+     \draw[->,>=latex,thick, gray] (0,-0.5)--(0,14) node[right,black] {$y$};
+
+
+% define points
+\path
+  (3,4) coordinate(A)
+  (19,10) coordinate(B)
+  (11,9) coordinate(C)
+  (7,6) coordinate(D)
+  (15,11) coordinate(E)
+  (A |- 0,0) coordinate (Ah) 
+  (B |- 0,0) coordinate (Bh)
+  (C |- 0,0) coordinate (Ch)
+  ($(A)!0.5!(C)$) coordinate (M1)
+  ($(C)!0.5!(B)$) coordinate (M2)
+  ;
+
+% Lines
+\draw[thick, gray] (A)--(C)--(B);
+\draw[very thick, red] (A)--(D) --(C)--(E)--(B);
+\draw[thick, gray!50] (A)--(B);
+\draw[thick] (Ah)--(Bh);
+
+\draw[thin] (A)--(Ah) node[midway, left]{$H_a$};
+\draw[thin] (B)--(Bh) node[midway, right]{$H_b$};
+%\draw[dashed] (C)--(Ch);
+
+% Arrows
+\draw[->,-latex,very thick,green!70!black] (M1) -- ++(0,2.5) node[above right] {$+h_1$};
+\draw[->,-latex,very thick,green!70!black] (M1) -- ++(0,-2.5) node[above right] {$-h_1$};
+\draw[->,-latex,very thick,green!70!black] (M2) -- ++(0,2.5) node[above right] {$+h_1$};
+\draw[->,-latex,very thick,green!70!black] (M2) -- ++(0,-2.5) node[above right] {$-h_1$};
+
+% points
+\draw
+ node[scale=4] at (A) {.}
+ node[scale=4] at (B) {.}
+ node[scale=4] at (C) {.}
+ node[scale=4] at (D) {.}
+ node[scale=4] at (E) {.}
+ node[scale=4, green!70!black] at (M1) {.}
+ node[scale=4, green!70!black] at (M2) {.}
+;
+
+\draw
+ node[scale=4] at (Ah) {.} 
+ node[scale=4] at (Bh) {.}
+ node[scale=4] at (Ch) {.}
+ ;
+
+% Text
+\node[below] at (Ah) {$a$};
+\node[below] at (Bh) {$b$};
+\node[below] at (Ch) {$c$};
+
+
+\end{tikzpicture}

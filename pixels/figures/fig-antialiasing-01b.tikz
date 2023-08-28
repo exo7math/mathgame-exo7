@@ -1,0 +1,75 @@
+﻿\tikzstyle{arrow} = [->,>=latex,thick]
+\begin{tikzpicture}[scale=1]
+
+\def\xmax{8}
+\def\ymax{3}
+\pgfmathsetmacro\xmaxplus{int(\xmax +1)}
+\pgfmathsetmacro\ymaxplus{int(\ymax +1)}
+
+\newcommand{\pixel}[3]{\fill[black!#3] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);}
+
+\newcommand{\cross}[3]{
+\draw[black,very thick] (#1-0.2,#2)--++(0.4,0);
+\draw[black,very thick] (#1,#2-0.2)--++(0,0.4);
+\node[black, below right] at (#1,#2) {#3};
+}
+
+\draw[thin,xshift=-0.5cm,yshift=-0.5cm] (0,0) grid (\xmaxplus,\ymaxplus);
+
+%\draw[arrow,thick] (0,0)--(\xmax+1,0) node[right]{$i$};
+%\draw[arrow,thick] (0,0)--(0,\ymax+1) node[above]{$j$};
+
+% \foreach \x in {0,...,\xmax}{
+%     \node[below] at (\x,-0.5) {\tiny $\x$};
+% }
+% \foreach \y in {0,...,\ymax}{
+%     \node[left] at (-0.5,\y) {\tiny $\y$};
+% }
+
+% Pixel of the segments from (0,0) to (a,b)
+\pgfmathsetmacro\a{\xmax}
+\pgfmathsetmacro\b{\ymax}
+
+\foreach \i in {0,...,\a}{
+
+  \pgfmathsetmacro\y{\i*\b/\a+0.01}
+  \pgfmathtruncatemacro\j{round(\y)}
+
+  \pgfmathtruncatemacro\l{ round(100*(\y-\j) }
+  \pgfmathtruncatemacro\ll{100-\l}
+
+  \pixel{\i}{\j}{100}
+%   \pixel{\i}{\j+1}{\l}
+
+} 
+
+% \pgfmathsetmacro\aa{\a-1}
+% \foreach \i in {1,...,\aa}{
+% 
+%   \pgfmathsetmacro\y{\i*\b/\a};
+%   \pgfmathtruncatemacro\j{int(\y)};
+% 
+%   \pgfmathtruncatemacro\l{int(round(100*(\y-\j)))};  
+%   \pgfmathtruncatemacro\ll{100-\l};  
+% 
+%   \node at (\i,\j) {\ll};  % pourcentage
+%   \node at (\i,\j+1) {\l};
+% } 
+
+
+
+% Rk : the "-0.01" is because round(0.5)=1 and we want round(0.5)=0
+
+% \draw[blue!80, very thick] (0,0) -- (\a,\b);
+
+\cross{0}{0}{$P_1$};
+\cross{\a}{\b}{$P_2$};
+
+% 
+% \draw[dashed, blue] (4,-0.5) -- (4,2) -- (-0.5,2);
+% \draw[arrow,<-,blue] (4.25,1.9) to[bend left] ++(2,-0.5) node[right]{pixel (4,2)};
+% \fill[blue] (4,2) circle (0.1);
+
+\node[below] at (4.5,-1) {\bf Sans anticrénelage};
+
+\end{tikzpicture}

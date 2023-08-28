@@ -1,0 +1,43 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\tikzstyle{mysquare}=[
+  regular polygon,
+  regular polygon sides=4,
+  %draw,
+  fill=red,
+  minimum size =1mm,
+ scale=1,
+ rotate=45]
+
+\tikzstyle{mycircle}=[
+  circle,
+  %draw,
+  fill=green!70!black,
+  minimum size =1mm,
+  scale=1]
+
+\begin{scope}[rotate=45]
+\path
+  (0,0) coordinate(A)
+  (4,0) coordinate(B)
+  (4,4) coordinate(C)
+  (0,4) coordinate (D)
+  ;
+
+% Lines
+\draw[very thick, black!50] (A)--(B)--(C)--(D)--cycle;
+
+
+% points
+\draw
+ node[mysquare] at (A) {}
+ node[mysquare] at (B) {}
+ node[mysquare] at (C) {}
+ node[mysquare] at (D) {}
+;
+\draw
+ node[mycircle] at (2,2) {}
+;
+\end{scope}
+
+\end{tikzpicture}

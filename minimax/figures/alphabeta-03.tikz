@@ -1,0 +1,69 @@
+﻿\begin{tikzpicture}
+		
+\tikzstyle{mytrianglemax}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=90,
+  fill=violet!10,
+  minimum size =1.2cm,
+]	
+  
+\tikzstyle{mytrianglemin}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=-90,
+  fill=teal!10,
+  minimum size =1.2cm]		
+	
+\tikzstyle{mymax}=[above=-2pt, black!50, scale=0.8]	
+
+\tikzstyle{mymin}=[right=2pt, black!50, scale=0.8]
+	
+	
+% define points
+\path
+  (0,0) coordinate(R)
+  (-3,-2.5) coordinate (V1)
+  (3,-2.5) coordinate (V2)
+  (-5,-6) coordinate (V11)
+  (-2,-6) coordinate (V12)
+  (2,-6) coordinate (V21)
+  (5,-6) coordinate (V22)
+  ;
+
+\node[mytrianglemax] (T) at (R) {};
+\node[mymax] at (T.315) {max};
+
+\node[mytrianglemin] (T1) at (V1) {$7$};
+\node[mymin] at (T1.280) {min};
+
+\node[mytrianglemin] (T2) at (V2) {$\le 4$};
+\node[mymin] at (T2.280) {min};
+
+\node[mytrianglemax] (T21) at (V21) {$4$};
+\node[mymax] at (T21.315) {max};
+
+
+% draw lines
+\draw[thick]
+  (T) -- (T1)
+  (T) -- (T2)
+  (T2) -- (T21)
+  (T1) -- ++(-1,-2) 
+  (T1) -- ++(0,-2) 
+  (T1) -- ++(1,-2) 
+  (T2) -- ++(0.5,-3)  node[below]{?}
+  (T2) -- ++(1.5,-3)  node[below]{?}
+  (T2) -- ++(2.5,-3)  node[below]{?}
+  (T21) -- ++(-1,-2) 
+  (T21) -- ++(0,-2) 
+  (T21) -- ++(1,-2)
+  ;
+
+% Cut
+\draw[red, ultra thick, double, double distance=3pt] (3,-4.7) -- ++(30:2);
+
+%\node at (0,2) {\bf Coupure $\alpha$};
+\end{tikzpicture}

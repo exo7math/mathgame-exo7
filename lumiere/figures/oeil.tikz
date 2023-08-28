@@ -1,0 +1,13 @@
+﻿\begin{tikzpicture}[scale=3]
+  % eye from Izaak Neutelings https://tikz.net/hyperbola/
+  \def\le{0.8}  % eye size eye
+  \def\ange{25} % eye opening angle
+  \def\lb{1.2}  % outgoing beam length
+  \def\ang{205} % outgoing beam scattering
+  \begin{scope}[shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+    \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+    \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+    %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+    \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+  \end{scope}
+\end{tikzpicture}

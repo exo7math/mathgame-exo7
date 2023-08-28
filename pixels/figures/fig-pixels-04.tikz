@@ -1,0 +1,14 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\tikzstyle{arrow} = [->,>=latex,thick]
+
+\fill[red!10] (0,9) rectangle ++(1,-1);
+
+\draw[gray, step=1] (0,0) grid (16,9);
+\node[scale=0.4] at (0.5,8.5) {$(0,0)$};
+
+\draw[arrow] (0,9)--(17,9) node[right]{$x$};
+\draw[arrow] (0,9)--(0,-1) node[below]{$y$};
+
+
+\end{tikzpicture}

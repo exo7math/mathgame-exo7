@@ -1,0 +1,32 @@
+﻿%\usetikzlibrary{calc, angles}
+\begin{tikzpicture}[scale=1]
+\tikzset{
+  vector/.style = {
+    very thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=3]{.}
+    }
+  },
+}
+
+ % les coordonnées des points
+ \path
+   (0,0) coordinate (A)
+   (3,1) coordinate (B)
+ ;
+
+ \path
+   (A) [blue,dot] node[above left]{$A$}
+   (B) [blue,dot] node[above right]{$B$}
+ ;
+
+ % les droites
+% \draw[->,>=latex,thick,red] (A) -- (B)  node[midway, above, sloped]{$\vec{v}$};
+\draw (A) edge[red,vector,shorten <=1mm, shorten >=1mm] node[above, sloped]{$\overrightarrow{AB}$} (B);
+
+
+
+
+\end{tikzpicture}

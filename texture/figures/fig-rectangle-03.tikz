@@ -1,0 +1,30 @@
+\tdplotsetmaincoords{55}{70}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,7,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,5.5) node[left]{$z$};
+
+\coordinate (O) at (0,0,0);
+\coordinate (A) at (1.5,2,0.5);
+\coordinate (B) at ($(A) + (1,2,1)$);
+\coordinate (D) at ($(A) + (1,1,3)$);
+\coordinate (C) at ($(A) + (2,3,4)$);
+
+% plan de projection (y=0)
+\tikzstyle{myplane}=[draw=red, ultra thick, fill=red!10, opacity=0.5]
+\draw[myplane] (A) -- (B) -- (C) -- (D) -- cycle;
+
+
+\draw[->,>=latex,blue,ultra thick] (O) -- (A) node[midway,below]{$\vec{OA}$};
+\draw[->,>=latex,red,ultra thick] (A) -- (B) node[midway,below]{$\vec{AB}$};
+\draw[->,>=latex,red,ultra thick] (A) -- (D) node[midway,left]{$\vec{AD}$};
+\draw[->,>=latex,red,ultra thick] (A) -- (C) node[midway,below]{$\vec{AC}$};
+
+\node at (O) [left] {$O$};
+\node at (A) [below] {$A$};
+\node at (B) [below right] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [above left] {$D$};
+
+\end{tikzpicture}

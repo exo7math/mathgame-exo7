@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\draw[densely dashed, step=0.335] (0,0) grid ++(1,1);
+\draw[densely dashed, step=0.335] (1,0) grid ++(1,1);
+
+\draw (-1,-1) grid ++(3,3);
+%\draw[thick] (-1,-1) rectangle ++(3,3);
+
+
+
+\foreach \i\j in {-1/1, 1/1, 1/-1, -1/-1}{
+  \fill[orange!75] ($(0.84,0.5) + 0.08*(\i,\j)$) circle (0.05);
+}
+
+ \draw[->,>=latex,red, opacity=0.5, very thick] (0.95,0.5) -- ++(0.8,0) node[midway, below left, black,scale=0.7,opacity=1]{$\vec{v_{3}}$};
+
+\foreach \i\j in {-1/1, 1/1, 1/-1, -1/-1}{
+  \fill[orange!75] ($(1.85,0.5) + 0.08*(\i,\j)$) circle (0.05);
+}
+
+\end{tikzpicture}

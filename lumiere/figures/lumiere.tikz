@@ -1,0 +1,9 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\foreach \a in {0,30,...,360}{
+  \draw[thick,->,>=latex, orange] (0,0) -- (\a:2);
+}
+
+\node[fill=white, circle,text=orange] at (0,0) {$S$};
+
+\end{tikzpicture}

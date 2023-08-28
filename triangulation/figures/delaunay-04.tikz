@@ -1,0 +1,68 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\coordinate (O) at (0,0);
+\coordinate (A) at (200:3);
+\coordinate (B) at (-70:3);
+\coordinate (C) at (60:3);
+\coordinate (D) at (2.6,-0.5);
+
+\draw[blue, very thick,fill=blue!3,] (0,0) circle (3);
+
+% Second cercle à la main
+%\coordinate (O2) at (2.45,-0.2);
+%\def\r{2.58}
+%\draw[gray!50, very thick] (O2) circle (\r);
+
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [left] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\node at (220:3.5) {$\mathcal{C}_1$};
+%\node at (4.5,-2.5) {$\mathcal{C}_2$};
+\node at (0,-4) {\bf Mauvaise diagonale};
+\end{scope}
+
+
+\begin{scope}[xshift=10cm]
+\coordinate (O) at (0,0);
+\coordinate (B) at (-60:2.5);
+\coordinate (D) at (10:2.5);
+\coordinate (C) at (80:2.5);
+\coordinate (A) at (-2,-0.5);
+
+\draw[blue, fill=blue!3,very thick] (0,0) circle (2.5);
+
+% Second cercle à la main
+%\coordinate (O2) at (2.45,-0.2);
+%\def\r{2.58}
+%\draw[gray!50, very thick] (O2) circle (\r);
+
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [left] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+%\node at (220:3.5) {$\mathcal{C}_1$};
+\node at (2.5,-2.0) {$\mathcal{C}_2$};
+\node at (0,-4) {\bf Mauvaise diagonale};
+\end{scope}
+
+\end{tikzpicture}

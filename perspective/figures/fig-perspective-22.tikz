@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\draw[thick,->,>=latex] (-1.2,0) -- (1.5,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,-1.2) -- (0,1.5) node[below left]{$y$};
+
+\draw[thick] (0,0)  circle (1);
+
+\draw[thick] (1,1.5) -- (1,-1.5) node[right]{plan $(x=R)$};
+
+\def\mytheta{45}
+\coordinate (P) at (\mytheta:2);
+\node[scale=2,red] at (P) {.};
+\node[above,red] at (P) {$P$};
+
+\coordinate (Q) at (\mytheta:1);
+\node[scale=2,red] at (Q) {.};
+\node[above,red] at (Q) {$P'$};
+
+\coordinate (R) at (1,{sin(\mytheta)});
+\node[scale=2,red] at (R) {.};
+\node[right,red] at (R) {$P''$};
+
+\draw (0,0) -- (Q) node[midway, above left] {$R$};
+\draw[red] (P) -- (Q) -- (R) ;
+
+\end{tikzpicture}

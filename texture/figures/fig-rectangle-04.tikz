@@ -1,0 +1,16 @@
+﻿\begin{tikzpicture}[scale=1.5]
+
+
+
+\begin{scope}[cm={3,0.5,1,2,(0,0)}]  % Attention ici : (a,b,c,d) = matrix a & c \\ b & d.  
+
+\draw[gray, fill=gray!5, very thick,] (0,0) rectangle (1,1);
+\draw[red, fill=red!5, very thick,] (0,0) -- (1,0) -- (0,1) -- cycle;
+
+\end{scope}
+
+\draw[->,>=latex,red,ultra thick] (0,0) -- (3,0.5) node[midway,below]{$\vec p = \begin{pmatrix} a \\ c \end{pmatrix}$};
+\draw[->,>=latex,red,ultra thick] (0,0) -- (1,2) node[midway,left]{$\vec q= \begin{pmatrix} b \\ d \end{pmatrix}$};
+
+
+\end{tikzpicture}

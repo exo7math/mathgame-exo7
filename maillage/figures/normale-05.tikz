@@ -1,0 +1,27 @@
+﻿\tdplotsetmaincoords{70}{60}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.5);
+\coordinate (C) at (1.2,2);
+\draw[red, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [right] {$C$};
+
+\def\u{0.3}
+\def\v{0.2}
+
+% coord bary 1-u-v, u, v
+% Attention ! pas d'espace dans les coordonnées 
+\coordinate (Q) at (barycentric cs:A=1,B=1,C=1);
+
+%\draw[gray!50, very thick] (A) -- (Q);
+%\draw[gray!50, very thick] (B) -- (Q);
+%\draw[gray!50, very thick] (C) -- (Q);
+
+\node[scale=2,red] at (Q) {.};
+%\node[above right,red] at (Q) {$P(\alpha:\beta:\gamma)$};
+
+\draw[-latex,very thick, brown] (Q) -- ++ (0,0,1) node[right]{$\vec{n}$};
+
+\end{tikzpicture}

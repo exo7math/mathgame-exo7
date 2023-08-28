@@ -1,0 +1,53 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Soleil
+\begin{scope}[shift={(0,0)},scale=2]
+    \coordinate (S) at (0,0);
+    \foreach \a in {0,15,...,360}{
+      \draw[orange] (\a:0.23) -- (\a:0.4);
+    }
+    \draw[orange, fill=white] (0,0) circle (0.2cm);
+\end{scope}
+
+
+% Surface
+\begin{scope}[shift={(6,-6)},scale=2]
+\coordinate (P) at (0,0);
+\draw[blue, fill=blue!20] (-0.3,-0.3) -- ++(80:0.6) -- ++(0.6,0) -- ++(-100:0.6) -- +(-0.6,0) -- cycle;
+
+
+\end{scope}
+
+
+% Rayons du solail parallèle
+\def\r{0.2}
+\foreach \k in {0,1,...,10}{
+  \draw[orange,->,>=latex,thick] (0.25+\r*\k,-2.25+\r*\k) -- ++(-45:1);
+}
+
+% Texte
+\node[blue, scale=3] at (S) {.};
+\node[below left] at (S) {$S$};
+\node[blue, scale=3] at (P) {.};
+\node[below right] at (P) {$P$};
+
+
+\draw[gray,thin] (P) -- (S);
+
+
+\draw[very thick,->,>=latex,red] (P) -- ($(S)!0.75!(P)$) node[midway,above]{$\vec \ell$};
+
+
+
+\tikzset{
+perp/.style = {draw,angle eccentricity=-.5, angle radius=2mm,pic text=.},
+}
+\path
+  (P)
+  ++ (0,0) coordinate (N)
+  +(-2,.7) coordinate (Na)
+  +(0,-.25) coordinate (Nn)
+  (N) edge[-latex] node[below, pos=.75]{$\vec{n}$} (Na)
+  pic[perp,gray]{right angle=Nn--N--Na}
+;
+\end{tikzpicture}

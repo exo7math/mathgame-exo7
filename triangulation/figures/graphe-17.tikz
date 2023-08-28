@@ -1,0 +1,58 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.2);
+\coordinate (P3) at (0.9,-1);
+\coordinate (P4) at (2.5,-0.8);
+\coordinate (P5) at (2.2,0.8);
+\coordinate (P6) at (3.3,0.3);
+\coordinate (P7) at (4.5,0.7);
+
+
+\draw[ultra thick, black!50]
+  (P1) -- (P2) -- (P3) -- (P4) 
+  (P2) to[bend left] (P5)
+  (P2) to[bend right] (P5)
+  (P4) -- (P6)
+  (P5) -- (P6)
+;  
+
+\draw[ultra thick, red!20] (P7) -- (P6);  
+\draw[densely dashed, ultra thick, red] (P7) -- (P6);  
+
+\foreach \i in {1,...,6}{
+  \path (P\i) node[scale=4,black!70]{.};
+}
+\path (P7) node[scale=4,red]{.};
+\end{scope}
+
+\begin{scope}[xshift=7cm]
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.2);
+\coordinate (P3) at (0.9,-1);
+\coordinate (P4) at (2.5,-0.8);
+\coordinate (P5) at (2.2,0.8);
+\coordinate (P6) at (3.3,0.3);
+\coordinate (P7) at (4.5,0.7);
+
+
+\draw[ultra thick, black!50]
+  (P1) -- (P2) -- (P3) -- (P4)
+  (P2) to[bend left] (P5)
+  (P2) to[bend right] (P5)
+  (P4) -- (P6)
+  (P5) -- (P6)
+;  
+
+\draw[ultra thick, red!20] (P5) -- (P4);
+\draw[densely dashed, ultra thick, red] (P5) -- (P4);  
+
+\foreach \i in {1,...,6}{
+  \path (P\i) node[scale=4,black!70]{.};
+}
+
+\end{scope}
+
+
+\end{tikzpicture}

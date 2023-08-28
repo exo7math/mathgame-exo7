@@ -1,0 +1,51 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,0.5);
+\coordinate (C) at (1,2);
+\coordinate (D) at (2,3);
+
+\coordinate (P) at ($(B)!0.7!(C)$);
+
+\draw[black!50, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+\draw[black!50, fill=red!5, very thick] (B) -- (D) -- (C) -- cycle;
+
+% \fill[black!80] (A) circle (1.5pt);
+% \fill[black!80] (B) circle (1.5pt);
+% \fill[black!80] (C) circle (1.5pt);
+\fill[black] (P) circle (2pt);
+
+%\node at (P) [below] {$P$};
+\end{scope}
+
+\begin{scope}[xshift=5cm]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,0.5);
+\coordinate (C) at (1,2);
+\coordinate (D) at (2,3);
+
+\coordinate (P) at ($(B)!0.7!(C)$);
+
+\draw[black!50, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+\draw[black!50, fill=red!5, very thick] (B) -- (D) -- (C) -- cycle;
+
+\draw[black!50, fill=red!5, very thick] 
+  (P) -- (A)
+  (P) -- (D)
+;
+
+% \fill[black!80] (A) circle (1.5pt);
+% \fill[black!80] (B) circle (1.5pt);
+% \fill[black!80] (C) circle (1.5pt);
+\fill[black] (P) circle (2pt);
+
+% \node at (A) [below] {$A$};
+% \node at (B) [right] {$B$};
+% \node at (C) [above] {$C$};
+%\node at (P) [below] {$P$};
+\end{scope}
+
+\draw[->,>=latex,line width=3pt,red!50] (3.5,1) -- ++(1,0);
+\node at (4,-0.5) {\bf Cas sommet sur une arête};
+\end{tikzpicture}

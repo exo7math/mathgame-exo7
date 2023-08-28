@@ -1,0 +1,27 @@
+TODO Mathgame
+=============
+
+Livre
+-----
+
+* couverture
+* 4eme couverture
+
+
+Relecture
+---------
+
+* volontaires
+
+* chek impression tic-tac-toe version livre et chapitre
+
+
+* espace en trop, juste après $$ : ex. sociologie du joueur, v sur-additif
+
+Du à un probleme de trop de fontes mathématiques, pas réussi à résoudre.
+
+https://tex.stackexchange.com/questions/3676/too-many-math-alphabets-error
+
+
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}

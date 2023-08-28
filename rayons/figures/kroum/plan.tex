@@ -1,0 +1,40 @@
+\documentclass[tikz,border=7pt]{standalone}
+% end preamble
+\usepackage[e]{esvect}
+\usetikzlibrary{calc, angles}
+\tikzset{
+  line/.style = {
+    shorten <=-3mm, shorten >=-3mm
+  },
+  vector/.style = {
+    thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=2]{.}
+    }
+  },
+  perp/.style = {draw,angle eccentricity=.5, angle radius=2mm,pic text=.},
+}
+\begin{document}
+  \begin{tikzpicture}[scale=0.9]
+    % le plan
+    \draw[gray]
+      (0,0) coordinate (P1)
+      -- ++(0,3) coordinate (P2)
+      -- ++(4,-1) coordinate (P3)
+      -- ++(0,-4) coordinate (P4)
+      -- cycle
+    ;
+    \path
+      (P4)
+      ++ (-.4,.7) coordinate (N)
+      +(-1,-.25) coordinate (Na)
+      +(0,.25) coordinate (Nn)
+    ;
+    \path
+      (N) edge[-latex] node[above, pos=.55]{$\vv{n}$}(Na)
+      pic[perp,gray]{right angle=Nn--N--Na}
+    ;
+  \end{tikzpicture}
+\end{document}

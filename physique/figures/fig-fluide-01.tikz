@@ -1,0 +1,12 @@
+﻿\begin{tikzpicture}[scale=0.25]
+
+% Grille de taille Nx x Ny
+\def\Nx{40}
+\def\Ny{10}
+\draw (0,0) grid (\Nx,\Ny);
+\draw[thick] (0,0) rectangle (\Nx,\Ny);
+
+\fill[gray!50] (\Nx/4,\Ny/2) circle (\Ny/4);
+
+\draw[->,>=latex,blue!50,line width=10pt] (-5,\Ny/2) -- (\Nx/6,\Ny/2);
+\end{tikzpicture}

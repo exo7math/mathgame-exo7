@@ -1,0 +1,6 @@
+﻿\begin{tikzpicture}
+      \draw[->,>=latex,thick, gray] (-0.5,0)--(5,0);% node[below,black] {$x$};
+       \draw[->,>=latex,thick, gray] (0,-0.5)--(0,4); % node[right,black] {$y$};
+       \draw[->,>=latex,thick, red] (0,0)--(4,3) node[midway, above left] {$\| \vec u \|$} node[ below right] {$\vec u$};
+      \fill[gray] (0,0) circle (2pt) node[below left]{$O$};
+\end{tikzpicture}

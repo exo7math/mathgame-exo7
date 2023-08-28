@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+  \draw[->,>=latex,thick, gray] (-1,0)--(5,0); %node[right,black] {$x$};
+  \draw[->,>=latex,thick, gray] (0,-1)--(0,3); % node[above,black] {$y$};
+  
+  \node at (0,0) [below left] {$O$};
+
+  \fill[blue] (2,1) circle (2pt) node[below]{$P$};
+  \fill[blue] (4,2) circle (2pt) node[below]{$P'$};
+  
+  \draw[->,>=latex,thick, red] (0,0)--(1,0) node[midway, below] {$\vec i$};
+  \draw[->,>=latex,thick, red] (0,0)--(0,1) node[midway, left] {$\vec j$};
+
+  \draw[->,>=latex,thick, green!60!black, shorten >=2pt, shorten <=3pt] (2,1)--(4,2) node[midway,above] {$\vec v$};
+
+\end{tikzpicture}

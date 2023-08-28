@@ -1,0 +1,17 @@
+﻿\begin{tikzpicture}[scale=2]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.5);
+\coordinate (C) at (2.2,0.5);
+
+\draw[red!20, very thick] (A) -- (C) -- (B);
+
+\draw[->,>=latex, red, very thick] ($(A)!-0.2!(B)$) -- (A) --  ($(B)!-0.4!(A)$) node[right] {$(\vec{AB})$};
+\node at (A) [below left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+
+\path (A) node[scale=3,black!70]{.};
+\path (B) node[scale=3,black!70]{.};
+\path (C) node[scale=3,black!70]{.};
+
+\end{tikzpicture}

@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\fill[gray] (-1,-1) rectangle ++(12,1);
+\fill[gray] (-1,8) rectangle ++(12,1);
+\fill[gray] (0,0) rectangle ++(-1,8);
+\fill[gray] (10,0) rectangle ++(1,8);
+
+
+
+\fill[gray] (5,1) rectangle ++(4,1);
+\fill[gray] (7,2) rectangle ++(1,1);
+
+\fill[gray] (2,0) rectangle ++(1,3);
+\fill[gray] (3,2) rectangle ++(1,2);
+\fill[gray] (4,3) rectangle ++(1,5);
+
+\fill[red!20] (10,2) rectangle ++ (1,1); % node[black, below right]{sortie};
+
+\draw[<-=latex,blue,thick] (4.5,4) to[bend left] (12,4) node[right]{interdit};
+\draw[<-=latex,blue,thick] (7.5,2) to[bend left] (12,4); % node[right]{interdit};
+\end{tikzpicture}

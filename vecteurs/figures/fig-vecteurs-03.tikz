@@ -1,0 +1,16 @@
+﻿\begin{tikzpicture}[scale=3]
+      \draw[->,>=latex,thick, gray] (-1.2,0)--(1.3,0) node[below,black] {$x$};
+       \draw[->,>=latex,thick, gray] (0,-1.2)--(0,1.3) node[right,black] {$y$};
+
+    
+    \foreach \a in {10,30,...,360}{
+       \draw[->,>=latex,thick, black!80] (0,0) -- (\a:1);
+    }
+
+       \draw[->,>=latex,very thick, red] (0,0) -- (30:1)  node[above right] {$\vec u$};
+
+      \draw[gray] (0,0) circle (1);
+      \fill[gray] (0,0) circle (1pt); % node[below left]{$O$};
+      \node[below right] at (1,0) {$1$};
+
+\end{tikzpicture}

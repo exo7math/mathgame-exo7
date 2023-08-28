@@ -1,0 +1,61 @@
+﻿\begin{tikzpicture}[scale=0.8]
+
+\begin{scope}[yshift=0cm]
+
+\draw[very thick] (0,-1) rectangle ++(2,2);
+\node at (1,0) {\bf E};
+\draw[very thick] (2,-1) rectangle ++(2,2);
+\node at (3,0) {\bf I};
+\draw[very thick] (4,-1) rectangle ++(2,2);
+\node at (5,0) {\bf O};
+\draw[very thick] (6,-1) rectangle ++(2,2);
+\node at (7,0) {\bf U};
+\draw[very thick] (8,-1) rectangle ++(2,2);
+\node at (9,0) {\bf Y};
+
+\draw[->,>=latex,ultra thick,red] (0.5,1.5)  -- ++(9,0) node[midway,above] {\bf File};
+
+\end{scope}
+
+
+\begin{scope}[yshift=-4cm]
+
+\draw[very thick] (-2,-1) rectangle ++(2,2);
+\node at (-1,0) {\bf A};
+\draw[very thick] (0,-1) rectangle ++(2,2);
+\node at (1,0) {\bf E};
+\draw[very thick] (2,-1) rectangle ++(2,2);
+\node at (3,0) {\bf I};
+\draw[very thick] (4,-1) rectangle ++(2,2);
+\node at (5,0) {\bf O};
+\draw[very thick] (6,-1) rectangle ++(2,2);
+\node at (7,0) {\bf U};
+\draw[very thick] (8,-1) rectangle ++(2,2);
+\node at (9,0) {\bf Y};
+
+\draw[->,>=latex,very thick,red] (-3,2)  to[bend left] (-1,1.1);
+\node[left] at (-3,2) {Ajouter un élément au début};
+
+\end{scope}
+
+
+\begin{scope}[yshift=-8cm]
+
+\draw[very thick] (-2,-1) rectangle ++(2,2);
+\node at (-1,0) {\bf A};
+\draw[very thick] (0,-1) rectangle ++(2,2);
+\node at (1,0) {\bf E};
+\draw[very thick] (2,-1) rectangle ++(2,2);
+\node at (3,0) {\bf I};
+\draw[very thick] (4,-1) rectangle ++(2,2);
+\node at (5,0) {\bf O};
+\draw[very thick] (6,-1) rectangle ++(2,2);
+\node at (7,0) {\bf U};
+%\draw[very thick] (8,-1) rectangle ++(2,2);
+\node[gray] at (9,0) {\bf Y};
+
+\draw[->,>=latex,very thick,red] (11.2,2)  to[bend right] (9.2,0.6);
+\node[right, align=center,text width=4cm] at (11,2) {Lire et retirer le dernier élément : "Y"};
+
+\end{scope}
+\end{tikzpicture}

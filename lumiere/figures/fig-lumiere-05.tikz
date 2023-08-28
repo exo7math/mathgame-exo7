@@ -1,0 +1,39 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+% Sphere
+\shade[draw,ball color = gray!40, opacity = 0.5] (0,0) circle (5cm);
+
+  \draw[scale=5] (-1,0) arc (180:360:1 and 0.3);
+  \draw[scale=5,dashed,gray] (1,0) arc (0:180:1 and 0.3);
+  \fill[fill=black] (0,0) circle (1pt);
+  \draw[scale=9] (-1,0) arc (180:360:1 and 0.3);
+  \draw[scale=9,dashed,gray] (1,0) arc (0:180:1 and 0.3);
+
+\shade[draw,ball color = gray!60, opacity = 0.4] (0,0) circle (9cm);
+
+\draw (0,0) -- (120+35:5) node[pos=0.5, above]{$1$};
+\draw (0,0) -- (140+25:9) node[pos=0.7, above]{$r$};
+
+% Ampoule
+\begin{scope}[scale=0.7]
+    \coordinate (S) at (0,0);
+
+    \foreach \a in {0,30,...,330}{
+      \draw[orange,->,>=latex] (\a:1.2) -- (\a:2);
+    }
+
+    \draw[thick, orange] (110-360:1) arc (110-360:70:1);
+    \draw[thick, orange] (70:1) -- ++(0,1);
+    \draw[thick, orange] (110-360:1) -- ++(0,1);
+\end{scope}
+
+
+% Surface
+\coordinate (P) at (0:6);
+\draw[red, fill=red!20,scale=2] (P) to[bend right=10] ++(100:0.6) to[bend right=10] ++(20:0.6) to[bend left=10] ++(-80:0.6) to[bend left=10] +(20:-0.6) -- cycle;
+
+\coordinate (P) at (-10:2.5);
+\draw[red, fill=red!30,scale=2] (P) to[bend right=10] ++(100:0.6) to[bend right=10] ++(20:0.6) to[bend left=10] ++(-80:0.6) to[bend left=10] +(20:-0.6) -- cycle;
+
+
+\end{tikzpicture}

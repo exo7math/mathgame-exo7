@@ -1,0 +1,35 @@
+﻿\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+very thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+
+\draw[gray!20,very thick] (0,0) circle (2);
+\draw[double] (0:1) arc (0:40:1) node[midway,right]{$\theta$};
+
+\draw[gray] (-2,0) -- (3,0);
+\draw[gray] (0,-2) -- (0,2.5);
+
+\draw[-latex, thick,blue] (0,0) --  (2,0) node[below]{$\vec{i}$};
+\draw[-latex, thick,blue] (0,0) --  (0,2) node[left]{$\vec{j}$};
+
+\begin{scope}[rotate=40]
+\draw[-latex, thick,red] (0,0) --  (2,0) node[above right]{$\vec{u_\theta}$};
+\draw[-latex, thick,red] (0,0) --  (0,2) node[above left]{$\vec{v_\theta}$};
+\path  (0,0) [dot] node[below left]{$O$};
+
+\draw (0.25,0) -- (0.25,0.25) -- (0,0.25);
+\end{scope}
+
+
+
+\end{tikzpicture}

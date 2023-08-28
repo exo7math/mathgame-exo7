@@ -1,0 +1,20 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\draw[black!80, very thick] (0,0) rectangle (10,6);
+
+\coordinate (P) at (3,2);
+
+\coordinate (X) at (7,4);
+
+\draw[gray!50,thick] (P) -- (X);
+
+\fill[green!70!black] (P) circle (3pt);
+\fill[red!70!black] (X) circle (3pt);
+
+\node at (P)[below]{$P$};
+\node at (X)[below]{$X$};
+
+
+\draw[->,>=latex,very thick,green!70!black] (P) -- ($(P)!0.3!(X)$) node[black,below]{$P'$};
+
+\end{tikzpicture}

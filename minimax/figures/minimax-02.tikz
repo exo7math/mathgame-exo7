@@ -1,0 +1,42 @@
+﻿  \begin{tikzpicture}[scale=2]
+ \tikzstyle{mytrianglemax}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=90,
+  fill=violet!10,
+  minimum size =1.3cm]	
+  
+\tikzstyle{mytrianglemin}=[
+  isosceles triangle, 
+  isosceles triangle apex angle=60,
+  %draw,
+  shape border rotate=-90,
+  fill=teal!10,
+  minimum size =1.3cm]		
+	
+\tikzstyle{mymax}=[above=-2pt, black!50, scale=0.8]	
+
+\tikzstyle{mymin}=[right=2pt, black!50, scale=0.8]
+	
+	
+% define points
+\path  (0,0) coordinate(R)  ;
+
+% triangle
+%\node[mytrianglemax] (T) at (R) {};
+%\node[mymax] at (T.315) {max};
+
+\node[mytrianglemin] (T) at (R) {};
+\node[mymin] at (T.280) {min};
+
+
+% draw lines
+\draw[thick]
+  (T.south) -- ++(-1,-0.75) node[below] {$v_1$}
+  (T.south) -- ++(-0.5,-0.75) node[below] {$v_2$}
+  (T.south) -- ++(0,-0.75) node[below] {$v_3$}
+  ;
+
+\draw[thick, dotted] (T) ++ (0.25,-1.1) -- ++ (0.5,0);
+  \end{tikzpicture}

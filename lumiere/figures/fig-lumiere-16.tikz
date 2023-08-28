@@ -1,0 +1,44 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\coordinate (P1) at (0,0);
+\draw[very thick] (-3.5,0) -- (2,0);
+\draw[thin,gray] (0.5,0) arc (0:180:0.5);
+
+\foreach \a in {10,30,...,180}{
+  \draw[->,>=latex,orange, thick] (0,0) -- (\a:0.5);
+}
+\node[blue, scale=3] at (P1) {.};
+\node[below] at (P1) {$P_1$};
+
+\draw[very thick,->,>=latex,blue] (-1.5,0) -- ++(0,1) node[midway,left]{$\vec{n_1}$};
+\draw[gray] (-1.5,0) +(0,.15)-|+(.15,0);
+\end{scope}
+
+\begin{scope}[shift={(3.41,1.41)}, rotate=45]
+\coordinate (P2) at (0,0);
+\draw[very thick] (-2,0) -- (2,0);
+\draw[thin,gray] (1,0) arc (0:180:1);
+
+\foreach \a in {10,30,...,180}{
+  \draw[->,>=latex,orange, thick] (0,0) -- (\a:1);
+}
+\node[blue, scale=3] at (P2) {.};
+\node[below right] at (P2) {$P_2$};
+
+\draw[very thick,->,>=latex,blue] (-1.5,0) -- ++(0,1) node[midway,left]{$\vec{n_2}$};
+\draw[gray] (-1.5,0) +(0,.15)-|+(.15,0);
+\end{scope}
+
+\coordinate (S) at (-3,2.5);
+\node[red, scale=3] at (S) {.};
+\node[below left] at (S) {$S$};
+
+
+\draw[thin, dashed,gray] (P1) -- (S);
+\draw[very thick,->,>=latex,red] (P1) -- ($(S)!0.7!(P1)$) node[above]{$\vec{\ell_1}$};
+
+\draw[thin,dashed,gray] (P2) -- (S);
+\draw[very thick,->,>=latex,red] (P2) -- ($(S)!0.8!(P2)$) node[above]{$\vec{\ell_2}$};
+
+\end{tikzpicture}

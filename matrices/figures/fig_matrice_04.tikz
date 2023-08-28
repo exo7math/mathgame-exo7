@@ -1,0 +1,50 @@
+﻿\begin{tikzpicture}[baseline=(A.center)]
+\tikzset{node style ge/.style={circle}}
+\tikzset{BarreStyle/.style =  {opacity=.4,line width=6 mm, color=#1}}
+
+
+\begin{scope}[xshift=0cm]
+
+\matrix (A) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	\vphantom{X} & &  \\
+	\hphantom{X} & L_i & \hphantom{X} \\
+	\vphantom{X} & &  \\
+};
+ \draw [BarreStyle=orange,line cap=round] (A-2-1.west) node[left=2mm,black,opacity=1]{$A=$} to (A-2-3.east) ;
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=2.5cm]
+\matrix (B) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	\vphantom{X} & \vphantom{X}  &  \\
+	\hphantom{X} & C_j & \hphantom{X} \\
+	\vphantom{X} & \vphantom{X}  &  \\
+};
+
+ \draw [BarreStyle=blue,line cap=round] (B-1-2.north)  to (B-3-2.south) ;
+
+\node[right=3mm,black,opacity=1] at (B-2-3.east){$=B$} ;
+
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=0cm]
+\matrix (C) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	\vphantom{X} & \vphantom{X}  &  \\
+	\hphantom{X} & c_{ij} & \hphantom{X} \\
+	\vphantom{X} & \vphantom{X}  &  \\
+};
+
+ \fill [green!70!black,opacity=0.5] (C-2-2)  circle(3mm) ;
+
+\node[right=3mm,black,opacity=1] at (C-2-3.east){$=C$} ;
+
+\end{scope}
+
+\draw[<->,>=latex,green!70!black!20,line width=3pt] (A-2-2) to[bend left] node[midway, above left,black]{$L_i \cdot C_j$} (B-2-2) ;
+
+\end{tikzpicture}

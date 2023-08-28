@@ -1,0 +1,18 @@
+﻿\begin{tikzpicture}[baseline=(A.center)]
+\tikzset{node style ge/.style={circle}}
+\tikzset{BarreStyle/.style =  {opacity=.4,line width=6 mm, color=#1}}
+
+\matrix (A) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	a_{11}& a_{12}& \dots & a_{1i}& \dots & a_{1n}\\
+	a_{21}& a_{22}& \dots & a_{2i}& \dots &a_{2n}\\
+	\dots & \dots & \dots & \dots & \dots & \dots \\
+	a_{i1}& a_{i2} & \dots & a_{ii}& \dots &a_{in} \\
+	\dots & \dots & \dots & \dots & \dots & \dots \\
+	a_{n1}& a_{n2}& \dots & a_{ni}& \dots & a_{nn}\\
+};
+
+ \draw [BarreStyle=orange,line cap=round] (A-1-1.north west)  to (A-6-6.south east) ;
+
+\end{tikzpicture}

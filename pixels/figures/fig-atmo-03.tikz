@@ -1,0 +1,8 @@
+﻿\begin{tikzpicture}[scale=1]
+\foreach \i/\s  in {0/1, 1/0.8, 2/0.6, 3/0.4, 4/0.2, 5/0.1, 6/0}{
+  \definecolor{mycolor}{hsb}{0.66,\s,0.8}
+  \draw[fill=mycolor] (0,\i) rectangle ++(5,1);
+   \pgfmathsetmacro{\sat}{floor(100*\s)}
+  \node at (6,\i+0.5) {\pgfmathprintnumber{\sat} \%};
+}
+\end{tikzpicture}

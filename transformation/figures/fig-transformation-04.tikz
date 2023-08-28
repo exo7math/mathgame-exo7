@@ -1,0 +1,35 @@
+﻿\tdplotsetmaincoords{75}{115}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[above left]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,2.5,0) node[right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,1.6) node[right]{$z$};
+
+
+
+\pgfmathsetmacro{\cube}{1}
+
+
+\tdplotsetrotatedcoords{0}{90}{-120}
+\begin{scope}[tdplot_rotated_coords]
+\tikzstyle{mycube}=[draw=red, thick, fill=red!50, opacity=0.5]
+\draw[mycube,fill=none, thin] (\cube,0,0) -- (\cube,\cube,0) -- (\cube,\cube,\cube) -- (\cube, 0, \cube) -- cycle;
+\draw[mycube, fill=none, thin] (0, \cube, 0) -- (0, \cube, \cube) -- (\cube,\cube,\cube) -- (\cube, \cube, 0) -- cycle;
+\draw[mycube] (0,0,0) -- (0,\cube,0) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+\draw[mycube] (\cube,0,\cube) -- (\cube,\cube,\cube) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+\draw[mycube] (0,0,\cube) -- (0,0,0) -- (\cube,0,0) -- (\cube,0,\cube) -- cycle;
+\end{scope}
+
+\tdplotsetrotatedcoords{0}{0}{0}
+\begin{scope}[tdplot_rotated_coords]
+\tikzstyle{mycube}=[draw=blue, thick, fill=blue!50, opacity=0.5]
+ \draw[mycube] (\cube,0,0) -- (\cube,\cube,0) -- (\cube,\cube,\cube) -- (\cube, 0, \cube) -- cycle;
+ \draw[mycube] (\cube,0,\cube) -- (\cube,\cube,\cube) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+ \draw[mycube] (0, \cube, 0) -- (0, \cube, \cube) -- (\cube,\cube,\cube) -- (\cube, \cube, 0) -- cycle;
+\end{scope}
+
+
+\tdplotsetrotatedcoords{0}{90}{0}
+\tdplotdrawarc[tdplot_rotated_coords,->,>=latex,red,very thick]{(0,0,4.5)}{0.5}{90}{270}{above}{$R_x$}
+
+\end{tikzpicture}

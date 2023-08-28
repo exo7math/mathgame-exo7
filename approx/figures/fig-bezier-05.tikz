@@ -1,0 +1,43 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% la courbe
+\path
+  (0,0) coordinate (P0)
+  (1,2) coordinate (P1)
+  (	2.8,1.4)  coordinate (P2)
+  (4,0) coordinate (P3)
+;
+
+\foreach \k in {-0.6,-0.4,...,1}{
+
+    \path
+      (1-\k,2+\k) coordinate (P1)
+      (5+2*\k,2+\k) coordinate (P2)
+    ;
+    \draw[gray!50, line]
+      (P0)  -- (P1) -- (P2) -- (P3)
+    ;
+    \draw[red, line]
+      (P0)  .. controls (P1) and (P2) .. (P3)
+    ;
+    
+    \path
+      (P0) [dot] node[below]{$P_0$}
+      (P1) [dot] node[above]{}
+      (P2) [dot] node[above]{}
+      (P3) [dot] node[below]{$P_3$}
+    ;
+}
+\end{tikzpicture}

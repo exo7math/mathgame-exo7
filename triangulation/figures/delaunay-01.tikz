@@ -1,0 +1,25 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (-10:3);
+\coordinate (B) at (60:3);
+\coordinate (C) at (200:3);
+
+\draw[blue, very thick] (0,0) circle (3);
+
+\draw[red, ultra thick] (A) -- (C) -- (B) --cycle;
+
+\draw[gray, thick] (O) -- (A) node[midway, above, black]{$r$};
+
+\node at (O) [below left] {$O$};
+\node at (A) [right] {$A$};
+\node at (B) [above right] {$B$};
+\node at (C) [left] {$C$};
+
+
+\foreach \P in {A,B,C,O} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+
+\end{tikzpicture}

@@ -1,0 +1,30 @@
+\begin{tikzpicture}[scale=1.2]
+
+\clip (-2,-2) rectangle (5,3.5);
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.5);
+\coordinate (C) at (1,2);
+
+
+\node at (A) [below,scale=0.8] {$A(1:0:0)$};
+\node at (B) [below,scale=0.8] {$B(0:1:0)$};
+\node at (C) [right,scale=0.8] {$C(0:0:1)$};
+
+\draw[shorten >=-30mm, shorten <=-30mm] (A) -- (B) node[below,pos=1.5,scale=0.8]{$\gamma=0$};
+\draw[shorten >=-30mm, shorten <=-30mm] (A) -- (C) node[below,pos=-0.6,scale=0.8]{$\beta=0$};
+\draw[shorten >=-30mm, shorten <=-30mm] (B) -- (C) node[below,pos=-0.45,scale=0.8]{$\alpha=0$};
+
+\draw[red, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+
+\node[scale=4,red] at (A) {.};
+\node[scale=4,red] at (B) {.};
+\node[scale=4,red] at (C) {.};
+
+
+\node[scale=0.8] at (barycentric cs:A=1,B=1,C=1) {$\alpha,\beta,\gamma \ge 0$};
+\node[scale=0.8] at (barycentric cs:A=-0.7,B=1,C=1) {$\alpha \le 0$};
+\node[scale=0.8] at (barycentric cs:A=1,B=-0.5,C=1) {$\beta \le 0$};
+\node[scale=0.8] at (barycentric cs:A=1,B=1,C=-0.7) {$\gamma \le 0$};
+
+\end{tikzpicture}

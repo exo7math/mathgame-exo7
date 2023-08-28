@@ -1,0 +1,21 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}[rotate=-10]
+\coordinate (A) at (-2,0);
+\coordinate (B) at (2,0);
+
+\fill[red!50!blue!10] (-4,-2) rectangle (0,2);
+\fill[blue!50!green!10] (4,-2) rectangle (0,2);
+
+\draw[green!70!black, ultra thick] (0,-2)  -- (0,2);
+
+\node at (A) [above left] {$A$};
+\node at (B) [above right] {$B$};
+
+
+\foreach \P in {A,B} {
+  \fill[black!80] (\P) circle (3pt);
+}
+\end{scope}
+
+\end{tikzpicture}

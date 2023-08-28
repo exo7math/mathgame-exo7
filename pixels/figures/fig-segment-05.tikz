@@ -1,0 +1,32 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\draw[->, >=latex] (0,0)--(3,0);
+\draw[->, >=latex] (0,0)--(0,2);
+
+\coordinate (P1) at (0.5,0.5);
+\coordinate (P2) at (2.5,1.5);
+
+\draw[] ($(P1)!-0.3!(P2)$) -- ($(P2)!-0.3!(P1)$);
+\draw[very thick, blue] (P1) -- (P2);
+
+
+\coordinate (M) at (2.5,0.5);
+
+\draw[<->, >=latex,shorten <=2pt,shorten >=2pt,thick, gray] (P1)--(M) node[midway, below, black]{$1$};
+\draw[<->, >=latex,shorten <=2pt,shorten >=2pt,thick, gray] (P2)--(M) node[midway, right, black]{$\alpha$};
+
+\node[blue, scale=3] at (P1) {.};
+\node[blue, scale=3] at (P2) {.};
+
+\draw[dashed] (P1) -- (P1 |- 0,0);
+\draw[dashed] (P2) -- (P2 |- 0,0);
+\draw[dashed] (P1) -- (P1 -| 0,0);
+\draw[dashed] (P2) -- (P2 -| 0,0);
+
+\node[below] at (P1 |- 0,0) {$x$};
+\node[left] at (P1 -| 0,0) {$y$};
+
+\node[below] at (P2 |- 0,0) {$x+1$};
+\node[left] at (P2 -| 0,0) {$y + \alpha$};
+
+\end{tikzpicture}

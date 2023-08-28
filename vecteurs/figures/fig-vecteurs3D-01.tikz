@@ -1,0 +1,24 @@
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+
+\draw[thick,->,>=latex] (0,0,0) -- (2.5,0,0); % node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,3,0); % node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,2.2); % node[right]{$z$};
+
+       \draw[->,>=latex,thick, red] (0,0,0)--(1,0,0) node[midway, below] {$\vec i$};
+       \draw[->,>=latex,thick, red] (0,0,0)--(0,1,0) node[below] {$\vec j$};
+       \draw[->,>=latex,thick, red] (0,0,0)--(0,0,1) node[midway, left] {$\vec k$};
+
+\draw[->,>=latex,very thick, blue] (0,0,0) -- (1.5,2,1.5) node[right]{$\vec u$};
+
+\draw[dashed] (1.5,0,0) -- (1.5,2,0) -- (0,2,0);
+\draw[dashed] (0,0,1.5) -- (1.5,0,1.5) -- (1.5,2,1.5) -- (0,2,1.5) -- cycle;
+\draw[dashed] (1.5,0,0) -- ++ (0,0,1.5);
+\draw[dashed] (1.5,2,0) -- ++ (0,0,1.5);
+\draw[dashed] (0,2,0) -- ++ (0,0,1.5);
+
+\node at (1.5,0,0) [left] {$x$};
+\node at (0,2,0) [above right] {$y$};
+\node at (0,0,1.5) [above  left] {$z$};
+
+\end{tikzpicture}

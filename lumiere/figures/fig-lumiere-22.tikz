@@ -1,0 +1,39 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\def\mytheta{40};
+
+\draw[ultra thick] (-3,0) -- (3,0);
+\draw[densely dashed] (0,0) -- (0,2);
+
+\draw[<-,>=latex, shorten <= 2pt, very thick, red] (0,0) -- (90+\mytheta:2);
+\draw[->,>=latex, shorten <= 3pt, very thick, orange] (0,0) -- (90-\mytheta:2);
+
+\draw[red,double] (90-\mytheta:1) arc({90-\mytheta}:90:1);
+
+\draw[red,double] (90+\mytheta:0.9) arc({90+\mytheta}:90:0.9);
+
+\node at (0,-0.5) {réflexion sur un miroir};
+\end{scope}
+
+\begin{scope}[xshift=8cm]
+\def\mytheta{40};
+
+\draw[ultra thick] (-3,0) -- (3,0);
+\draw[densely dashed] (0,0) -- (0,2);
+
+\draw[<-,>=latex, shorten <= 2pt, very thick, red] (0,0) -- (90+\mytheta:2);
+
+\draw[densely dotted] (0,0) -- (90-\mytheta:2);
+
+\foreach\a in {-50,-43,...,60}{
+  \draw[->,>=latex, shorten <= 3pt, thick, orange] (0,0) -- ({90-\mytheta + \a}:{cos(\a)^2});
+}
+
+%\draw[red,double] (90-\mytheta:1) arc({90-\mytheta}:90:1);
+%\draw[red,double] (90+\mytheta:0.9) arc({90+\mytheta}:90:0.9);
+
+\node at (0,-0.5) {luminosité spéculaire};
+\end{scope}
+
+\end{tikzpicture}

@@ -1,0 +1,41 @@
+\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+very thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% la courbe
+\path
+  (0,0) coordinate (P0)
+  (1.5,1) coordinate (P1)
+  (	1,4)  coordinate (P2)
+  (0,4) coordinate (P3)
+  (-4,0) coordinate (C)
+;
+\draw[blue, line]
+  (P0)  .. controls (P1) and (P2) .. (P3) node[pos=0.5] (S) {} node[pos=0.6] (SS) {} 
+;
+
+\coordinate (CC) at ($(C)!0.2!(S)$);
+
+\draw[red, line, thin, shorten >= -20pt, shorten <= -20pt] (C)--(S);
+\draw[-latex,red, line, thick] (C)--(CC);
+
+\draw[gray, thin] (CC) -- (SS.center);
+
+\path
+  (S) [dot] node[right]{$S(t)$}
+  (C) [dot] node[above,scale=1]{$C(t)$}
+  (CC) [dot] node[above,scale=0.7]{$C(t+d t)$}
+  (SS) [gray,dot] node[right,scale=0.7]{$S(t+d t)$}
+;
+
+\end{tikzpicture}

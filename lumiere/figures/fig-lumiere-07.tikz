@@ -1,0 +1,39 @@
+﻿\begin{tikzpicture}[scale=0.7]
+% https://tex.stackexchange.com/questions/171169/
+
+\begin{scope}[rotate=10]
+
+\coordinate (S) at (0,0);
+\coordinate (P) at (-13:10);
+
+\fill[gray!10] (S) -- +(20:12) -- +(-20:12)--cycle;
+
+\draw[dashed] (S) -- (P);
+\draw[] (S) -- ++(0:6);
+\draw[dotted] (S) -- ++(20:12);
+\draw[dotted] (S) -- ++(-20:12);
+\draw[thick] (S) -- ++(20:5);
+\draw[thick] (S) -- ++(-20:5);
+
+
+
+
+\draw[very thick,->,>=latex,red] (S) -- ++(2,0) node[above]{$\vec u$};
+
+\draw[very thick,->,>=latex,red] (P) -- ($(S)!0.8!(P)$) node[midway,above]{$\vec \ell$};
+
+\draw[red] (3,0)  arc (0:20:3) node[midway, right] {$\theta$};
+\draw[red] (3.5,0)  arc (0:-20:3.5) node[midway, right] {$\theta$};
+
+
+\draw[blue,double=gray!10] (-13:5)  arc (-13:0:5) node[midway, right] {$\omega$};
+
+
+% texte
+\node[scale=3] at (S) {.};
+\node[below left] at (S) {$S$};
+\node[scale=3] at (P) {.};
+\node[below] at (P) {$P$};
+
+\end{scope}
+\end{tikzpicture}

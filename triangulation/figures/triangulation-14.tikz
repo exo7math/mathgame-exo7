@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=2]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.5);
+\coordinate (C) at (2.2,0.5);
+
+\draw[red!20, very thick] (A) -- (C) -- (B);
+
+\draw[red, very thick] (A) --  (B) -- (C) -- cycle;
+\node at (A) [below left] {$P_i$};
+\node at (B) [below] {$P_j$};
+\node at (C) [above] {$P_k$};
+
+\path (A) node[scale=3,black!70]{.};
+\path (B) node[scale=3,black!70]{.};
+\path (C) node[scale=3,black!70]{.};
+
+\node[scale=1.2] at (4,0.05) {$(i,j,k)$};
+\end{tikzpicture}

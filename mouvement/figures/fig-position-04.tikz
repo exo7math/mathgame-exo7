@@ -1,0 +1,41 @@
+\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+very thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+\begin{scope}[rotate=20]
+% la courbe
+\path
+  (0,0) coordinate (P0)
+  (2,-2.5) coordinate (P1)
+  (	4,-2)  coordinate (P2)
+  (4,0) coordinate (P3)
+;
+\draw[blue, line]
+  (P0)  .. controls (P1) and (P2) .. (P3) node[pos=0.35] (Q1) {} node[pos=0.5] (P) {} node[pos=0.65] (Q2) {}
+;
+\draw[gray]
+%  (P0) edge[vector] node[left]{$\vec{v_A}$} (P1)
+%  (P3) edge[vector] node[below right]{$\vec{v_B}$} (P2)
+  (P.center) edge[vector,red] node[below right]{$\vec{v}(t)$} ++(5:1.5)
+;
+
+\draw[red, line, thin, shorten >= -20pt, shorten <= -20pt] (Q1)--(Q2);
+
+
+\path
+  (P) [dot] node[below]{$P(t)$}
+ (Q1) [dot] node[above,scale=0.7]{$P(t-\dd t)$}
+ (Q2) [dot] node[above,scale=0.7]{$P(t+\dd t)$}
+;
+\end{scope}
+\end{tikzpicture}

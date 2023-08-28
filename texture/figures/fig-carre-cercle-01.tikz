@@ -1,0 +1,42 @@
+﻿\begin{tikzpicture}[scale=1]
+
+
+\begin{scope}[xshift=0cm]
+\draw[blue, fill=blue!5, very thick] (-1,-1) rectangle ++(2,2);
+
+% Axes
+\draw[->,>=latex,thick, gray] (-1.5,0)--(1.5,0) node[below,black] {$x$};
+\draw[->,>=latex,thick, gray] (0,-1.5)--(0,1.5) node[right,black] {$y$};
+
+\node[below right] at (0,0) {$0$};
+\node[below right] at (1,0) {$1$};
+\node[below left] at (-1,0) {$-1$};
+\node[above left] at (0,1) {$1$};
+\node[below left] at (0,-1) {$-1$};
+\end{scope}
+
+
+\begin{scope}[xshift=4cm]
+\draw[red,  fill=red!5, very thick] (0,0) circle (1);
+
+% Axes
+\draw[->,>=latex,thick, gray] (-1.5,0)--(1.5,0) node[below,black] {$u$};
+\draw[->,>=latex,thick, gray] (0,-1.5)--(0,1.5) node[right,black] {$v$};
+
+\node[below right] at (0,0) {$0$};
+\node[below right] at (1,0) {$1$};
+\end{scope}
+
+
+\begin{scope}[xshift=8cm]
+% Axes
+\draw[->,>=latex,thick, gray] (-1.5,0)--(1.5,0);
+\draw[->,>=latex,thick, gray] (0,-1.5)--(0,1.5);
+
+\draw[red, very thick] (0,0) circle (1);
+\draw[blue, very thick] (-1,-1) rectangle ++(2,2);
+
+\end{scope}
+
+
+\end{tikzpicture}

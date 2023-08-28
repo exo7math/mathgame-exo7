@@ -1,0 +1,35 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (180:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+
+
+\draw[blue, very thick] (0,0) circle (3);
+
+
+% Second cercle à la main
+\coordinate (O2) at (2.45,-0.2);
+\def\r{2.58}
+\draw[blue, very thick] (O2) circle (\r);
+
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\node at (220:3.5) {$\mathcal{C}_1$};
+\node at (4.5,-2.5) {$\mathcal{C}_2$};
+\node at (1.5,-4) {\bf Bonne diagonale};
+
+\end{tikzpicture}

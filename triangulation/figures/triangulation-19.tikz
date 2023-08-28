@@ -1,0 +1,46 @@
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,0.5);
+\coordinate (C) at (1,2);
+\coordinate (P) at (barycentric cs:A=0.8,B=2,C=1);
+
+\draw[black!50, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+
+% \fill[black!80] (A) circle (1.5pt);
+% \fill[black!80] (B) circle (1.5pt);
+% \fill[black!80] (C) circle (1.5pt);
+\fill[black] (P) circle (2pt);
+
+%\node at (P) [below] {$P$};
+\end{scope}
+
+\begin{scope}[xshift=5cm]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,0.5);
+\coordinate (C) at (1,2);
+\coordinate (P) at (barycentric cs:A=0.8,B=2,C=1);
+
+\draw[black!50, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+
+\draw[black!50, fill=red!5, very thick] 
+  (P) -- (A)
+  (P) -- (B)
+  (P) -- (C)
+;
+
+% \fill[black!80] (A) circle (1.5pt);
+% \fill[black!80] (B) circle (1.5pt);
+% \fill[black!80] (C) circle (1.5pt);
+\fill[black] (P) circle (2pt);
+
+% \node at (A) [below] {$A$};
+% \node at (B) [right] {$B$};
+% \node at (C) [above] {$C$};
+%\node at (P) [below] {$P$};
+\end{scope}
+
+\draw[->,>=latex,line width=3pt,red!50] (3.5,1) -- ++(1,0);
+\node at (3.5,-0.5) {\bf Cas sommet à l'intérieur};
+\end{tikzpicture}

@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+	
+%	\draw[->,>=latex, gray, thick] (-1,0) -- (3.5,0) node[above,black] {$x$};
+%	\draw[->,>=latex, gray, thick] (0,-1) -- (0,2.5) node[left,black] {$y$};
+	
+	%	\draw[domain=-0.25:2.5,black,thick,smooth] plot (\x,{0.6+0.4*\x+0.6*cos(4*\x r)});
+	
+	\draw[domain=0.10:2.7,red,ultra thick,smooth] plot (-\x,{-2+0.4*\x+0.6*cos(4*\x r)+1/(\x-3.45)^2});
+	
+	
+	\coordinate (P) at (-2.19,-0.88);
+	\fill[blue] (P) circle (2pt);
+
+	\coordinate (Q) at (-0.73,-2.07);
+	\fill[blue] (Q) circle (2pt);	
+
+   \draw[<-,>=latex,shorten <=8pt] (P) to[bend left=20] (-3,-2) node[left] {équilibres de Nash};
+   \draw[<-,>=latex,shorten <=8pt] (Q) to[bend left=20] (-3,-2);
+
+   \draw[->,>=latex,green!70!black!20,line width=4pt] (1,0.5) -- ++(0,-2.5) node[midway,right,black]{meilleurs gains};
+\end{tikzpicture}

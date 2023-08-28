@@ -1,0 +1,769 @@
+\documentclass[11pt,class=report,crop=false]{standalone}
+\usepackage[screen]{../mathgame}
+
+
+
+\begin{document}
+
+
+%====================================================================
+\chapitre{Lancer de rayons I}
+%====================================================================
+
+%
+%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
+%
+%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
+%
+%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+
+
+\objectifs{Nous abordons les bases du ray-tracing : nous lançons un rayon depuis une source et calculons en quel(s) point(s) ce rayon atteint un objet géométrique (plan, triangle, sphère...).}
+
+\objectifs{Le principe général et l'utilisation du ray-tracing seront expliqués plus tard dans un chapitre plus avancé.}
+
+\index{ray tracing@\emph{ray tracing}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Intersection avec une surface plane}
+
+Voici les notations utilisées pour ce chapitre :
+\begin{itemize}
+  \item Point $S$ : la source, c'est l'origine du rayon. Contrairement à ce que l'on peut penser cela ne correspondra pas à la source lumineuse, mais à la position de l'observateur ou celle de la caméra.
+  \item Vecteur $\vec v$ : direction du rayon. On pourra normaliser $\vec v$ pour simplifier certains calculs.
+  \item $S + t \vec v$ ($t\in\Rr)$ : paramétrisation du rayon (issu de $S$, dirigé par $\vec v$).
+  \item Point $P$ : intersection de l'objet étudié avec le rayon (ou $P_1, P_2,\ldots$ en cas d'intersections multiples).
+\end{itemize}
+
+%--------------------------------------------------------------------
+\subsection{Dans le plan : intersection avec un segment}
+
+À titre d'illustration et de motivation commençons par étudier le problème dans le plan.
+\begin{itemize}
+  \item L'objet étudié est un segment $[AB]$ où $A$ et $B$ sont deux points distincts du plan.
+  \item On se donne un rayon défini par un point $S$ et un vecteur $\vec v$.
+  \item Question 1. Le rayon coupe-t-il la droite $(AB)$ ? le segment $[AB]$ ?
+  \item Question 2. Si oui, quel est ce point d'intersection ?
+\end{itemize}
+
+
+\myfigure{1.5}{
+	\tikzinput{fig-rayons-01}
+} 
+
+\begin{proposition}
+\sauteligne
+\begin{enumerate}
+  \item Le rayon coupe la droite $(AB)$ si et seulement si $\vec v \cdot \vec n \neq 0$ où $\vec n$ est un vecteur (non nul) orthogonal à $(AB)$.
+  \item Le point d'intersection est alors $P = S + t\vec v$ avec 
+  \mybox{$\displaystyle t = \frac{\overrightarrow{SA}\cdot\vec{n}}{\vec{v}\cdot\vec{n}}$}
+  \item Il s'écrit aussi $P = A + \alpha \overrightarrow{AB}$ avec 
+  \mybox{$\displaystyle \alpha = -\frac{\overrightarrow{SA}\cdot\vec{m}}{\overrightarrow{AB}\cdot\vec{m}}$}
+  où $\vec m$ est un vecteur (non nul) orthogonal à $\vec v$.
+  \item Le point d'intersection $P$ appartient au segment $[AB]$ si et seulement si \myboxinline{$0 \le \alpha \le 1$}\,.
+\end{enumerate}
+\end{proposition}
+
+On détaille la preuve ci-dessous.
+
+\begin{proof}
+\ \\
+\textbf{L'intersection avec la droite existe-elle ?}
+On décide facilement si le rayon coupe la droite :
+le rayon intersecte la droite $(AB)$ si et seulement si $\overrightarrow{AB}$ et $\vec v$ ne sont pas parallèles.
+Ainsi, si on note $\vec n$ un vecteur (non nul) orthogonal à $(AB)$, l'intersection existe si et seulement si $\vec v \cdot \vec n \neq 0$.
+
+\medskip
+\textbf{Intersection.}
+Pour décider si le rayon coupe le segment, on a besoin de calculer l'intersection du rayon avec la droite $(AB)$.
+Le point $P$ d'intersection est un point du rayon, donc $P = S + t\vec{v}$ pour un certain $t\in\Rr$.
+Le point $P$ appartient à la droite $(AB)$ donc s'écrit $P = A + \alpha \overrightarrow{AB}$ pour un certain $\alpha\in\Rr$.
+
+Petits rappels sur les notations affines : $P = S + t\vec{v}$ signifie que $P$ est le point vérifiant $\overrightarrow{SP} = t \vec{v}$, de même $P = A + \alpha \overrightarrow{AB}$ signifie  $\overrightarrow{AP} = \alpha \overrightarrow{AB}$. Enfin la différence de deux point $B-A$ est le vecteur $\overrightarrow{AB}$.
+
+\myfigure{1.5}{
+	\tikzinput{fig-rayons-02}
+} 
+
+Le point $P$ est l'intersection du rayon et de la droite, ainsi $t$ et $\alpha$ vérifient l'égalité :
+$$S + t \vec{v} = A + \alpha \overrightarrow{AB}.$$
+Autrement dit :
+$$t \vec{v} = A-S + \alpha \overrightarrow{AB}.$$
+Ce qui donne :
+\begin{equation}
+\label{eq:interdroite}
+t \vec{v} = \overrightarrow{SA} + \alpha \overrightarrow{AB}
+\end{equation}
+
+
+
+
+
+\medskip
+\textbf{Calcul de $t$.}
+On prend le produit scalaire avec $\vec n$ de part et d'autre de l'égalité \eqref{eq:interdroite} :
+$$t \vec{v}\cdot\vec{n} = \overrightarrow{SA}\cdot\vec{n} + \alpha \overrightarrow{AB}\cdot\vec{n}$$
+Comme $\vec{n}$ est orthogonal à $\overrightarrow{AB}$ :
+$$t \vec{v}\cdot\vec{n} = \overrightarrow{SA}\cdot\vec{n} + 0,$$
+ainsi
+$$t = \frac{\overrightarrow{SA}\cdot\vec{n}}{\vec{v}\cdot\vec{n}}.$$
+
+Cela suffit pour calculer l'intersection du rayon avec la droite $(AB)$. Mais pour le segment $[AB]$ il faut calculer $\alpha$.
+
+\medskip
+\textbf{Calcul de $\alpha$.}
+On repart de l'égalité \eqref{eq:interdroite}, mais cette fois on effectue le produit scalaire avec $\vec m$, vecteur orthogonal à $\vec v$:
+$$t \vec{v}\cdot\vec{m} = \overrightarrow{SA}\cdot\vec{m} + \alpha \overrightarrow{AB}\cdot\vec{m},$$
+donc
+$$0 = \overrightarrow{SA}\cdot\vec{m} + \alpha \overrightarrow{AB}\cdot\vec{m}.$$
+
+D'où :
+$$\alpha = -\frac{\overrightarrow{SA}\cdot\vec{m}}{\overrightarrow{AB}\cdot\vec{m}}.$$
+
+\myfigure{1.5}{
+	\tikzinput{fig-rayons-03}
+} 
+
+
+\medskip
+\textbf{Appartenance au segment $[AB]$.}
+Le point $P$ appartient au segment $[AB]$ si et seulement si $\alpha \ge 0$ et $\alpha \le 1$.
+(Si $\alpha < 0$ le point $P$ est \og{}avant\fg{} $A$, si $\alpha > 1$ le point $P$ est \og{}après\fg{} $B$.)
+
+\end{proof}
+
+On peut apporter quelques précisions :
+\begin{itemize}
+  \item \emph{L'objet est-il devant ou derrière la source ?}
+ 
+  Le rayon coupe l'objet à un temps positif si et seulement si \myboxinline{$t \ge 0$}. Sinon le rayon coupe l'objet \og{}dans le passé\fg{}, c'est-à-dire que l'objet est situé derrière la source, ce que l'on ne considère généralement pas comme valide.
+
+  \item L\emph{e rayon coupe-t-il l'objet sur sa face visible ?}
+
+  Désignons (arbitrairement) la face visible par le vecteur $\vec n$ sortant, de sorte que $(\overrightarrow{AB},\vec{n})$ soit une base directe du plan. Le rayon éclaire la face visible si et seulement si \myboxinline{$\vec{v} \cdot \vec{n} < 0$}.
+  
+\myfigure{1}{
+	\tikzinput{fig-rayons-04}
+}   
+  
+  
+\end{itemize}
+
+%--------------------------------------------------------------------
+\subsection{Plan d'équation $ax+by+cz+d=0$}
+
+Revenons dans l'espace : lançons un rayon vers un plan et calculons le point d'intersection.
+
+\myfigure{1}{
+	\tikzinput{fig-rayons-05}
+}   
+
+Soit $\mathcal{P}$ un plan d'équation $ax+by+cz+d=0$.
+Le vecteur $\vec{n} = \left(\begin{smallmatrix}a\\b\\c\end{smallmatrix}\right)$ est un vecteur orthogonal au plan. 
+
+On note
+$S = \left(\begin{smallmatrix}x_S\\y_S\\z_S\end{smallmatrix}\right)$
+et
+$\vec v = \left(\begin{smallmatrix}x_v\\y_v\\z_v\end{smallmatrix}\right)$.
+
+\begin{proposition}
+Le rayon intersecte le plan si et seulement si $\vec{v} \cdot \vec{n} \neq 0$.
+Si c'est le cas le point d'intersection est $P = S + t\vec{v}$ avec :
+\mybox{$\displaystyle
+t = - \frac{ax_S + by_S + cz_S + d}{ax_v + by_v + cz_v}$}
+\end{proposition}
+
+
+
+Si on note $O = \left(\begin{smallmatrix}0\\0\\0\end{smallmatrix}\right)$ l'origine du repère, alors on peut récrire :
+\mybox{$\displaystyle t = - \frac{\overrightarrow{OS}\cdot\vec{n} + d}{\vec{v} \cdot \vec{n}}$}
+
+
+\begin{proof}
+Le rayon ne coupe pas le plan lorsqu'il est parallèle au plan, c'est-à-dire lorsque $\vec v$ et $\vec n$ sont orthogonaux. Ainsi l'intersection existe si et seulement $\vec{v} \cdot \vec{n} \neq 0$.
+
+Les coordonnées du point $P$ sont :
+$$P 
+= S +t \vec v 
+= \begin{pmatrix}x_S\\y_S\\z_S\end{pmatrix} + t \begin{pmatrix}x_v\\y_v\\z_v\end{pmatrix}
+= \begin{pmatrix}x_S +tx_v\\y_S +t y_v\\z_S +tz_v\end{pmatrix}.
+$$
+Le point $P$ appartient au plan $\mathcal{P}$ si ses coordonnées vérifient l'équation $ax+by+cz+d=0$, donc :
+\begin{align*}
+      & a(x_S +tx_v) + b(y_S +t y_v) + c(z_S +tz_v) + d = 0 \\
+\iff  & ax_S by_S+cz_S + d + t(ax_v + by_v + cz_v)= 0 \\
+\iff  & t = - \frac{ax_S + by_S + cz_S + d}{ax_v + by_v + cz_v}
+\end{align*}
+
+Le numérateur s'écrit aussi $\overrightarrow{OS}\cdot\vec{n} + d$ et le dénominateur $\vec{v} \cdot \vec{n}$.
+
+\end{proof}
+
+
+%--------------------------------------------------------------------
+\subsection{Triangle}
+
+Considérons un triangle de l'espace défini par trois points $A$, $B$, $C$ non alignés.
+On considère un vecteur $\vec n$ orthogonal au triangle, nous choisissons :
+$$\vec n = \overrightarrow{AB} \wedge\overrightarrow{AC}.$$ 
+
+\myfigure{1}{
+	\tikzinput{fig-rayons-06}
+}   
+
+
+Le point $P$ est sur le rayon, donc il existe $t \in \Rr$ tel que :
+$$P = S + t \vec v$$
+et $P$ est dans le plan $(ABC)$ donc il existe $\alpha,\beta \in \Rr$ tels que :
+$$P = A + \alpha \overrightarrow{AB} + \beta \overrightarrow{AC}.$$
+
+
+\begin{proposition}
+\sauteligne
+\begin{enumerate}
+  \item Le point d'intersection $P$ entre le rayon et le plan $(ABC)$ vérifie :
+\mybox{$\displaystyle 
+t = \frac{\overrightarrow{SA} \cdot \vec n}{\vec v \cdot \vec n}
+\qquad\qquad
+\alpha = -\frac{(\overrightarrow{SA} \wedge \overrightarrow{AC}) \cdot \vec v}{\vec v \cdot \vec n}
+\qquad\qquad
+\beta = \frac{(\overrightarrow{SA} \wedge \overrightarrow{AB}) \cdot \vec n}{\vec v \cdot \vec n}
+$}
+
+  \item Le point $P$ appartient au triangle $ABC$ si et seulement si :
+\mybox{$\displaystyle 
+\alpha \ge 0 \qquad \beta \ge 0 \qquad \alpha + \beta \le 1
+$}
+
+  \item En plus, le triangle est devant la source si et seulement si $t \ge 0$ et intersecte le triangle sur sa face visible si et seulement si $\vec v \cdot \vec n < 0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Des équations 
+$$P = S + t \vec v
+\qquad \text{ et } \qquad P = A + \alpha \overrightarrow{AB} + \beta \overrightarrow{AC},$$
+on tire :
+$$S + t \vec v = A + \alpha \overrightarrow{AB} + \beta \overrightarrow{AC},$$
+d'où :
+\begin{equation}
+\label{eq:intertriangle}
+t \vec{v} = \overrightarrow{SA} + \alpha \overrightarrow{AB} + \beta \overrightarrow{AC}
+\end{equation}
+
+Le produit scalaire avec $\vec n$ à gauche et à droite de l'égalité \eqref{eq:intertriangle} donne :
+$$t \vec{v} \cdot \vec{n} = \overrightarrow{SA} \cdot \vec{n} + \alpha \overrightarrow{AB} \cdot \vec{n} + \beta \overrightarrow{AC} \cdot \vec{n}$$
+Mais $\vec n$ est orthogonal à $\overrightarrow{AB}$ et à $\overrightarrow{AC}$, donc :
+$$t \vec{v} \cdot \vec{n} = \overrightarrow{SA} \cdot \vec{n} + 0 + 0,$$
+ce qui donne la valeur voulue pour $t$.
+
+
+On repart de l'égalité \eqref{eq:intertriangle} mais cette fois on effectue le produit vectoriel avec $\overrightarrow{AC}$ sur le terme de gauche et celui de droite :
+$$t \vec{v} \wedge \overrightarrow{AC} = \overrightarrow{SA} \wedge \overrightarrow{AC}  + \alpha \overrightarrow{AB}  \wedge \overrightarrow{AC} + \beta \overrightarrow{AC} \wedge \overrightarrow{AC}.$$
+Par définition $\overrightarrow{AB}  \wedge \overrightarrow{AC} = \vec n$ et on a $\overrightarrow{AC} \wedge \overrightarrow{AC} = \vec 0$, d'où :
+$$t \vec{v} \wedge \overrightarrow{AC} = \overrightarrow{SA} \wedge \overrightarrow{AC}  + \alpha \vec{n}.$$
+On effectue le produit scalaire par $\vec v$ de part et d'autre :
+$$t (\vec{v} \wedge \overrightarrow{AC}) \cdot \vec{v} = (\overrightarrow{SA} \wedge \overrightarrow{AC}) \cdot \vec{v}  + \alpha \vec{n} \cdot \vec{v}.$$
+Mais $\vec{v} \wedge \overrightarrow{AC}$ est orthogonal à $\vec{v}$ donc $(\vec{v} \wedge \overrightarrow{AC}) \cdot \vec{v} = 0$, ce qui donne :
+$$0 = (\overrightarrow{SA} \wedge \overrightarrow{AC}) \cdot \vec{v}  + \alpha \vec{n} \cdot \vec{v},$$
+d'où la valeur de $\alpha$.
+
+Pour trouver $\beta$, on repart de \eqref{eq:intertriangle} en effectue le produit vectoriel avec $\overrightarrow{AB}$, puis le produit scalaire $\vec v$ pour obtenir :
+$$0 = (\overrightarrow{SA} \wedge \overrightarrow{AB}) \cdot \vec{v}  - \beta \vec{n} \cdot \vec{v}.$$
+\end{proof} 
+
+
+\textbf{Autre méthode.} Nous verrons une méthode plus efficace dans le chapitre \og{}Lancer de rayons II\fg{}.
+
+
+%--------------------------------------------------------------------
+\subsection{Polygone}
+
+Pour le lancer de rayon vers un polygone, il suffit de déterminer l'intersection du rayon avec le plan contenant le polygone, puis de décider si le point d'intersection est à l'intérieur ou à l'extérieur du polygone.
+
+
+\myfigure{1}{
+	\tikzinput{fig-rayons-07}
+}   
+
+
+Tout d'abord la notion de \defi{courbe de Jordan}\index{courbe!de Jordan} permet d'identifier clairement l'intérieur de l'extérieur. Soit $\mathcal{C}$ une courbe du plan, continue, fermée (elle se referme sur elle-même), simple (elle ne se recoupe pas), alors $\mathcal{C}$ découpe le plan en deux régions : une partie compacte (l'\defi{intérieur}) et une partie non compacte (l'\defi{extérieur}). L'intérieur et l'extérieur s'intersectent exactement en $\mathcal{C}$.
+
+\myfigure{1}{
+	\tikzinput{fig-rayons-08}
+} 
+
+Nous allons voir trois méthodes pour décider si un point $P$ est à l'intérieur ou l'extérieur d'un polygone.  (On ne discutera pas du cas particulier où $P$ est exactement sur le bord du polygone.) Les deux premières méthodes sont des méthodes planes.
+
+\medskip
+\textbf{A. Méthode topologique.}
+On considère une courbe de Jordan $\mathcal{C}$ du plan. Soit $P$ un point du plan.
+On trace une demi-droite $\mathcal{D}_+$ issue de $P$. On compte le nombre $N$ de fois où la demi-droite $\mathcal{D}_+$ intersecte la courbe $\mathcal{C}$. Le point $P$ est à l'intérieur de $\mathcal{C}$ si et seulement si $N$ est impair.
+
+\myfigure{1}{
+	\tikzinput{fig-rayons-09}
+} 
+
+Dans toute la suite on considère des polygones convexes.
+
+\medskip
+\textbf{B. Calculs dans le plan.}
+
+On considère un polygone convexe $\mathcal{C}$ dans un repère orthonormé dont les sommets ordonnés sont $A_i(x_i,y_i)$, $i=1,\ldots,n$ dans un plan $\mathcal{P}$. 
+On pose $A_{n+1}=A_1$.
+La numérotation peut être dans le sens trigonométrique positif ou négatif.
+
+\begin{proposition}
+\label{prop:trianglepos}
+Le point $P(x,y)$ est à l'intérieur du polygone $\mathcal{C}$ si et seulement si
+les nombres :
+$$\det( \vec{PA_i},\vec{PA_{i+1}} ) = (x-x_i)(y-y_{i+1}) - (x-x_{i+1})(y-y_i) \quad i=1,\ldots,n$$
+sont tous de même signe (tous positifs ou tous négatifs).
+\end{proposition}
+
+
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.9}{
+			\tikzinput{fig-rayons-10a}
+		} 
+	\end{minipage}\quad
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.9}{
+			\tikzinput{fig-rayons-10b}
+		} 
+	\end{minipage}
+\end{center}
+
+
+
+Avant la preuve, distinguons un triangle $ABC$ \defi{positif} ($A$, $B$, $C$ apparaissent dans l'ordre trigonométrique) d'un triangle $ABC$ \defi{négatif}.
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.5}{
+			\tikzinput{fig-rayons-11a}
+		} 
+	\end{minipage}\quad
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.5}{
+			\tikzinput{fig-rayons-11b}
+		} 
+	\end{minipage}
+\end{center}
+
+
+\begin{proof}
+Considérons le cas d'un polygone numéroté positivement.
+Pour un point $P$ à l'intérieur du polygone, tout triangle $PA_iA_{i+1}$ est positif, quel que soit $i=1,\ldots,n$.
+Alors que pour un point $P$ situé à l'extérieur certains triangles $PA_iA_{i+1}$ sont positifs et d'autres $PA_jA_{j+1}$ sont négatifs.
+
+Or :
+\begin{align*}
+& \text{Le triangle } PA_iA_{i+1} \text{ est positif } \\
+ \iff &\det( \vec{PA_i},\vec{PA_{i+1}} ) \ge 0 \\
+ \iff & 
+\begin{vmatrix} 
+x-x_i & x-x_{i+1} \\ 
+y-y_i & y-y_{i+1} 
+\end{vmatrix} \ge 0 \\
+\iff & (x-x_i)(y-y_{i+1}) - (x-x_{i+1})(y-y_i) \ge 0
+\end{align*}
+D'où le résultat dans le cas où la numérotation est orientée positivement. Le cas d'une numérotation orientée négativement est similaire.
+\end{proof}
+
+Le résultat précédent n'est pas nécessairement très pratique car il nécessite de calculer les coordonnées des sommets $A_i$ du polygone dans un repère orthonormé du plan $\mathcal{P}$ contenant le polygone, mais souvenons-nous que ce plan $\mathcal{P}$ est un plan de l'espace.
+
+Il peut être plus facile d'effectuer les calculs dans un autre système de coordonnées.
+Considérons le repère $(A_1,\vec u,\vec v)$ d'origine $A_1$ et de base définie par 
+$\vec u = \overrightarrow{A_1A_2}$ et $\vec v = \overrightarrow{A_1A_n}$.
+Dans ce repère les coordonnées de $A_1$ sont $(0,0)$, celles de $A_2$ sont $(1,0)$, celles de $A_n$ sont $(0,1)$. De façon générale on note $A_i(\alpha_i,\beta_i)$ les coordonnées des sommets et $P(\alpha,\beta)$ les coordonnées du point $P$ dans ce repère.
+
+\myfigure{1}{
+    \tikzinput{fig-rayons-12}
+} 
+
+
+On a le même résultat que précédemment dans ce nouveau repère.
+\begin{proposition}
+Le point $P(\alpha,\beta)$ est à l'intérieur du polygone $\mathcal{C}$ si et seulement si les nombres :
+$$(\alpha-\alpha_i)(\beta-\beta_{i+1}) - (\alpha-\alpha_{i+1})(\beta-\beta_i) \quad i=1,\ldots,n$$
+sont tous de même signe.
+\end{proposition}
+
+Le résultat est une conséquence de la proposition \ref{prop:trianglepos} après un changement de coordonnées 
+$$\begin{pmatrix}\alpha\\\beta\end{pmatrix} = A \begin{pmatrix}x\\y\end{pmatrix}$$
+pour une certaine matrice $A$ correspondant au changement de la base orthonormée $(\vec i,\vec j)$ vers la base $(\vec u,\vec v)$.
+
+\medskip
+\textbf{C. Somme des angles.}
+
+Voici une méthode qui ne nécessite pas de ramener les calculs à un plan.
+Soit $\mathcal{C}$ un polygone de sommets $A_1,\ldots,A_n$.
+Soit $P$ un point du plan $\mathcal{P}$ contenant le polygone.
+Notons $\theta_i$ l'angle (orienté) formé par $(\overrightarrow{PA_i},\overrightarrow{PA_{i+1}})$.
+
+
+\begin{proposition}
+Si $P$ est à l'intérieur du polygone \myboxinline{$\sum_{i=1}^n \theta_i = 2\pi$ (ou $-2\pi$)}.
+Si $P$ est à l'extérieur du polygone \myboxinline{$\sum_{i=1}^n \theta_i = 0$}.
+\end{proposition}
+
+
+\begin{center}
+	\begin{minipage}{0.35\textwidth}
+		\myfigure{1}{
+			\tikzinput{fig-rayons-13}
+		} 
+	\end{minipage}\quad
+	\begin{minipage}{0.55\textwidth}
+		\myfigure{0.6}{
+			\tikzinput{fig-rayons-14}
+		} 
+	\end{minipage}
+\end{center}
+
+Rappelons comment calculer l'angle (non-orienté) $|\theta|$ entre deux vecteurs non nuls $\vec u$ et $\vec v$.
+La relation 
+$$\vec u \cdot \vec v = \|\vec u\| \times \|\vec v\| \cos(\theta)$$
+implique :
+$$|\theta| = \arccos\left(\frac{\vec u \cdot \vec v}{\|\vec u\| \times  \|\vec v\|}\right).$$
+Cette formule est valable pour des vecteurs du plan, mais aussi pour des vecteurs de l'espace.
+
+\myfigure{0.8}{
+	\tikzinput{fig-rayons-15}
+} 
+
+
+Par contre il faut expliquer comment attribuer (arbitrairement) un signe à $\theta$.
+
+On fixe un vecteur $\vec n$ orthogonal au plan $\mathcal{P}$ du polygone (par exemple 
+$\vec n = \overrightarrow{A_1A_2} \wedge \overrightarrow{A_1A_n}$).
+Pour chaque $i$ on calcule le produit vectoriel $\vec w_i = \overrightarrow{PA_i} \wedge \overrightarrow{PA_{i+1}}$, puis $\vec w_i \cdot \vec n$. Le signe de ce produit scalaire est le signe de $\theta_i$.
+
+\medskip
+
+Un avantage de cette formule est sa stabilité. En effet, même si $P$ n'est pas parfaitement dans le plan $\mathcal{P}$ du polygone (par exemple juste au-dessus du plan ou juste en dessous) on peut encore décider si $P$ est plutôt à l'intérieur ou plutôt à l'extérieur.
+Pour un point $P$ plutôt à l'intérieur du polygone alors $\sum_{i=1}^n \theta_i \simeq 2\pi$ (en fait la somme sera proche mais strictement inférieure à $2\pi$) ou $\sum_{i=1}^n \theta_i \simeq -2\pi$, pour un point plutôt à l'extérieur $\sum_{i=1}^n \theta_i \simeq 0$.
+Les alternatives possibles sont suffisamment différentes pour autoriser des incertitudes numériques sur les coordonnées et les calculs.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Intersection avec une sphère}
+
+%--------------------------------------------------------------------
+\subsection{Dans le plan : intersection avec un cercle}
+
+Considérons la situation plus simple du lancer d'un rayon dans le plan. Ce rayon intersecte-t-il un cercle donné et, si oui, en quels points ?
+Il y a $0$ ou $2$ solutions (et une seule dans le cas tangent).
+
+\myfigure{1}{
+	\tikzinput{fig-sphere-01}
+} 
+
+Voici deux façons d'aborder le problème, que l'on retrouvera et détaillera dans le cas général juste après.
+
+\textbf{Méthode algébrique.}
+Considérons le cercle $\mathcal{C}$ de centre $O = (x_O,y_O)$ et de rayon $R$. Une équation est
+$$(x-x_O)^2 + (y-y_O)^2 = R^2.$$
+Le paramétrage du point $P=(x,y) $ du rayon donne :
+$$
+\begin{pmatrix}x\\y\end{pmatrix}
+= \begin{pmatrix}x_S\\y_S\end{pmatrix} + t \begin{pmatrix}x_v\\y_v\end{pmatrix}
+.$$
+
+On obtient donc $3$ équations et $3$ inconnues ($t,x,y$). Mais attention ce n'est pas un système linéaire, car l'équation d'un cercle est de degré $2$. 
+Cependant nous arriverons à résoudre ce système et à exprimer les deux solutions $P_1$ et $P_2$ lorsque le rayon intersecte le cercle.
+
+\medskip
+\textbf{Méthode géométrique.}
+Notons $H$ le projeté orthogonal du centre $O$ sur le rayon.
+Si $OH \le R$ alors le rayon intersecte le cercle et on déterminera les deux solutions 
+$P_1$ et $P_2$ (symétriques de part et d'autre de $H$).
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+\myfigure{0.4}{
+	\tikzinput{fig-sphere-02a}
+} 
+\end{minipage}\quad
+\begin{minipage}{0.45\textwidth}
+	\myfigure{0.4}{
+		\tikzinput{fig-sphere-02b}
+	} 
+\end{minipage}
+\end{center}
+
+\bigskip
+
+Dans la suite on considère le lancer d'un rayon en direction d'une sphère $\mathcal{S}$ de centre $O$ et de rayon $R$. On peut noter que si on considère le plan $\mathcal{P}$ qui contient le rayon et le centre de la sphère alors l'intersection de $\mathcal{P}$ avec $\mathcal{S}$ est un cercle $\mathcal{C}$ de centre $O$ et de rayon $R$ ; on ramène ainsi le problème dans l'espace à un problème du plan.
+
+\begin{center}
+	\begin{minipage}{0.55\textwidth}
+		\myfigure{0.5}{
+			\tikzinput{fig-sphere-03b}
+		} 
+	\end{minipage}\quad
+	\begin{minipage}{0.35\textwidth}
+		\myfigure{0.3}{
+			\tikzinput{fig-sphere-03a}
+		} 
+	\end{minipage}
+\end{center}
+
+
+%--------------------------------------------------------------------
+\subsection{Sphère : formule algébrique}
+
+Considérons la sphère $\mathcal{S}$ de centre $O = (x_O,y_O,z_O)$ et de rayon $R$.
+Le rayon a pour origine $S = (x_S,y_S,z_S)$ et est dirigé par le vecteur \emph{unitaire} $\vec v = (x_v,y_v,z_v)$ .
+Le rayon est paramétré par $P =  S + t \vec v$ pour $t$ parcourant $\Rr$.
+
+\begin{proposition}
+Soient 
+$$B = \vec{v} \cdot \overrightarrow{OS} = x_v(x_S-x_O) + y_v(y_S-y_O) + z_v(z_S-z_O),$$
+$$C = OS^2 - R^2 = (x_S-x_O)^2 + (y_S-y_O)^2 + (z_S-z_O)^2 - R^2,$$
+$$\Delta = B^2 - C^2.$$
+
+\begin{itemize}
+  \item Si $\Delta < 0$, le rayon n'intersecte pas la sphère.
+  \item Si $\Delta = 0$, le rayon est tangent à la sphère au point $P_0$ de paramètre $t_0=-B$.
+  \item Si $\Delta>0$, le rayon coupe la sphère en deux points $P_1$ et $P_2$ de paramètres $t_1 = -B - \sqrt{\Delta}$ et $t_2 = -B + \sqrt{\Delta}$.
+\end{itemize}
+\end{proposition}
+
+Discussion complémentaire : un point $P$ sur la sphère est \og{}devant\fg{} le rayon si son paramètre $t$ est positif.
+Si deux points sont devant le rayon, c'est celui qui est a le plus petit paramètre qui est visible.
+
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.45}{
+			\tikzinput{fig-sphere-04a}
+		} 
+	\end{minipage}\qquad
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.45}{
+			\tikzinput{fig-sphere-04b}
+		} 
+	\end{minipage}
+\end{center}
+
+
+Remarque : on peut décider si le rayon coupe (ou pas) la sphère juste par des additions et multiplications de nombres réels. Par contre le calcul des coordonnées des points d'intersection nécessite d'extraire une racine carrée, ce qui est un calcul un peu plus compliqué. En plus nous avons supposé $\|\vec v\|=1$, si ce n'est pas le cas il y a des racines carrées et des divisions à effectuer.
+
+
+
+
+
+\begin{proof}
+L'équation de la sphère centrée en $O$ et de rayon $R$ est :
+$$(x-x_O)^2 + (y-y_O)^2 +(z-z_O)^2 = R^2.$$
+Le paramétrage du point $P=(x,y,z)$ du rayon donne :
+$$
+\begin{pmatrix}x\\y\\z\end{pmatrix}
+= \begin{pmatrix}x_S\\y_S\\z_S\end{pmatrix} + t \begin{pmatrix}x_v\\y_v\\z_v\end{pmatrix}
+.$$
+On reporte ces coordonnées dans l'équation de la sphère :
+$$(x_S + tx_v -x_O)^2 + (y_S + ty_v -y_O)^2 + (z_S + tz_v -z_O)^2  = R^2.$$
+On développe cette expression pour obtenir une équation polynomiale de degré $2$ en $t$ :
+\begin{align*}
+& (x_v^2 + y_v^2 +z_v^2) t^2 \\
+& \qquad + 2t \big(x_v(x_S-x_O) + y_v(y_S-y_O) + z_v(z_S-z_O) \big) \\
+& \qquad\qquad + (x_S-x_O)^2 + (y_S-y_O)^2 + (z_S-z_O)^2 - R^2 = 0
+\end{align*}
+
+Comme $\|\vec v\|$ est un vecteur supposé unitaire, alors $x_v^2 + y_v^2 +z_v^2 = 1$, l'équation obtenue est donc simplement :
+$$t^2 +2Bt+C = 0.$$
+Cette équation de degré $2$ en $t$ a pour discriminant réduit $\Delta = B^2-C^2$.
+Si $\Delta < 0$ cette équation n'a pas de solution ; si $\Delta=0$ il y a une solution (double) $t_0 = -B$ ; si $\Delta>0$ il y a deux solutions $t_1 = -B - \sqrt{\Delta}$ et $t_2 = -B + \sqrt{\Delta}$.
+\end{proof}
+
+%--------------------------------------------------------------------
+\subsection{Sphère : formule géométrique}
+
+De nouveau, on suppose $\vec v$ de norme $1$.
+
+\begin{proposition}
+\sauteligne
+\begin{enumerate}
+  \item Soit $H$ le projeté orthogonal de $O$ sur le rayon paramétré par $S + t\vec v$. Le paramètre du point $H$ sur le rayon est :
+  \mybox{$\displaystyle t_H = \overrightarrow{SO}\cdot\vec{v}$}
+
+  \item Notons $d = OH$. Alors :
+  \mybox{$\displaystyle d^2 = SO^2 - \left(\overrightarrow{SO}\cdot\vec{v}\right)^2$}
+  
+  \item Le rayon intersecte la sphère si et seulement si $R^2-d^2 \ge 0$.
+
+  \item Dans ce cas les points d'intersections ont pour paramètres :
+  \mybox{$\displaystyle t_1 = t_H - \sqrt{R^2-d^2} \qquad \text{ et } \qquad t_2 = t_H + \sqrt{R^2-d^2}$}
+\end{enumerate}
+\end{proposition}
+
+\myfigure{1}{
+   \tikzinput{fig-sphere-05}
+} 
+
+\begin{proof}
+~
+
+\begin{enumerate}
+  \item Comme $\vec v$ est unitaire alors $t_H =  SH$.
+  Or :
+  $$ \overrightarrow{SO} \cdot \vec v = \left(\overrightarrow{SH} + \overrightarrow{HO} \right) \cdot \vec v = \overrightarrow{SH} \cdot \vec v = SH.$$
+  Nous avons utilisé que $\overrightarrow{HO}$ et  $\vec v$ sont orthogonaux donc leur produit scalaire est nul et aussi que  $\overrightarrow{SH}$ et  $\vec v$ sont colinéaires et de même sens, donc leur produit scalaire est $SH \times \|\vec v\|$.
+  Ainsi $t_H = SH =  \overrightarrow{SO} \cdot \vec v$.
+
+  \item Le théorème de Pythagore appliqué dans le triangle $SOH$ (rectangle en $H$) donne :
+  $$SO^2 = SH^2 + OH^2,$$
+  on a noté $d=OH$ et déjà calculé $SH$, d'où :
+  $$d^2 = OH^2 = SO^2 - \left(\overrightarrow{SO}\cdot\vec{v}\right)^2.$$
+
+  \item $d = OH$ mesure la distance minimale entre un point du rayon et le centre $O$ de la sphère. Si $d > R$ le rayon ne coupe pas la sphère, si $d=R$ le rayon coupe la sphère tangentiellement en $H$, si $d<R$ le rayon coupe la sphère en deux points distincts.
+
+  \item Dans le cas $d \le R$, le rayon coupe la sphère en deux points $P_1$ et $P_2$ symétriques l'un de l'autre par rapport à $H$. Considérons le triangle $OP_1H$ (rectangle en $H$), le théorème de Pythagore donne :
+  $$OP_1^2 = OH^2 + HP_1^2.$$
+  On a $R = OP_1$, $d=OH$ et on note $h = HP_1$, ainsi $h^2 = R^2-d^2$. Donc $h = \sqrt{R^2-d^2}$. 
+  Comme $\vec v$ est unitaire alors $t_1 = t_H - h$, et comme $P_2$ est le symétrique de $P_1$ par rapport à $H$, alors $t_2 = t_H + h$.
+
+\end{enumerate} 
+ 
+\end{proof}
+
+\emph{Exercice.} Reprendre les calculs pour un vecteur $\vec v$ non unitaire. Vérifier que les trois premiers points utilisent seulement $\|\vec v\|^2$ (et donc il n'y a pas besoin d'extraire une racine carrée pour obtenir $\|\vec v\|$).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Intersection avec une boite}
+
+Pour décider si un objet complexe va être intersecté par un rayon on peut commencer par inclure l'objet dans une boite (\emph{bounding box}). Si le rayon ne coupe pas la boite (nous allons voir que c'est un calcul facile) alors nous sommes sûrs que le rayon ne coupe pas l'objet et on s'épargne alors des calculs compliqués. Si le rayon coupe la boite, alors on peut lancer le calcul pour savoir si le rayon coupe notre objet et, si oui, en quels points.
+
+%--------------------------------------------------------------------
+\subsection{Explications dans le plan}
+
+
+Dans le plan une \defi{boite} est un rectangle dont les côtés sont parallèles aux axes.
+Nous définissons une boite par son coin inférieur gauche $A(x_A,y_A)$ et son coin supérieur droit $B(x_B,y_B)$.
+
+\myfigure{1}{
+	\tikzinput{fig-boite-01}
+} 
+
+Nous lançons un rayon issu de $S(x_S,y_S)$ dirigé par le vecteur $\vec v = (x_v,y_v)$.
+On veut savoir si le rayon coupe la boite, et si oui, calculer les valeurs $t_{\text{in}}$ et $t_{\text{out}}$ des points $P = S + t \vec v$ d'entrée et de sortie.
+Pour simplifier les explications nous supposons que le rayon pointe vers la droite et vers le haut ($x_v>0$ et $y_v>0$).
+
+
+
+Le rayon coupe la droite verticale d'équation $(x=x_A)$ (qui supporte le côté gauche de la boite) pour le paramètre $t_{x_A}$ qui vérifie l'équation $x_S + t x_v = x_A$, donc 
+$$t_{x_A} = \frac{x_A-x_S}{x_v}.$$
+De même le rayon coupe la droite horizontale d'équation $(y=y_A)$ (qui supporte le bas de la boite) pour le paramètre :
+$$t_{y_A} = \frac{y_A-y_S}{y_v}.$$
+
+\myfigure{0.5}{
+	\tikzinput{fig-boite-02}
+\qquad
+	\tikzinput{fig-boite-03}
+} 
+
+On définit $t_{\text{in}} = \max(t_{x_A},t_{y_A})$.
+Si le rayon coupe la boite, alors le point d'entrée est $P_{\text{in}}$, de paramètre 
+$t_{\text{in}}$.
+
+De même pour le point $B$, on pose 
+$$
+t_{x_B} = \frac{x_B-x_S}{x_v} \qquad
+t_{y_B} = \frac{y_B-y_S}{y_v} \qquad
+t_{\text{out}} = \min(t_{x_B},t_{y_B}).$$
+Si le rayon coupe la boite, alors le point de sortie est $P_{\text{out}}$, de paramètre 
+$t_{\text{out}}$.
+
+Que se passe-t-il si le rayon n'intersecte pas la boite ? Dans ce cas les valeurs 
+$t_{\text{in}}$ et $t_{\text{out}}$ sont bien définies mais on a $t_{\text{in}} > t_{\text{out}}$ (le point d'entrée serait après le point de sortie !).
+
+\myfigure{0.5}{
+	\tikzinput{fig-boite-04}
+\qquad
+	\tikzinput{fig-boite-05}
+} 
+
+
+Résumons nos observations :
+\begin{proposition}
+Considérons le cas $x_v>0$ et $y_v>0$.
+Soient :
+$$
+t_{\text{in}} = \max\left(\frac{x_A-x_S}{x_v},\frac{y_A-y_S}{y_v}\right)
+\qquad \text{ et } \qquad
+t_{\text{out}} = \min\left(\frac{x_B-x_S}{x_v},\frac{y_B-y_S}{y_v}\right).$$
+Le rayon intersecte la boite si et seulement si $t_{\text{in}} \le t_{\text{out}}$.
+Dans ce cas le point d'entrée $P_{\text{in}}$ est de paramètre 
+$t_{\text{in}}$ et celui de sortie $P_{\text{out}}$ est de paramètre 
+$t_{\text{out}}$.
+\end{proposition}
+
+Noter que la source $S$ peut être à l'intérieur de la boite, dans ce cas le rayon intersecte toujours la boite mais le point $P_{\text{in}}$ est avant la source et donc le premier point qui atteint la boite après la source est $P_{\text{out}}$.
+
+
+%--------------------------------------------------------------------
+\subsection{Algorithme dans l'espace}
+ Une \defi{boite} de l'espace est un parallélépipède rectangle dont les faces sont parallèles aux axes. Elle est définie par deux sommets opposés $A(x_A,y_A,z_A)$ et $B(x_B,y_B,z_B)$.
+Le rayon est issu de $S(x_S,y_S,z_S)$ et dirigé par un vecteur non nul quelconque $\vec v(x_v,y_v,z_v)$.
+
+\myfigure{0.5}{
+	\tikzinput{fig-boite-06}
+} 
+
+Voici le calcul du point d'entrée $P_{\text{in}}$, de paramètre 
+$t_{\text{in}}$, et celui de sortie $P_{\text{out}}$, de paramètre 
+$t_{\text{out}}$, s'ils existent.
+
+\begin{algorithme}
+\sauteligne
+\begin{itemize}
+  \item $t_{\text{in}} := -\infty$, $t_{\text{out}} := +\infty$ (ou bien une très petite et une très grande valeur).
+
+  \item Si $x_v\neq0$, poser :
+  $$t_{x_A} := \frac{x_A-x_S}{x_v} \qquad  t_{x_B} := \frac{x_B-x_S}{x_v}$$
+  et 
+  $$t_{\text{in}} := \max\big( t_{\text{in}}, \min(t_{x_A},t_{x_B}) \big)
+ \qquad
+ t_{\text{out}} := \min\big( t_{\text{out}}, \max(t_{x_A},t_{x_B}) \big).$$
+
+  \item Si $y_v\neq0$, poser :
+  $$t_{y_A} := \frac{y_A-y_S}{y_v} \qquad  t_{y_B} := \frac{y_B-y_S}{y_v}$$
+  et 
+  $$t_{\text{in}} := \max\big( t_{\text{in}}, \min(t_{y_A},t_{y_B}) \big) \qquad
+ t_{\text{out}} := \min\big( t_{\text{out}}, \max(t_{y_A},t_{y_B}) \big).$$
+
+  \item Si $z_v\neq0$, poser :
+  $$t_{z_A} := \frac{z_A-z_S}{z_v} \qquad  t_{z_B} := \frac{z_B-z_S}{z_v}$$
+  et 
+  $$t_{\text{in}} := \max\big( t_{\text{in}}, \min(t_{z_A},t_{z_B}) \big) \qquad
+ t_{\text{out}} := \min\big( t_{\text{out}}, \max(t_{z_A},t_{z_B}) \big).$$
+
+  \item Si $t_{\text{in}} \le t_{\text{out}}$ alors le rayon intersecte la boite en $P_{\text{in}}$ (de paramètre $t_{\text{in}}$) et $P_{\text{out}}$ (de paramètre 
+$t_{\text{out}}$), sinon le rayon ne coupe pas la boite.
+\end{itemize}
+\end{algorithme}
+
+
+Note : pour accélérer l'affichage, il est important de pouvoir effectuer les calculs en parallèle. Une instruction conditionnelle (comme si ... alors ..., sinon ...) peut poser des problèmes. C'est la situation rencontrée lorsque qu'on considère la définition classique du maximum :
+$$\max(a,b) = 
+\begin{cases}
+a & \text{si $a \ge b$,} \\
+b & \text{sinon.}
+\end{cases}
+$$
+Cependant il est possible de contourner ce problème et de définir le maximum par une seule formule :
+$$\max(a,b) = \frac{a+b + |a-b|}{2}.$$
+
+
+\bigskip 
+\bigskip
+
+\emph{Note.} La section sur les polygones est inspirée  de \href{http://paulbourke.net/}{Paul Bourke} : 
+\href{https://www.eecs.umich.edu/courses/eecs380/HANDOUTS/PROJ2/InsidePoly.html}
+{\emph{Determining if a point lies on the interior of a polygon}}.
+
+\end{document}

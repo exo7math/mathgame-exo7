@@ -1,0 +1,398 @@
+\documentclass[11pt,class=report,crop=false]{standalone}
+\usepackage[screen]{../mathgame}
+
+
+
+\include{figures/tictactoe}  % pour le morpion
+
+\begin{document}
+
+
+%====================================================================
+\chapitre{Théorie des jeux}
+%====================================================================
+
+%
+%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
+%
+%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
+%
+%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+
+\objectifs{Nous survolons les différents types de jeux, leurs caractéristiques, les différentes stratégies possibles et les équilibres possibles entre adversaires.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quelques jeux}
+
+%--------------------------------------------------------------------
+\subsection{Motivation}
+
+Nous allons étudier surtout des jeux avec deux joueurs (comme les échecs).
+Les jeux avec plus de joueurs sont plus délicats car les alliances possibles compliquent les stratégies, pensez au jeu \og{}poules/renards/vipères\fg{} où les renards doivent attraper les poules qui, elles, doivent attraper les vipères qui, elles, doivent attraper les renards !
+
+La théorie des jeux a de nombreuses applications. Tout d'abord à l'économie, par exemple les entreprises concurrentes A et B qui fabriquent le même produit sont comme les deux adversaires d'un jeu. Chaque entreprise a à sa disposition plusieurs stratégies possibles (type de produits, qualité, prix, innovation\ldots). Le gain du jeu étant ici des revenus ou des parts de marché.
+De même l'acheteur et le vendeur ont des intérêts opposés lorsqu'il s'agit de fixer le prix.
+De nombreux mathématiciens ont obtenu la récompense dite \og{}prix Nobel d'économie\fg{} pour leurs travaux en théorie des jeux, le plus célèbre étant John Nash (1928--2015).
+
+Une autre application concerne les relations internationales : comment éviter ou résoudre un conflit entre deux pays dont les intérêts sont opposés car ils convoitent les mêmes ressources ou le même territoire ?
+
+\medskip
+
+Voici quelques jeux classiques que vous connaissez sûrement : échecs, dames, go, reversi/othello, puissance 4\ldots, mais aussi des jeux avec du hasard comme le backgammon, le monopoly, ou les jeux de cartes\ldots{} 
+Un autre grand classique est le jeu du morpion (\emph{tic-tac-toe}) dans lequel il s'agit d'aligner trois croix ou trois ronds sur une grille $3 \times 3$. C'est un jeu vite lassant mais intéressant pour apprendre à programmer et tester des algorithmes.
+
+\begin{center}
+\tictactoe{  ,O,X,
+	         ,X, ,
+	        X, ,O}  
+\end{center}
+
+
+%--------------------------------------------------------------------
+\subsection{Matrice de gains}
+
+\index{matrice!de gains}
+\index{dilemme du prisonnier}
+
+Nous allons découvrir un nouveau type de jeu qui permet de modéliser de nombreuses situations.
+La version la plus connue de ce jeu est le \og{}dilemme du prisonnier\fg{} : un juge interroge, chacun leur tour, deux hommes A et B soupçonnés d'un cambriolage pour lequel il n'y a aucune preuve, ni témoin.
+Il propose à A soit d'être solidaire de son complice en se taisant, soit de le trahir en l'accusant. Le juge propose ensuite séparément à B les mêmes choix. A et B ne peuvent pas se concerter.
+Le juge les condamne alors selon leurs réponses à tous les deux :
+\begin{itemize}
+	\item si chacun est solidaire de son complice et tous les deux nient leur participation, le juge les condamnera à 1 an de prison chacun,
+	\item si les deux trahissent et s'accusent mutuellement alors le juge les condamnera à 3 ans de prison chacun,
+	\item si A est solidaire mais que B le trahit alors le juge condamne A à 5 ans de prison et B est libre,
+	\item si B est solidaire mais que A le trahit alors le juge condamne B à 5 ans de prison et A est libre.
+\end{itemize}
+On résume cela sous la forme d'un tableau :
+
+
+\myfigure{1}{
+	\tikzinput{gain-01}
+} 
+
+Ce jeu est intéressant car si on se place d'un point de vue extérieur il est clair que les prisonniers ont intérêt à être solidaires car dans ce cas ils sont condamnés à un total de 2 ans de prison (1 an chacun). Par contre si on prend le point vue du prisonnier A par exemple, alors il a intérêt à trahir car il sera alors condamné à 3 ans ou bien libre, alors que s'il est solidaire il risque d'être condamné à 5 ans.
+
+Note : ce tableau s'appelle la \defi{matrice des gains} et le but de chaque joueur est d'obtenir la valeur la plus élevée, comme ici nos prisonniers veulent la peine la plus courte possible il faut prendre les valeurs opposées :
+\myfigure{1}{
+	\tikzinput{gain-02}
+} 
+
+
+En changeant les valeurs de la matrice des gains on obtient plusieurs variantes.
+
+Voici le cas général.
+\myfigure{1}{
+	\tikzinput{gain-03}
+} 
+
+
+
+\textbf{Tir au but.} 
+Un tireur et un gardien de but s'affrontent. Le tireur tire d'un côté (gauche ou droite) et le gardien part d'un côté (gauche ou droite, du point de vue du tireur). Si le gardien part du côté opposé, le tireur marque le but, si le gardien part du bon côté il empêche le but.
+Voici la matrice des gains.
+
+\myfigure{1}{
+	\tikzinput{gain-04}
+} 
+
+
+
+\textbf{Pierre/feuille/ciseau.}
+Il y a trois stratégies possibles pour chaque joueur : P/F/C.
+
+
+\myfigure{1}{
+	\tikzinput{gain-05}
+} 
+
+
+
+\textbf{Jeux du cerf.} 
+Deux chasseurs choisissent sans se concerter si chacun part chasser un lièvre, ou s'il préfère chasser un cerf. Un cerf apporte un plus gros gain, mais ne peut se chasser qu'à deux.
+
+
+\myfigure{1}{
+	\tikzinput{gain-06}
+} 
+
+
+Ce dernier jeu s'appelle aussi jeu d'assurance, par exemple un pays n'a pas d'intérêt à lutter seul contre le changement climatique : cela lui coûte cher et ne produira que peu d'effets si les autres pays refusent d'agir.
+
+
+%--------------------------------------------------------------------
+\subsection{Répétition}
+
+Certains jeux ont davantage d'intérêt lorsqu'ils sont répétés. Par exemple pour le jeu du tir au but, \og{}pierre/feuille/ciseaux\fg{} ou pour le poker, on peut adapter sa stratégie en fonction des parties précédentes. Le gardien de but peut décider de partir du côté du tir précédent, ou alors il peut anticiper que le tireur va changer de côté et donc le gardien plonge de l'autre côté, mais le tireur peut faire le raisonnement inverse\ldots{} Une autre stratégie possible est de prendre chaque décision au hasard (droite/gauche comme pile ou face).
+
+\medskip
+
+Voyons un jeu \og{}\emph{tit-for-tat}\fg{} (qu'on pourrait traduire par \og{}donnant-donnant\fg{}). 
+La situation est la suivante : vous avez un voisin bruyant et certains soirs il met la musique à fond ; en rétorsion vous pouvez aussi mettre la musique à fond ou bien vous pouvez  ne rien faire. La matrice des gains est la suivante :
+
+\myfigure{1}{
+	\tikzinput{gain-07}
+} 
+
+
+
+\begin{itemize}
+	\item si vous mettez de la musique tous les deux, vous êtes tous les deux dans une situation de match nul (1 point chacun),
+	\item si aucun de vous ne met de la musique, la situation est gagnant-gagnant (2 points chacun),
+	\item si l'un met la musique et l'autre pas alors la situation est gagnant-perdant (3 points pour celui qui met la musique, 0 pour celui qui ne la met pas).
+\end{itemize}
+
+C'est par exemple une situation que l'on retrouve dans les relations internationales avec les droits de douane : si un pays A impose des droits de douanes sur des produits en provenance du pays B alors généralement ce dernier fait de même sur des produits venant de A.
+
+
+Le jeu se jouant chaque jour, quelle est la meilleure stratégie à adopter en fonction des jours précédents ?
+Voici plusieurs stratégies possibles :
+\begin{itemize}
+	\item bisounours : ne jamais faire de bruit quelle que soit l'attitude du voisin,
+	\item méchant : toujours faire du bruit quelle que soit l'attitude du voisin,
+	\item vengeance : ne pas faire de bruit au début, mais dès que le voisin fait du bruit, faire du bruit toutes les nuits suivantes,
+	\item cyclothymique : faire du bruit ou pas aléatoirement,
+\end{itemize}
+
+Il peut être amusant de programmer un tel tournoi sur ordinateur, où chaque joueur propose une stratégie qui est ensuite confrontée à toutes les autres stratégies.
+Les expériences montrent que la meilleure stratégie est \og{}coopération-réciprocité-pardon\fg{} qui comporte trois phases :
+\begin{itemize}
+	\item \emph{coopération} : au début je ne fais pas de bruit,
+	\item \emph{réciprocité} : ensuite si mon voisin a fait du bruit la nuit précédente, je fais du bruit la nuit suivante ; s'il n'a pas fait de bruit, je n'en fais pas non plus la nuit suivante,
+	\item \emph{pardon} : même si mon voisin a fait du bruit plusieurs nuits de suite, je fais quelques nuits sans bruit afin de revenir à une phase de coopération.
+\end{itemize}	
+
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Types de jeux}
+
+Nous décrivons différentes caractéristiques des jeux.
+
+%--------------------------------------------------------------------
+\subsection{Coopératif/non coopératif}
+
+Un jeu est \defi{coopératif} si les joueurs décident ensemble de ce qu'il faut faire pour gagner. Généralement ils luttent contre un adversaire commun (la nature, le chronomètre, le réchauffement climatique\ldots). Les joueurs n'ont pas forcément tous les mêmes caractéristiques ni les mêmes stratégies à leur disposition (par exemple deux pays qui luttent contre une menace commune).
+
+Dans un jeu \defi{non coopératif} chaque joueur décide selon son propre intérêt. Dans la plupart des jeux, son intérêt est opposé à celui de ses adversaires (échec, football, poker\ldots), mais pas toujours (par exemple avec plusieurs joueurs il peut être intéressant de créer des alliances).
+Le dilemme du prisonnier est un jeu non coopératif dans lequel les intérêts des deux joueurs ne sont pas complètement opposés.
+Noter que si les deux prisonniers pouvaient se mettre d'accord avant de voir le juge, alors le jeu deviendrait coopératif et la meilleure stratégie commune serait que les deux soient solidaires.
+
+
+%--------------------------------------------------------------------
+\subsection{Coups alternés/simultanés}
+
+Un jeu peut se dérouler en \defi{coups alternés} (un joueur joue, puis le suivant\ldots, comme les échecs, la belote, le tennis) ou bien en \defi{simultané} (le dilemme du prisonnier, le tireur et le gardien de but qui prennent leur décision en même temps, les jeux vidéos en temps réel). 
+Pour les jeux en simultané, les joueurs basent généralement leur stratégie sur l'historique des coups précédents. Par exemple l'entreprise A ne connaît pas les caractéristiques du prochain téléphone fabriqué par son concurrent B, par contre au vu des évolutions précédentes elle se doute que le processeur de B sera encore plus rapide et l'appareil photo encore plus précis, elle adapte sa stratégie en conséquence.
+
+
+%--------------------------------------------------------------------
+\subsection{Aléa}
+
+Un jeu qui contient une part de hasard est un jeu \defi{aléatoire}.
+Des exemples de jeux complètement aléatoires sont la roulette, le loto, le jeu pile ou face. Certains jeux ont une part d'aléatoire comme le backgammon, le monopoly et plus généralement les jeux avec des dés ou des cartes à distribuer. Certains jeux, comme les échecs, n'ont aucune part de hasard.
+
+Dans certains cas c'est la stratégie du joueur elle-même qui peut être aléatoire, par exemple le tireur au but peut décider aléatoirement de tirer vers la gauche ou la droite, cela empêche le gardien de faire une prédiction en fonction des tirs précédents.
+Il faut noter que les humains sont assez mauvais à générer des séries aléatoires : si vous demandez à quelqu'un d'inventer une série de pile/face au hasard, ce sera une série aux caractéristiques différentes d'un vrai tirage aléatoire, par exemple un humain ne dira jamais \og{}pile-pile-pile\fg{} car après 2 \og{}piles\fg{} on pense inconsciemment que \og{}face\fg{} a plus de chances d'arriver ! 
+Les ordinateurs sont bien meilleurs pour produire des séries qui simulent très bien le hasard, on parle de générateur \og{}pseudo-aléatoire\fg{}.
+
+
+%--------------------------------------------------------------------
+\subsection{Jeux à somme nulle}
+
+Un \defi{jeu à somme nulle} est un jeu où lorsqu'un joueur gagne un point, son adversaire perd un point.
+C'est par exemple le cas des échecs, si je prends un pion à l'adversaire, il perd un pion ! C'est aussi le cas des paris : si je gagne 1 euro en misant sur le bon cheval alors cet euro vient d'une personne ayant misé sur un mauvais cheval. Un jeu à somme nulle est caractéristique d'un jeu où les ressources sont finies : si je veux quelque chose alors je dois le prendre à quelqu'un.
+
+Voici des exemples de jeu à somme non nulle : les jeux coopératifs (tout le monde gagne ou bien tout le monde perd) ou le dilemme du prisonnier. Cela peut aussi être appliqué en économie : je t'achète le produit A que je ne sais pas fabriquer et en échange tu m'achètes mon produit B.
+
+Il existe aussi des jeux à somme constante : par exemple deux joueurs qui doivent occuper un maximum de positions sur un plateau. Les jeux à somme constante se ramènent facilement à des jeux à somme nulle. Par exemple la matrice des gains du tireur face au gardien de but se transforme aisément en un jeu équivalent où la matrice des gains est à somme nulle.
+
+
+\myfigure{1}{
+	\tikzinput{gain-08a}\qquad\qquad
+	\tikzinput{gain-08b}	
+} 
+
+
+
+
+%--------------------------------------------------------------------
+\subsection{Jeu symétrique/asymétrique}
+
+Dans un \defi{jeu symétrique} les deux joueurs ont les mêmes possibilités au départ et les mêmes stratégies disponibles. 
+Les échecs sont un exemple de jeu symétrique (à part le fait que les pions blancs commencent). Bien sûr au fil du jeu, cette symétrie peut être rompue, par exemple si je perds mes deux cavaliers et que je n'ai rien pris à mon adversaire alors j'ai moins de possibilités que lui.
+
+Dans un \defi{jeu asymétrique} les deux joueurs n'ont pas les mêmes ressources ou pas les mêmes capacités. Par exemple deux pays en guerre n'ont pas les mêmes ressources, ni territoires, ni armes. Autre exemple : dans un jeu vidéo chaque personnage a souvent ses propres caractéristiques (force/habileté/endurance/chance\ldots).
+
+
+%--------------------------------------------------------------------
+\subsection{Information complète/incomplète}
+
+Dans un jeu à \defi{information complète} les joueurs connaissent toutes les règles et les gains possibles (par exemple les échecs).
+Dans un jeu à \defi{information incomplète} les joueurs n'ont pas toutes les informations disponibles (comme dans la vraie vie économique ou les relations internationales).
+Par exemple les joueurs peuvent ne pas connaître quels sont les gains potentiels précis, quels sont les coups possibles, ni ce que l'adversaire a la possibilité de répliquer.
+Exemples : on peut ajouter un brouillard sur une carte d'un jeu vidéo afin de cacher les événements ou les ressources lointaines ; 
+le fabricant d'avion sort un nouveau modèle d'avion sans savoir si les compagnies aériennes vont être intéressées par ce modèle ; on peut enchérir pour l'achat d'un tableau sans connaître sa valeur absolue.
+
+%--------------------------------------------------------------------
+\subsection{Information parfaite/imparfaite}
+
+La notion d'\defi{information parfaite} est différente : je sais exactement ce que peut jouer l'adversaire au coup suivant (même si je ne sais pas exactement ce qu'il va jouer), c'est le cas des échecs par exemple.
+
+Voici des exemples où l'information est imparfaite :
+le fabricant d'avion A sort un nouveau modèle d'avion sans savoir si le concurrent B va lui aussi produire un modèle sur le même segment ;
+pour la plupart des jeux de cartes vous ne savez pas quelles sont les cartes de vos adversaires (belote, tarot, poker\ldots).
+
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Équilibre de Nash}
+
+\index{equilibre de Nash@équilibre de Nash}
+
+%--------------------------------------------------------------------
+\subsection{Motivation}
+
+Dans un jeu, le but de chaque joueur est évidemment de gagner. Mais quelle stratégie permet d'avoir les meilleurs résultats ?
+Nous allons voir la notion \og{}d'équilibre de Nash\fg{}, mais attention ce n'est pas nécessairement la meilleure stratégie possible.
+C'est plutôt une position stable qui me dit que je n'ai pas intérêt à changer ma stratégie et mon adversaire non plus. L'analogie se fait avec une bille dans un creux qui, si on la déplace un peu, revient à sa position de départ.
+
+\myfigure{1.5}{
+	\tikzinput{theorie-01}
+} 
+
+Ce qu'un joueur espère trouver est une \defi{stratégie dominante} qui est la stratégie (ou le prochain coup) qui est la meilleure possible quelle que soit l'action de l'adversaire.
+Par exemple, aux échecs, faire \og{}échec et mat en trois coups\fg{} signifie qu'avec le coup que vous venez de jouer, quoi que fasse votre adversaire, vous êtes sûr de gagner lors des trois prochains coups. 
+Bien évidemment une telle stratégie est très difficile, voire impossible à trouver, sinon c'est que le jeu n'est pas très intéressant. Un exemple classique est le jeu de Nim dans lequel tour à tour chaque joueur doit retirer 1, 2 ou 3 bâtons du tas initial ; celui qui retire le dernier bâton a perdu. Pour celui qui commence il existe une stratégie qui lui permet de gagner à coup sûr.
+
+
+%--------------------------------------------------------------------
+\subsection{Théorème de Nash}
+
+L'équilibre de Nash est l'ensemble des stratégies de deux joueurs considérées comme les meilleures possibles lorsque l'on fixe les choix de l'adversaire.
+Pour formaliser cette notion : notons $S_A$ une stratégie adoptée par le joueur $A$ et $S_B$ une stratégie adoptée par le joueur $B$.
+La matrice des gains du jeu fournit la liste des gains : notons $g_A(S_A, S_B)$ le gain du joueur $A$ s'il joue la stratégie $S_A$ alors que $B$ joue la stratégie $S_B$.
+
+
+\myfigure{1}{
+	\tikzinput{gain-10}
+} 
+
+\begin{definition}
+Un couple $(S_A, S_B)$ et un \defi{équilibre de Nash} :
+\begin{itemize}
+	\item si $A$ n'a pas d'intérêt à changer sa stratégie $S_A$, sachant que $B$ joue $S_B$, c'est-à-dire :
+	$$\text{ pour toute stratégie } S \qquad g_A(S_A, S_B) \ge g_A(S, S_B)$$
+	
+	\item et si $B$ n'a pas d'intérêt à changer sa stratégie $S_B$, sachant que $A$ joue $S_A$, c'est-à-dire :
+$$\text{ pour toute stratégie } S \qquad g_B(S_A, S_B) \ge g_B(S_A, S)$$	
+\end{itemize}	
+\end{definition}
+
+En d'autres termes, lorsque les deux joueurs ont atteint un équilibre de Nash, ils n'ont pas intérêt à changer unilatéralement de stratégie.
+
+Nous énonçons de manière informelle :
+\begin{theoreme}[Théorème de Nash]
+	Un jeu admet toujours un (ou plusieurs) équilibre(s) de Nash.
+\end{theoreme}
+
+Il y a une subtilité dans cette notion d'équilibre de Nash qui peut être \defi{pur} (c'est-à-dire issu de la liste originale des stratégies possibles) ou bien \defi{mixte} (les stratégies d'équilibres se forment par tirage aléatoire parmi les stratégies originales selon des probabilités précises).
+
+
+
+%--------------------------------------------------------------------
+\subsection{Exemples}
+
+\textbf{Le jeu de cerf.}
+
+
+\myfigure{1}{
+	\tikzinput{gain-06}
+} 
+
+
+\begin{itemize}
+	\item Le couple (Cerf, Cerf) est un équilibre de Nash.
+	En effet, si $B$ choisit la stratégie Cerf, alors :
+	$$g_A(\text{Cerf}, \text{Cerf}) = 2 \qquad g_A(\text{Lièvre}, \text{Cerf}) = 1$$
+	donc une fois que $B$ a choisi Cerf, $A$ n'a pas intérêt à passer de Cerf à Lièvre.
+	
+	Réciproquement, si $A$ a choisi Cerf, alors $B$ n'a pas non plus intérêt de passer de Cerf à Lièvre car :
+	$$g_B(\text{Cerf}, \text{Cerf}) = 2 \qquad g_B(\text{Cerf}, \text{Lièvre}) = 1$$	
+	
+	
+	\item Le couple (Lièvre, Lièvre) est aussi un équilibre de Nash. En effet si $B$ a choisi Lièvre alors $A$ n'a pas intérêt de passer de Lièvre à Cerf, de même si $A$ a choisi Lièvre alors $B$ n'a pas intérêt de passer de Lièvre à Cerf.
+	
+    \item Les couples (Lièvre, Cerf) et (Cerf, Lièvre) ne sont pas des équilibres de Nash. Par exemple pour (Cerf, Lièvre) le gain pour $A$ est $0$, il a donc intérêt à changer sa stratégie (car (Lièvre, Lièvre) lui rapporterait $1$).
+\end{itemize}
+
+Les deux équilibres de Nash (Cerf, Cerf) et  (Lièvre, Lièvre) sont des équilibres de Nash purs. Il existe aussi un équilibre de Nash mixte (voir plus loin).
+
+\bigskip
+\textbf{Le dilemme du prisonnier.}
+
+\myfigure{1}{
+	\tikzinput{gain-02}
+} 
+
+
+\begin{itemize}
+	\item Le couple (T, T) est un équilibre de Nash. En effet pour $A$, (S, T) est pire et pour $B$, (T, S) est pire.
+	\item Le couple (S, S) n'est pas un équilibre de Nash : en effet si $B$ a choisi d'être solidaire alors $A$ a tout intérêt à le trahir.
+	\item Les couples (S, T) et (T, S) ne sont pas non plus des équilibres de Nash.
+\end{itemize}
+
+Dans cet exemple il n'y a qu'un équilibre de Nash, qui est pur.
+
+Ainsi un équilibre de Nash n'est pas forcément la solution la meilleure d'un point de vue d'une personne extérieure, pour laquelle il est clair que le meilleur couple de stratégies pour l'ensemble des deux joueurs est (S, S) qui minimise le nombre total d'années de prison.
+
+
+\bigskip
+\textbf{Le tir au but.}
+
+
+\myfigure{1}{
+	\tikzinput{gain-11}
+}
+
+
+Il est facile de voir qu'il n'y a aucun équilibre de Nash pur. Par exemple la stratégie (G,G) n'est pas de Nash car le joueur A préférera (D,G) ; de même la stratégie (D,G) n'est pas de Nash car le joueur B préférera (D,D)\ldots
+
+Le théorème de Nash affirme pourtant qu'il existe un équilibre de Nash. Quel est-il ? 
+Ici l'équilibre de Nash est un équilibre mixte. Pour chaque joueur sa stratégie d'équilibre est $\frac12G+ \frac12S$, c'est-à-dire choisir G ou S avec chacun une probabilité $\frac12$. Ainsi la meilleure stratégie pour le tireur (et aussi le gardien de but) c'est de décider au hasard gauche ou droite.
+
+On se convainc facilement que ce sont les bonnes probabilités. Supposons par exemple que A ait pour stratégie $pG + (1-p)D$ où $0 \le p \le 1$ est une probabilité
+et supposons $p \ge \frac12$ (c'est-à-dire que A tire plus souvent à gauche). Dans ce cas le gardien B a aussi intérêt à plonger lui aussi le plus souvent à gauche, donc il adopte une stratégie $qG+(1-q)D$ avec $q \ge \frac12$. Mais puisque le gardien B part le plus souvent à gauche, le tireur A a intérêt à changer sa stratégie pour tirer le plus souvent à droite (donc prendre $p \le \frac12$), la seule solution est donc $p = \frac12$ (et de même $q=\frac12$).
+
+
+Autre exemple d'équilibre mixte : pour \og{}pierre/feuille/ciseaux\fg{} l'équilibre de Nash est atteint pour les deux joueurs avec la stratégie $\frac13P+\frac13F+\frac13C$.
+
+
+
+\bigskip
+\textbf{Trouver les équilibres de Nash purs.}
+
+Voici comment déterminer tous les équilibres de Nash purs à partir de la matrice de gains :
+
+
+\mybox{
+	\begin{minipage}{0.8\textwidth}
+		\center
+		Un équilibre de Nash est atteint en une case où le gain de A est le plus grand de sa colonne et, en même temps, le gain de B est le plus grand de sa ligne.
+	\end{minipage}
+	}
+
+
+Voici un exemple où le joueur A a trois stratégies possibles $S_1$, $S_2$, $S_3$ et le joueur B a trois autres stratégies possibles $S'_1$, $S'_2$, $S'_3$. Noter que les stratégies n'ont pas besoin d'être les mêmes pour A et B et que la matrice des gains n'est pas symétrique. 
+
+\myfigure{1}{
+	\tikzinput{gain-09}
+} 
+
+Le couple de stratégies $(S_3,S'_1)$ de gains $(4,3)$ est un équilibre de Nash : la valeur $4$ est la valeur la plus élevée du gain de A pour la première colonne et la valeur $3$ est la valeur  la plus élevée du gain de B pour la troisième ligne.
+De même, le couple de stratégies $(S_2,S'_3)$ de gains $(2,4)$ est un équilibre de Nash.
+Il existe aussi des algorithmes pour déterminer les équilibres de Nash mixtes.
+
+\end{document}

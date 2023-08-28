@@ -1,0 +1,104 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+
+%%% First edge
+
+% coordinates
+\def\xa{0}
+\def\ya{0}
+\def\xb{0.5}
+\def\yb{3}
+\def\xc{1}
+\def\yc{1}
+
+% la courbe
+\path
+  (\xa,\ya) coordinate (A)
+  (\xb,\yb) coordinate (B)
+  (	\xc,\yc)  coordinate (C)  % control point
+;
+\draw[gray!20, line] (A)  -- (C) -- (B);
+\draw[gray!20, line] (A)  -- (B);
+% Quadratic Bezier curve by its parameterization!
+\draw [red, ultra thick,  domain=0:1, variable=\t, samples=40] 
+ plot ( {(1-\t)^2*\xa+2*(1-\t)*\t*\xc+\t^2*\xb} , {(1-\t)^2*\ya+2*(1-\t)*\t*\yc+\t^2*\yb} );
+
+\path
+  (A) [dot] 
+  (B) [dot]
+
+;
+\path[gray!20] (C) [dot] ;
+
+
+%%% Second edge
+% coordinates
+\def\xa{0}
+\def\ya{0}
+\def\xb{4}
+\def\yb{0.5}
+\def\xc{2}
+\def\yc{-0.5}
+
+% la courbe
+\path
+  (\xa,\ya) coordinate (A)
+  (\xb,\yb) coordinate (B)
+  (	\xc,\yc)  coordinate (C)  % control point
+;
+\draw[gray!20, line] (A)  -- (C) -- (B);
+\draw[gray!20, line] (A)  -- (B);
+% Quadratic Bezier curve by its parameterization!
+\draw [red, ultra thick,  domain=0:1, variable=\t, samples=40] 
+ plot ( {(1-\t)^2*\xa+2*(1-\t)*\t*\xc+\t^2*\xb} , {(1-\t)^2*\ya+2*(1-\t)*\t*\yc+\t^2*\yb} );
+
+\path
+  (A) [dot] 
+  (B) [dot]
+
+;
+\path[gray!20] (C) [dot] ;
+
+%%% Third edge
+% coordinates
+\def\xa{0.5}
+\def\ya{3}
+\def\xb{4}
+\def\yb{0.5}
+\def\xc{3}
+\def\yc{2.5}
+
+% la courbe
+\path
+  (\xa,\ya) coordinate (A)
+  (\xb,\yb) coordinate (B)
+  (	\xc,\yc)  coordinate (C)  % control point
+;
+\draw[gray!20, line] (A)  -- (C) -- (B);
+\draw[gray!20, line] (A)  -- (B);
+% Quadratic Bezier curve by its parameterization!
+\draw [red, ultra thick,  domain=0:1, variable=\t, samples=40] 
+ plot ( {(1-\t)^2*\xa+2*(1-\t)*\t*\xc+\t^2*\xb} , {(1-\t)^2*\ya+2*(1-\t)*\t*\yc+\t^2*\yb} );
+
+\path
+  (A) [dot] 
+  (B) [dot]
+
+;
+\path[gray!20] (C) [dot] ;
+
+
+
+\end{tikzpicture}

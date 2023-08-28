@@ -1,0 +1,20 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Graphe et aire
+\fill[black!20] (1,0) -- (1,2) -- (6,2) -- (6,0) -- cycle;
+ \draw[ultra thick, color=blue,fill=black!20] (1,2) -- (6,2);
+
+% Axes
+    \draw[->,>=latex,thick, gray] (-0.5,0)--(7,0) node[below,black] {$x$};
+    \draw[->,>=latex,thick, gray] (0,-0.5)--(0,4) node[left,black] {$f(x)$};  
+
+\draw (1,0.2) -- ++(0,-0.4) node[below] {$a$};
+\draw (6,0.2) -- ++(0,-0.4) node[below] {$b$};
+
+\fill (1,2) circle (2pt);
+\fill (6,2) circle (2pt);
+
+\draw[dashed] (1,2) -- (-0.1,2) node[left]{$\frac{1}{b-a}$};
+
+
+\end{tikzpicture}

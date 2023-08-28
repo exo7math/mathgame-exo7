@@ -1,0 +1,48 @@
+﻿\include{tictactoe.tex}  % pour le morpion
+\begin{tikzpicture}
+
+\node (R) at (0,0) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,,
+		   X,O, }
+ \end{tikzpicture}};
+
+
+\node (V1) at (-3,-3) {\begin{tikzpicture}
+\tictactoe[0.4]{ x,X,X,
+		   O,O,,
+		   X,O, }
+ \end{tikzpicture}};
+
+
+\node (V2) at (0,-3) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,x,
+		   X,O, }
+\end{tikzpicture}};
+
+
+\node (V3) at (3,-3) {\begin{tikzpicture}
+\tictactoe[0.4]{ ,X,X,
+		   O,O,,
+		   X,O,x}
+\end{tikzpicture}};
+
+
+% draw lines
+    \draw[thick]
+      (R) -- (V1)
+      (R) -- (V2)
+      (R) -- (V3)
+    ;
+
+
+% evaluations
+ \path[blue, scale=1.1, below]
+      (V1.south) node{$+\infty$}
+      (V2.south) node{$+10$}
+      (V3.south) node{$-10$}
+    ;
+
+
+\end{tikzpicture}

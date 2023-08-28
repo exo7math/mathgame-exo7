@@ -1,0 +1,67 @@
+\begin{tikzpicture}[scale=1]
+
+% Ampoule
+\begin{scope}[shift={(0,-1)},scale=0.5]
+    \coordinate (S) at (0,0);
+
+    \foreach \a in {60,45,...,-240}{
+      \draw[orange] (\a:1.1) -- (\a:1.5);
+    }
+
+    \draw[thick, orange, fill=white] (110-360:1) arc (110-360:70:1);
+    \draw[thick, orange] (70:1) -- ++(0,1);
+    \draw[thick, orange] (110-360:1) -- ++(0,1);
+\end{scope}
+
+% Pyramide
+\begin{scope}[shift={(8,-2)},scale=2]
+\coordinate (P) at (0,0);
+\draw[blue, fill=blue!20] (-0.3,-0.3) -- ++(80:0.6) -- ++(0.6,0) -- ++(-100:0.6) -- +(-0.6,0) -- cycle;
+
+
+\end{scope}
+
+% Oeil
+% eye from Izaak Neutelings https://tikz.net/hyperbola/
+\def\le{0.8}  % eye size eye
+\def\ange{25} % eye opening angle
+\def\lb{1.2}  % outgoing beam length
+\def\ang{215} % outgoing beam scattering
+\begin{scope}[shift={(5.5,-3.75)},scale=2,shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+  \coordinate (C) at (0,0);
+  \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+  \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+  %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+  \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+
+\end{scope}
+
+% Texte
+\node[blue, scale=3] at (S) {.};
+\node[below left] at (S) {$S$};
+\node[blue, scale=3] at (P) {.};
+\node[below right] at (P) {$P$};
+\node[blue, scale=3] at (C) {.};
+\node[below left] at (C) {$O$};
+
+\node at (10.5,-1.5) {élément de surface};
+
+\draw[gray,thin] (P) -- (S);
+\draw[gray,thin] (P) -- (C);
+
+\draw[very thick,->,>=latex,red] (P) -- ($(S)!0.7!(P)$) node[midway,below, pos=.75]{$\vec \ell$};
+\draw[very thick,->,>=latex,red] (P) -- ($(C)!0.7!(P)$) node[midway,below, pos=.75]{$\vec v$};
+
+
+\tikzset{
+perp/.style = {draw,angle eccentricity=.5, angle radius=2mm,pic text=.},
+}
+\path
+  (P)
+  ++ (0,0) coordinate (N)
+  +(-2,.7) coordinate (Na)
+  +(0,.25) coordinate (Nn)
+  (N) edge[-latex] node[above, pos=.75]{$\vec{n}$} (Na)
+  pic[perp,gray]{right angle=Nn--N--Na}
+;
+\end{tikzpicture}

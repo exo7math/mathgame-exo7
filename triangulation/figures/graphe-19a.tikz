@@ -1,0 +1,30 @@
+%\usetikzlibrary{patterns}
+\begin{tikzpicture}
+
+\tikzstyle{edge} = [draw, thick]
+\tikzstyle{vertex} = [draw] 
+
+\begin{scope}[rotate=90]
+\coordinate (A) at (-1,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (0,1);
+\coordinate (D) at (0,-1);
+\coordinate (E) at (0,-2.5);
+
+\draw[edge] (A) -- (B);
+\draw[edge] (A) -- (C) -- (B) -- (D) -- cycle;
+\draw[edge] (A) to[bend right] (E);
+\draw[edge] (B) to[bend left] (E);
+\draw[edge] (B) to[bend left] (E);
+\draw[edge] (D) to (E);
+
+\draw[fill=white] (A) circle (0.15);
+\draw[fill=white] (B) circle (0.15);
+\draw[fill=white] (C) circle (0.15);
+\draw[fill=white] (D) circle (0.15);
+\draw[fill=white] (E) circle (0.15);
+
+\end{scope}
+
+
+\end{tikzpicture}

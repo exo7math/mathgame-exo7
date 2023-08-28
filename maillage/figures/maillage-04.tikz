@@ -1,0 +1,16 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}[rotate=10]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,0);
+\coordinate (P) at (1,0);
+
+\draw[ultra thick, black!50]  (A) -- (B);
+
+\fill[red!80] (A) circle (1.5pt) node[black,below left]{$A$};
+\fill[red!80] (B) circle (1.5pt) node[black,below right]{$B$};
+\fill[blue!80] (P) circle (1.5pt) node[black,below=2pt]{$\gamma(t)$};
+
+\end{scope}
+
+\end{tikzpicture}

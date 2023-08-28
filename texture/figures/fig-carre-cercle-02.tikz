@@ -1,0 +1,33 @@
+﻿\begin{tikzpicture}[scale=2]
+
+
+% Axes
+\draw[->,>=latex,thick, gray] (-1.5,0)--(1.5,0);
+\draw[->,>=latex,thick, gray] (0,-1.5)--(0,1.5);
+
+\draw[red, very thick] (0,0) circle (1);
+\draw[blue, very thick] (-1,-1) rectangle ++(2,2);
+
+\draw (0,0) -- (35:1.5);
+\coordinate (P) at (35:1);
+\node[left] at (P) {$P$};
+\node[red,scale=3] at (P){.};
+
+\coordinate (Q) at (1,{tan(35)});
+\node[right] at (Q) {$Q$};
+\node[blue,scale=3] at (Q){.};
+
+
+\draw[red,] (0,0) circle (0.6);
+\draw[blue, ] (-0.6,-0.6) rectangle ++(1.2,1.2);
+
+\draw (0,0) -- (-35:0.9);
+\coordinate (P) at (-35:0.6);
+\node[left,scale=0.8] at (P) {$P'$};
+\node[red,scale=2] at (P){.};
+
+\coordinate (Q) at (0.6,{0.6*tan(-35)});
+\node[right,scale=0.8] at (Q) {$Q'$};
+\node[blue,scale=2] at (Q){.};
+
+\end{tikzpicture}

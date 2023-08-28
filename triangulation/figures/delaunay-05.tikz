@@ -1,0 +1,51 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+
+\coordinate (A) at (170:3);
+\coordinate (B) at (-100:3);
+\coordinate (C) at (60:3);
+\coordinate (D) at (-30:3);
+
+\draw[blue, very thick,fill=blue!3,] (0,0) circle (3);
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\end{scope}
+
+\begin{scope}[xshift=10cm]
+
+\coordinate (A) at (170:3);
+\coordinate (B) at (-100:3);
+\coordinate (C) at (60:3);
+\coordinate (D) at (-30:3);
+
+\draw[blue, very thick,fill=blue!3,] (0,0) circle (3);
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (A) -- (D);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\end{scope}
+
+\node at (5,-4.5) {\bf Cas cocyclique : les deux diagonales sont bonnes};
+
+\end{tikzpicture}

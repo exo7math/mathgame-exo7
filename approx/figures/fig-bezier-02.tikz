@@ -1,0 +1,42 @@
+﻿\begin{tikzpicture}[scale=1]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% la courbe
+\path
+  (0,0) coordinate (P0)
+  (1,2) coordinate (P1)
+  (	2,-1)  coordinate (P2)
+  (4,0) coordinate (P3)
+  (6,1) coordinate (P4)
+  (	5,5)  coordinate (P5)
+  (2,3) coordinate (P6)
+;
+\draw[red, line]
+  (P0)  .. controls (P1) and (P2) .. (P3)
+;
+\draw[blue, line]
+  (P3)  .. controls (P4) and (P5) .. (P6)
+;
+\draw[gray]
+%  (P0) edge[vector] node[left]{$\vec{v_A}$} (P1)
+  (P3) edge[vector] node[below right]{$\vec{v_B}$} (P2)
+  (P3) edge[vector] node[below right]{$\vec{v'_B}$} (P4)
+;
+\path
+  (P0) [dot] node[below]{$A$}
+  (P3) [dot] node[below]{$B$}
+  (P6) [dot] node[below]{$C$}
+;
+
+\end{tikzpicture}

@@ -1,0 +1,40 @@
+\begin{tikzpicture}
+% From user121799
+% https://tex.stackexchange.com/questions/497992/tikz-payoff-matrix		
+		
+	\tikzset{payoff matrix/.style={matrix of nodes,column sep=-\pgflinewidth,row sep=-\pgflinewidth,
+		nodes={/utils/exec=\ifnum\the\pgfmatrixcurrentrow>1
+			\ifnum\the\pgfmatrixcurrentcolumn>1
+			\tikzset{
+				text height=1.2em,text width=4em,draw,
+				path picture={\fill[blue!10] (path picture bounding box.north west) -|
+					(path picture bounding box.south east);
+					\fill[red!20] (path picture bounding box.north west) |-
+					(path picture bounding box.south east);}}
+			\fi
+			\fi,
+			align=center,anchor=center},
+		column 1/.style={text width=1em},
+		row 1/.style={text depth=0.3em},
+		execute at end matrix={%
+			\path (\tikzmatrixname-2-2.west) -- (\tikzmatrixname-2-\the\pgfmatrixcurrentcolumn.east)
+			coordinate[midway] (aux) 
+			node[anchor=south,draw=none,path picture={}] at (\tikzmatrixname.north-|aux){\pgfkeysvalueof{/tikz/payoff
+					matrix/player 1}};
+			\path (\tikzmatrixname-2-2.north) -- 
+			(\tikzmatrixname-\the\pgfmatrixcurrentrow-2.south)
+			coordinate[midway] (aux) 
+			node[anchor=south,draw=none,path picture={},rotate=90] at (aux-|\tikzmatrixname.west){\pgfkeysvalueof{/tikz/payoff
+					matrix/player 2}};}},
+	payoff matrix/.cd,player 1/.initial={\small Joueur B},player 2/.initial={\small Joueur A}}		
+		
+		
+	\newcommand{\pft}[2]{{\hfill$#2$ \\ $#1$\hfill\mbox{}}}
+	
+	
+	\matrix [payoff matrix]{
+		        & {\bf S}      & {\bf T}    \\
+		{\bf S} & \pft{-1}{-1}  & \pft{0}{-5} \\
+		{\bf T} & \pft{-5}{0}  & \pft{-3}{-3} \\
+	};
+\end{tikzpicture}

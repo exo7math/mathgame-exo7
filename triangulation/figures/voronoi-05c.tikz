@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}[xshift=14cm]
+\coordinate (O1) at (0,0);
+\coordinate (A) at (180:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+
+\draw[gray!50,thick] (O1) circle (3);
+
+% Second cercle à la main
+\coordinate (O2) at (2.45,-0.2);
+\def\r{2.58}
+\draw[gray!50,thick] (O2) circle (\r);
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\foreach \P in {O1,O2} {
+  \fill[green!70!black] (\P) circle (3pt);
+}
+
+\node at (1.5,-4) {\bf (c) Les cercles circonscrits et leurs centres};
+\end{scope}
+
+\end{tikzpicture}

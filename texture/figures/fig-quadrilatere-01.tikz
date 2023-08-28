@@ -1,0 +1,11 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\draw (0,0) -- (-120:6);
+\draw (0,0) -- (-60:6);
+\draw (0,0) -- (-140:3);
+\draw (0,0) -- (-40:3);
+
+\draw[blue, fill=blue!5, very thick] (-120:6) -- (-140:3.92) -- (-140:1) -- (-120:1.6) -- cycle;
+\draw[blue, fill=blue!5, very thick] (-60:6) -- (-40:3.92) -- (-40:1) -- (-60:1.6) -- cycle;
+
+\end{tikzpicture}

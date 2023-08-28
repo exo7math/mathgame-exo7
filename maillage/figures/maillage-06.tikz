@@ -1,0 +1,58 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% coordinates
+\def\xa{0}
+\def\ya{0}
+\def\xb{3}
+\def\yb{0.5}
+\def\xc{1}
+\def\yc{1}
+
+
+% la courbe
+\path
+  (\xa,\ya) coordinate (A)
+  (\xb,\yb) coordinate (B)
+  (	\xc,\yc)  coordinate (C)  % control point
+;
+\draw[gray, line] (A)  -- (C) -- (B);
+\draw[gray!50, line] (A)  -- (B);
+
+% Quadratic Bezier curve by its parameterization!
+\draw [red, very thick,  domain=0:1, variable=\t, samples=40] 
+ plot ( {(1-\t)^2*\xa+2*(1-\t)*\t*\xc+\t^2*\xb} , {(1-\t)^2*\ya+2*(1-\t)*\t*\yc+\t^2*\yb} );
+
+\pgfmathsetmacro{\t}{0.3}  % paramter t in [0,1]
+\pgfmathsetmacro{\xP}{ (1-\t)^2*\xa+2*(1-\t)*\t*\xc+\t^2*\xb}
+\pgfmathsetmacro{\yP}{ (1-\t)^2*\ya+2*(1-\t)*\t*\yc+\t^2*\yb}
+
+
+\path
+  (\xP,\yP) coordinate (P)
+;
+% tangent vector
+% \draw[vector, ultra thick, green!70!black]
+%   (A) -- ($(A)!0.4!(C)$) node[above]{$\vec{v_A} = \gamma'(t)$}
+%   (B) -- ($(B)!0.4!(C)$) node[above]{$\vec{v_B} = \gamma'(t)$}
+% ;
+
+\path
+  (A) [dot] node[below]{$A$}
+  (B) [dot] node[below]{$B$}
+  (C) [dot] node[above]{$C$}
+  (P) [blue, dot] node[below right] {$\gamma(t)$}
+;
+
+\end{tikzpicture}

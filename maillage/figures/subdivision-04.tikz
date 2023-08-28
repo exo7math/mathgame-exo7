@@ -1,0 +1,45 @@
+﻿\tdplotsetmaincoords{70}{70}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+\coordinate (S) at (0,0,2);
+\coordinate (A) at (0:2);
+\coordinate (B) at (120:2);
+\coordinate (C) at (-120:2);
+
+\draw[red, fill=red!5, very thick,opacity=0.6] (S) -- (A) -- (B) -- cycle;
+\draw[red, fill=red!5, very thick,opacity=0.6] (S) -- (C) -- (B) -- cycle;
+\draw[red, fill=red!5, very thick,opacity=0.6] (S) -- (A) -- (C) -- cycle;
+
+\coordinate (M1) at ($(S)!0.5!(A)$);
+\node[scale=4,blue] at (M1) {.};
+\node[right,black] at (M1) {$a_1$};
+
+\coordinate (M2) at ($(S)!0.5!(B)$);
+\node[scale=4,blue] at (M2) {.};
+\node[above right,black] at (M2) {$a_2$};
+
+\coordinate (M3) at ($(S)!0.5!(C)$);
+\node[scale=4,blue] at (M3) {.};
+\node[above left,black] at (M3) {$a_3$};
+
+\coordinate (F1) at (barycentric cs:S=1,A=1,B=1);
+\node[scale=4,green!70!black] at (F1) {.};
+\node[right,green!70!black] at (F1) {$f_1$};
+
+\coordinate (F2) at (barycentric cs:S=1,A=1,C=1);
+\node[scale=4,green!70!black] at (F2) {.};
+\node[left,green!70!black] at (F2) {$f_2$};
+
+\coordinate (F3) at (barycentric cs:S=1,C=1,B=1);
+\node[scale=4,green!70!black!60] at (F3) {.};
+\node[above left,green!70!black!60] at (F3) {$f_3$};
+
+\node[scale=4,red] at (S) {.};
+\node[above,black] at (S) {$s$};
+
+\coordinate (SS) at (barycentric cs:F1=1,F2=1,F3=1,M1=2,M2=2,M3=2);
+\node[scale=4,red!60] at (SS) {.};
+\node[below,black!80] at (SS) {$s'$};
+
+\draw[-latex,line width=3pt, red!30, shorten >=4pt, shorten <=4pt,opacity=0.8] (S) -- (SS);
+
+\end{tikzpicture}

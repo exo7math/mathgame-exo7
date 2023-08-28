@@ -1,0 +1,32 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\coordinate (P1) at (0,0);
+\coordinate (P2) at (1.2,0.2);
+\coordinate (P3) at (0.9,-1);
+\coordinate (P4) at (2.5,-0.8);
+\coordinate (P5) at (2.2,0.8);
+\coordinate (P6) at (3.3,0.3);
+\coordinate (P7) at (4.5,0.7);
+
+
+\draw[ultra thick, black!50]
+  (P1) -- (P2) node[midway, above,black]{$10$}
+  (P2) -- (P3) node[midway, left,black]{$15$}
+  (P3) -- (P4) node[midway, below,black]{$5$}
+  (P4) -- (P5) node[midway, right,black]{$16$}
+  (P2) to[bend left]node[midway, above,black]{$6$} (P5) 
+  (P3) to[bend right] node[midway, above,black]{$7$}(P5) 
+  (P4) -- (P6) node[midway, below right,black]{$4$}
+  (P6) -- (P7) node[midway, below,black]{$3$}
+  (P5) -- (P7) node[midway, above,black]{$22$}
+  (P5) -- (P6) node[midway, below,black]{$11$}
+  (P4) to[bend right] node[midway, below right,black]{$9$}(P7) 
+;  
+\foreach \i in {1,...,7}{
+  \path (P\i) node[scale=5,black!70]{.};
+}
+
+\node at (P1)[scale=1.2,left=5pt]{$A$};
+\node at (P7)[scale=1.2,right=5pt]{$B$};
+
+\end{tikzpicture}

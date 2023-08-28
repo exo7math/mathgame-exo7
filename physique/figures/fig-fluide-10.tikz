@@ -1,0 +1,59 @@
+\begin{tikzpicture}[scale=0.7]
+
+\begin{scope}
+\def\carre{
+\fill[blue!60] (-1,-1) rectangle ++ (2,2);
+\fill[red] (-1,-1) circle (2pt);
+\fill[red] (-1,1) circle (2pt);
+\fill[red] (1,1) circle (2pt);
+\fill[red] (1,-1) circle (2pt);
+}
+
+
+\begin{scope}[yshift=-8cm]
+  \carre
+\end{scope}
+
+\begin{scope}[shift={(-40:8)}]
+  \carre
+\end{scope}
+
+\draw[->, >=latex,orange!50, line width=10 pt] (-85:8) -- (-40:8);
+
+%\draw[] (-90:7) -- (-40:7);
+%\draw[] (-90:9) -- (-40:9);
+
+\node at (3,-10) {\bf $\omega=0$, pas de vortex};
+\end{scope}
+
+
+%%%%%%%%%%%%
+
+
+\begin{scope}[xshift=12cm]
+\def\carre{
+\fill[blue!60] (-1,-1) rectangle ++ (2,2);
+\fill[red] (-1,-1) circle (2pt);
+\fill[red] (-1,1) circle (2pt);
+\fill[red] (1,1) circle (2pt);
+\fill[red] (1,-1) circle (2pt);
+}
+
+
+\begin{scope}[yshift=-8cm]
+  \carre
+\end{scope}
+
+\begin{scope}[rotate=50, yshift=-8cm]
+    \carre
+\end{scope}
+
+\draw[->, >=latex,orange!50, line width=10 pt] (-85:8) arc (-85:-40:8);
+
+\draw[] (-90:7) arc (-90:-40:7);
+\draw[] (-90:9) arc (-90:-40:9);
+
+\node at (3,-10) {\bf $\omega \neq 0$};
+\end{scope}
+
+\end{tikzpicture}

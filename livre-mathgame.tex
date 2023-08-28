@@ -1,0 +1,137 @@
+\documentclass[11pt]{report}
+%\documentclass[10pt,twoside,openright]{report}
+
+\usepackage[screen]{mathgame}
+%\usepackage[print]{mathgame}
+
+\include{theorie/figures/tictactoe}  % pour le morpion
+
+\begin{document}
+	
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titre + préface + sommaire
+\renewcommand{\contentsname}{Sommaire}
+
+% Préface
+\pagenumbering{roman}
+\import{divers/}{preface_livre_mathgame.tex}
+\debutchapitres
+\pagenumbering{arabic}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\clearemptydoublepage
+
+%======================================
+% Partie 1 - Géométrie
+%======================================
+
+\part{Géométrie}
+
+% 1 - Trigonométrie
+\import{trigo/}{trigo.tex}
+
+% 2 - Vecteurs
+\import{vecteurs/}{vecteurs.tex}
+
+% 3 - Matrices
+\import{matrices/}{matrices.tex}
+
+% 4 - Transformations de l'espace
+\import{transformation/}{transformation.tex}
+
+% 5 - Rotations de l'espace
+\import{rotation/}{rotation.tex}
+
+% 6 - Perspective
+\import{perspective/}{perspective.tex}
+
+
+%======================================
+% Partie 2 - Images
+%======================================
+
+\part{Images}
+
+% 1 - Lancer de rayons I
+\import{rayons/}{rayons.tex}
+
+% 2 - Lumière
+\import{lumiere/}{lumiere.tex}
+
+% 3 - Pixels
+\import{pixels/}{pixels.tex}
+
+% 4 - Texture
+\import{texture/}{texture.tex}
+
+% 5 - Lancer de rayons II
+\import{rayonsbis/}{rayonsbis.tex}
+
+% 6 - Triangulation
+\import{triangulation/}{triangulation.tex}
+
+% 7 - Maillage
+\import{maillage/}{maillage.tex}
+
+
+%======================================
+% Partie 3 - Applications
+%======================================
+
+\part{Applications}
+
+% 1 - Mouvement
+\import{mouvement/}{mouvement.tex}
+
+% 2 - Approximation et interpolation
+\import{approx/}{approx.tex}
+
+% 3 - Equations différentielles
+\import{equadiff/}{equadiff.tex}
+
+% 4 - Fractales
+\import{fractales/}{fractales.tex}
+
+% 5 - Physique
+\import{physique/}{physique.tex}
+
+
+%======================================
+% Partie 4 - Théorie des jeux
+%======================================
+
+\part{Théorie des jeux}
+
+% 1 - Théorie des jeux
+\import{theorie/}{theorie.tex}
+
+% 2 - Minimax
+\import{minimax/}{minimax.tex}
+
+% 3 - Sociologie
+\import{sociologie/}{sociologie.tex}
+
+
+
+\clearemptydoublepage
+
+%======================================
+% Postface et index
+%======================================
+
+\import{divers/}{postface_livre_mathgame.tex}
+%\newpage
+
+\vfill
+
+\mycenterline{Version 0.1 -- Septembre 2023}
+
+\bigskip
+\bigskip
+
+\end{document}
+

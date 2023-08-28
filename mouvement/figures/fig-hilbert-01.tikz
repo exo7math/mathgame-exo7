@@ -1,0 +1,14 @@
+﻿% https://tex.stackexchange.com/questions/348223/tikz-hilbert-curves
+\usetikzlibrary{lindenmayersystems}
+\pgfdeclarelindenmayersystem{Hilbert curve}{
+\rule{L -> +RF-LFL-FR+}
+\rule{R -> -LF+RFR+FL-}}
+\begin{tikzpicture}[scale=10]
+\foreach \i in {1,...,4}{
+  \begin{scope}[xshift={(0.4*\i cm} , yshift={4/2^(\i)}, scale = 1/(2^(\i))]
+    \draw[thick]
+    [l-system={Hilbert curve, axiom=L, order=\i, step=8pt, angle=90}]
+    lindenmayer system;
+  \end{scope}
+}
+  \end{tikzpicture}

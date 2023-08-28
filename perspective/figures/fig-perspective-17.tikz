@@ -1,0 +1,42 @@
+% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{50}{110}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+
+\draw[thick,->,>=latex] (0,0,0) -- (4,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,3,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,4) node[right]{$z$};
+
+\draw (0,0,0) circle (1);
+\draw (0,0,-2) circle (1);
+\draw (0,0,2) circle (1);
+
+\def\myalpha{110}
+\draw ({cos(\myalpha)},{sin(\myalpha)},2) -- ({cos(\myalpha)},{sin(\myalpha)},-2);
+
+\def\mybeta{-67}
+\draw ({cos(\mybeta)},{sin(\mybeta)},2) -- ({cos(\mybeta)},{sin(\mybeta)},-2);
+
+\def\mytheta{45}
+\coordinate (Q) at ({cos(\mytheta)},{sin(\mytheta)},0);
+\draw[thick, red] (0,0,0) -- (Q);
+
+\draw[double, red] (0.5,0,0) arc (0:\mytheta:0.5) node[midway, below]{$\theta$}; 
+
+\def\myz{1}
+\coordinate (P) at ({cos(\mytheta)},{sin(\mytheta)},\myz);
+
+\node[scale=2,red] at (P) {.};
+\node[right,red] at (P) {$(\theta,z)$};
+
+\draw[red] (0,0,0) -- (0,0,\myz) -- (P) -- (Q);
+
+\node[scale=2,red] at (0,0,\myz) {.};
+\node[left] at (0,0,\myz) {$z$};
+
+\def\myr{3}
+\coordinate (PP) at ({\myr*cos(\mytheta)},{\myr*sin(\mytheta)},\myz);
+\node[scale=2,red] at (PP) {.};
+\node[right,red] at (PP) {$(r,\theta,z)$};
+
+\draw[red] (P) -- (PP);
+\end{tikzpicture}

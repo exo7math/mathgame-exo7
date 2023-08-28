@@ -1,0 +1,12 @@
+﻿% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[tdplot_main_coords,scale=0.8]
+
+\draw[thick,->,>=latex] (0,0,0) -- (2,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,2,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,2) node[right]{$z$};
+
+\draw[->,>=latex,red] (0,0,0) -- (1,1,1) node[right]{$P$};
+
+\node at (0,1,-1.3) {\bf Vecteur normal au plan de projection};
+\end{tikzpicture}

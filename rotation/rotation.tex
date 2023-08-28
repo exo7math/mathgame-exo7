@@ -1,0 +1,730 @@
+\documentclass[11pt,class=report,crop=false]{standalone}
+\usepackage[screen]{../mathgame}
+
+\usepackage{siunitx}
+%\sisetup{locale = FR,detect-all,per-mode = symbol}
+
+\begin{document}
+
+
+%====================================================================
+\chapitre{Rotations de l'espace}
+%====================================================================
+
+%
+%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
+%
+%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
+%
+%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+
+\objectifs{Nous étudions différentes façons d'obtenir une rotation de l'espace : en la décomposant par des rotations élémentaires ou bien à l'aide des quaternions.}
+
+\index{rotation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Rotation suivant un axe}
+
+%--------------------------------------------------------------------
+\subsection{Rappels : rotation dans le plan}
+
+Commençons par exprimer une rotation dans le plan. Ce plan est muni d'un repère orthonormé direct $(Oxy)$.
+Une \defi{rotation} centrée à l'origine et d'angle $\theta$ est la transformation du plan qui envoie un point $P$ de coordonnées $(x,y)$ sur le point $Q$ de coordonnées $(x',y')$ avec :
+$$
+\left\{
+\begin{array}{rcl}
+x' &=& x \cos(\theta) - y \sin(\theta) \\
+y' &=& x \sin(\theta) + y \cos(\theta) \\
+\end{array}
+\right.$$
+
+
+\myfigure{0.8}{
+	\tikzinput{fig-rotation-01}
+} 
+
+Il est plus facile d'exprimer une rotation à l'aide de la matrice :
+$$R(\theta) = 
+\begin{pmatrix}
+\cos(\theta) & - \sin(\theta) \\
+\sin(\theta) & \cos(\theta) \\
+\end{pmatrix}.
+$$
+
+Si on note 
+$$X = \begin{pmatrix} x \\ y \end{pmatrix} \qquad \text{ et } \qquad Y = \begin{pmatrix} x' \\ y' \end{pmatrix},$$
+alors l'action de la rotation s'écrit :
+$$Y = R X.$$
+
+\textbf{Notations.} Dans ce chapitre il va y avoir beaucoup de sinus et cosinus, nous abrégeons l'écriture par les notations suivantes :
+\mybox{$\displaystyle 
+c_\theta = \cos(\theta) \qquad\qquad s_\theta = \sin(\theta)
+$}
+
+Avec ces notations la matrice de rotation $R_\theta$ s'écrit simplement :
+$$R(\theta) = 
+\begin{pmatrix}
+c_\theta  & - s_\theta \\
+s_\theta & c_\theta \\
+\end{pmatrix}.
+$$
+
+\textbf{Sens trigonométrique.}
+Nos angles sont orientés : un angle positif correspond à une rotation dans le sens trigonométrique, 
+un angle négatif à une rotation dans le sens des aiguilles d'une montre.
+
+
+%--------------------------------------------------------------------
+\subsection{Rotation autour de l'axe $x$, $y$ ou $z$}
+
+Une rotation de l'espace correspond à un mouvement circulaire autour d'un axe laissé fixe.
+Nous allons définir les rotations par leur matrice associée. Dans la suite toutes les rotations auront des axes qui passent par l'origine (on parle de rotations vectorielles).
+Une rotation quelconque s'obtient comme une rotation vectorielle conjuguée avec une translation.
+
+\myfigure{0.7}{
+	\tikzinput{fig-rotation-02}
+}
+
+\textbf{Rotation autour de l'axe $x$.}
+
+$$R_x(\theta) = 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & c_\theta & - s_\theta \\
+0 & s_\theta & c_\theta \\
+\end{pmatrix}
+$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-rotation-03x}
+}
+
+
+La rotation de matrice $R_x(\theta)$ envoie un point de coordonnées $X = \left(\begin{smallmatrix} x\\y\\z \end{smallmatrix} \right)$ sur le point de coordonnées $Y = \left(\begin{smallmatrix} x'\\y'\\z' \end{smallmatrix} \right)$ où :
+$$Y = R_x(\theta) X.$$
+
+\medskip
+
+\textbf{Rotation autour de l'axe $y$.}
+
+$$R_y(\theta) = 
+\begin{pmatrix}
+c_\theta & 0 & s_\theta \\
+0 & 1 & 0 \\
+-s_\theta & 0 &  c_\theta \\
+\end{pmatrix}
+$$
+
+(Attention aux signes.)
+
+\myfigure{0.8}{
+	\tikzinput{fig-rotation-03y}
+}
+
+
+
+\medskip
+
+\textbf{Rotation autour de l'axe $z$.}
+
+$$R_z(\theta) = 
+\begin{pmatrix}
+c_\theta & - s_\theta & 0 \\
+s_\theta & c_\theta & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-rotation-03z}
+}
+
+
+
+\textbf{Orientation.}
+L'espace est muni d'un repère orthonormé direct $(Oxyz)$.
+Si on se place à l'origine, à cheval sur un axe orienté dans le sens de la flèche, 
+alors une rotation d'angle positif correspond à tourner vers la droite pour les rotations d'axe $(Ox)$ et $(Oz)$ et vers la gauche pour la rotation d'axe $(Oy)$.
+
+\myfigure{0.8}{
+	\tikzinput{fig-rotation-03}
+}
+
+
+%--------------------------------------------------------------------
+\subsection{Rotation autour d'un axe quelconque}
+
+Une rotation vectorielle quelconque est déterminée par :
+\begin{itemize}
+  \item son axe, défini par un vecteur $\vec v = (v_x, v_y, v_z)$,
+  \item un angle $\theta$.
+\end{itemize}
+Pour simplifier les expressions, nous supposerons que le vecteur $\vec v$ est unitaire, c'est-à-dire \myboxinline{$v_x^2 + v_y^2 +v_z^2 = 1$}.
+
+La rotation d'axe défini par $\vec v$ (unitaire) et d'angle $\theta$ a pour matrice :
+$$R_{\vec v}(\theta) = 
+\begin{pmatrix}
+(1-c_\theta)v_x^2 + c_\theta & (1-c_\theta) v_x v_y - s_\theta v_z & (1-c_\theta) v_x v_z + s_\theta v_y \\
+(1-c_\theta) v_x v_y + s_\theta v_z & (1-c_\theta)v_y^2 + c_\theta & (1-c_\theta) v_y v_z - s_\theta v_x \\
+ (1-c_\theta) v_x v_z - s_\theta v_y  & (1-c_\theta)v_y v_z + v_x s_\theta & (1-c_\theta)v_z^2 + c_\theta \\
+\end{pmatrix}
+$$
+
+Ainsi cette rotation envoie un point de coordonnées $X = \left(\begin{smallmatrix} x\\y\\z \end{smallmatrix} \right)$ sur le point de coordonnées $Y = \left(\begin{smallmatrix} x'\\y'\\z' \end{smallmatrix} \right)$ par la relation 
+$Y = R_{\vec v}(\theta) X$.
+
+%--------------------------------------------------------------------
+\subsection{Formule de Rodrigues}
+
+\index{formule!de Rodrigues}
+
+Découvrons une autre façon d'obtenir la matrice de rotation autour d'un axe $\vec v$ (unitaire) quelconque.
+
+Notons $I$, $Q_{\vec v}$ et $P_{\vec v} = Q_{\vec v}^2$ les matrices suivantes :
+$$
+I = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\qquad\qquad
+Q_{\vec v} = \begin{pmatrix}
+0 & -v_z & v_y \\
+v_z & 0 & -v_x \\
+-v_y & v_x & 0 \\
+\end{pmatrix}
+\qquad\qquad
+P_{\vec v} = Q_{\vec v}^2 =
+\begin{pmatrix}
+v_x^2-1 & v_x v_y & v_x v_z \\
+v_x v_y & v_y^2-1 & v_y v_z \\
+v_x v_z & v_y v_z & v_z^2-1 \\
+\end{pmatrix} 
+$$
+
+\mybox{$\displaystyle
+R_{\vec v}(\theta) = I + \sin(\theta) Q_{\vec v} + (1-\cos(\theta)) Q_{\vec v}^2$
+}
+
+Remarques :
+\begin{itemize}
+  \item La matrice $Q_{\vec v}$ est la matrice de l'application linéaire $\vec u \mapsto {\vec v} \wedge {\vec u}$.
+
+  \item La matrice $P_{\vec v}$ est la matrice de la projection orthogonale sur l'axe de rotation dirigé par $\vec v$. Elle vérifie : $P_{\vec v} = Q_{\vec v}^2 = {\vec v}  {\vec v}^T$ (produit de la matrice  colonne $\vec v$ par la matrice ligne ${\vec v}^T$).
+
+  \item La matrice $I-P_{\vec v} = I-Q_{\vec v}^2$ est la matrice de la projection orthogonale sur le plan orthogonal à l'axe $\vec v$.
+\end{itemize}
+
+
+%--------------------------------------------------------------------
+\subsection{Retrouver l'axe et l'angle}
+
+Si on nous donne une matrice $R$ en nous affirmant que c'est une matrice de rotation, alors comment retrouver l'axe $\vec v$ et l'angle $\theta$ ?
+
+\begin{itemize}
+  \item \textbf{Retrouver un vecteur $\vec v$ dirigeant l'axe.}
+  Notons $\vec v$ un vecteur propre associé à la valeur propre $\lambda = 1$, c'est-à-dire $\vec v$ est un vecteur non nul solution de :
+  $$ (R-I) \vec v = \vec 0.$$
+  On obtient cette solution $\vec v$ en résolvant un système linéaire à $3$ équations et $3$ inconnues. On renvoie à un cours d'algèbre linéaire pour les notions détaillées de valeurs propres/vecteurs propres.
+
+  Pour une matrice de rotation (autre que l'identité) il n'existe que deux vecteurs unitaires solutions qui sont opposés : $\vec v$ et $-\vec v$.
+
+  \item \textbf{Retrouver l'angle $\theta$.}
+  On obtient facilement l'angle, au signe près, par la formule :
+  $$\tr(R) = 1 + 2\cos(\theta)$$
+  où $\tr(R)$ est la trace de la matrice $R$, c'est-à-dire la somme des éléments sur la diagonale.
+
+  Une autre méthode, consiste à choisir un vecteur $\vec u$ orthogonal à l'axe $\vec v$, à calculer $R\vec u$, puis à calculer l'angle $\theta$ entre $\vec u$ et  
+  $R\vec u$.
+\end{itemize}
+
+
+%--------------------------------------------------------------------
+\subsection{Propriétés algébriques}
+
+L'opération inverse d'une rotation d'angle $\theta$ est évidemment une rotation d'angle $-\theta$ (et de même axe) : en termes de matrices $R(\theta)^{-1} = R(-\theta)$.
+Toutes les matrices de rotation que nous avons vues jusqu'ici vérifient la relation $R(-\theta) = R(\theta)^T$ et donc $R(\theta)^{-1} = R(\theta)^T$. En plus nos matrices vérifient $\det(R(\theta)) = +1$, ce qui implique qu'une rotation préserve l'orientation. C'est avec ces relations qu'on définit algébriquement une matrice de rotation.
+
+\begin{definition}
+Une matrice $R \in M_3(\Rr)$ est une \defi{matrice de rotation} si :
+$$R R^T = I \qquad \text{ et } \qquad \det(R) = +1.$$
+Le \defi{groupe spécial orthogonal} noté $SO_3(\Rr)$ est l'ensemble des matrices de rotation.
+\end{definition}
+
+Les propriétés de groupe impliquent: 
+\begin{proposition}
+Si $R_1$ et $R_2$ sont des matrices de rotations alors $R_1R_2$ et $R_2R_1$ sont aussi des matrices de rotations.
+\end{proposition}
+
+La composition de deux rotations de l'espace est une rotation de l'espace, mais ce n'est pas évident d'en connaître l'axe et l'angle.
+La rotation de matrice $R_2 R_1$ correspond à l'action d'une rotation de matrice $R_1$ suivie d'une rotation de matrice $R_2$. 
+Alors que pour $R_1R_2$ c'est dans l'ordre inverse.
+En général $R_1R_2$ et $R_2R_1$ sont deux matrices différentes (c'est-à-dire que $SO_3(\Rr)$ n'est pas un groupe commutatif).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Angles d'Euler}
+
+%--------------------------------------------------------------------
+\subsection{Conventions}
+
+Le but est d'obtenir n'importe quelle rotation de l'espace à partir de trois rotations élémentaires.
+Il y a tout d'abord une difficulté technique : de nombreux choix sont possibles pour l'ordre des rotations élémentaires et il faut aussi décider si on compose les rotations d'une façon relative ou absolue. Il y a aussi une difficulté théorique (quel que soit le choix précédent) qui s'appelle le \og{}blocage de cadran\fg{} (\emph{gimbal lock}).   
+Nous allons ici faire un choix (décliné en deux variantes) et donner les explications en adoptant le langage du mouvement d'un avion.
+
+%--------------------------------------------------------------------
+\subsection{Angles d'Euler $x$-$y$-$z$}
+\label{ssec:eulerxyz}
+
+\index{angle!d'Euler}
+
+Commençons par la convention $x$-$y$-$z$ par rotations extrinsèques.
+On fixe un repère orthonormé direct $(Oxyz)$, dit repère absolu, qui ne va pas bouger au fil des opérations.
+Une rotation selon la \defi{convention $x$-$y$-$z$ par rotations extrinsèques} est une rotation qui se décompose :
+\mybox{$\displaystyle R = R_z(\gamma) \, R_y(\beta) \, R_x(\alpha)$}
+où $\alpha, \beta, \gamma$ sont des angles donnés.
+
+\myfigure{0.8}{
+	\tikzinput{fig-rotation-04}
+}
+
+Pour la convention  $x$-$y$-$z$ on commence donc par une rotation d'axe $x$ (d'angle $\alpha$), puis d'axe $y$ (d'angle $\beta$), et enfin d'axe $z$ (d'angle $\gamma$). Noter bien que, pour les matrices, cet ordre correspond au produit $R_x$, $R_y$ et  $R_z$ \emph{de la droite vers la gauche}.
+
+La matrice obtenue après calculs est :
+$$
+R = \begin{pmatrix}
+c_\beta c_\gamma & - c_\alpha s_\gamma + s_\alpha s_\beta c_\gamma &  s_\alpha s_\gamma + c_\alpha s_\beta c_\gamma \\
+c_\beta s_\gamma & c_\alpha c_\gamma + s_\alpha s_\beta s_\gamma   &  - s_\alpha c_\gamma + c_\alpha s_\beta s_\gamma \\
+- s_\beta        &  s_\alpha c_\beta                               &  c_\alpha c_\beta \\  
+\end{pmatrix}
+$$
+
+
+%--------------------------------------------------------------------
+\subsection{Mouvements d'un avion}
+
+Pour diriger un avion, le pilote dispose de trois commandes qui orientent l'avion selon trois axes.
+On considère un repère $(OXYZ)$, appelé repère relatif, qui est lié à l'avion (il tourne lorsque l'avion tourne). L'axe $X$ est dirigé dans le sens de l'avion, l'axe $Y$ le long des ailes, et l'axe des $Z$ selon la verticale de l'avion.
+Les trois rotations sont :
+\begin{itemize}
+  \item \textbf{Rotation d'axe $Z$.} Appelée \defi{lacet}\index{rotation!lacet} en aviation (\emph{yaw}). Cela correspond au changement de direction vers la droite ou vers la gauche.
+
+  \item \textbf{Rotation d'axe $Y$.} Appelée \defi{tangage}\index{rotation!tangage} (\emph{pitch}). Cela correspond à monter le nez de l'avion vers le haut ou bien à le descendre vers le bas.
+
+  \item \textbf{Rotation d'axe $X$.} Appelée \defi{roulis}\index{rotation!roulis} (\emph{roll}). Cela correspond   
+  à monter l'aile droite et baisser l'aile gauche, ou l'inverse, alors que l'axe longitudinal de l'avion reste fixe.
+\end{itemize}
+
+Rappelons que le repère $(OXYZ)$ est lié à l'avion, après chaque rotation le repère change de position par rapport à un observateur situé au sol.
+
+
+\myfigure{0.9}{
+	\tikzinput{fig-rotation-05}
+}
+
+%--------------------------------------------------------------------
+\subsection{Angles d'Euler $z$-$y'$-$x''$}
+
+Expliquons la \defi{convention $z$-$y'$-$x''$ par rotations intrinsèques}.
+On fixe un repère orthonormé direct $(Oxyz)$, dit repère absolu, qui ne va pas bouger au fil des opérations.
+
+\begin{enumerate}
+  \item On commence par une rotation $\mathcal{R}_1$ autour de l'axe $z$ et d'angle $\gamma$. On considère maintenant le repère $(Ox'y'z')$ obtenu par rotation du repère $(Oxyz)$.
+ 
+  \item On continue par une rotation $\mathcal{R}_2$ autour de l'axe $y'$ et d'angle $\beta$.
+  On considère ensuite le repère $(Ox''y''z'')$ obtenu par rotation du repère $(Ox'y'z')$.
+
+  \item On termine par la rotation $\mathcal{R}_3$ autour de l'axe $x''$ et d'angle $\alpha$.
+\end{enumerate}
+
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.7}{\tikzinput{fig-rotation-06a}}
+	\end{minipage}
+		\qquad
+	\begin{minipage}{0.45\textwidth}	
+		\myfigure{0.7}{\tikzinput{fig-rotation-06b}}
+	\end{minipage}	
+\end{center}
+	
+\begin{center}
+	\begin{minipage}{0.45\textwidth}
+		\myfigure{0.7}{\tikzinput{fig-rotation-06c}}
+	\end{minipage}
+	\qquad
+	\begin{minipage}{0.45\textwidth}	
+		\myfigure{0.7}{\tikzinput{fig-rotation-06d}}
+	\end{minipage}	
+\end{center}
+
+C'est très facile de comprendre si on se place dans le repère  $(OXYZ)$ relatif, lié à l'objet en mouvement. Reprenons le cas d'un avion, alors on effectue successivement une rotation autour de l'axe relatif $Z$ (\emph{yaw}), puis de l'axe relatif $Y$ (\emph{pitch}), et enfin de l'axe relatif $X$ (\emph{roll}).
+On pourrait exprimer cette rotation par la notation matricielle $R_Z(\gamma) R_Y(\beta) R_X(\alpha)$, mais cela peut être trompeur car à chaque rotation le repère $(OXYZ)$ en jeu a changé.
+
+
+%--------------------------------------------------------------------
+\subsection{Équivalence entre $x$-$y$-$z$ et $z$-$y'$-$x''$}
+
+Nous allons montrer que les conventions $x$-$y$-$z$ et $z$-$y'$-$x''$ sont équivalentes.
+Les calculs sont plutôt théoriques et peuvent être passés lors d'une première lecture.
+On commence par des rappels sur les changements de base.
+
+
+\textbf{Passage d'une base à une autre pour les coordonnées d'un point/vecteur.}
+On considère la base canonique $\mathcal{B}$ de $\Rr^3$ formée de trois vecteurs $(\vec i, \vec j, \vec k)$. Autrement dit, on se place dans le repère $(Oxyz)$ usuel, considéré comme repère absolu.
+On considère une autre base $\mathcal{B}'$ formée de trois vecteurs $(\vec{f_1},\vec{f_2},\vec{f_3})$, cela correspond à un nouveau repère $(Ox'y'z')$.
+
+Notons $P$, la matrice de passage de l'ancienne base $\mathcal{B}$ à la nouvelle base $\mathcal{B}'$.
+Comme ici $\mathcal{B}$ est la base canonique, le premier vecteur colonne de $P$ est formé des coordonnées du vecteur $\vec{f_1}$, le deuxième vecteur colonne  est formé des coordonnées de $\vec{f_2}$, le troisième vecteur colonne  est formé des coordonnées de $\vec{f_3}$.
+
+Notons $X$ les coordonnées d'un point (ou d'un vecteur) dans la base $\mathcal{B}$ et notons $X'$ les coordonnées de ce même point dans la base $\mathcal{B}'$, $X$ et $X'$ sont reliés par la relation suivante :
+$$X = PX'.$$
+
+\medskip
+
+\textbf{Passage d'une base à une autre pour une matrice/application linéaire.}
+Soit $f : \Rr^3 \to \Rr^3$ une application linéaire (par exemple une rotation). On note $A$ la matrice de $f$ dans la base $\mathcal{B}$ et on note $B$ la matrice de $f$ dans la base $\mathcal{B}'$. Ces deux matrices sont liées par la relation suivante :
+$$A = PBP^{-1}.$$
+
+\textbf{Passage de la convention $z$-$y'$-$x''$ à la convention $x$-$y$-$z$.}
+
+Exprimons les rotations de la convention $z$-$y'$-$x''$ dans le repère fixe $(Oxyz)$.
+\begin{itemize}
+  \item On se place dans la base $\mathcal{B}$ (c'est-à-dire avec le repère $(Oxyz)$). On applique une rotation d'axe $z$. Cette application a pour matrice $A_1 = R_z(\gamma)$ dans la base $\mathcal{B}$.
+
+  \item Cette rotation transforme le repère $(Oxyz)$ en un repère $(Ox'y'z')$ (associé à la base $\mathcal{B}'$). La matrice de passage correspondante $P_2$ est tout simplement $P_2 = R_z(\gamma)$.
+
+  \item On se place dans le repère $(Ox'y'z')$ et on applique une rotation d'axe $y'$. Dans ce repère, la matrice de cette rotation est $B_2 = R_y(\beta)$. Quelle est la matrice de cette même rotation dans le repère fixe $(Oxyz)$ ?
+  C'est $A_2 = P_2 B_2 P_2^{-1}$ d'après la formule de changement de base.
+  Ainsi $A_2 = R_z R_y  R_z^{-1}$ (en omettant les angles).
+
+  \item Quelle est la matrice de la rotation autour de $z$ suivie d'une rotation autour de $y'$ ?
+  Dans le repère fixe $(Oxyz)$ cette matrice est $A_2A_1$. Calculons-la (en omettant $\beta$ et $\gamma$) :
+  $$A_2 A_1 = (R_z R_y  R_z^{-1}) R_z = R_z R_y.$$
+  Ainsi la convention tronquée $z$-$y'$ correspond à la convention $y$-$z$.
+
+  \item La rotation autour de l'axe $y'$ transforme le repère $(Ox'y'z')$ en un repère $(Ox''y''z'')$. La matrice de passage associée est $P_3 = R_y(\beta)$.
+
+  \item Dans le repère $(Ox''y''z'')$ on applique la rotation $B_3 = R_x(\alpha)$. Dans le repère $(Ox'y'z')$, la matrice de cette même rotation est $A'_3 = P_3 B_3 P_3^{-1}$. Et dans le repère fixe  $(Oxyz)$, c'est
+  $$A_3 = P_2 A_3' P_2^{-1} = P_2 (P_3 B_3 P_3^{-1}) P_2^{-1} = R_z R_y R_x R_ y^{-1} R_z^{-1}.$$
+
+  \item Ainsi la composition des trois rotations avec la convention $z$-$y'$-$x''$ dans le repère fixe $(Oxyz)$ a pour matrice $A_3A_2A_1$, dont le calcul se simplifie :
+  $$A_3A_2A_1 = (R_z R_y R_x R_ y^{-1} R_z^{-1}) (R_z R_y  R_z^{-1}) R_z = R_z(\gamma) R_y(\beta) R_x(\alpha).$$
+  Ce qui est exactement la matrice de la convention $x$-$y$-$z$ !
+
+\end{itemize}
+
+
+
+%--------------------------------------------------------------------
+\subsection{Blocage de cadran}
+
+Expliquons le \defi{blocage de cadran}\index{rotation!blocage de cadran} (\emph{gimbal lock}) avec la convention $z$-$y'$-$x''$.
+Imaginons un avion en position verticale (\og{}chandelle\fg{}) dans un repère absolu $(Oxyz)$.
+Pour le repère $(Ox''y''z'')$ lié à l'avion, l'axe $x''$ coïncide avec l'axe $z$. 
+Il y a normalement trois rotations possibles avec la convention $z$-$y'$-$x''$, mais ici comme les axes $z$ et $x''$ sont confondus, on a perdu un degré de liberté, il n'y a en fait que deux rotations possibles (une autour de l'axe $y'$ et une autour de l'axe $z$ qui est aussi $x''$). Bien sûr il suffit d'effectuer une rotation d'axe $y'$ pour séparer de nouveau les axes $z$ et $x''$.
+
+
+\myfigure{1.2}{
+	\tikzinput{fig-rotation-07}
+}
+
+Lors de la mission Apollo 11 qui envoya Neil Armstrong et Buzz Aldrin sur la Lune, le gyroscope  de Mike Collins, resté en orbite, resta bloqué à cause du phénomène décrit ci-dessus. Ce gyroscope était naturellement conçu à l'aide de trois cadrans circulaires (un pour chaque axe de rotation). Une solution pour éviter ce problème est de rajouter un quatrième degré de liberté qui permet de ne pas s'approcher des points de blocage. C'est pourquoi après sa mission Mike Collins déclara \og{}Pour Noël prochain j'aimerais un quatrième cadran !\fg{}.
+
+
+
+%--------------------------------------------------------------------
+\subsection{Retrouver les angles d'Euler}
+
+On nous donne une matrice de rotation $R$. Comment décomposer cette matrice selon la convention $x$-$y$-$z$ :
+$$R = R_z(\gamma) \, R_y(\beta) \, R_x(\alpha) \ ?$$
+Notons $r_{ij}$ les coefficients de $R$ :
+$$R = \begin{pmatrix}
+r_{11} & r_{12} & r_{13} \\
+r_{21} & r_{22} & r_{23} \\
+r_{31} & r_{32} & r_{33} \\
+\end{pmatrix}$$
+Alors, en identifiant cette matrice avec la matrice obtenue au paragraphe \ref{ssec:eulerxyz}, on obtient d'abord :
+$$\beta = -\arcsin(r_{31})$$
+(car $r_{31} = -s_\beta $).
+Ensuite, on discute selon la valeur de $\beta$ :
+\begin{itemize}
+  \item Si $\beta \in {}]-\frac\pi2, +\frac\pi2[$ alors
+  $$\alpha = \arctantwo(r_{32},r_{33}) \qquad \text{ et } \qquad \gamma = \arctantwo(r_{21},r_{11}).$$
+
+  \item Si $\beta = +\frac\pi2$ alors $\alpha-\gamma = \arctantwo(-r_{23},r_{22})$.
+  On dispose d'un degré de liberté dans le choix des angles, la décomposition n'est donc pas unique.
+
+  \item Si $\beta = -\frac\pi2$ alors $\alpha+\gamma = \arctantwo(-r_{23},r_{22})$.
+  On dispose encore d'un degré de liberté, la décomposition n'est pas unique.
+\end{itemize}
+
+Pour les deux cas particuliers $\beta = \pm \frac\pi2$, on retrouve le phénomène de blocage de cadran, qui se traduit ici par l'absence d'une décomposition unique pour certaines configurations.
+
+\begin{exercicecours}
+On veut étudier en détail et à la main le phénomène de blocage de cadran.
+Dans cet exercice on fixe :
+$$\beta = +\frac\pi2.$$
+Soient $\alpha,\gamma$ des angles quelconques et soit $R$ la matrice de rotation de la convention $x$-$y$-$z$ :
+$$R = R_z(\gamma) \, R_y(\beta) \, R_x(\alpha) $$
+
+\begin{enumerate}
+  \item Vérifier que :
+$$R = \begin{pmatrix}
+0 & s_{\alpha - \gamma} & c_{\alpha - \gamma} \\
+0 & c_{\alpha - \gamma} & -s_{\alpha - \gamma} \\
+- 1 & 0 &  0 \\  
+\end{pmatrix}
+$$
+où $c_{\alpha - \gamma} = \cos(\alpha-\gamma)$ et $s_{\alpha - \gamma} = \sin(\alpha-\gamma)$.
+
+  \item Résoudre l'équation $RX=X$ où $X = \left(\begin{smallmatrix}x\\y\\z\end{smallmatrix}\right)$ et en déduire que l'axe de la rotation  est dirigé par le vecteur (non unitaire) : 
+$$\vec v = 
+\begin{pmatrix}
+1-c_{\alpha - \gamma} \\
+s_{\alpha - \gamma} \\
+c_{\alpha - \gamma} - 1 \\
+\end{pmatrix}.$$
+
+  \item À l'aide de la trace de matrices, montrer que l'angle $\theta$ de la rotation $R$ vérifie :
+  $$|\theta| = \arccos\left( \frac{\cos(\alpha-\gamma) - 1}{2}\right).$$
+
+  \item Expliquer pourquoi la décomposition de $R$ n'est pas unique dans le cas $\beta = \frac\pi2$.
+\end{enumerate}
+\end{exercicecours}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Quaternions}
+
+\index{quaternion}
+
+%--------------------------------------------------------------------
+\subsection{Motivation}
+
+Les rotations définies par un axe et un angle ou bien définies à l'aide des angles d'Euler sont assez difficiles à manipuler en particulier si on souhaite composer deux rotations. En plus avec les angles d'Euler, on risque de se confronter au \og{}blocage de cadran\fg{}, inévitable pour certaines configurations.
+La solution élégante à tous ces problèmes est d'utiliser les quaternions. Les calculs sont de simples manipulations algébriques, faciles à réaliser pour un humain et un ordinateur.
+L'inconvénient est que l'on perd en compréhension géométrique et que la notion n'est presque jamais enseignée. On va présenter ici cette nouvelle notion de quaternions, qui sera vite comprise par tous ceux qui connaissent les nombres complexes.
+
+%--------------------------------------------------------------------
+\subsection{Rappels : nombres complexes}
+
+Les quaternions sont analogues aux nombres complexes, en un petit peu plus compliqués.
+Rappelons qu'un nombre complexe est l'écriture : 
+$$z = a + b\ii$$
+où $a,b \in \Rr$ et $\ii$ vérifient :
+$$\ii^2 = -1.$$
+
+Très rapidement:
+\begin{itemize}
+  \item On identifie un nombre complexe $z = a + b\ii$ à un point $(a,b)$ du plan.
+  \item $a$ s'appelle la partie réelle et $b$ la partie imaginaire.
+  \item Le module de $z$ est le réel positif défini par $|z|^2 = a^2 + b^2$.
+  \item Le conjugué est $\bar z = a - b\ii$, de sorte que $|z|^2 = z \bar z$.
+  \item La multiplication est commutative : $z_1 z_2 = z_2 z_1$.
+  \item On note $e^{\ii\theta} = \cos(\theta) +  \ii\sin(\theta)$. 
+  \item L'opération $z \mapsto z e^{\ii\theta}$, correspond à transformer le point $(a,b)$ par la rotation d'angle $\theta$, centrée à l'origine.
+\end{itemize}
+
+%--------------------------------------------------------------------
+\subsection{Écriture algébrique des quaternions}
+
+Un quaternion est l'écriture :
+\mybox{$\displaystyle q = a + b\ii +c\jj +d\kk$}
+où $a,b,c,d$ sont des réels et où $\ii$, $\jj$, $\kk$ vérifient :
+\mybox{$\displaystyle \ii^2 = \jj^2 = \kk^2 = \ii\jj\kk = -1$}
+
+Avant d'expliquer comment multiplier deux quaternions, il est fondamental de comprendre que la multiplication des quaternions n'est pas commutative.
+Par exemple $\ii \jj = \kk$ alors que $\jj \ii = - \kk$. Voici un tableau qui résume les multiplications élémentaires (colonne de gauche premier terme, première ligne second terme, dans le tableau le produit des deux) :
+
+$$\begin{array}{c|ccc}
+  \times  & \ii  & \jj  & \kk \\ \hline
+\ii       & -1   & \kk  & -\jj \\ 
+\jj       & -\kk & -1   & \ii \\
+\kk       & \jj  & -\ii & -1 \\
+\end{array}$$
+
+Ce tableau se déduit des axiomes. Par exemple, exprimons $\ii \jj$.
+On sait $\ii \jj \kk = -1$, donc en multipliant à droite les deux termes de cette égalité par $\kk$ on obtient
+$\ii \jj  \kk^2 = - \kk$ mais comme $\kk^2 = -1$ on obtient $\ii \jj = \kk$. À vous de vérifier les autres résultats.
+
+Une fois les multiplications élémentaires comprises, la multiplication de deux quaternions s'effectue comme un produit où $\ii$, $\jj$ et $\kk$ jouent le rôle de variables.
+
+\begin{exemple}
+Soient :
+$$q_1 = 1+ 2\ii -3\jj \qquad\text{ et }\qquad q_2 = \ii - 4\kk.$$
+
+Alors :
+\begin{align*}
+q_1 q_2 
+  &= \left( 1+ 2\ii -3\jj \right) \left( \ii - 4\kk \right) \\
+  &= \ii -4\kk + 2\ii^2 -8 \ii\kk -3 \jj\ii+12\jj\kk \\
+  &= \ii - 4\kk -2 +8\jj +3\kk + 12\ii \\
+  &= -2 + 13\ii +8\jj -\kk 
+\end{align*}
+
+Par contre :
+\begin{align*}
+q_2 q_1 
+  &= \left( \ii - 4\kk \right) \left( 1+ 2\ii -3\jj \right) \\
+  &= \ii +2\ii^2 -3\ii\jj -4\kk -8\kk\ii + 12\kk\jj \\
+  &= \ii -2 -3\kk -4\kk -8\jj -12\ii \\
+  &= -2 -11\ii -8\jj -7\kk
+\end{align*}
+Donc $q_1q_2$ n'est pas égal à $q_2q_1$.
+\end{exemple}
+
+
+%--------------------------------------------------------------------
+\subsection{Propriétés}
+
+On retient de l'exemple précédent :
+\mybox{La multiplication des quaternions n'est pas commutative.}
+
+Voici quelques notions et propriétés élémentaires. On note toujours $q = a + b\ii +c\jj +d\kk$.
+
+\begin{itemize}
+  \item $a$ s'appelle la \defi{partie réelle} et $b\ii +c\jj +d\kk$ s'appelle la \defi{partie vectorielle} (ou aussi \defi{partie imaginaire}).
+
+  \item La \defi{norme} $\|q\|$ est le réel positif défini par :
+  $$\|q\|^2 = a^2 + b^2 +c^2 +d^2.$$
+
+  \item Le \defi{conjugué} de $q$ est $\bar q =  a - b\ii -c\jj -d\kk$. De sorte que $q \bar q = \|q\|^2$.
+
+  \item Pour un quaternion non nul (c'est-à-dire $(a,b,c,d) \neq (0,0,0,0)$), $$q^{-1} = \frac{1}{\|q\|^2} \bar q = \frac{a - b\ii -c\jj -d\kk}{\sqrt{a^2+b^2+c^2+d^2}}$$
+  de sorte que $q q^{-1} = q^{-1}q = 1$.
+
+  \item   Si la partie réelle d'un quaternion est nulle (c'est-à-dire $a=0$), on parle de \defi{quaternion vectoriel pur}. Le produit de deux quaternions vectoriels purs est un quaternion vectoriel pur.
+\end{itemize}
+
+
+%--------------------------------------------------------------------
+\subsection{Rotations}
+
+Soit un point $P$ de coordonnées $(x,y,z) \in \Rr^3$, que l'on peut aussi considérer comme un vecteur. À $P$ on associe le quaternion vectoriel pur :
+$$p = x\ii + y\jj + z\kk.$$
+Réciproquement tout quaternion vectoriel pur $x\ii + y\jj + z\kk$ est identifié au point de coordonnées $(x,y,z)$ ou aussi au vecteur $\left(\begin{smallmatrix}x\\y\\z\end{smallmatrix}\right)$.
+
+Considérons une rotation $\mathcal{R}$ d'axe le vecteur unitaire 
+$\vec v = (v_x,v_y,v_z)$ et d'angle $\theta$. À cette rotation on associe le quaternion :
+\mybox{$\displaystyle
+q = \cos\left(\frac\theta2\right) + \sin\left(\frac\theta2\right) \left( v_x\ii + v_y\jj + v_z\kk \right)
+$}
+
+Notons $P'$ l'image de $P$ par la rotation $\mathcal{R}$ et $p'$ le quaternion vectoriel pur associé. Alors 
+\mybox{$\displaystyle p' = q p q^{-1}$}
+On dit que $p'$ est le \defi{conjugué} de $p$ par $q$.
+Ainsi le calcul de l'image d'un point par une rotation correspond à une simple multiplication de quaternions. Noter que comme $q$ est unitaire alors $q^{-1} = \bar q$.
+
+
+\myfigure{0.8}{
+	\tikzinput{fig-rotation-08}
+}
+
+La preuve que ce calcul correspond à une rotation n'est pas si simple (et nous l'admettons). Par contre cela entraîne une formule simple pour la composition de deux rotations.
+
+\begin{proposition}
+Si une rotation $\mathcal{R}_1$ a pour quaternion $q_1$ et une rotation $\mathcal{R}_2$ a pour quaternion $q_2$, alors $\mathcal{R}_2 \circ \mathcal{R}_1$ (la rotation $\mathcal{R}_1$ suivie de la rotation $\mathcal{R}_2$) a pour quaternion associé $q_2q_1$. Cela correspond à la transformation :
+$$p \mapsto (q_2q_1) p (q_2q_1)^{-1}.$$
+\end{proposition}
+
+\begin{proof}
+La rotation $\mathcal{R}_1$ est la transformation
+$p \mapsto p'=q_1 p q_1^{-1}$.
+La rotation $\mathcal{R}_2$ est la transformation
+$p' \mapsto p''=q_2 p' q_2^{-1}$.
+La rotation $\mathcal{R}_1$ suivie de la rotation $\mathcal{R}_2$ est donc $p \mapsto p'' = q_2 (q_1 p q_1^{-1}) q_2^{-1} = (q_2q_1) p (q_2q_1)^{-1}$.
+\end{proof}
+
+
+\begin{exemple}
+\label{ex:quaternion}
+Soit $\mathcal{R}_1$ une rotation d'axe $(-2,1,1)$ et d'angle $\frac\pi3$.
+Soit $\mathcal{R}_2$ une rotation d'axe $(1,0,-1)$ et d'angle $\frac\pi2$.
+Soit $P$ le point de coordonnées $(1,0,0)$. Déterminer l'image de $P$ par la rotation $\mathcal{R}_1$ suivie de la rotation $\mathcal{R}_2$.
+
+\begin{itemize}
+  \item On commence par rendre unitaire le vecteur de l'axe de $\mathcal{R}_1$ :  $\vec v_1 = \frac{\sqrt6}{6}(-2,1,1)$. 
+  Le quaternion associé à $\mathcal{R}_1$ est 
+  $$q_1 
+= \cos(\tfrac\pi6) + \sin(\tfrac\pi6) \frac{\sqrt6}{6} \left( -2\ii + \jj + \kk \right)
+= \frac{\sqrt3}{2} -\frac{\sqrt6}{6}\ii + \frac{\sqrt6}{12}\jj + \frac{\sqrt6}{12}\kk.$$
+
+  \item On normalise le vecteur de l'axe de $\mathcal{R}_2$ :  $\vec v_2 = \frac{\sqrt2}{2}(1,0,-1)$. Le quaternion associé à $\mathcal{R}_2$ est 
+$$q_2 
+= \cos(\tfrac\pi4) + \sin(\tfrac\pi4)\frac{\sqrt2}{2} \left( \ii -\kk \right)
+= \frac{\sqrt2}{2} + \frac12\ii -\frac12\kk.$$
+ 
+ \item Le quaternion associé au point $P$ est simplement $p = \ii$.
+\end{itemize}
+
+Passons aux calculs.
+
+\begin{enumerate}
+  \item Notons $P' = \mathcal{R}_1(P)$. Son quaternion associé est (après calculs) :
+  $$p' = q_1 p q_1^{-1} = 
+\frac56 \ii +
+\left( -\frac16+\frac14\sqrt{2} \right) \jj +
+\left( -\frac16-\frac14\sqrt{2} \right) \kk.$$
+
+
+  \item Notons $P'' = \mathcal{R}_2(P') = \mathcal{R}_2 \circ \mathcal{R}_1(P)$, le quaternion associé (après calculs) est :
+  $$p'' = q_2 p' q_2^{-1} = 
+ \frac12\ii 
+ -\frac{\sqrt2}{2}\jj 
+ -\frac12\kk.$$
+
+Ainsi les coordonnées de $P''$ sont $(\frac12,-\frac{\sqrt2}{2},  -\frac12)$.
+
+
+\end{enumerate}
+On aurait obtenu le même résultat si on avait d'abord calculé $q_2q_1$, puis $(q_2q_1)^{-1}$, et enfin $p'' = (q_2q_1) p (q_2q_1)^{-1}$ (voir l'exemple ci-après).
+\end{exemple}
+
+De même on prouve facilement les résultats suivants.
+\begin{proposition}
+Soit  $\mathcal{R}$ la rotation (d'angle $\theta$) associée à un quaternion unitaire $q$.
+\begin{enumerate}
+  \item La rotation inverse (d'angle $-\theta$ et de même axe) est associée à $q^{-1}$ (qui est aussi $\bar q$ car $q$ est unitaire), c'est-à-dire à la transformation $p \mapsto q^{-1} p q$.
+  \item La rotation $\mathcal{R}$ itérée $n$ fois (donc une rotation d'angle $n\theta$) est associée à $q^n$, c'est-à-dire à la transformation $p \mapsto q^n p q^{-n}$.
+\end{enumerate}
+\end{proposition}
+
+
+
+%--------------------------------------------------------------------
+\subsection{Retrouver l'axe et l'angle}
+
+Si on nous donne un quaternion unitaire $q = a + b\ii +c\jj +d\kk$, alors on retrouve l'axe $\vec v$ et l'angle $\theta$ selon les formules suivantes :
+$$\vec v = \frac{1}{\sqrt{b^2+c^2+d^2}} \begin{pmatrix}b\\c\\d\end{pmatrix}
+\qquad\qquad
+\theta = 2\arctantwo\left(\sqrt{b^2+c^2+d^2},a\right).$$
+
+\begin{exemple}
+Soit la rotation $\mathcal{R}_1$ d'axe $(1,1,0)$ et d'angle $\pi$ et la rotation $\mathcal{R}_2$ d'axe $(0,1,1)$ et d'angle $\pi$ (ce sont deux retournements). Quels sont l'axe et l'angle de la rotation $\mathcal{R}_2 \circ \mathcal{R}_1$ ?
+
+\begin{enumerate}
+  \item On commence par rendre les vecteurs unitaires : $\vec v_1 = \frac{\sqrt2}{2}(1,1,0)$ et $\vec v_2=\frac{\sqrt2}{2}(0,1,1)$. Les quaternions $q_1$ et $q_2$ associés respectivement à $\mathcal{R}_1$ et $\mathcal{R}_2$ sont alors :
+$$q_1 
+= \frac{\sqrt2}{2}\ii + \frac{\sqrt2}{2}\jj
+\qquad \qquad
+q_2 = \frac{\sqrt2}{2}\jj + \frac{\sqrt2}{2}\kk.$$  
+
+  \item Le quaternion associé à la rotation $\mathcal{R}_2 \circ \mathcal{R}_1$ est :
+$$q = q_2 q_1 = -\frac12 -\frac12 \ii + \frac12\jj -\frac12\kk.$$
+  
+  \item On applique les formules énoncées précédemment pour retrouver l'axe et l'angle :
+  $$\vec v = \frac{2}{\sqrt 3} \begin{pmatrix}-\frac12\\\frac12\\-\frac12\end{pmatrix}
+  = \frac{\sqrt 3}{3} \begin{pmatrix}-1\\1\\-1\end{pmatrix}$$
+  et 
+  $$
+\theta = 2\arctantwo\left(\frac{\sqrt3}{2},-\frac12\right) = \frac{4\pi}{3}.$$
+\end{enumerate}
+
+Ainsi $\mathcal{R}_2 \circ \mathcal{R}_1$ est une rotation d'axe $(-1,1,-1)$ et d'angle $\frac{4\pi}{3} = -\frac{2\pi}{3} [2\pi]$, ce qui était loin d'être évident !
+\end{exemple}
+
+
+\end{document}

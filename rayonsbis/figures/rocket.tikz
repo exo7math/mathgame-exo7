@@ -1,0 +1,22 @@
+﻿% https://github.com/ulaulaman/tikzdraw/blob/master/graphics/rocket.tex
+% with slight modifications
+\begin{tikzpicture}
+
+\begin{scope}[rotate=60]
+	%flaps
+	\coordinate (P) at (-5,-1);
+	\draw[gray,thick, fill,left color=black,right color=black,middle color=white,shading angle=80] (-5,1) to[out=180,in=225] (-6,2) to[out=45,in=150] (-4.5,2) to[out=330,in=0] (-4,1) -- (-5,1);
+	\begin{scope}[rotate around={180:(P)},shift={(-10cm,-2cm)},yscale=1,xscale=-1]
+		\draw[gray,thick, fill,left color=black,right color=black,middle color=white,shading angle=80] (-5,1) to[out=180,in=225] (-6,2) to[out=45,in=150] (-4.5,2) to[out=330,in=0] (-4,1) -- (-5,1);
+	\end{scope}
+	%rocket
+	\draw[gray,thick, fill,left color=red!80,right color=red!60,middle color=red!10,shading angle=60] (-5,-1) to[out=105,in=255] (-5,1) to[out=10,in=135] (2,0) to[out=225,in=350] (-5,-1);
+	%peak
+	\draw[gray,thick,fill=red!80] (1,-0.8) to[out=105,in=255] (1,0.8) to[out=330,in=135] (2,0) to[out=225,in=35] (1,-0.8);
+	%central flap
+	%\draw[fill=blue!50!white] (-6,0) to[out=335,in=205] (-4,0) (-6,0) to[out=25,in=155] (-4,0);
+	%porthole
+	\draw[color=gray,ultra thick,fill,left color=black!30,right color=white] (-1,0) circle (0.5cm);
+
+\end{scope}
+\end{tikzpicture}

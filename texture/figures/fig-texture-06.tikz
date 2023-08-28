@@ -1,0 +1,42 @@
+﻿\begin{tikzpicture}[scale=3]
+
+\begin{scope}[rotate=10,xscale=3.5]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,0);
+
+\def\u{0.4}
+\coordinate (P) at (\u,0);
+\coordinate (Q) at (\u, {1.4+0.15*sin(2*3.14*\u r)} );
+
+
+\fill[black!10,smooth,samples=50,domain=0:1] (0,0) -- plot({\x},{1.4+0.15*sin(2*3.14*\x r)}) -- (1,0) -- cycle;
+\draw[red!50, ultra thick, densely dashed, smooth,samples=50,domain=0:1] plot({\x},{1.4+0.15*sin(2*3.14*\x r)});
+\draw[very thick, blue!50] (A) -- (B);
+
+\draw[->,>=latex, blue, ultra thick] (P) -- ++ (0,1) node[midway, left]{$\vec{n_P}$};
+\draw[->,>=latex, red!50, ultra thick] (Q) -- ++ (85:1) node[red,midway, right]{$\vec{n_Q}$};
+\draw[->,>=latex, red, ultra thick] (P) -- ++ (85:1) node[midway, right]{$\vec{n_Q}$};
+
+\node[blue,scale=4] at (P) {.};
+\node at (P) [below] {$P$};
+
+\node[red,scale=4] at (Q) {.};
+\node at (Q) [above left] {$Q$};
+
+\draw (\u-0.1/3.5,0) -- ++(0,0.1) -- ++(0.1/3.5,0);
+
+\draw (Q) -- ++(-45:0.4);
+\draw (Q) -- ++(-45:-0.4);
+\draw (Q)  ++(0.01,0.1) -- ++(-45:0.035) -- ++(-95:0.1);
+\end{scope}
+
+
+\draw[<-,>=latex,thick] (2.8,1.75) to[bend right=10] (4,1.4) node[right]{surface à simuler};
+\draw[<-,>=latex,thick] (1.45,2.3) to[bend left=15] (4,1.8) node[right]{vecteur normal virtuel};
+\draw[<-,>=latex,thick] (1.3,1.0) to[bend left=20] (4,1) node[right]{vecteur normal initial};
+\draw[<-,>=latex,thick] (1.7,0.8) to[bend left=15] (4,0.6) node[right]{vecteur normal simulé};
+\draw[<-,>=latex,thick] (2.8,0.45) to[bend right=10] (4,0.2) node[right]{surface réelle};
+
+
+\end{tikzpicture}

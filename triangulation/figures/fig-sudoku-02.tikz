@@ -1,0 +1,35 @@
+% Sudoku
+% Author: Roberto Bonvallet
+\makeatletter
+\ifx\c@row\undefined\newcounter{row}\fi
+\ifx\c@col\undefined\newcounter{col}\fi
+\makeatother
+% \newcounter{row}
+% \newcounter{col}
+\newcommand\setrow[4]{
+  \setcounter{col}{1}
+  \foreach \n in {#1, #2, #3, #4} {
+    \edef\x{\value{col} - 0.5}
+    \edef\y{4.5 - \value{row}}
+    \node[anchor=center] at (\x, \y) {\n};
+    \stepcounter{col}
+  }
+  \stepcounter{row}
+}
+\begin{tikzpicture}[scale=1.1]
+
+  \begin{scope}[scale=0.8]
+    \draw (0, 0) grid (4, 4);
+    \draw[very thick, scale=2] (0, 0) grid (2, 2);
+
+    \setcounter{row}{1}
+    \setrow {3}{4} {2}{ }
+    \setrow { }{1} { }{ }
+
+    \setrow { }{ } {1}{ }
+    \setrow { }{2} {4}{3}
+%    \node[anchor=center] at (2, -0.5) {Grille de sudoku $4\times 4$};
+  \end{scope}
+
+
+\end{tikzpicture}

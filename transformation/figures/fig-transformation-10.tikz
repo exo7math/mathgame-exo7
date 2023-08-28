@@ -1,0 +1,18 @@
+\tdplotsetmaincoords{55}{100}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex,blue] (0,0,0) -- (4,0,0) node[left]{$\vec{e_1}$};
+\draw[thick,->,>=latex,blue] (0,0,0) -- (0,5,0) node[below right]{$\vec{e_2}$};
+\draw[thick,->,>=latex,blue] (0,0,0) -- (0,-1,3) node[right]{$\vec{e_3}$};
+
+\coordinate (X) at (-1,2.5,0.5);
+\coordinate (Y) at (1,-1,0.5);
+\coordinate (Z) at (2,2.4,-1.5);
+
+\draw[thick,->,>=latex,red] (0,0,0) -- (X)node[above]{$\vec{f_1}$};
+\draw[thick,->,>=latex,red] (0,0,0) -- (Y)node[left]{$\vec{f_2}$};
+\draw[thick,->,>=latex,red] (0,0,0) -- (Z)node[left]{$\vec{f_3}$};
+
+\draw[thick,->,>=latex] (0,0,0) -- (1,3,5) node[left]{$\vec v$};
+
+\end{tikzpicture}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:ns1="http://sozi.baierouge.fr" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg5303" viewBox="0 0 619.95 350.58" version="1.0" inkscape:version="0.91 r13725">
+  <g id="layer1" transform="translate(-60.927 -313.25)">
+    <g id="g5881">
+      <path id="path5368" style="fill-rule:evenodd;fill:#aaffee" d="m375.47 436s353.18 66.35 299.94 68.17l-170.42 5.84-99.33-11.68-30.19-62.33z"/>
+      <path id="path5348" style="fill-rule:evenodd;fill:#008066" d="m61.901 419.17l160.68 4.12-30.19 41.88c-44.03-15.63-93.365-14.26-130.49-46z"/>
+      <path id="path5354" style="fill-rule:evenodd;fill:#005544" d="m211.87 442.77l-89.59 2.92 65.24 27.27 24.35-30.19z"/>
+      <path id="path5360" style="fill-rule:evenodd;fill:#00aa88" d="m297.57 313.25l17.52 104.2-35.86 69.53-22.57-104.59 40.91-69.14z"/>
+      <path id="path5356" style="fill-rule:evenodd;fill:#00d4aa" d="m297.69 313.66c-13.53 56.49-33.12 112.55-16.68 169.03l-105.17-11.68 121.85-157.35z"/>
+      <path id="path5362" style="fill-rule:evenodd;fill:#00d4aa" d="m278.09 481.72l-141.21 85.01 136.34 51.33 4.87-136.34z"/>
+      <path id="path5364" style="fill-rule:evenodd;fill:#80ffe6" d="m278.09 483.67l-7.2 133.41s154.25 45.77 259.42 45.77l-252.22-179.18z"/>
+      <path id="path5346" style="fill-rule:evenodd;fill:#00aa88" d="m60.927 416.47c1.675 8.38 162.52 66.65 221.05 65.25l-146.07 85.7-74.983-150.95z"/>
+      <path id="path5366" style="fill-rule:evenodd;fill:#00d4aa" d="m403.69 462.17l113.01 37.05-106.58-6.82-6.43-30.23z"/>
+      <path id="path5358" style="fill-rule:evenodd;fill:#80ffe6" d="m298.01 314.97c2.37 58.03 8.66 116.83-18.38 169.07l146.35 9.82-127.97-178.89z"/>
+      <path id="path5370" style="fill-rule:evenodd;fill:#d5fff6" d="m275.95 481.72s262.93 27.27 404.14 21.42l-147.05 160.69-257.09-182.11z"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>paper boat</dc:title>
+        <dc:date>2009-06-18T15:53:22</dc:date>
+        <dc:description>An origami ship</dc:description>
+        <dc:source>https://openclipart.org/detail/26709/paper-boat-by-badaman</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>badaman</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>barco</rdf:li>
+            <rdf:li>boat</rdf:li>
+            <rdf:li>bote</rdf:li>
+            <rdf:li>green</rdf:li>
+            <rdf:li>inkscape</rdf:li>
+            <rdf:li>line art</rdf:li>
+            <rdf:li>origami</rdf:li>
+            <rdf:li>papel</rdf:li>
+            <rdf:li>paper</rdf:li>
+            <rdf:li>papiroflexia</rdf:li>
+            <rdf:li>ship</rdf:li>
+            <rdf:li>vectorial</rdf:li>
+            <rdf:li>verde</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

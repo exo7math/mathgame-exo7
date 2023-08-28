@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=1]
+
+\coordinate (O1) at (0,0);
+\coordinate (A) at (180:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\draw (-4,-3.5) rectangle (6,3.5);
+
+\node at (1.5,-4) {\bf (a) Un ensemble de points $\mathcal{E}$};
+
+\end{tikzpicture}

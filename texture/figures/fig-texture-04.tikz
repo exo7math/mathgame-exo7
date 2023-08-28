@@ -1,0 +1,54 @@
+﻿\begin{tikzpicture}[scale=1.5]
+
+\def\u{0.4};
+
+\begin{scope}[xshift=-0.5cm,scale=1]
+% Axes
+\draw[->,>=latex,thick, gray] (-0.25,0)--(1.5,0); % node[below,black] {$u$};
+
+\coordinate (A0) at (0,0);
+\coordinate (B0) at (1,0);
+\coordinate (P) at (\u,0);
+
+\draw[thick] (0,0.1) -- (0,-0.1) node [below] {$0$};
+\draw[thick] (1,0.1) -- (1,-0.1) node [below] {$1$};
+
+\draw[very thick, red!70] (0,0) -- (1,0);
+
+\node at (P) [above] {$u$};
+\node[blue,scale=3] at (P) {.};
+
+\end{scope}
+
+
+
+\begin{scope}[xshift=4cm,yshift=-1cm,scale=1,]
+\draw[->,>=latex,thick, gray] (-0.25,0)--(3.75,0) node[below,black] {$x$};
+\draw[->,>=latex,thick, gray] (0,-0.25)--(0,3.25) node[right,black] {$y$};
+
+  \begin{scope}[xshift=0.5cm,yshift=1cm,rotate=30]
+
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (3,0);
+  \coordinate (Q) at (3*\u,0);
+
+  \draw[very thick, red!70] (A) -- (B);
+
+  \node[black,scale=3] at (A) {.};
+  \node at (A) [below left] {$A$};
+
+  \node[black,scale=3] at (B) {.};
+  \node at (B) [above right] {$B$};
+
+  \node[blue,scale=3] at (Q) {.};
+  \node at (Q) [below right] {$P = (1-u)A+uB$};
+
+
+  \end{scope}
+
+\end{scope}
+
+\draw[->,>=latex,line width =3pt, blue!20] (0.25,0.25) to[bend left=15] node[midway, above,black]{$\Phi$}++ (4.75,0.5) ;
+
+
+\end{tikzpicture}

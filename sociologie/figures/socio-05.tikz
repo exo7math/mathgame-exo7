@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\draw[->,>=latex, gray] (0,0)--(3.5,0) node[below,black] {};
+\draw[->,>=latex, gray] (0,0)--(0,2.5) node[left, black] {};
+
+\draw[ultra thick, color=red,domain=0:3.3,smooth] plot (\x,{2*(1-exp(-\x)});
+
+
+\draw[dashed] (3.3,2) -- (0,2) node[left] {$\ell$};
+
+\node at (2,-1) {\bf Amorti exponentiel};
+\node at (2,-1.5) {$f(x) =\ell(1-e^{-x})$};
+\end{scope}
+
+\begin{scope}[xshift=8cm]
+\draw[->,>=latex, gray] (-3,0)--(3,0) node[below,black] {};
+\draw[->,>=latex, gray] (0,-0.25)--(0,2.5) node[left, black] {};
+
+\draw[ultra thick, color=red,domain=-2.9:2.9,smooth] plot (\x,{2/(1+exp(-1.4*\x)});
+
+
+\draw[dashed] (2.9,2) -- (0,2) node[left] {$\ell$};
+
+\node at (0,-1) {\bf Fonction sigmo\"ide};
+\node at (0,-1.5) {$f(x) = \frac{\ell}{1+e^{-x}}$};
+\end{scope}
+
+
+
+\end{tikzpicture}

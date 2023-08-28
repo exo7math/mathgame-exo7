@@ -1,0 +1,65 @@
+﻿% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{50}{130}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\begin{scope}
+
+\tdplotsetrotatedcoords{50}{-20}{0}
+\begin{scope}[tdplot_rotated_coords]
+    % plan de projection (y=0)
+    \tikzstyle{myplane}=[draw=blue, thick, fill=red!10, opacity=0.5]
+    \draw[myplane] (0,-2,-1.5) -- ++(0,4,0) -- ++(0,0,3) -- ++(0,-4,0) -- cycle;
+%      \draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$X$};
+%      \draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,0,4.5) node[right]{$Y$};
+
+    % vecteur normal
+    \draw[->,>=latex,thick,red] (0,0,0) -- (2,0,0) node[right]{$P'$};
+\end{scope}
+
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,5) node[right]{$z$};
+
+\end{scope}
+
+\begin{scope}[xshift=8cm]
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,5) node[right]{$z$};
+\tdplotsetrotatedcoords{0}{-20}{0}
+\begin{scope}[tdplot_rotated_coords]
+
+    \tikzstyle{myplane}=[draw=blue, thick, fill=red!10, opacity=0.5]
+    \draw[myplane] (0,-2,-1.5) -- ++(0,4,0) -- ++(0,0,3) -- ++(0,-4,0) -- cycle;
+
+    % vecteur normal
+    \draw[->,>=latex,thick,red] (0,0,0) -- (2,0,0) node[above]{$P'$};
+    % plan de projection (y=0)
+
+%     \draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$X$};
+%     \draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,0,4.5) node[right]{$Y$};
+\end{scope}
+\end{scope}
+
+
+\begin{scope}[xshift=16cm]
+
+
+    % plan de projection (y=0)
+    \tikzstyle{myplane}=[draw=blue, thick, fill=red!10, opacity=0.5]
+    \draw[myplane] (0,-2,-1.5) -- ++(0,4,0) -- ++(0,0,3) -- ++(0,-4,0) -- cycle;
+    \node[above] at (0,4,3) {plan $(x=0)$};
+%     \draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$X$};
+%     \draw[red!50,very thick,->,>=latex] (0,0,0) -- (0,0,4.5) node[right]{$Y$};
+
+\draw[thick,->,>=latex] (0,0,0) -- (5,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,5) node[right]{$z$};
+
+    % vecteur normal
+    \draw[->,>=latex,thick,red] (0,0,0) -- (2,0,0) node[below right]{$P$};
+
+\end{scope}
+
+
+\end{tikzpicture}

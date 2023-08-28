@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture}[scale=1]
+% https://tex.stackexchange.com/questions/171169/
+
+\begin{scope}[rotate=110]
+
+\fill[
+  left color=gray!50!black,
+  right color=gray!50!black,
+  middle color=gray!50,
+  shading=axis,
+  opacity=0.25
+  ] 
+  (2,0) -- (0,6) -- (-2,0) arc (180:360:2cm and 0.5cm);
+\fill[
+  top color=gray!50,
+  bottom color=gray!10,
+  shading=axis,
+  opacity=1
+  ] 
+  (0,0) circle (2cm and 0.5cm);
+
+
+\draw (-2,0) arc (180:360:2cm and 0.5cm) -- (0,6) -- cycle;
+\draw[]
+  (-2,0) arc (180:0:2cm and 0.5cm);
+\draw[dashed] (0,0) --  (0,6);
+
+% texte
+\coordinate (S) at (0,6);
+\node[scale=3] at (S) {.};
+\node[below left] at (S) {$S$};
+
+\draw[very thick,->,>=latex,red] (S) -- ++(0,-3) node[midway,above]{$\vec u$};
+
+\draw[double=lightgray, red] (0,2)  arc (90:108:-4) node[red, midway, right] {$\theta$};
+
+\end{scope}
+\end{tikzpicture}

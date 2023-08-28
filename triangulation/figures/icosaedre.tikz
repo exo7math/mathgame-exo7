@@ -1,0 +1,43 @@
+\tdplotsetmaincoords{65}{98}
+\begin{tikzpicture}[tdplot_main_coords,scale=1,line join=round]
+	\pgfmathsetmacro\a{2}
+	\pgfmathsetmacro{\phi}{\a*(1+sqrt(5))/2}
+	\path 
+	coordinate(A) at (0,\phi,\a)
+	coordinate(B) at (0,\phi,-\a)
+	coordinate(C) at (0,-\phi,\a)
+	coordinate(D) at (0,-\phi,-\a)
+	coordinate(E) at (\a,0,\phi)
+	coordinate(F) at (\a,0,-\phi)
+	coordinate(G) at (-\a,0,\phi)
+	coordinate(H) at (-\a,0,-\phi)
+	coordinate(I) at (\phi,\a,0)
+	coordinate(J) at (\phi,-\a,0)
+	coordinate(K) at (-\phi,\a,0)
+	coordinate(L) at (-\phi,-\a,0); 
+	\draw[gray, dashed, thick]    (B) -- (H) -- (F) 
+	(D) -- (L) -- (H) --cycle 
+	(K) -- (L) -- (H) --cycle
+	(K) -- (L) -- (G) --cycle
+	(C) -- (L) (B)--(K) (A)--(K)
+	;
+	
+	\draw[gray, ultra thick]
+	(A) -- (I) -- (B) --cycle 
+	(F) -- (I) -- (B) --cycle 
+	(F) -- (I) -- (J) --cycle
+	(F) -- (D) -- (J) --cycle
+	(C) -- (D) -- (J) --cycle
+	(C) -- (E) -- (J) --cycle
+	(I) -- (E) -- (J) --cycle
+	(I) -- (E) -- (A) --cycle
+	(G) -- (E) -- (A) --cycle
+	(G) -- (E) -- (C) --cycle
+	; 
+	\foreach \point/\position in {A/right,B/below,C/above,D/left,E/{above right},F/below,G/above,H/left,I/below,J/right,K/below,L/left}
+	{
+	\fill[black!70] (\point) circle (3pt);
+		%\node[\position=3pt] at (\point) {$\point$};
+		}
+	
+\end{tikzpicture}

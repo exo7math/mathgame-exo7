@@ -1,0 +1,75 @@
+﻿% voir fichier python 'persepctive_01.py'
+\begin{tikzpicture}[scale=2]
+
+\begin{scope}[xshift=0cm]
+% projection du cube (calculs via python)
+
+\coordinate (Q1) at ( 0.3741476570786923, 3.602621487709789);
+\coordinate (Q2) at ( 0.8741476570786921, 3.602621487709789);
+\coordinate (Q3) at ( 1.5747769263007292, 4.1904067400022615);
+\coordinate (Q4) at ( 1.0747769263007294, 4.1904067400022615);
+\coordinate (Q5) at (-0.13488930337643468, 4.4116384820847365);
+\coordinate (Q6) at ( 0.3651106966235652, 4.4116384820847365);
+\coordinate (Q7) at ( 1.0657399658456022, 4.99942373437721);
+\coordinate (Q8) at ( 0.5657399658456023, 4.99942373437721);
+
+\tikzstyle{mycube}=[draw=red, thick, fill=none, opacity=1]
+
+
+\draw[mycube] (Q1) -- (Q2) -- (Q3) --(Q4) -- cycle;
+\draw[mycube] (Q5) -- (Q6) -- (Q7) --(Q8) -- cycle;
+\draw[mycube] (Q1) -- (Q5) -- (Q6) --(Q2) -- cycle;
+\draw[mycube] (Q2) -- (Q6) -- (Q7) --(Q3) -- cycle;
+\draw[mycube] (Q3) -- (Q7) -- (Q8) --(Q4) -- cycle;
+\draw[mycube] (Q4) -- (Q8) -- (Q5) --(Q1) -- cycle;
+\end{scope}
+
+
+\begin{scope}[xshift=1cm, yshift=0.25cm]
+% projection du cube (calculs via python)
+\coordinate (Q1) at ( 1.2363561103111853, 3.471203537635356);
+\coordinate (Q2) at (1.5453731046861328, 3.471203537635356);
+\coordinate (Q3) at ( 2.4498816018736065, 3.7802205320103033);
+\coordinate (Q4) at ( 2.140864607498659, 3.7802205320103033);
+\coordinate (Q5) at ( 0.9424634841649487, 4.4222600539305095);
+\coordinate (Q6) at ( 1.251480478539896, 4.4222600539305095);
+\coordinate (Q7) at ( 2.15598897572737, 4.731277048305457);
+\coordinate (Q8) at ( 1.8469719813524226, 4.731277048305457);
+
+\tikzstyle{mycube}=[draw=red, thick, fill=none, opacity=0.5]
+
+\draw[mycube] (Q1) -- (Q2) -- (Q3) --(Q4) -- cycle;
+\draw[mycube] (Q5) -- (Q6) -- (Q7) --(Q8) -- cycle;
+\draw[mycube] (Q1) -- (Q5) -- (Q6) --(Q2) -- cycle;
+\draw[mycube] (Q2) -- (Q6) -- (Q7) --(Q3) -- cycle;
+\draw[mycube] (Q3) -- (Q7) -- (Q8) --(Q4) -- cycle;
+\draw[mycube] (Q4) -- (Q8) -- (Q5) --(Q1) -- cycle;
+\end{scope}
+
+
+% 
+\begin{scope}[xshift=5.5cm, yshift=0.4cm]
+% projection du cube (calculs via python)
+\coordinate (Q1) at  (-0.8839745962155608, 3.2320508075688776);
+\coordinate (Q2) at  ( -0.38397459621556096, 3.2320508075688776);
+\coordinate (Q3) at  ( 0.04903810567665856, 4.098076211353316);
+\coordinate (Q4) at  (-0.45096189432334133, 4.098076211353316);
+\coordinate (Q5)  at (-1.6339745962155603, 3.7320508075688776);
+\coordinate (Q6) at  ( -1.1339745962155605, 3.7320508075688776);
+\coordinate (Q7)  at ( -0.7009618943233411, 4.598076211353316);
+\coordinate (Q8) at  ( -1.200961894323341, 4.598076211353316);
+
+\tikzstyle{mycube}=[draw=red, thick, fill=none, opacity=0.5]
+
+\draw[mycube] (Q1) -- (Q2) -- (Q3) --(Q4) -- cycle;
+\draw[mycube] (Q5) -- (Q6) -- (Q7) --(Q8) -- cycle;
+\draw[mycube] (Q1) -- (Q5) -- (Q6) --(Q2) -- cycle;
+\draw[mycube] (Q2) -- (Q6) -- (Q7) --(Q3) -- cycle;
+\draw[mycube] (Q3) -- (Q7) -- (Q8) --(Q4) -- cycle;
+\draw[mycube] (Q4) -- (Q8) -- (Q5) --(Q1) -- cycle;
+\end{scope}
+
+
+
+
+\end{tikzpicture}

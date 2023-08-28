@@ -1,0 +1,43 @@
+\begin{tikzpicture}[scale=2]
+
+\draw[thick, gray] (3,0) -- (1,0)--(1,2);
+\draw[thick, gray] (3,0)--(3,2.85);
+\draw[dotted] (2,0)--++(0,2.8);
+
+  \draw[ultra thick, color=red] (1,2).. controls ++(0.5,0.75*0.5) and (2.25,2.8) ..  (3,2.9);
+ % \draw[very thick, dotted, color=red!90] (1.6,2.6).. controls (2,2.8) ..  (2.4,2.82);
+  %\draw[very thick, dotted, color=red!90] (1.6,2.3).. controls (2,2.5) ..  (2.4,2.62);
+
+  \draw[ultra thick, color=blue!50] (0.5,1.65) -- ++(1,0.75);  % k1
+  \draw[ultra thick, color=blue!50] (1.5,2.65) -- ++(1,0.25);  % k2
+  \draw[ultra thick, color=blue!50] (1.5,2.10) -- ++(1,0.5);  % k3
+  \draw[ultra thick, color=blue!50] (2.5,2.8) -- ++(1,0.37);  % k4
+  \draw[ultra thick, color=blue] (1,2) -- ++(2,0.85);
+ \node[below] at (1,0) {$x_n$};
+ \node[below] at (3,0) {$x_{n+1}$};
+
+% \node[below] at (1.5,0) {$\frac{x_n+x_{n+1}}{2}$};
+
+\node[left] at (1,2) {$y_n$};
+\node[right] at (3,2.4) {$y_{n+1}$};
+\fill (1,2) circle (1pt);
+\fill (3,2.84) circle (1pt);
+\fill[gray] (2,2.78) circle (1pt);
+\fill[gray] (2,2.35) circle (1pt);
+\fill[gray] (3,2.98) circle (1pt);
+
+\draw[<->,gray,>=latex] (1,0.1)--++(1,0) node[midway, above,scale=0.7] {$\frac h2$};
+\draw[<->,gray,>=latex] (2,0.1)--++(1,0) node[midway, above,scale=0.7] {$\frac h2$};
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw, inner sep=1pt, scale=0.8] (char) {\bf #1};}}
+
+%\draw[<-,>=latex] (1.8,2.37)to[bend left] (0,1.5)  node[left]{courbe};
+\draw[<-,>=latex] (0.7,1.85)to[bend right] (0,2.0)  node[left,text width=4cm, align=center]{\circled{1} tangente au départ de pente $k_1$};
+\draw[<-,>=latex] (1.8,2.75)to[bend right] (0,3)  node[left,text width=4cm, align=center]{\circled{2} tangente au milieu de pente $k_2$};
+\draw[<-,>=latex] (1.85,2.30)to[bend right] (0,2.5)  node[left,text width=4cm, align=center]{\circled{3} tangente au milieu de pente $k_3$};
+\draw[<-,>=latex] (2.8,3.0)to[bend right, ] (0,3.5)  node[left,text width=4cm, align=center]{\circled{4} tangente à l'arrivée de pente $k_4$};
+\draw[<-,>=latex] (1.4,2.13)to[bend left, ] (0,1)  node[left,text width=4cm, align=center]{\circled{5} droite de pente $\frac { k_1 + 2 k_2 + 2 k_3 + k_4}{6}$};
+
+\node at (2,-0.5) {\bf Méthode de Runge-Kutta d'ordre 4};
+\end{tikzpicture}

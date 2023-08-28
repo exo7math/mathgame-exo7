@@ -1,0 +1,80 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+line/.style = {
+ very thick
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=3]{.}
+}
+}
+}
+% coordinates
+\def\xa{0}
+\def\ya{0}
+\def\xb{3}
+\def\yb{2}
+\def\xc{6}
+\def\yc{0}
+% la courbe
+\path
+  (\xa,\ya) coordinate (P0)
+  (\xb,\yb) coordinate (P1)
+  (\xc,\yc) coordinate (P2)
+;
+
+
+\draw[gray!50, line]
+  (P0)  -- (P1) -- (P2)
+;
+
+%\draw[gray!30, line]  % !!! bad Bezier curve by tikz !!!
+%  (P0)  .. controls (P1) .. (P2)
+%;
+
+% Bezier curve by its parameterization!
+\draw [red!40, thick,  domain=0:1, variable=\t, samples=40] 
+ plot ( {(1-\t)^2*\xa+2*(1-\t)*\t*\xb+\t^2*\xc}  , { (1-\t)^2*\ya+2*(1-\t)*\t*\yb+\t^2*\yc} );
+
+    \pgfmathsetmacro{\t}{0.3}  % paramter t in [0,1]
+
+    \pgfmathsetmacro{\xQa}{ (1-\t)*\xa+\t*\xb }
+    \pgfmathsetmacro{\yQa}{  (1-\t)*\ya+\t*\yb }
+    \pgfmathsetmacro{\xQb}{ (1-\t)*\xb+\t*\xc }
+    \pgfmathsetmacro{\yQb}{  (1-\t)*\yb+\t*\yc }
+    \path
+      (\xQa,\yQa) coordinate (Q0)
+      (\xQb,\yQb) coordinate (Q1)
+    ;
+
+     \draw[blue, line]
+        (Q0)  -- (Q1)
+    ;
+
+    \pgfmathsetmacro{\xR}{ (1-\t)*\xQa+\t*\xQb }
+    \pgfmathsetmacro{\yR}{  (1-\t)*\yQa+\t*\yQb }
+    \path
+      (\xR,\yR) coordinate (R)
+;
+    \draw[<->,>=latex]
+      ($(P0)+(-0.05,0.1)$) -- ($(\xQa,\yQa)+(-0.05,0.1)$) node[midway,above]{$t$};
+    \draw[<->,>=latex]
+      ($(P1)+(+0.05,0.1)$) -- ($(\xQb,\yQb)+(+0.05,0.1)$) node[midway,above]{$t$} ;
+
+    \draw[<->,>=latex,blue]
+      ($(Q0)+(+0.0,0.1)$) -- ($(R)+(+0.0,0.1)$) node[midway,above]{$t$} ;
+
+
+\path
+  (P0) [dot] node[below]{$P_0$}
+  (P1) [dot] node[above left]{$P_1$}
+  (P2) [dot] node[below]{$P_2$}
+  (Q0) [blue, dot] node[above left] {$Q_0(t)$}
+  (Q1) [blue, dot] node[right] {$Q_1(t)$}
+  (R) [red, dot] node[below right] {$R(t)$}
+;
+
+\end{tikzpicture}

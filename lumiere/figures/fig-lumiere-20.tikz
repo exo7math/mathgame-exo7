@@ -1,0 +1,15 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\def\mytheta{35}
+
+\draw[very thick] (-1,0) -- (1,0);
+
+\draw[red,double] (90-\mytheta:1) arc({90-\mytheta}:90:1) node[midway, above]{$\theta$};
+
+\draw[->,>=latex, thick, blue] (0,0) -- ++(90:2) node[left]{$\vec n$};
+
+\draw[->,>=latex, thick, red] (0,0) -- ++({90-\mytheta}:2) node[right]{$\vec \ell$};
+
+
+
+\end{tikzpicture}

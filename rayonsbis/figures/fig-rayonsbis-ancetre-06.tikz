@@ -1,0 +1,44 @@
+\tdplotsetmaincoords{50}{120}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,<-,>=latex] (-9,0,0) -- (3,0,0) node[pos=0,above left]{$z$};  %x
+\draw[thick,->,>=latex] (0,0,0) -- (0,6,0) node[below right]{$x$};  %y
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,5.5) node[left]{$y$};  %z
+
+% centre de la projection
+\coordinate (O) at (0,0,0);
+\node[red, scale=3] at (O) {.};
+\node at (O) [below] {$O$};
+
+\coordinate (P) at (-4,2.25,1.25);
+
+\draw[->,>=latex,red, thick] (P) -- ($(P)!-0.5!(O)$);
+
+
+\fill[red!30] (-4,2,1) -- ++(0,0.5,0) -- ++(0,0,0.5) -- ++ (0,-0.5,0) -- cycle;
+
+
+% plan de projection (y=0)
+\tikzstyle{myplane}=[draw=gray, thick, fill=white, opacity=0.8]
+\draw[myplane] (-4,0,0) -- ++(0,4,0) -- ++(0,0,3) -- ++(0,-4,0) -- cycle;
+% ecran
+
+\foreach \i in {0,0.5,...,3.5}{
+  \foreach \j in {0,0.5,...,2.5}{
+    \fill[gray!50] (-4,\i+0.25,\j+0.25) circle (1pt);
+  }
+}
+
+\foreach \i in {0,0.5,...,4}{
+  \draw[gray] (-4,\i,0) -- ++(0,0,3);
+}
+\foreach \j in {0,0.5,...,3}{
+  \draw[gray] (-4,0,\j) -- ++(0,4,0);
+}
+
+\fill[red] (P) circle (1pt);
+\node at (P) [above left] {$E_{ij}$};
+\draw[red, thick] (O) -- (P);
+
+\draw[->,>=latex,red, very thick] (O) -- ($(O)!0.3!(P)$) node[pos=0.7,below]{$\vec{v_{ij}}$};
+\end{tikzpicture}

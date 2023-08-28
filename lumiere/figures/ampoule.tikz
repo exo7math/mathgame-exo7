@@ -1,0 +1,13 @@
+﻿\begin{tikzpicture}
+
+\begin{scope}[scale=2]
+    \foreach \a in {60,45,...,-240}{
+      \draw[orange] (\a:1.1) -- (\a:1.5);
+    }
+
+    \draw[orange, fill=white] (110-360:1) arc (110-360:70:1);
+    \draw[orange] (70:1) -- ++(0,1);
+    \draw[orange] (110-360:1) -- ++(0,1);
+\end{scope}
+
+\end{tikzpicture}

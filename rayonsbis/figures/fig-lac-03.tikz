@@ -1,0 +1,97 @@
+﻿\begin{tikzpicture}[scale=1]
+
+% Scene 3D
+\begin{scope}[scale=0.8]
+% Oeil
+% eye from Izaak Neutelings https://tikz.net/hyperbola/
+\def\le{0.8}  % eye size eye
+\def\ange{25} % eye opening angle
+\def\lb{1.2}  % outgoing beam length
+\def\ang{150} % outgoing beam scattering
+\begin{scope}[shift={(-2,4)},scale=1,shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+  \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+  \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+  %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+  \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+  \coordinate (O) at (0,0);
+  \fill[black] (O) circle(1pt);
+  %\node at (O)[below left]{$O$};
+\end{scope}
+
+% Lac
+\fill[blue!10] (0,0) rectangle (8,-2);
+\draw[very thick, blue!80] (0,0) -- (8,0);
+
+
+% Poisson
+% https://tex.stackexchange.com/questions/361547/how-to-draw-a-fish
+\begin{scope}[shift={(4,-1.5)},scale=0.5,xscale=-1]
+        %\draw[fill=blue] (.5,0) rectangle (4,2);
+        \draw[fill=red] (1,1) to[bend left=50] (3,1) to[bend left=50] (1,1);
+        \draw[fill=red] (3,1) -- (3.5,1.5) -- (3.3,1) -- (3.5,.5) -- cycle;
+        \draw[fill=white] (1.6,1.1) circle (.15cm); 
+        \draw[fill=blue] (1.55,1.1) circle (.05cm);  
+\end{scope}
+
+% Montagne
+\begin{scope}[shift={(8,0)},scale=1]
+\filldraw[thick,gray,fill=gray!50] (0,0) -- ++ (70:1.5) -- ++(-70:1) -- ++ (70:2) -- (2.5,0) -- cycle; 
+\end{scope}
+
+% Soleil
+\begin{scope}[shift={(5,5)},scale=1.5]
+    \coordinate (S) at (0,0);
+    \foreach \a in {0,15,...,360}{
+      \draw[orange] (\a:0.23) -- (\a:0.4);
+    }
+    \draw[ball color = orange] (0,0) circle (0.2cm);
+\end{scope}
+
+% Cadre
+\draw[thick] (-4,-2) rectangle ++(15,8);
+\node at (3,-2.5) {\bf Scène};
+\end{scope}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ecran
+\begin{scope}[xshift=13cm]
+
+% Montagne
+\begin{scope}[shift={(2.5,1.7)},scale=1]
+\filldraw[thick,gray,fill=gray!50] (1,0) -- (2,2) -- (3,0) -- cycle; 
+\filldraw[thick,gray,fill=gray!50] (0,0) -- (1,1.5) -- (2,0) -- cycle; 
+\end{scope}
+
+% Lac
+\begin{scope}[]
+\clip  (0,0) rectangle ++(6,4);
+\fill[blue!50] (3,0) ellipse (5 and 2);
+\end{scope}
+
+% Reflet Montagne
+\begin{scope}
+\clip (3,0) ellipse (5 and 2);
+   \begin{scope}[shift={(2.6,2)},xscale=0.85,yscale=-0.5]
+   \filldraw[gray,fill=gray!50,opacity=0.4] (0,0) -- (1,1.5) -- (2,0) -- cycle; 
+   \end{scope}
+   \begin{scope}[shift={(2.95,1.9)},xscale=0.9,yscale=-0.6]
+   \filldraw[gray,fill=gray!50,opacity=0.4] (1,0) -- (2,2) -- (3,0) -- cycle; 
+   \end{scope}
+\end{scope}
+
+% Poisson
+% https://tex.stackexchange.com/questions/361547/how-to-draw-a-fish
+\begin{scope}[shift={(2,1.2)},scale=0.3,xscale=-1,opacity=0.4,rotate=-45]
+        %\draw[fill=blue] (.5,0) rectangle (4,2);
+        \draw[fill=red] (1,1) to[bend left=50] (3,1) to[bend left=50] (1,1);
+        \draw[fill=red] (3,1) -- (3.5,1.5) -- (3.3,1) -- (3.5,.5) -- cycle;
+        \draw[fill=white] (1.6,1.1) circle (.15cm); 
+        \draw[fill=blue] (1.55,1.1) circle (.05cm);  
+\end{scope}
+
+% Cadre
+\draw[thick] (0,0) rectangle ++(6,4);
+\node at (3,-0.5) {\bf Image -- Transparence};
+\end{scope}
+
+\end{tikzpicture}

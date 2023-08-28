@@ -1,0 +1,18 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\draw[densely dashed, step=0.335] (0,0) grid ++(1,1);
+\draw[densely dashed, step=0.335] (1,0) grid ++(1,1);
+\draw (-1,-1) grid ++(3,3);
+%\draw[thick] (-1,-1) rectangle ++(3,3);
+
+
+
+
+\foreach \vx/\vy/\N in {0/0/16, 0/1/4, 1/1/1,        1/-1/1, 0/-1/4, -1/-1/1, -1/0/4, -1/1/1}{
+  \node at ($(0.5,0.5) + 0.33*(\vx, \vy)$) {$\N$};
+};
+
+\node[red] at ($(0.5,0.5) + 0.33*(1, 0)$) {\bf 12};
+
+ \draw[->,>=latex,red, opacity=0.5, very thick] (0.95,0.5) -- ++(0.9,0);
+\end{tikzpicture}

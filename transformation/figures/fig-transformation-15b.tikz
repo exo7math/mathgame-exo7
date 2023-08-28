@@ -1,0 +1,29 @@
+﻿
+\begin{tikzpicture}[scale=1]
+
+\foreach \i in {-4,...,4}{
+  \draw[thick,<-,>=latex, orange] (0.4*\i,-0.4*\i) -- ++(40:2);
+}
+
+\node[orange] at (2.6,-1.3) {$- \vec v$};
+
+\coordinate (P) at (-140:5);
+%\draw[blue] (P) -- (0,0);
+\draw[->,>=latex,very thick,blue] (P) -- ++(40:1) node[midway, above left]{$\vec \ell_P$};
+\node[scale=4,blue] at (P){.};
+\node[below right, blue] at (P){$P$};
+
+\begin{scope}[xshift=2.8cm, yshift=2.4cm, scale=2,]
+\foreach \a in {0,15,...,360}{
+  \draw[orange] (\a:0.2) -- (\a:0.4);
+}
+
+\draw[orange,densely dashed] (0,0) arc (40:50:8);
+\draw[orange,densely dashed] (0,0) arc (40:30:8);
+
+\draw[orange, fill=white] (0,0) circle (0.2cm);
+
+\end{scope}
+
+
+\end{tikzpicture}

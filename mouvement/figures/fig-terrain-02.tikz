@@ -1,0 +1,30 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\fill[gray!5] (0,0) rectangle ++(7,4);  % terrain normal
+
+\fill[gray!30] (1,2) rectangle ++(2,1);  % terrain difficile
+\fill[gray!30] (2,1) rectangle ++(1,1);  % terrain difficile
+\fill[gray!30] (2,0) rectangle ++(1,1);  % terrain difficile
+
+\fill[blue!20] (3,3) rectangle ++(1,1); % eau
+\fill[blue!20] (3,2) rectangle ++(1,1);
+
+\fill[black!80] (1,1) rectangle ++(1,1);  % obstacle
+\fill[black!80] (4,0) rectangle ++(1,1);  % obstacle
+
+\fill[green!30] (0,1) rectangle ++(1,1);  % départ
+\fill[red!20] (5,2) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(7,4);  % grille
+
+\draw[<-,>=latex] (0.5,1.5) to[bend left] (-2,1) node[left]{départ};
+\draw[<-,>=latex] (2.5,0.5) to[bend left] (-2,0) node[left]{terrain difficile};
+\draw[<-,>=latex] (1.5,1.5) to[bend right] (-2,2) node[left]{obstacle};
+
+\draw[<-,>=latex] (3.5,3.5) to[bend left] (9,3) node[right]{eau};
+\draw[<-,>=latex] (5.5,2.5) to[bend left] (9,2) node[right]{arrivée};
+\draw[<-,>=latex] (5.5,0.5) to[bend left] (9,1) node[right]{terrain normal};
+
+\node at (3.5,-1){\bf Terrain};
+
+\end{tikzpicture}

@@ -1,0 +1,36 @@
+﻿\begin{tikzpicture}[scale=2]
+
+%\fill[blue!50] (1,0) rectangle ++ (1,1);
+\draw[gray, very thick] (0,0) grid ++(2,2);
+
+
+
+\draw[dotted] (0.5,1.5) -- (0.5,0) node[below]{$x_1$};
+\draw[dotted] (1.5,1.5) -- (1.5,0) node[below]{$x_2$};
+
+\draw[dotted] (1.5,0.5) -- (0,0.5) node[left]{$y_1$};
+\draw[dotted] (1.5,1.5) -- (0,1.5) node[left]{$y_2$};
+
+\coordinate(P) at (1.3,0.8);
+\node[scale=3,blue] at (P) {.};
+\node[above,scale=0.7,blue] at (P) {$(x,y)$};
+
+\coordinate(A) at (0.5,0.5);
+\draw[dashed,blue] (P) -- (P -| A);
+\draw[dashed,blue] (P) -- (P |- A);
+
+\draw[<->,>=latex,blue,yshift=1mm] (A) -- (P |- A) node[midway,below,scale=0.8]{$x'$};
+\draw[<->,>=latex,blue,yshift=1mm] (A) -- (P -| A) node[midway,left,scale=0.8]{$y'$};
+
+\foreach \i in {0,1}{
+\foreach \j in {0,1}{
+  \node[scale=3,red] at (0.5+\i,0.5+\j) {.};
+}
+}
+
+
+%\node[below right,scale=0.7,red] at (1.5,0.5) {$(i,j)$};
+
+
+
+\end{tikzpicture}

@@ -1,0 +1,29 @@
+﻿\begin{tikzpicture}
+
+\def\tortue{
+    % Legs
+    \draw[fill=green!50!black,opacity=0.7] (50:1) circle (0.2);
+    \draw[fill=green!50!black,opacity=0.7] (-50:1) circle (0.2);
+    \draw[fill=green!50!black,opacity=0.7] (-130:1) circle (0.2);
+    \draw[fill=green!50!black,opacity=0.7] (130:1) circle (0.2);
+    % Body
+    \draw[fill=green!70!black,opacity=0.9] (0,0) circle (1);
+    %Head
+    \draw[fill=green!50!black,opacity=0.7] (1.1,0) circle (0.25);
+    \draw[fill=black] (1.2,0.1) circle (0.02);
+    \draw[fill=black] (1.2,-0.1) circle (0.02);
+}
+
+  \draw[->,>=latex,thick, gray] (-1,0)--(4.5,0); %node[right,black] {$x$};
+  \draw[->,>=latex,thick, gray] (0,-1)--(0,3); % node[above,black] {$y$};
+  
+\begin{scope}[scale=0.5,xshift=2cm,yshift=1.5cm,rotate=20]
+  \tortue
+  \draw[fill=black] (0,0) circle (0.05);
+  \node[below] at (0,0) {$P$};
+   \draw[->,>=latex,thick, green!60!black, shorten >=2pt, shorten <=3pt] (1,0) -- ++(3,0) node[right,black] {$\vec u$};
+\end{scope}
+
+\node at (2,-1.25) {\bf Position et direction};
+
+\end{tikzpicture}

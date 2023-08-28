@@ -1,0 +1,48 @@
+﻿\begin{tikzpicture}[scale=2]
+\tikzset{
+dot/.style = {
+insert path={
+  node[scale=2]{.}
+}
+},
+}
+
+
+\begin{scope}[rotate=20]
+
+% les points A1,...
+\path
+  (2,1)
+  +(90:1)   coordinate (A1)
+  +(150:1)  coordinate (A2)
+  +(-120:1)   coordinate (A3)
+  +(-70:1)    coordinate (A4)
+  +(-30:1.3) coordinate (A5)
+  +(30:1.3) coordinate (A6)  
+;
+
+% le polygone
+\draw (A4) -- (A5) --(A6)--(A1)--(A2);
+\draw[dotted] (A2) -- (A3) -- (A4) ;
+% le rayon
+\path (2,1) coordinate (P);
+
+% les points
+\path
+  (P) [dot] node[left]{$P$}
+  (A1) [dot] node[above]{$A_{i+2}$}
+  (A6) [dot] node[right]{$A_{i+1}$}
+  (A5) [dot] node[right]{$A_i$}
+;
+
+\draw 
+  (P) edge (A1)
+  (P) edge (A5)
+  (P) edge (A6)
+;
+
+\draw[thick, red, ->,>=latex] ($(P)!0.5!(A5)$)  arc (-30:30:0.65) node[midway, right]{$\theta_i$};
+\draw[thick, red, ->,>=latex] ($(P)!0.4!(A6)$)  arc (30:90:0.5) node[midway, above]{$\theta_{i+1}$};
+\end{scope}
+\end{tikzpicture}
+

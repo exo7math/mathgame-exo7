@@ -1,0 +1,12 @@
+﻿\begin{tikzpicture}
+   \draw[thick, gray] (10-90:2.3) -- (10+90:2.3);
+   \draw[thick, gray] (10:2.3) -- (10+180:2.3);
+
+   \draw[->,>=latex,thick, red] (0,0)--(10:2) node[above right] {$\vec u$};  
+   \draw[->,>=latex,thick, red] (0,0)--(10+90:1.5) node[above right] {$\vec v$};
+
+   \draw[->, >=latex, thick, blue] (10:1.2) arc(10:10+90:1.1) node[blue,midway,above right] {$\frac\pi2$};
+   \draw[->, >=latex, thick, gray] (10:1.2) arc(10:10-90:1.1) node[midway,below right] {$-\frac\pi2$};
+
+   \fill[gray] (0,0) circle (1.5pt);
+\end{tikzpicture}

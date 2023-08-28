@@ -1,0 +1,22 @@
+\begin{tikzpicture}[scale=3]
+
+\begin{scope}[rotate=20]
+
+\coordinate (O) at (0,0);
+\coordinate (A) at (0:1);
+\coordinate (B) at (50:1);
+\coordinate (P) at (30:1);
+
+\draw[very thick,black!30] (A) -- node[midway,below,black]{$R$} (O) -- (B);
+\draw[ultra thick, black!50]  (A) arc(0:50:1);
+
+\draw[double, black!30] (0:0.3) arc(0:50:0.3) node[midway,above right]{$\omega$};
+
+\fill[black!80] (O) circle (0.02) node[black,left]{$O$};
+\fill[red!80] (A) circle (0.02) node[black,below right]{$A$};
+\fill[red!80] (B) circle (0.02) node[black,above right]{$B$};
+\fill[blue!80] (P) circle (0.02) node[black,above right]{$\gamma(t)$};
+
+\end{scope}
+
+\end{tikzpicture}

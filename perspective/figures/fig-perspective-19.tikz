@@ -1,0 +1,22 @@
+\begin{tikzpicture}[scale=2]
+
+\draw[thick,->,>=latex] (-1.2,0) -- (1.5,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,-1.2) -- (0,1.5) node[below right]{$z$};
+
+\draw (0,0)  circle (1);
+
+\draw (1,-1) -- (1,1);
+\draw (-1,-1) -- (-1,1);
+
+\def\mytheta{45}
+\coordinate (P) at (\mytheta:1);
+\node[scale=2,red] at (P) {.};
+\node[above,red] at (P) {$P$};
+
+\coordinate (Q) at (1,{sin(\mytheta)});
+\node[scale=2,red] at (Q) {.};
+\node[right,red] at (Q) {$P'$};
+
+\draw[red] (P) -- (Q);
+
+\end{tikzpicture}

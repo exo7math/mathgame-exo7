@@ -1,0 +1,16 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\draw[densely dashed, step=0.335] (0,0) grid ++(1,1);
+
+\draw (-1,-1) grid ++(3,3);
+
+\foreach \vx/\vy in {0/1, 1/1, 1/0, 1/-1, 0/-1, -1/-1, -1/0, -1/1}{
+  \draw[->,>=latex,red, very thick, shorten <=1.1cm] (0.5,0.5) -- ++(\vx, \vy);
+};
+
+\foreach \vx/\vy/\N in {0/0/\frac{16}{36}, 0/1/\frac{4}{36}, 1/1/\frac{1}{36}, 1/0/\frac{4}{36}, 1/-1/\frac{1}{36}, 0/-1/\frac{4}{36}, -1/-1/\frac{1}{36}, -1/0/\frac{4}{36}, -1/1/\frac{1}{36} }
+{
+  \node at ($(0.5,0.5) + 0.33*(\vx, \vy)$) {$\N$};
+};
+
+\end{tikzpicture}

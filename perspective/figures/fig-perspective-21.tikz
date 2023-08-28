@@ -1,0 +1,31 @@
+﻿% voir fichier python 'persepctive_01.py'
+\tdplotsetmaincoords{50}{150}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+
+\draw[thick,->,>=latex] (0,0,0) -- (2,0,0) node[below]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,3,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,3) node[right]{$z$};
+
+
+    \tdplotsetrotatedcoords{30}{60}{50}
+    \draw [ball color=white,thin,tdplot_rotated_coords,opacity=0.9] (0,0,0) circle (1) ;
+
+
+% \draw (0,0) circle (1);
+% \draw (0,0,-2) circle (1);
+% \draw (0,0,0) circle (1);
+
+
+\def\N{5}
+
+\foreach \i in {-\N,...,\N}{
+     \draw (3,\i,-\N) -- (3,\i,\N);
+     \draw (3,-\N,\i) -- (3,\N,\i);
+}
+
+%\draw [ball color=white] (0,0,0) circle (1) ;
+
+
+    
+    
+\end{tikzpicture}

@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}
+      \draw[->,>=latex,thick, gray] (-2.5,0)--(4.5,0); %node[right,black] {$x$};
+       \draw[->,>=latex,thick, gray] (0,-1)--(0,3.5); % node[above,black] {$y$};
+
+       \draw[dashed] (0,2)--(1,2)--(1,0);
+      \node at (1,0) [below] {$1$};
+      \node at (0,2) [left] {$2$};
+
+      \node at (0,0) [below left] {$O$};
+
+       \draw[->,>=latex,thick, red] (0,0)--(1,0) node[midway, below] {$\vec i$};
+       \draw[->,>=latex,thick, red] (0,0)--(0,1) node[midway, left] {$\vec j$};
+
+       \draw[->,>=latex,thick, green!60!black] (0,0)--(3,1) node[above right] {$\vec {f_1}$};
+       \draw[->,>=latex,thick, green!60!black] (0,0)--(-2,2) node[above left] {$\vec {f_2}$};
+
+      \coordinate (X) at ({3/4*3},{3/4*1});
+      \coordinate (Y) at ({5/8*(-2)},{5/8*(2)});
+      \draw[thick, dashed,green!60!black] (X)--(1,2)--(Y);
+
+       \draw[->,>=latex,thick, blue] (0,0)--(1,2) node[above right] {$\vec u$};
+
+      \node at (X) [below] {$x$};
+      \node at (Y) [below left] {$y$};
+
+     
+
+\end{tikzpicture}

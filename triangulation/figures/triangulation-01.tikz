@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=2]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (1,0);
+\coordinate (C) at (1.4,1);
+\coordinate (D) at (0.2,0.9);
+\coordinate (E) at (2.5,0.35);
+
+\draw[ultra thick, black!50]  
+  (A) -- (B) -- (D)
+  (B) -- (C)
+  (C) -- (D)
+  (D) -- (A)
+  (B) -- (E) 
+  (C) -- (E) ;
+
+\path (A) node[scale=4,black!70]{.};
+\path (B) node[scale=4,black!70]{.};
+\path (C) node[scale=4,black!70]{.};
+\path (D) node[scale=4,black!70]{.};
+\path (E) node[scale=4,black!70]{.};
+
+\end{tikzpicture}

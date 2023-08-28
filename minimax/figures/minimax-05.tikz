@@ -1,0 +1,59 @@
+  \begin{tikzpicture}[scale=2]
+
+\tikzstyle{mysquare}=[
+  regular polygon,
+  regular polygon sides=4,
+  %draw,
+  fill=black!10,
+  minimum size =1.3cm]		
+
+	
+% define points
+\path  
+  (0,0) coordinate(R)  
+  (-1,-1) coordinate (V1)
+  (0,-1) coordinate (V2)
+  (1,-1) coordinate (V3)
+  (-1.5,-2) coordinate (V11)
+  (-0.75,-2) coordinate (V12)
+  (0,-2) coordinate (V21)
+  (0.75,-2) coordinate (V31)
+  (1.5,-2) coordinate (V32)
+;
+
+% draw lines
+\draw[thick]
+  (R) -- (V1)
+  (R) -- (V2)
+  (R) -- (V3)
+  (V1) -- (V11)
+  (V1) -- (V12)
+  (V2) -- (V21)
+  (V3) -- (V31)
+  (V3) -- (V32)
+  ;
+
+% nodes
+\foreach \v in {R, V1, V2, V3, V11, V12, V21, V31, V32}{
+  \node[mysquare] at (\v) {};
+}
+
+% evaluations
+ \path[blue]
+      (V11.south) node[scale=0.8, below=4ex]{$f(C_1)$}
+      (V12.south) node[scale=0.8, below=4ex]{$f(C_2)$}
+      (V21.south) node[scale=0.8, below=4ex]{$f(C_3)$}
+      (V31.south) node[scale=0.8, below=4ex]{$f(C_4)$}
+      (V32.south) node[scale=0.8, below=4ex]{$f(C_5)$}
+    ;
+
+% comments
+\draw[<-,>=latex, green!20, line width=5pt] (1,0) -- (3,0) node[right,black]  {configuration actuelle};
+\draw[<-,>=latex, green!20, line width=5pt] (1.5,-1) -- (3,-1) node[right,black]  {configurations possibles après mon coup};
+\draw[<-,>=latex, green!20, line width=5pt] (2,-2) -- (3,-2) node[right,black]  {configurations possibles après deux coups};
+
+\draw[<-,>=latex, red!20, line width=3pt] (0.75,-0.5) -- (3,-0.5) node[right,black]  {mes coups possibles};
+\draw[<-,>=latex, red!20, line width=3pt] (1.4,-1.5) -- (3,-1.5) node[right,black]  {coups possibles de mon adversaire};
+
+\draw[<-,>=latex, blue!20, line width=3pt] (1.8,-2.45) -- (3,-2.45) node[right,black]  {évaluation de chaque configuration};
+  \end{tikzpicture}

@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture}[scale=1]
+% https://tex.stackexchange.com/questions/171169/
+
+\begin{scope}[rotate=0]
+\coordinate (S) at (-2,6);
+
+\fill[lightgray] 
+  (-6,-1.5) -- ++(9,0) -- ++ (45:4.5) -- ++(-9,0) -- cycle;
+
+
+
+\fill[white] 
+  (0,0) circle (2cm and 0.5cm);
+
+\fill[
+  left color=gray!50!black,
+  right color=gray!50!black,
+  middle color=gray!50,
+  shading=axis,
+  opacity=0.05
+  ] 
+  (2,0) -- (-2,6) -- (-2,0) arc (180:360:2cm and 0.5cm);
+
+\draw (-2,0) arc (180:360:2cm and 0.5cm) -- (S) -- cycle;
+
+\draw[]
+  (-2,0) arc (180:0:2cm and 0.5cm);
+%\draw[dashed] (0,0) --  (S);
+
+% texte
+% \node[scale=3] at (S) {.};
+% \node[below left] at (S) {$S$};
+
+\node at (0.5,-0.1) {blanc};
+\node at (2,-1) {noir};
+
+\end{scope}
+\end{tikzpicture}

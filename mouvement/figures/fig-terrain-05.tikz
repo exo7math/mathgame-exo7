@@ -1,0 +1,15 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (4,2);
+
+\draw[black, very thick] (A) -- (B) node[midway, above left]{$\|B-A\|_2$};
+\draw[thick] (A) --  node[midway, below]{$|x_B-x_A|$} (B |- 0,0) -- node[midway, right]{$|y_B-y_A|$} (B);
+
+\fill[green!70!black] (A) circle (3pt);
+\fill[red!70!black] (B) circle (3pt);
+
+\node at (A)[left]{$A$};
+\node at (B)[right]{$B$};
+
+\end{tikzpicture}

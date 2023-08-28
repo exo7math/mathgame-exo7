@@ -1,0 +1,73 @@
+﻿\begin{tikzpicture}[scale=3]
+\tikzset{
+line/.style = {
+shorten <=-3mm, shorten >=-3mm
+},
+vector/.style = {
+thick,-latex
+},
+dot/.style = {
+insert path={
+  node[scale=2]{.}
+}
+},
+perp/.style = {
+draw,
+angle eccentricity=.5,
+angle radius=2mm,
+pic text=.
+}
+}
+
+
+% les points A1,...
+\path (0,0)
+  +(100:1.1)   coordinate (A7)
+  +(130:1)   coordinate (A8)
+  +(-135:1.3)   coordinate (A1)
+  +(-70:0.9)   coordinate (A2)
+  +(-20:1.2)   coordinate (A3)
+  +(-0:1.2)   coordinate (A4)
+  +(30:1.3)   coordinate (A5)
+  +(75:1.1)   coordinate (A6)
+  (0.2,-0.2)   coordinate (P)
+;
+
+% le polygone
+\draw (A8) -- (A1) -- (A2);
+\draw[densely dotted]  (A2)--(A3)--(A4) ;
+\draw (A4) -- (A5) -- (A6) ;
+\draw[densely dotted] (A6) -- (A7) -- (A8) ;
+
+
+% les points
+\path
+  (P) [dot] node[above]{$P(\alpha,\beta)$}
+  (A1) [dot] node[below left]{$A_1$}
+  (A2) [dot] node[below]{$A_2$}
+  (A6) [dot]
+  (A8) [dot] node[left]{$A_n$}
+  (A4) [dot]
+  (A5) [dot] node[right]{$A_i(\alpha_i,\beta_i)$}
+;
+
+
+\draw[red, thick, ->, >=latex,shorten <=1pt, shorten >=1pt] (A1)--(A2) node[midway,below] {$\vec u$};
+\draw[red, thick, ->, >=latex,shorten <=1pt, shorten >=1pt] (A1)--(A8) node[midway,left] {$\vec v$};
+
+% projection
+\coordinate (u) at ($(A2)-(A1)$);
+\coordinate (v) at ($(A8)-(A1)$);
+
+\coordinate (Mu) at ($(P) - 2*(v)$);
+\coordinate (Pu) at (intersection of A1--A2 and P--Mu);
+
+\coordinate (Mv) at ($(P) - 2*(u)$);
+\coordinate (Pv) at (intersection of A1--A8 and P--Mv);
+
+\draw[dashed, green!70!black] (P)--(Pu);
+\draw[dashed, green!70!black] (P)--(Pv);
+
+
+\end{tikzpicture}
+

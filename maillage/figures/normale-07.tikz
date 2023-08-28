@@ -1,0 +1,35 @@
+﻿\tdplotsetmaincoords{70}{60}
+\begin{tikzpicture}[tdplot_main_coords,scale=2]
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,-0.5);
+\coordinate (C) at (1,2);
+\draw[red, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+% \node at (A) [left] {$A$};
+% \node at (B) [below] {$B$};
+% \node at (C) [right] {$C$};
+
+%\def\u{0.4}
+%\def\v{0.4}
+
+\foreach \u in {0,0.2,...,0.8}{
+\pgfmathsetmacro\lastv{1.01-\u}
+\foreach \v in {0,0.2,...,\lastv}{
+    \pgfmathsetmacro{\t}{1-\u-\v};
+    % coord bary 1-u-v, u, v
+    % Attention ! pas d'espace dans les coordonnées 
+    \coordinate (Q) at (barycentric cs:A=\t,B=\u,C=\v);
+    
+% 
+%     \draw[-latex,very thick, brown] (A) -- ++ (-0.5,0,1);
+%     \draw[-latex,very thick, brown] (B) -- ++ (0,-0.5,1) ;
+%     \draw[-latex,very thick, brown] (C) -- ++ (0.5,0,1);
+    
+    \draw[-latex,very thick, brown] (Q) -- ++ ({-0.5*(1-\u-\v)+0.5*\v},{-0.5*\u},1);
+}
+}
+\def\u{1}
+\def\v{0}
+\pgfmathsetmacro{\t}{1-\u-\v};
+\coordinate (Q) at (barycentric cs:A=\t,B=\u,C=\v);
+\draw[-latex,very thick, brown] (Q) -- ++ ({-0.5*(1-\u-\v)+0.5*\v},{-0.5*\u},1);
+\end{tikzpicture}

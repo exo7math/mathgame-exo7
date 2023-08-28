@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=2]
+
+
+\def\mytheta{15};
+
+\fill [blue!10] (-2,0) rectangle (2,-1);
+
+\draw[ultra thick, lightgray] (-2,0) -- (2,0);
+\draw[very thick, gray!50,dashed] (90:-1) -- (90:0);
+
+\draw[<-,>=latex, shorten <=2pt, very thick, orange] (0,0) -- (180+\mytheta:2) node[midway, below]{$\vec{r_0}$};
+\draw[->,>=latex,  shorten <=2pt,very thick, green!70!black] (0,0) -- (-\mytheta:2) node[midway,below]{$\vec{r_1}$};
+
+%\draw (0.1,0) -- ++(0,0.1) -- ++ (-0.1,0);
+
+%\coordinate (P) at (0,0);
+%\node[blue, scale=3] at (P) {.};
+
+%\node[blue] at (2,1) {milieu d'indice $n_1$};
+%\node[blue] at (2,-1) {milieu d'indice $n_2$};
+
+\node at (0,-1.25) {\bf Réflexion totale};
+
+\end{tikzpicture}

@@ -1,0 +1,46 @@
+﻿\tdplotsetmaincoords{75}{115}
+\begin{tikzpicture}[tdplot_main_coords,scale=1]
+
+\draw[thick,->,>=latex] (0,0,0) -- (4,0,0) node[left]{$x$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,5,0) node[below right]{$y$};
+\draw[thick,->,>=latex] (0,0,0) -- (0,0,3) node[right]{$z$};
+
+
+\tikzstyle{mycube}=[draw=blue, thick, fill=blue!50, opacity=0.5]
+\pgfmathsetmacro{\cube}{1}
+
+\draw[mycube] (\cube,0,0) -- (\cube,\cube,0) -- (\cube,\cube,\cube) -- (\cube, 0, \cube) -- cycle;
+\draw[mycube] (\cube,0,\cube) -- (\cube,\cube,\cube) -- (0,\cube,\cube) -- (0, 0, \cube) -- cycle;
+\draw[mycube] (0, \cube, 0) -- (0, \cube, \cube) -- (\cube,\cube,\cube) -- (\cube, \cube, 0) -- cycle;
+
+\begin{scope}[xshift=2cm, yshift=1.5cm]
+\tikzstyle{mycube}=[draw=red, thick, fill=red!50, opacity=0.3]
+
+\coordinate (X) at (1,1.5,0);
+\coordinate (Y) at (1,1,0.5);
+\coordinate (Z) at (2,2.4,1.5);
+
+\coordinate (A) at (0,0,0);
+\coordinate (B) at (X);
+\coordinate (C) at ($(X)+(Y)$);
+\coordinate (D) at (Y);
+
+% \draw[->,>=latex] (0,0,0) -- (X);
+% \draw[->,>=latex] (0,0,0) -- (Y);
+% \draw[->,>=latex] (0,0,0) -- (Z);
+
+
+\coordinate (E) at ($(A)+(Z)$);
+\coordinate (F) at ($(B)+(Z)$);
+\coordinate (G) at ($(C)+(Z)$);
+\coordinate (H) at ($(D)+(Z)$);
+
+\draw[mycube] (A) --(B)--(C)--(D) -- cycle;
+\draw[mycube] (E) --(F)--(G)--(H) -- cycle;
+\draw[mycube] (B) --(C)--(G)--(F) -- cycle;
+\draw[mycube] (C) --(D)--(H)--(G) -- cycle;
+\draw[mycube] (A) --(B)--(F)--(E) -- cycle;
+\draw[mycube] (A) --(D)--(H)--(E) -- cycle;
+
+\end{scope}
+\end{tikzpicture}

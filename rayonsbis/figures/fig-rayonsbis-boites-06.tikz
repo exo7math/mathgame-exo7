@@ -1,0 +1,58 @@
+﻿\begin{tikzpicture}[scale=0.5]
+
+\begin{scope}
+\fill[orange] (0,0) circle (1);
+\fill[magenta] (3,0) circle (1);
+\fill[yellow] (-1,2) -- ++ (60:2) -- ++(-60:2) -- cycle;
+\fill[cyan!50] (2.25,1.5) rectangle ++ (1.5,2.5);
+
+\fill[lime] (7,0) ellipse (0.5 and 1);
+\fill[brown] (9,0) ellipse (0.5 and 1);
+\fill[blue!30] (8,2.5) ellipse (0.75 and 1.23);
+
+\fill[red!50] (8,4.25) ellipse (0.5 and 0.25);
+
+\draw[ultra thick,gray] (-1.5,-1.5) rectangle (10,5); 
+
+\node at (4.5,-2) {\bf Scène};
+\end{scope}
+
+\begin{scope}[xshift=15cm]
+\fill[orange] (0,0) circle (1);
+\fill[magenta] (3,0) circle (1);
+\fill[yellow] (-1,2) -- ++ (60:2) -- ++(-60:2) -- cycle;
+\fill[cyan!50] (2.25,1.5) rectangle ++ (1.5,2.5);
+
+\fill[lime] (7,0) ellipse (0.5 and 1);
+\fill[brown] (9,0) ellipse (0.5 and 1);
+\fill[blue!30] (8,2.5) ellipse (0.75 and 1.23);
+
+\fill[red!50] (8,4.25) ellipse (0.5 and 0.25);
+
+
+\draw[very thick,gray] (-1.5,-1.5) rectangle (10,5); 
+
+\draw[very thick,red!50] (-1.25,-1.25) rectangle (4.5,4.5); 
+\draw[very thick,red!50] (5.75,-1.30) rectangle (9.75,4.75); 
+
+\draw[very thick,green!70!black!50] (-1.15,-1.15) rectangle (4.25,1.15); 
+\draw[very thick,green!70!black!50] (-1.1,1.30) rectangle (4.0,4.3); 
+
+\draw[very thick,green!70!black!50] (6.1,-1.15) rectangle (9.65,1.1); 
+\draw[very thick,green!70!black!50] (7,1.17) rectangle (9,4.6); 
+
+\draw[thick,blue!50] (-1.05,-1.05) rectangle (1.05,1.05); 
+\draw[thick,blue!50] (1.95,-1.05) rectangle (4.05,1.05); 
+\draw[thick,blue!50] (-1.02,1.85) rectangle (1.05,3.8); 
+\draw[thick,blue!50] (2.1,1.4) rectangle (3.85,4.1); 
+
+\draw[thick,blue!50] (6.4,-1.05) rectangle (7.6,1.03); 
+\draw[thick,blue!50] (8.4,-1.05) rectangle (9.6,1.03); 
+\draw[thick,blue!50] (7.2,1.24) rectangle (8.8,3.8); 
+\draw[thick,blue!50] (7.46,3.95) rectangle (8.55,4.53); 
+
+\node at (4.5,-2) {\bf Hiérachie};
+\end{scope}
+
+
+\end{tikzpicture}

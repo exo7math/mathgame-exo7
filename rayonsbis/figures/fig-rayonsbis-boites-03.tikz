@@ -1,0 +1,77 @@
+\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\coordinate (S) at (0,0);
+\coordinate (V) at (55:1);
+\coordinate (P) at (55:3);
+
+\begin{scope}[xshift=2cm,yshift=0.5cm]
+
+\draw [very thick,green!70!black,fill=green!10] plot [smooth cycle] coordinates {(0.05,0.5) (1.5,1.95) (3.95,1.3) (2.5,1) (3,0.05)};
+
+\draw[blue, very thick] (0,0) rectangle ++(4,2);
+\end{scope}
+
+\fill[red] (S) circle (3pt);
+\draw[red] (S) -- ($(P)!-0.5!(S)$);
+\draw[->,>=latex,ultra thick,red] (S) -- (V);
+%\fill[red] (P) circle (2pt);
+
+\node[blue] at (5.5,2.75) {$\mathcal{B}$};
+\node[green!70!black] at (4,2) {$\mathcal{O}$};
+
+
+\node[text width=5cm,align=center] at (4,-0.5) {\bf Le rayon ne coupe pas la boite (donc ne coupe pas l'objet)};
+\end{scope}
+
+
+
+
+\begin{scope}[xshift=10cm, yshift=2.5cm]
+\coordinate (S) at (0,0);
+\coordinate (V) at (42:1);
+\coordinate (P) at (42:2.68);
+
+\begin{scope}[xshift=2cm,yshift=0.5cm]
+
+\draw [very thick,,green!70!black,fill=green!10] plot [smooth cycle] coordinates {(0.05,0.5) (1.5,1.95) (3.95,1.3) (2.5,1) (3,0.05)};
+
+\draw[blue, very thick] (0,0) rectangle ++(4,2);
+\end{scope}
+
+\fill[red] (S) circle (3pt);
+\draw[red] (S) -- ($(P)!-0.5!(S)$);
+\draw[->,>=latex,ultra thick,red] (S) -- (V);
+\fill[red] (P) circle (2pt);
+
+
+\node[text width=5cm,align=center] at (4,-0.5) {\bf Le rayon coupe la boite mais pas l'objet};
+\end{scope}
+
+
+
+
+\begin{scope}[xshift=10cm, yshift=-2.5cm]
+\coordinate (S) at (0,0);
+\coordinate (V) at (20:1);
+\coordinate (P) at (20:2.13);
+\coordinate (Q) at (20:2.5);
+
+\begin{scope}[xshift=2cm,yshift=0.5cm]
+
+\draw [very thick,,green!70!black,fill=green!10] plot [smooth cycle] coordinates {(0.05,0.5) (1.5,1.95) (3.95,1.3) (2.5,1) (3,0.05)};
+
+\draw[blue, very thick] (0,0) rectangle ++(4,2);
+\end{scope}
+
+\fill[red] (S) circle (3pt);
+\draw[red] (S) -- ($(P)!-2.2!(S)$);
+\draw[->,>=latex,ultra thick,red] (S) -- (V);
+\fill[red] (P) circle (2pt);
+\fill[red] (Q) circle (2pt);
+
+\node[text width=5cm,align=center] at (4,-0.5) {\bf Le rayon coupe la boite et l'objet};
+\end{scope}
+
+
+\end{tikzpicture}

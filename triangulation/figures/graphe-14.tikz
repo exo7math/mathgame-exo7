@@ -1,0 +1,26 @@
+\begin{tikzpicture}[scale=2]
+
+\foreach \i in {0,1,2} {
+  \coordinate (P\i) at (\i,1);
+}
+
+\foreach \j in {0,1,2} {
+  \coordinate (Q\j) at (\j,0);
+}
+
+
+\foreach \i in {0,1,2} {
+  \foreach \j in {0,1,2} {
+  \draw[ultra thick, black!50] (P\i) -- (Q\j);
+  }
+}
+
+
+\foreach \i in {0,1,2}{
+  \path (P\i) node[scale=5,black!70]{.};
+}
+\foreach \j in {0,1,2}{
+  \path (Q\j) node[scale=5,black!70]{.};
+}
+\node at (1,-0.5) {\bf Le graphe $K_{3,3}$};
+\end{tikzpicture}

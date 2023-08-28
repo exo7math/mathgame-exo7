@@ -1,0 +1,66 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\coordinate (O) at (0,0);
+\coordinate (A) at (200:3);
+\coordinate (B) at (-70:3);
+\coordinate (C) at (60:3);
+\coordinate (D) at (2.6,-0.5);
+
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+% angles
+\draw[thick,double,blue] ([shift=(-25:1)] A) arc (-25:40:1) node [midway,right]{$\alpha_1$};
+\draw[thick,double,blue] ([shift=(-140:1)] C) arc (-140:-70:1) node [pos=0.3,below]{$\alpha_2$} node [pos=0.85,below]{$\alpha_3$};
+\draw[thick,double,blue] ([shift=(110:1)] D) arc (110:235:1) node [midway,right]{$\alpha_4$};
+\draw[thick,double,blue] ([shift=(55:1)] B) arc (55:155:1) node [pos=0.1,above]{$\alpha_5$} node [pos=0.65,above]{$\alpha_6$};
+
+\node at (0,-4) {\bf Mauvaise diagonale};
+\end{scope}
+
+
+
+\begin{scope}[xshift=11cm]
+\coordinate (O) at (0,0);
+\coordinate (A) at (200:3);
+\coordinate (B) at (-70:3);
+\coordinate (C) at (60:3);
+\coordinate (D) at (2.6,-0.5);
+
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (A) -- (D);
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+% angles
+\draw[thick,double,blue] ([shift=(-25:1)] A) arc (-25:40:1) node [pos=0.2,right]{$\beta_1$} node [pos=0.8,right]{$\beta_2$};
+\draw[thick,double,blue] ([shift=(-140:1)] C) arc (-140:-70:1) node [midway,below]{$\beta_3$};
+\draw[thick,double,blue] ([shift=(110:1)] D) arc (110:235:1) node [pos=0.3,left]{$\beta_4$} node [pos=0.8,left]{$\beta_5$};
+\draw[thick,double,blue] ([shift=(55:1)] B) arc (55:155:1) node [midway,below]{$\beta_6$};
+
+
+\node at (0,-4) {\bf Bonne diagonale};
+\end{scope}
+
+
+
+\end{tikzpicture}

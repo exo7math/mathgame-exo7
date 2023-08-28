@@ -1,0 +1,25 @@
+%\usetikzlibrary{patterns}
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+
+\tikzstyle{edge} = [draw, very thick, black!50]
+\tikzstyle{vertex} = [draw] 
+
+\begin{scope}[rotate=0]
+
+\draw[edge] (0:1)--(60:1)--(120:1)--(180:1);
+\draw[edge] (-60:1)--(-120:1);
+
+\draw[edge] (-60:1).. controls (2,0) ..(60:1);
+\draw[edge] (-120:1).. controls (-2,0) ..(120:1);
+\foreach \x in {0,60,...,360}{
+  \draw[edge] (0,0) -- (\x:1);
+  \draw[thick, fill=white] (\x:1) circle (0.15);
+}
+
+
+\draw[thick,fill=white] (0,0) circle (0.15);
+
+\end{scope}
+
+
+\end{tikzpicture}

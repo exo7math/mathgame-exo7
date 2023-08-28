@@ -1,0 +1,46 @@
+﻿\begin{tikzpicture}[baseline=(A.center)]
+\tikzset{node style ge/.style={circle}}
+\tikzset{BarreStyle/.style =  {opacity=.4,line width=6 mm, color=#1}}
+
+\begin{scope}
+
+\matrix (A) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	a_{11}& a_{12}& \dots & a_{1j}& \dots & a_{1p}\\
+	a_{21}& a_{22}& \dots & a_{2j}& \dots &a_{2p}\\
+	\dots & \dots & \dots & \dots & \dots & \dots \\
+	a_{i1}& a_{i2} & \dots & a_{ij}& \dots &a_{ip} \\
+	\dots & \dots & \dots & \dots & \dots & \dots \\
+	a_{n1}& a_{n2}& \dots & a_{nj}& \dots & a_{np}\\
+};
+
+ \draw [BarreStyle=blue!50,line cap=round] (A-1-1.north) to (A-6-1.south) ;
+ \draw [BarreStyle=blue!50,line cap=round] (A-1-2.north) to (A-6-2.south) ;
+ %\draw [BarreStyle=blue!50,line cap=round] (A-1-3.north) to (A-6-3.south) ;
+ \draw [BarreStyle=blue,line cap=round] (A-1-4.north) node[above,black,opacity=1]{$C_j$} to (A-6-4.south) ;
+% \draw [BarreStyle=blue!50,line cap=round] (A-1-5.north) to (A-6-5.south) ;
+ \draw [BarreStyle=blue!50,line cap=round] (A-1-6.north) to (A-6-6.south) ;
+\end{scope}
+
+
+\begin{scope}[xshift=8cm]
+
+\matrix (A) [matrix of math nodes, nodes = {node style ge}, column sep=0 mm,%
+left delimiter  = (,right delimiter = )]
+{
+	a_{11}& a_{12}& \dots & a_{1j}& \dots & a_{1p}\\
+	a_{21}& a_{22}& \dots & a_{2j}& \dots &a_{2p}\\
+	\dots & \dots & \dots & \dots & \dots & \dots \\
+	a_{i1}& a_{i2} & \dots & a_{ij}& \dots &a_{ip} \\
+	\dots & \dots & \dots & \dots & \dots & \dots \\
+	a_{n1}& a_{n2}& \dots & a_{nj}& \dots & a_{np}\\
+};
+
+ \draw [BarreStyle=orange!50,line cap=round] (A-1-1.west)  to (A-1-6.east) ;
+ \draw [BarreStyle=orange!50,line cap=round] (A-2-1.west)  to (A-2-6.east) ;
+ \draw [BarreStyle=orange,line cap=round] (A-4-1.west) node[left=3mm,black,opacity=1]{$L_i$} to (A-4-6.east) ;
+ \draw [BarreStyle=orange!50,line cap=round] (A-6-1.west)  to (A-6-6.east) ;
+\end{scope}
+
+\end{tikzpicture}

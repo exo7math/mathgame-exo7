@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=2]
+
+\foreach \i in {0,...,4} {
+  \coordinate (P\i) at (72*\i:1);
+}
+
+\foreach \i in {0,...,4} {
+  \foreach \j in {\i,...,4} {
+  \draw[ultra thick, black!50] (P\i) -- (P\j);
+  }
+}
+
+
+\foreach \i in {0,...,4}{
+  \path (P\i) node[scale=5,black!70]{.};
+}
+
+\end{tikzpicture}

@@ -1,0 +1,46 @@
+\begin{tikzpicture}[scale=1]
+
+\def\motif{
+\fill[red] (0,0) rectangle ++(1,0.2);
+\fill[green!70!black] (1,0) rectangle ++(1,0.2);
+\fill[blue] (2,0) rectangle ++(1,0.2);
+\fill[] (0,-0.05) rectangle (3,0);
+}
+
+\motif;
+
+
+\draw[very thick] (0,-0.01) -- ++(3,0);
+\node at (0,0) [below]{$0$};
+\node at (3,0) [below]{$1$};
+
+\begin{scope}[scale=1.1]
+\begin{scope}[xshift=7cm, yshift=0cm,  rotate=50, scale=0.5]
+\motif;
+\node at (0,0) [below left]{$A$};
+\node at (3,0) [above right]{$B$};
+\end{scope}
+
+\begin{scope}[opacity=0.3]
+\begin{scope}[xshift=7.95cm, yshift=1.15cm,  rotate=-50, scale=0.5]
+\motif;
+\end{scope}
+\begin{scope}[xshift=7cm, yshift=-0.72cm,  rotate=90, scale=0.25]
+\motif;
+\end{scope}
+\begin{scope}[xshift=8.89cm, yshift=0cm,  rotate=-90, scale=0.25]
+\motif;
+\end{scope}
+\begin{scope}[xshift=8.91cm, yshift=-0.75cm,  rotate=180, scale=0.65]
+\motif;
+\end{scope}
+\end{scope}
+\end{scope}
+
+\draw[very thick,->,>=latex,gray, line width=3pt] (3.2,0.5) to[pos=0.35,bend left=15] node[above,scale=1.1]{$\Phi$} ++(4.5,0.4) ;
+
+\draw[very thick,<-,>=latex,gray, line width=3pt] (3.2,0.1) to[pos=0.35,bend right=15] node[below,scale=1.1]{$\Psi$} ++(4.3,0.5) ;
+
+
+
+\end{tikzpicture}

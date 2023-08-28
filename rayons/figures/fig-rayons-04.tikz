@@ -1,0 +1,66 @@
+%\usetikzlibrary{calc, angles}
+\begin{tikzpicture}[scale=1]
+
+\tikzset{
+  line/.style = {
+    shorten <=-3mm, shorten >=-3mm
+  },
+  vector/.style = {
+    thick,-latex
+  },
+  dot/.style = {
+    insert path={
+      node[scale=2]{.}
+    }
+  },
+  perp/.style = {
+    draw,
+    angle eccentricity=.5,
+    angle radius=2mm,
+  }
+}
+
+ % les coordonnées des points
+ \path
+   (3,1) coordinate (P)
+   (2,3) coordinate (B)
+   ($(B)!3cm!(P)$) coordinate (A)
+   ($(B)!2cm!(P)$) coordinate (N)
+   ($(N)!1cm!90:(B)$) coordinate (n)
+ ;
+ % les droites
+ \draw
+   (A) edge[line] (B)
+ ;
+ % les vecteurs
+ \draw
+   pic[perp,gray]{right angle=n--N--A}
+   (N) edge[vector] node[above, sloped]{$\vec{n}$} (n)
+ ;
+ % les points
+ \path
+   (A) [dot] node[above right]{$A$}
+   (B) [dot] node[above right]{$B$}
+ ;
+
+
+  % eye from Izaak Neutelings https://tikz.net/hyperbola/
+  \def\le{0.8}  % eye size eye
+  \def\ange{25} % eye opening angle
+  \def\lb{1.2}  % outgoing beam length
+  \def\ang{170} % outgoing beam scattering
+  \begin{scope}[yshift=1.4cm, shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+    \coordinate (O) at (0,0);    
+   \draw[->,>=latex, thick] (O) -- ++ (2,0) node[pos=0.7,below,sloped]{$\vec{v}$};
+    \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+    \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+    %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+    \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+
+  \end{scope}
+
+\draw[<-,>=latex,thick,blue] (2.1,2.5) to[bend left=15] (-1.0,2.9) node[left] {face visible};
+\draw[<-,>=latex,thick, blue] (2.7,1.8) to[bend left=15] (6,2) node[right] {face non visible};
+
+
+\end{tikzpicture}

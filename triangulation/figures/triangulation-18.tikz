@@ -1,0 +1,17 @@
+﻿\begin{tikzpicture}[scale=2]
+
+\coordinate (A) at (0,0);
+\coordinate (B) at (3,0.5);
+\coordinate (C) at (1,2);
+\draw[red, fill=red!5, very thick] (A) -- (B) -- (C) -- cycle;
+\node at (A) [below] {$A$};
+\node at (B) [right] {$B$};
+\node at (C) [above] {$C$};
+
+\draw[->,>=latex,red,ultra thick] (A) -- (B) node[pos=0.7,below]{$\vec{AB}$};
+\draw[->,>=latex,red,ultra thick] (A) -- (C) node[pos=0.7,left]{$\vec{AC}$};
+
+\coordinate (P) at (barycentric cs:A=1,B=1,C=1);
+\node[scale=1.2] at (P) {$\mathcal{A}_{\Delta}(ABC)$};
+
+\end{tikzpicture}

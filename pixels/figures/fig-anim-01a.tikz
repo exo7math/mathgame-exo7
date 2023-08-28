@@ -1,0 +1,10 @@
+﻿\begin{tikzpicture}[scale=1]
+\draw (0,0)  rectangle (10,6);
+
+ \filldraw[color=blue!30]   (0,0) -- plot[domain=0:10,smooth] (\x,{2.2+0.2*sin(\x r)}) -- (10,0) -- cycle;
+
+\begin{scope}[xshift=3cm, yshift=2cm,xscale=-1, ]
+  \duck
+\end{scope}
+
+\end{tikzpicture}

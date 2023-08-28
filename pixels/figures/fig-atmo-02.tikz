@@ -1,0 +1,17 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\fill[fill=black!10] (0,0) rectangle (10,6);
+
+
+\filldraw[black!20] (0,0) -- (0,4.5) .. controls ++(1,-0.5) and ++(-2,1) .. (10,4) --(10,0) --cycle;
+
+\filldraw[black!40] (0,0) -- (0,4) .. controls ++(2,0.5) and ++(-3,0.5) .. (10,3.5) --(10,0) --cycle;
+
+\filldraw[black!60] (0,0) -- (0,3) .. controls ++(2,1) and ++(-3,0.5) .. (10,2.5) --(10,0) --cycle;
+
+\filldraw[black!80] (0,0) -- (0,2) .. controls ++(1,0.5) and ++(-2,-1) .. (10,2) --(10,0) --cycle;
+
+
+\draw[] (0,0) rectangle (10,6);
+
+\end{tikzpicture}

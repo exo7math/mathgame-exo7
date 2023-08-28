@@ -1,0 +1,51 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}[xshift=14cm]
+\coordinate (O1) at (0,0);
+\coordinate (A) at (180:3);
+\coordinate (B) at (-60:3);
+\coordinate (C) at (50:3);
+\coordinate (D) at (5,0);
+
+% Second cercle à la main
+\coordinate (O2) at (2.45,-0.2);
+
+\fill[blue!10] (O1) -- ++(115:3.25) -- ++(-2,0) -- ++(0,-5.95) -- (-120:3.5) -- cycle ;
+\fill[green!10] (O2) -- ++(53:3.7) -- ++(1.5,0) -- ++(0,-5.7) -- ($(O2) + (-53:3.4)$) -- cycle ;
+\fill[red!10] (O1) -- (O2) -- ++(53:3.7) -- (115:3.25) -- cycle ;
+\fill[yellow!10] (O1) -- (O2) -- ++(-53:3.4) -- (-120:3.5) -- cycle ;
+
+\draw[gray!50,thick] (O1) circle (3);
+\def\r{2.58}
+\draw[gray!50,thick] (O2) circle (\r);
+
+%\fill[green!50!red!10] (O1) -- ++(65:2.2) -- ++(2,0) -- ++(0,-5.0) -- (-75:3.2) -- cycle ;
+
+
+\draw[red, ultra thick] (A) -- (B) -- (D) -- (C) -- cycle;
+\draw[red, ultra thick] (B) -- (C);
+
+
+\draw[green!70!black, ultra thick] (O1)  -- ($(A)!0.5!(B)$) -- ([turn]0:2) node (c){};
+\draw[green!70!black, ultra thick] (O1)  -- ($(A)!0.5!(C)$) -- ([turn]0:2) node (b){};
+\draw[green!70!black, ultra thick] (O1)  -- ($(B)!0.5!(C)$) -- (O2);
+\draw[green!70!black, ultra thick] (O2)  -- ($(B)!0.5!(D)$) -- ([turn]0:2) node (cc){};
+\draw[green!70!black, ultra thick] (O2)  -- ($(C)!0.5!(D)$) -- ([turn]0:2) node (bb){};
+
+\node at (A) [left] {$A$};
+\node at (B) [below] {$B$};
+\node at (C) [above] {$C$};
+\node at (D) [right] {$D$};
+
+\foreach \P in {A,B,C,D} {
+  \fill[black!80] (\P) circle (3pt);
+}
+
+\foreach \P in {O1,O2} {
+  \fill[green!70!black] (\P) circle (3pt);
+}
+
+\node at (1.5,-4) {\bf Bonne diagonale};
+\end{scope}
+
+\end{tikzpicture}

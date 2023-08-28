@@ -1,0 +1,58 @@
+﻿\begin{tikzpicture}[scale=2]
+
+
+
+\def\mytheta{40};
+\def\myomega{-60};
+
+\draw[ultra thick, lightgray] (-2,0) -- (2,0);
+
+\draw[] (0,0) -- (0,2);
+
+
+\draw[->,>=latex, very thick, orange] (0,0) -- (90+\mytheta:2) node[above]{$\vec \ell$};
+
+\draw[lightgray, dashed] (0,0) -- (90+\myomega:3);
+
+\draw[->,>=latex, very thick, magenta] (0,0) -- (90+\myomega:2) node[below right]{$\vec v$};
+
+
+\draw[->,>=latex, shorten <= 3pt, very thick, brown] (0,0) -- (90+0.5*\mytheta+0.5*\myomega:2) node[above]{$\vec h$};
+
+
+\draw[red,double] (90+\mytheta:1) arc({90+\mytheta}:90+0.5*\mytheta+0.5*\myomega:1);
+
+\draw[red,double] (90+\myomega:0.9) arc({90+\myomega}:90+0.5*\mytheta+0.5*\myomega:0.9);
+
+\coordinate (P) at (0,0);
+\node[blue, scale=3] at (P) {.};
+
+
+  % eye from Izaak Neutelings https://tikz.net/hyperbola/
+  \def\le{0.4}  % eye size eye
+  \def\ange{25} % eye opening angle
+  \def\lb{3.5}  % outgoing beam length
+  \def\ang{90+\myomega} % outgoing beam scattering
+  \begin{scope}[shift={(\ang:\lb+1.2*\le)},rotate=\ang+180]
+    \draw[thick] (\ange:\le) -- (0,0) -- (-\ange:\le);
+    \draw[thick] (\ange:0.85*\le) arc(\ange:-\ange:0.85*\le);
+    %\draw[fill,brown] (0.75*\le,0) ellipse ({0.10*\le} and {0.21*\le});
+    \draw[fill] (0.8*\le,0) ellipse ({0.08*\le} and {0.16*\le});
+  \end{scope}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{tikzpicture}

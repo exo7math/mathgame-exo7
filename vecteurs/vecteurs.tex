@@ -1,0 +1,636 @@
+\documentclass[11pt,class=report,crop=false]{standalone}
+\usepackage[screen]{../mathgame}
+
+\begin{document}
+
+\newcommand{\myparallel}{/\!\!/}
+
+%====================================================================
+\chapitre{Vecteurs}
+%====================================================================
+
+%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
+%
+%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
+%
+%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+\objectifs{Nous étudions les vecteurs du plan, de l'espace et en n'importe quelle dimension.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vecteurs du plan}
+
+\index{vecteur}
+
+%--------------------------------------------------------------------
+\subsection{Opérations sur les vecteurs}
+
+Dans le plan, on considère $(O, \vec i, \vec j)$ un repère orthonormé direct.
+Un \defi{vecteur} $\vec u$ est défini par des coordonnées $(x, y) \in \Rr^2$ par rapport à ce repère.
+Cela correspond à l'égalité :
+$$
+    \vec u = x \vec i + y \vec j.
+$$
+
+\myfigure{0.8}{
+  \tikzinput{fig-vecteurs-00}
+} 
+
+On peut aussi noter les coordonnées verticalement :
+$$
+    \vec u = \begin{pmatrix} x \\ y \end{pmatrix}.
+$$
+
+
+Plusieurs opérations sont définies sur les vecteurs.
+Soient $\vec u = (x,y)$ et $\vec v = (x',y')$ deux vecteurs, et soit $\lambda \in \Rr$ un scalaire.
+\begin{itemize}
+    \item L'\defi{addition} de $\vec u$ et $\vec v$ est définie par
+        \[ \vec u + \vec v = (x+x', y+y'). \]
+    \item La \defi{multiplication par un scalaire} $\lambda$ est définie par
+        \[ \lambda \vec u = (\lambda x, \lambda y). \]
+    \item Le \defi{vecteur nul} est défini par
+        \[ \vec 0 = (0,0). \]
+    \item Le \defi{vecteur opposé} de $\vec u$ est défini par
+        \[ -\vec u = (-x,-y). \]
+\end{itemize}
+
+Deux vecteurs $\vec u$ et $\vec v$ sont \defi{colinéaires} si $\vec u = \lambda \vec v$ (ou bien $\vec v = \lambda \vec u$) pour un certain scalaire $\lambda \in \Rr$ .
+
+\myfigure{0.9}{
+  \tikzinput{fig-vecteurs-01}
+} 
+
+
+%--------------------------------------------------------------------
+\subsection{Norme}
+
+La \defi{norme}\index{norme} d'un vecteur $\vec u=(x,y)$ est définie par
+$$
+    \|\vec u\| = \sqrt{x^2 + y^2}.
+$$
+La norme mesure la distance entre le point $(x,y)\in\Rr^2$ et l'origine $O=(0,0)$.
+
+\myfigure{0.8}{
+  \tikzinput{fig-vecteurs-02}
+} 
+
+
+On dira qu'un vecteur est \defi{unitaire}\index{vecteur!unitaire} si sa norme vaut $1$. Autrement dit, $\vec u = (x,y)$ est unitaire si et seulement si $x^2 + y^2 = 1$.
+Ci-dessous des exemples de vecteurs unitaires.
+\myfigure{0.8}{
+  \tikzinput{fig-vecteurs-03}
+} 
+
+Soit $\vec u$ un vecteur non nul quelconque. La \defi{normalisation} de $\vec u$ est le vecteur unitaire $\frac{\vec u}{\|\vec u\|}$.   
+
+
+
+%--------------------------------------------------------------------
+\subsection{Produit scalaire}
+
+
+Le \defi{produit scalaire}\index{produit!scalaire} de deux vecteurs $\vec u$ et $\vec v$ est défini par
+$$
+    \vec u \cdot \vec v = x x' + y y'.
+$$
+Le produit scalaire mesure à quel point deux vecteurs ont la même direction.
+On le note aussi $\langle \vec u \mid \vec v \rangle$.
+
+Le résultat fondamental est : 
+\begin{proposition}
+    \sauteligne
+    \mybox{$\vec u \cdot \vec v = \|\vec u\| \; \|\vec v\| \cos(\theta)$}
+    où $\theta$ est l'angle entre $\vec u$ et $\vec v$.
+\end{proposition}
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-04}
+} 
+
+Cela entraîne :
+\begin{proposition}
+  $\vec u$ et $\vec v$ sont deux vecteurs orthogonaux si et seulement si $\vec u \cdot \vec v = 0$.
+\end{proposition}
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-05}
+} 
+
+
+Inversement cette formule permet de calculer l'angle (au signe près) entre deux vecteurs à l'aide du produit scalaire :
+$\cos(\theta) = \frac{\vec u \cdot \vec v}{\|\vec u\| \; \|\vec v\|}$.
+La fonction $\arccos$ permet de retrouver un angle (sans son signe), connaissant son cosinus. Ainsi l'angle $\theta$, en valeur absolue, vaut :
+$$
+    |\theta| = \arccos \left( \frac{\vec u \cdot \vec v}{\|\vec u\| \; \|\vec v\|} \right).
+$$
+
+\begin{exemple}
+Quel est l'angle entre les vecteurs $\vec u = (1,2)$ et $\vec v = (-1,4)$ ?
+
+\myfigure{0.8}{
+  \tikzinput{fig-vecteurs-06}
+} 
+
+
+On a :
+\begin{itemize}
+    \item $\vec u \cdot \vec v = 1 \times (-1) + 2 \times 4 = 7$.
+    \item $\| \vec u \| = \sqrt{1^2 + 2^2} = \sqrt{5}$.
+    \item $\| \vec v \| = \sqrt{(-1)^2 + 4^2} = \sqrt{17}$.
+    \item Comme $\vec u \cdot \vec v = \|\vec u\| \; \|\vec v\| \cos(\theta)$
+alors $\cos \theta = \frac{7}{\sqrt{5} \sqrt{17}}$.
+    
+
+    \item Enfin, $\theta = \arccos \frac{7}{\sqrt{5} \sqrt{17}} \simeq 0.708$ radians. Soit $\theta \simeq \ang{40.6}$. (Attention au choix de l'unité d'angle sur votre calculatrice !)
+\end{itemize}
+
+\end{exemple}
+
+\begin{exemple}
+Fixons un vecteur $\vec u$.
+On considère le vecteur $\vec v$ qui est obtenu en tournant $\vec u$ d'un angle $\theta$ dans le sens trigonométrique.
+On a alors :
+$$
+    \vec u \cdot \vec v = \|\vec u\| \; \|\vec v\| \cos(\theta).
+$$
+
+\begin{itemize}
+    \item Le produit scalaire est donc nul si et seulement si $\cos \theta = 0$, c'est-à-dire lorsque $\vec u$ et $\vec v$ sont orthogonaux.
+    \item Le produit scalaire est maximal lorsque $\cos\theta = 1$, c'est-à-dire, $\vec u$ et $\vec v$ sont colinéaires, dirigés dans le même sens.
+    \item Le produit scalaire est minimal lorsque $\cos\theta = -1$, c'est-à-dire, $\vec u$ et $\vec v$ sont colinéaires, dirigés dans des sens opposés.
+\end{itemize}
+
+Ci-dessous un vecteur $\vec u$ fixé et le signe du produit scalaire $\vec u \cdot \vec v$ pour différents vecteurs $\vec v$.
+\myfigure{0.8}{
+  \tikzinput{fig-vecteurs-07}
+} 
+
+\end{exemple}
+
+
+%--------------------------------------------------------------------
+\subsection{Applications}
+
+\textbf{Vecteur normal à une droite.}
+
+La droite d'équation $ax+by+c=0$ admet pour vecteur directeur le vecteur $\vec u = (-b,a)$. Ainsi un vecteur orthogonal à la droite est le vecteur $\vec n = (a,b)$ (on parle aussi de \og{}vecteur normal\fg{}\index{vecteur!normal}, sans exiger qu'il soit de norme $1$). En effet le produit scalaire de $\vec u$ et $\vec n$ est nul :
+$$
+    \vec u \cdot \vec n = (-b,a) \cdot (a,b) = -ba + ab = 0.
+$$
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-08}
+} 
+
+
+
+
+Une application est le résultat suivant.
+\begin{proposition}
+La distance entre un point $A(x_A,y_A)$ quelconque et la droite $\mathcal{D}$ d'équation $ax+by+c=0$ est donnée par :
+$$
+    d(A,\mathcal{D}) = \frac{\left|ax_A + by_A + c\right|}{\sqrt{a^2 + b^2}}.
+$$
+\end{proposition}
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-09}
+} 
+
+
+\begin{proof}
+$\vec n = (a,b)$ est un vecteur orthogonal à la droite $\mathcal{D}$.
+Notons $H$ le projeté orthogonal de $A$ sur la droite.
+La distance $d$ cherchée est la distance $AH$.     
+Calculons la valeur absolue du produit scalaire de $\vec{HA}$ et $\vec n$ de deux manières :
+\begin{itemize}
+    \item d'une part $\vec{HA}$ et $\vec n$ sont colinéaires, donc 
+    $$| \vec{HA} \cdot \vec n |    =  \| \vec{HA} \| \; \| \vec n \| = d \sqrt{a^2+b^2}$$
+    \item d'autre part, à l'aide des coordonnées :
+    $$\vec{HA}  \cdot  \vec n  = \begin{pmatrix}
+    x_A - x_H \\
+    y_A - y_H
+    \end{pmatrix} \cdot \begin{pmatrix}
+    a \\
+    b
+    \end{pmatrix} = (x_A - x_H) a + (y_A - y_H) b = ax_A + by_A + c$$
+    On a utilisé que $H$ est un point de la droite $\mathcal{D}$ donc $ax_H + by_H + c = 0$.    
+\end{itemize}
+On en déduit que :
+$$
+    d = \frac{\left|ax_A + by_A + c\right|}{\sqrt{a^2 + b^2}}.
+$$
+
+\end{proof}
+
+\textbf{Projection orthogonale.}
+
+Fixons un vecteur $\vec u$ non nul quelconque.
+Nous pouvons décomposer n'importe quel vecteur $\vec v$ en deux parties :
+$$\vec v  = \vec{v_{\myparallel}} + \vec{v_{\perp}}$$
+où $\vec{v_{\myparallel}}$ est colinéaire à $\vec u$ et $\vec{v_{\perp}}$ est orthogonal à $\vec u$.
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-10}
+} 
+
+Le vecteur $\vec{v_{\myparallel}}$ est appelé \defi{projeté orthogonal} de $\vec v$ sur $\vec u$. Il se calcule par :
+$$
+    \vec{v_{\myparallel}} = \frac{\vec u \cdot \vec v}{\|\vec u\|^2} \vec u.
+$$
+
+La preuve découle simplement du fait que dans le triangle rectangle suivant on a 
+$AH = AB \cos \theta$.
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-11}
+} 
+
+Le vecteur $\vec{v_{\perp}}$ est alors :
+$$
+    \vec{v_{\perp}} = \vec v - \vec{v_{\myparallel}} = \vec v - \frac{\vec u \cdot \vec v}{\|\vec u\|^2} \vec u.
+$$
+
+\begin{exemple}
+Soit $\vec u = (3,1)$. C'est un vecteur de norme $\| \vec u \| = \sqrt{10}$.
+Soit $\vec v = (x,y)$ un vecteur quelconque.
+On a :
+$$\vec{v_{\myparallel}} =
+\frac{\vec u \cdot \vec v}{\|\vec u\|^2} \vec u
+= \frac{1}{10}(3 x +  y) \vec u
+$$
+
+On pourrait calculer $\vec{v_{\perp}}$ à l'aide de la formule 
+$\vec v = \vec{v_{\myparallel}}  + \vec{v_{\perp}}$.
+
+On peut aussi considérer $\vec{u'}$, un vecteur orthogonal à $\vec u$, on a :
+$\vec{u'} = (-1,3)$. Le projeté orthogonal de $\vec v$ sur $\vec u'$ est :
+$$\vec{v_{\perp}} =
+\frac{\vec{u'} \cdot \vec v}{\|\vec {u'}\|^2} \vec {u'}
+= \frac{1}{10}(- x + 3y) \vec {u'}
+$$
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-12}
+} 
+
+\end{exemple}
+
+
+
+\textbf{Intensité lumineuse.}
+
+L'intensité lumineuse arrivant en $P$ sur un élément de surface est bien sûr proportionnelle à l'intensité $i_0$ émise, mais elle dépend aussi de l'angle d'incidence.
+
+Notons :
+\begin{itemize}
+    \item $\vec \ell$ : le vecteur unitaire issu de $P$ dirigé vers la source lumineuse,
+    \item $\vec n$ : le vecteur unitaire orthogonal à la surface élémentaire.
+\end{itemize}
+
+\myfigure{1}{
+  \tikzinput{fig-vecteurs-13}
+} 
+
+Alors l'intensité lumineuse $i$ reçue en $P$ est donnée par :
+$$
+    i = i_0 \vec \ell \cdot \vec n = i_0 \cos \theta.
+$$
+où $\theta$ est l'angle entre $\vec \ell$ et $\vec n$.
+
+\begin{exemple}
+Considérons un angle d'incidence $\theta = \frac\pi4 = \ang{45}$.
+Alors $i = i_0 \cos \frac{\pi}{4} = i_0 \frac{\sqrt{2}}{2}$.
+L'intensité reçue est environ 70\% de l'intensité émise.
+\end{exemple}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vecteurs dans l'espace}
+
+\index{vecteur}
+
+%--------------------------------------------------------------------
+\subsection{Opérations sur les vecteurs}
+
+Considérons l'espace $\Rr^3$ muni du repère orthonormé direct $(O, \vec{i}, \vec{j}, \vec{k})$.
+
+\begin{itemize}
+    \item Un vecteur $\vec u$ de l'espace est un triplet $(x,y,z)$ de nombres réels de sorte que $\vec u = x \vec{i} + y \vec{j} + z \vec{k}$.
+
+    \myfigure{1}{
+      \tikzinput{fig-vecteurs3D-01}
+    } 
+
+    \item Opérations. Pour $\vec u = (x,y,z)$ et $\vec v = (x',y',z')$ et $\lambda \in \Rr$ :
+$$
+    \vec u + \vec v = \begin{pmatrix}x \\ y \\ z \end{pmatrix} + \begin{pmatrix}x' \\ y' \\ z' \end{pmatrix} = \begin{pmatrix}x + x' \\ y + y' \\ z + z' \end{pmatrix} 
+    \qquad
+    \lambda \vec u = \lambda \begin{pmatrix}x \\ y \\ z \end{pmatrix} = \begin{pmatrix}\lambda x \\ \lambda y \\ \lambda z \end{pmatrix}    
+$$    
+
+    \item Le produit scalaire est défini par :
+$$
+    \vec u \cdot \vec v = \begin{pmatrix}x \\ y \\ z \end{pmatrix} \cdot \begin{pmatrix}x' \\ y' \\ z' \end{pmatrix} = x x' + y y' + z z'.
+$$
+  \item La norme d'un vecteur $\vec u = (x,y,z)$ se calcule par :
+$$
+    \|\vec u\| = \sqrt{\vec u \cdot \vec u} = \sqrt{x^2 + y^2 + z^2}.
+$$
+
+  \item Deux vecteurs $\vec u$ et $\vec v$ de l'espace sont orthogonaux si et seulement si $\vec u \cdot \vec v = 0$.
+
+\item L'angle $\theta$ (non orienté) entre deux vecteurs $\vec u$ et $\vec v$ s'obtient par la relation :
+$$\cos \theta = \frac{\vec u \cdot \vec v}{\|\vec u\| \; \|\vec v\|}.$$
+\end{itemize}
+
+
+%--------------------------------------------------------------------
+\subsection{Produit vectoriel}
+
+Le \defi{produit vectoriel}\index{produit!vectoriel} $\vec u \wedge \vec v$ est un vecteur orthogonal à $\vec u$ et $\vec v$.
+Il se calcule par la formule :
+$$\vec u \wedge \vec v = \begin{pmatrix} x \\ y \\ z \end{pmatrix} \wedge \begin{pmatrix} x' \\ y' \\ z' \end{pmatrix} =
+\begin{pmatrix}
+    y z' - z y' \\
+    z x' - x z' \\
+    x y' - y x'
+\end{pmatrix}
+$$
+
+\myfigure{0.5}{
+  \tikzinput{fig-vecteurs3D-02}
+} 
+
+Vous rencontrerez peut-être aussi la notation anglo-saxonne $\vec u \times \vec v$ (\emph{cross-product}).
+
+\begin{exemple}
+Soient :
+$$
+    \vec u = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} \qquad
+    \vec v = \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix}
+$$
+Alors :
+$$
+    \vec u \wedge \vec v = \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} \wedge \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} =
+    \begin{pmatrix}
+        2 \times 6 - 3 \times 5 \\
+        3 \times 4 - 1 \times 6 \\
+        1 \times 5 - 2 \times 4
+    \end{pmatrix} =
+    \begin{pmatrix}
+        -3 \\
+        6 \\
+        -3
+    \end{pmatrix}
+$$
+
+\end{exemple}
+
+Le triplet $(\vec u, \vec v, \vec u \wedge \vec v)$ est un repère direct de $\Rr^3$ ($\vec u$ et $\vec v$ n'ont pas besoin d'être orthogonaux). On distingue un repère direct de $\Rr^3$ d'un repère indirect de $\Rr^3$ par la \og{}règle de la main droite\fg{}.
+
+    \myfigure{1}{
+      \tikzinput{fig-vecteurs3D-03}
+    } 
+
+    \myfigure{1}{
+      \tikzinput{fig-maindroite}
+    }    
+
+
+\begin{proposition}
+  \sauteligne
+\begin{itemize}
+    \item Le produit vectoriel $\vec u \wedge \vec v$ est un vecteur orthogonal à $\vec u$ et à $\vec v$.
+    \item Sa norme vaut :
+$$
+    \|\vec u \wedge \vec v\| = \|\vec u\| \; \|\vec v\| \; |\sin \theta|.$$
+où $\theta$ est l'angle entre $\vec u$ et $\vec v$.
+  \item La norme du produit vectoriel $\vec u \wedge \vec v$ est égale à l'aire du parallélogramme formé par $\vec u$ et $\vec v$.
+\end{itemize}
+\end{proposition}
+
+\myfigure{0.5}{
+  \tikzinput{fig-vecteurs3D-04}
+} 
+
+\begin{exemple}
+Soient $\vec u = (2,-1,-2)$ et $\vec v = (3,-1,1)$.
+\begin{enumerate}
+    \item Le produit vectoriel $\vec w = \vec u \wedge \vec v$ 
+    est 
+    $$\vec w  = \begin{pmatrix} 2 \\ -1 \\ -2 \end{pmatrix} \wedge \begin{pmatrix} 3 \\ -1 \\ 1 \end{pmatrix} =
+    \begin{pmatrix}
+        -3 \\
+        -8 \\
+        1
+    \end{pmatrix}$$
+    
+    \item On peut vérifier que $\vec w$ est orthogonal à $\vec u$ et à $\vec v$. En effet : $\vec u \cdot \vec w = 0$ et $\vec v \cdot \vec w = 0$.
+    
+    \item L'aire du parallélogramme (de l'espace) formé par $\vec u$ et $\vec v$ est :
+    $$\mathcal{A} = \| \vec w \| = \sqrt{(-3)^2 + (-8)^2 + 1^2} = \sqrt{74}$$
+
+  \end{enumerate}
+\end{exemple}
+
+\begin{exemple}
+Déterminons une équation $ax+by+cz+d$ du plan $\mathcal{P}$ contenant les trois points $A(1,0,1)$, $B(1,3,0)$ et $C(2,1,2)$.
+Si $\vec n = \left(\begin{smallmatrix}
+    a \\ b \\ c    
+\end{smallmatrix}\right)$ est un vecteur normal à un plan alors une équation de ce plan est $ax+by+cz+d=0$.
+
+
+\begin{itemize}
+    \item On calcule les vecteurs $\vec{AB} = (0,3,-1)$ et $\vec{AC} =(1,1,1)$.
+    \item On calcule le produit vectoriel $\vec n = \vec{AB} \wedge \vec{AC} = (4,-1,-3)$. C'est un vecteur normal au plan $\mathcal{P}$.
+    Ainsi $a=4$, $b=-1$, $c=-3$.
+    \item On détermine $d$ en utilisant les coordonnées d'un point du plan. Par exemple  $A \in \mathcal{P}$ donc $a x_A + b y_A + c z_A+d=0$, donc $a \times 1 + b \times 0 + c \times 1+d=0$, d'où $d=-1$.
+    \item Conclusion : une équation du plan est $4x-y-3z-1=0$.
+\end{itemize}
+
+\end{exemple}
+
+
+%--------------------------------------------------------------------
+\subsection{Produit mixte}
+
+Le \defi{produit mixte}\index{produit!mixte} ou \defi{déterminant}\index{determinant@déterminant} des vecteurs $\vec u$, $\vec v$ et $\vec w$ est le nombre défini par :
+$$\det(\vec u, \vec v, \vec w) = \vec u \cdot (\vec v \wedge \vec w).$$
+Il est donc formé par un produit vectoriel suivi d'un produit scalaire. Le nom anglais est \emph{triple product}.
+\begin{proposition}
+Le produit mixte mesure le volume du parallélépipède formé par les trois vecteurs.
+\end{proposition}
+
+\myfigure{0.5}{
+  \tikzinput{fig-vecteurs3D-05}
+} 
+
+\begin{exemple}
+Quel est le volume du parallélépipède formé par les vecteurs $\vec u = (1,1,0)$, $\vec v = (1,1,1)$ et $\vec w = (1,2,3)$ ?
+
+\myfigure{0.5}{
+  \tikzinput{fig-vecteurs3D-06}
+} 
+
+\begin{itemize}
+    \item On calcule le produit vectoriel $\vec v \wedge \vec w = (1,-2,1)$.
+    \item On calcule le produit mixte $\det(\vec u, \vec v, \vec w) = \vec u \cdot (\vec v \wedge \vec w) = 1 \times 1 + 1 \times (-2) + 0 \times 1 = -1$.
+    \item Conclusion : le volume du parallélépipède est $-1$. Son volume géométrique vaut donc $1$. (Le fait que le volume algébrique soit négatif est dû au fait que les trois vecteurs forment une base indirecte.)
+\end{itemize}
+
+\end{exemple}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Cas général}
+
+%--------------------------------------------------------------------
+\subsection{Espace vectoriel}
+
+\index{vecteur!espace vectoriel}
+
+On généralise ces notions en considérant des espaces de dimension $n$
+pour tout entier positif $n = 1,\, 2,\, 3,\, 4,\ldots$
+Il n'y a aucune difficulté mathématique excepté le fait qu'il n'est plus possible de visualiser les vecteurs à partir de la dimension $4$.
+Les éléments de l'espace de dimension $n$ sont les $n$-uples
+$\left(\begin{smallmatrix} x_1\\ x_2 \\ \vdots \\ x_n \end{smallmatrix}\right)$
+de nombres réels. L'espace de dimension $n$ est noté $\Rr^n$.
+Comme en dimensions $2$ et $3$, le $n$-uple
+$\left(\begin{smallmatrix} x_1\\x_2 \\  \vdots \\ x_n \end{smallmatrix}\right)$
+dénote aussi bien un point qu'un vecteur de l'espace de dimension $n$.
+
+\bigskip
+
+Soient $u = \left(\begin{smallmatrix} x_1\\ x_2\\\vdots \\ x_n \end{smallmatrix}\right)$
+et $v =\left(\begin{smallmatrix} y_1\\ y_2\\\vdots \\ y_n \end{smallmatrix}\right)$ deux vecteurs de $\Rr^n$.
+L'usage est d'abandonner la flèche pour noter un vecteur.
+
+\begin{definition}
+\sauteligne
+\begin{itemize}
+\item \defi{Somme de deux vecteurs.}
+Leur somme est par définition le vecteur $u + v = \begin{pmatrix}x_1 + y_1 \\ \vdots \\ x_n + y_n\end{pmatrix}.$
+
+\item \defi{Produit d'un vecteur par un scalaire.} Soit $\lambda\in \Rr$
+(appelé un \defi{scalaire}) :
+$\lambda  u = \begin{pmatrix}\lambda x_1 \\ \vdots \\ \lambda x_n \end{pmatrix}.$
+
+\item Le \defi{vecteur nul}\index{vecteur!nul} de $\Rr^n$ est le vecteur
+$0 = \left(\begin{smallmatrix} 0 \\ \vdots \\ 0 \end{smallmatrix}\right)$.
+
+\item L'\defi{opposé} du vecteur $u = \left(\begin{smallmatrix} x_1\\ \vdots \\ x_n \end{smallmatrix}\right)$
+est le vecteur $-u = \left(\begin{smallmatrix} -x_1\\ \vdots \\ -x_n \end{smallmatrix}\right)$.
+\end{itemize}
+\end{definition}
+
+\begin{theoreme}
+Soient $u = \left(\begin{smallmatrix} x_1\\ \vdots \\ x_n \end{smallmatrix}\right)$, $v = \left(\begin{smallmatrix} y_1\\ \vdots \\ y_n \end{smallmatrix}\right)$
+et $w = \left(\begin{smallmatrix} z_1\\ \vdots \\ z_n \end{smallmatrix}\right)$ des vecteurs de $\Rr^n$
+et $\lambda, \mu \in \Rr$. Alors :
+\begin{enumerate}
+\item $u + v = v + u$
+\item $u + (v+w) = (u+v) +w$
+\item $u + 0 = 0 + u = u$
+\item $u + (-u) = 0$
+\item $1 u = u$
+\item $\lambda (\mu u) = (\lambda\mu )u$
+\item $\lambda (u+v) = \lambda u + \lambda v$
+\item $(\lambda + \mu ) u = \lambda u + \mu u$
+\end{enumerate}
+\end{theoreme}
+
+
+
+Chacune de ces propriétés découle directement de la définition de la somme
+et de la multiplication par un scalaire. Ces huit propriétés font de $\Rr^n$ un
+\defi{espace vectoriel}. Dans le cadre général, ce sont ces huit propriétés qui définissent
+ce qu'est un espace vectoriel.
+
+%--------------------------------------------------------------------
+\subsection{Norme et produit scalaire}
+
+\begin{itemize}
+    \item Le \defi{produit scalaire}\index{produit!scalaire} usuel de $u=(x_1,\ldots ,x_n)$ et $v=(y_1,\ldots ,y_n)$, noté $u \cdot v$ (ou bien parfois $\langle u \mid v\rangle$), est défini par
+  $$u \cdot v= x_1y_1+\dots +x_ny_n.$$
+  
+    \item La \defi{norme euclidienne}\index{norme} sur $\Rr^n$ est la norme associée à ce produit scalaire. Pour $u\in \Rr^n$, la norme euclidienne de $u$, notée $\| u\|$, est définie par
+  $$\| u \| = \sqrt{u \cdot u} = \sqrt{x_1^2+\cdots +x_n^2}.$$
+  
+    \item La \defi{distance}\index{distance} entre le point $A = (a_1,\ldots ,a_n)$ et le point $M=(x_1,\dots ,x_n)$ est 
+    $$\|M-A\|=\sqrt{(x_1-a_1)^2+\cdots +(x_n-a_n)^2}.$$
+\end{itemize}  
+
+
+Terminons avec une inégalité qui majore le produit scalaire de deux vecteurs en fonction de leurs normes.
+\begin{theoreme}[Inégalité de Cauchy-Schwarz]
+    Pour $u$ et $v$ deux vecteurs de $\Rr^n$, on a :
+$$ | u \cdot v | \le \| u \| \; \| v \|.$$
+\end{theoreme}
+
+
+%--------------------------------------------------------------------
+\subsection{Coordonnées}
+
+\begin{definition}
+Les vecteurs
+$$
+e_1 = \begin{pmatrix} 1\\0\\0\\\vdots\\0\end{pmatrix}\qquad
+e_2 = \begin{pmatrix} 0\\1\\0\\\vdots\\0\end{pmatrix}\qquad\cdots\qquad
+e_n = \begin{pmatrix} 0\\0\\\vdots\\0\\1\end{pmatrix}
+$$
+sont appelés les \defi{vecteurs de la base canonique}\index{base!canonique} de $\Rr^n$.
+\end{definition}
+
+Les coordonnées usuelles d'un vecteur $u = \left(\begin{smallmatrix} x_1\\ \vdots \\ x_n \end{smallmatrix}\right)$ sont les coordonnées dans la base canonique, c'est-à-dire :
+$$u = x_1 e_1 + x_2 e_2 + \dots + x_n e_n.$$
+
+Mais on peut également exprimer des coordonnées du même vecteur $u$ dans une autre base.
+Une \defi{base}\index{base} de $\Rr^n$ est un ensemble $\mathcal{B} = (f_1, f_2, \ldots, f_n)$ de $n$ vecteurs, tel que 
+pour tout $u \in \Rr^n$ il existe des réels $y_1, \ldots, y_n$ uniques tels que
+$$u = y_1 f_1 + y_2 f_2 + \cdots + y_n f_n.$$
+
+$\left(\begin{smallmatrix} y_1\\ \vdots \\ y_n \end{smallmatrix}\right)_{\mathcal{B}}$ s'appellent les \defi{coordonnées}\index{vecteur!coordonnees@coordonnées} du vecteur $u$ dans la base $\mathcal{B}$.
+
+
+\begin{exemple}
+Soit $\mathcal{B}_0 = (\vec i, \vec j)$ la base canonique de $\Rr^2$ (autrement dit $(e_1,e_2)$).
+Définissons 
+$$\vec {f_1} = \begin{pmatrix} 3\\1 \end{pmatrix}\qquad
+\vec {f_2} = \begin{pmatrix} -2\\2 \end{pmatrix}.$$
+Alors $\mathcal{B} = (\vec {f_1}, \vec {f_2})$ est une base de $\Rr^2$.
+
+Soit maintenant le vecteur $\vec u$ de coordonnées $\begin{pmatrix} 1\\2 \end{pmatrix}$ dans la base canonique, c'est-à-dire :
+$$\vec u = 1 \vec i + 2 \vec j.$$
+
+Quelles sont les coordonnées $\left(\begin{smallmatrix} x\\ y \end{smallmatrix}\right)_{\mathcal{B}}$ de $\vec u$ dans la base $\mathcal{B}$ ?
+
+\myfigure{0.8}{
+  \tikzinput{fig-vecteurs-14}
+} 
+
+On veut écrire $\vec u$ sous la forme :
+$$\vec u = x \vec {f_1} + y \vec {f_2}.$$
+On peut donc écrire, avec les coordonnées dans la base canonique :
+$$ \begin{pmatrix} 1\\2 \end{pmatrix} = x\begin{pmatrix} 3\\1 \end{pmatrix} + y\begin{pmatrix} -2\\2 \end{pmatrix}.$$
+On résout le système :
+$$\begin{cases}
+3x - 2y = 1\\
+x + 2y = 2
+\end{cases}$$
+On obtient $x = \frac34$ et $y = \frac58$.
+On en déduit que les coordonnées de $\vec u$ dans la base $\mathcal{B}$ sont :
+$$\begin{pmatrix} \frac34 \\ \frac58 \end{pmatrix}_{\mathcal{B}}$$
+c'est-à-dire :
+$$\vec u = \frac34 \vec {f_1} + \frac58 \vec {f_2}.$$
+\end{exemple}
+
+
+\vfill
+
+\emph{Certains paragraphes de la section \emph{\og{}Cas général\fg{}} sont extraits du livre \emph{Algèbre} d'Exo7.}
+
+\end{document}

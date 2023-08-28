@@ -1,0 +1,844 @@
+\documentclass[11pt,class=report,crop=false]{standalone}
+\usepackage[screen]{../mathgame}
+
+\usepackage{siunitx}
+%\sisetup{locale = FR,detect-all,per-mode = symbol}
+
+\begin{document}
+
+
+%====================================================================
+\chapitre{Transformations de l'espace}
+%====================================================================
+
+%
+%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
+%
+%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
+%
+%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+
+\objectifs{Nous étudions les transformations affines usuelles de l'espace: translations, homothéties, réflexions\ldots{} à l'aide des vecteurs et matrices. Nous décrivons les formules de changement de base et introduisons les coordonnées homogènes.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transformations affines}
+
+%--------------------------------------------------------------------
+\subsection{Translations}
+
+\index{translation}
+
+Une \defi{translation} de vecteur $(a,b,c)$ est la fonction de $\Rr^3$ dans $\Rr^3$ définie par 
+$$\begin{pmatrix}x\\y\\z\end{pmatrix} \longmapsto \begin{pmatrix}x'\\y'\\z'\end{pmatrix} 
+= \begin{pmatrix}x\\y\\z\end{pmatrix} + \begin{pmatrix}a\\b\\c\end{pmatrix}
+= \begin{pmatrix}x+a\\y+b\\z+c\end{pmatrix}$$
+Si on note $T = \left( \begin{smallmatrix}a\\b\\c \end{smallmatrix} \right)$ alors, l'image $Y$ d'un point $X = \left( \begin{smallmatrix}x\\y\\z \end{smallmatrix} \right)$ est :
+$$Y = X + T.$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-01}
+}
+
+%--------------------------------------------------------------------
+\subsection{Homothéties}
+
+\index{homothetie@homothétie}
+
+Une \defi{homothétie} centrée à l'origine et de rapport $k$ est l'application $\Rr^3 \to \Rr^3$, $X \mapsto Y$ définie par 
+$$Y = k X$$
+Autrement dit $x'=kx$, $y'=ky$, $z'=kz$. Nous préférons écrire les transformations en termes de vecteurs et matrices:
+$$Y = AX \qquad \text{ avec } \qquad A = \begin{pmatrix}k&0&0\\0&k&0\\0&0&k\end{pmatrix}.$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-02}
+}
+
+
+Si on souhaite une homothétie de rapport $k$ centrée en un point quelconque $X_0 = \left( \begin{smallmatrix}x_0\\y_0\\y_0 \end{smallmatrix} \right)$, alors on applique la formule :
+$$Y = A(X-X_0) + X_0.$$
+
+Pour déformer l'espace avec des rapports différents selon chaque axe (ce n'est plus une homothétie), on utiliserait la matrice :
+$$A = \begin{pmatrix}k_x&0&0\\0&k_y&0\\0&0&k_z\end{pmatrix}.$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-03}
+}
+
+
+%--------------------------------------------------------------------
+\subsection{Rotations}
+
+\index{rotation}
+
+Les rotations seront étudiées en détail dans le chapitre \og{}Rotations de l'espace\fg{}.
+
+Par exemple la rotation d'axe $(Ox)$ et d'angle $\theta$ est la transformation $Y=AX$ avec
+$$A = 
+\begin{pmatrix}
+1 & 0 & 0 \\	
+0 & \cos(\theta) & - \sin(\theta) \\
+0 & \sin(\theta) & \cos(\theta) \\
+\end{pmatrix}.$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-04}
+}
+
+Une rotation d'angle $\pi$ ($\ang{180}$) s'appelle un \defi{retournement}.
+Le retournement d'axe $(Ox)$ a pour matrice:
+ $$A = 
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0\\
+0 & 0 & -1 \\
+\end{pmatrix}.$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-05}
+}
+
+Voici les matrices de rotations autour de l'axe $(Oy)$ et de l'axe $(Oz)$ :
+$$
+R_y = 
+\begin{pmatrix}
+	\cos(\theta) & 0 & \sin(\theta) \\
+	0 & 1 & 0 \\	
+	-\sin(\theta) & 0 & \cos(\theta) \\
+\end{pmatrix}
+\qquad \qquad 
+R_z = 
+\begin{pmatrix}
+	\cos(\theta) & - \sin(\theta) & 0 \\
+	\sin(\theta) & \cos(\theta) & 0\\
+	0 & 0 & 1 \\
+\end{pmatrix}.$$
+
+
+
+%--------------------------------------------------------------------
+\subsection{Projections}
+
+\index{projection}
+
+Les projections seront étudiées en détail dans le chapitre \og{}Perspective\fg{}.
+
+Par exemple la \defi{projection orthogonale} sur le plan $(Oxy)$ est la transformation $Y=AX$ avec
+$$A = 
+\begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & 0 \\
+\end{pmatrix}.$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-07}
+}
+
+
+%--------------------------------------------------------------------
+\subsection{Réflexions}
+
+\index{reflexion@réflexion}
+
+La \defi{réflexion orthogonale} par rapport au plan $(Oxy)$ est la transformation $Y=AX$ avec
+$$A = 
+\begin{pmatrix}
+	1 & 0 & 0 \\
+	0 & 1 & 0 \\
+	0 & 0 & -1 \\
+\end{pmatrix}.$$
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-06}
+}
+
+Plus généralement si $A$ est la matrice d'une projection sur un sous-espace, alors $B=2A-I$ est la matrice de la réflexion par rapport à ce même sous-espace.
+
+
+
+
+%--------------------------------------------------------------------
+\subsection{Matrice quelconque}
+
+De façon générale une \defi{transformation vectorielle}\index{transformation!vectorielle} est l'application $F : \Rr^3 \to \Rr^3$, $X \mapsto Y$ où:
+$$Y =AX \qquad \text{ avec } A \in M_3(\Rr).$$
+On appelle aussi la fonction $F$ une \defi{application linéaire}.
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-08}
+}
+
+Une \defi{transformation affine}\index{transformation!affine} est une transformation vectorielle, suivie d'une translation:
+$$Y =AX + T \qquad \text{ avec } A \in M_3(\Rr), T \in M_{3,1}(\Rr).$$
+Une transformation vectorielle envoie toujours l'origine sur l'origine, à la différence d'une transformation affine.
+
+\myfigure{1}{
+	\tikzinput{fig-transformation-09}
+}
+
+Soit $F : \Rr^3 \to \Rr^3$ une transformation affine ou vectorielle.
+Notons $A$ la matrice de cette transformation.
+Le déterminant $\det(A)$ de cette matrice est important dans l'étude de la transformation $F$.
+
+\index{determinant@déterminant}
+
+\begin{proposition}
+La transformation $F$ est bijective si et seulement si $\det(A) \neq 0$.
+\end{proposition}
+
+\begin{proposition}
+Si $E$ est un ensemble dont le volume est $\mathcal{V}$ alors $F(E)$ est un ensemble dont le volume est $|\det(A)| \times \mathcal{V}$.
+\end{proposition}
+
+Rappelons que si $A \in M_3(\Rr)$ est une matrice $3 \times 3$:
+$$A = \begin{pmatrix}
+      a_{11} & a_{12} & a_{13} \\
+      a_{21} & a_{22} & a_{23} \\
+      a_{31} & a_{32} & a_{33} \\
+      \end{pmatrix}$$
+alors le déterminant se calcule selon la formule :
+$$\det(A) =
+a_{11} a_{22} a_{33}
++ a_{12} a_{23} a_{31}
++ a_{13} a_{21} a_{32}
+- a_{31} a_{22} a_{13}
+- a_{32} a_{23} a_{11}
+- a_{33} a_{21} a_{12}\; .$$
+
+Les matrices permettent d'effectuer facilement la composition des transformations vectorielles.
+Si $F$ a pour matrice $A$ et $G$ a pour matrice $B$, alors la transformation $F \circ G$ (l'action de $G$ suivie de celle de $F$) a pour matrice le produit $AB$. C'est-à-dire : $F \circ G : X \mapsto Y = (AB)X$.
+On rappelle que l'ordre a une importance, les matrices $AB$ et $BA$ sont en général distinctes, autrement dit, appliquer $F$ puis $G$ n'est pas la même chose qu'appliquer $G$ puis $F$. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Changement de repère}
+
+%--------------------------------------------------------------------
+\subsection{Changement de coordonnées}
+\label{ssec:chgtcoord}
+
+\index{vecteur!coordonnees@coordonnées}
+
+Soit $\mathcal{B} = (\vec{e_1}, \vec{e_2}, \vec{e_3})$ une base de $\Rr^3$.
+Considérons un vecteur $\vec v$ de $\Rr^3$ et notons $X$ les coordonnées de $\vec v$ dans la base $\mathcal{B}$, c'est-à-dire :
+$$
+\vec v = x \vec{e_1} + y \vec{e_2} + z \vec{e_3} \qquad \text{ et } \qquad 
+X = \begin{pmatrix}x\\y\\z\end{pmatrix}.$$
+
+Fixons maintenant une seconde base $\mathcal{B}' = (\vec{f_1}, \vec{f_2}, \vec{f_3})$ de $\Rr^3$. 
+Le même vecteur $\vec v$ n'a pas les mêmes coordonnées dans cette nouvelle base.
+Notons $X'$ les coordonnées de $\vec v$ dans cette base $\mathcal{B}'$, c'est-à-dire :
+$$
+\vec v = x' \vec{f_1} + y' \vec{f_2} + z' \vec{f_3} \qquad \text{ et } \qquad 
+X' = \begin{pmatrix}x'\\y'\\z'\end{pmatrix}.$$
+
+
+
+\myfigure{0.8}{
+	\tikzinput{fig-transformation-10}
+}
+
+Quel est le lien entre $X$ et $X'$ ?
+
+
+
+La \defi{matrice de passage}\index{matrice!de passage} $P$ de la base $\mathcal{B}$ vers la base
+$\mathcal{B}'$ est la matrice carrée de taille $3 \times 3$ dont la $j$-ème colonne
+est formée des coordonnées du $j$-ème vecteur de la base $\mathcal{B}'$,
+par rapport à la base $\mathcal{B}$.
+
+
+
+On résume en :
+\mybox{
+\begin{minipage}{0.8\textwidth}
+\center
+La matrice de passage $P$ contient --\,en colonnes\,-- les
+coordonnées des vecteurs de la nouvelle base $\mathcal{B}'$
+exprimés dans l'ancienne base $\mathcal{B}$.
+\end{minipage}
+}
+
+Voici le lien entre les coordonnées dans l'ancienne et la nouvelle base :
+\begin{proposition}
+\sauteligne
+\mybox{$X = P X'$}
+\end{proposition}
+Notez bien l'ordre !
+La formule permet de calculer les coordonnées dans la base de départ à partir de celle de la base d'arrivée. Mais en général on veut l'opération inverse. Pour cela on utilise simplement la relation \myboxinline{$X' = P^{-1}X$} qui donne les coordonnées dans la nouvelle base à partir des coordonnées dans l'ancienne base.
+
+\begin{exemple}
+\label{ex:matpass}
+Considérons $\Rr^3$ muni de sa base canonique $\mathcal{B}$, mais aussi d'une autre base $\mathcal{B}'$ avec :
+$$\mathcal{B} =
+\left(
+\begin{pmatrix} 1\\0\\0\end{pmatrix},
+\begin{pmatrix} 0\\1\\0\end{pmatrix},
+\begin{pmatrix} 0\\0\\1\end{pmatrix}
+\right)
+\qquad \text{ et } \qquad
+\mathcal{B}' =
+\left(
+\begin{pmatrix} 1 \\ 1 \\ 0\end{pmatrix},
+\begin{pmatrix} 0 \\ 2 \\ 1\end{pmatrix},
+\begin{pmatrix} 1 \\ 2 \\ 3\end{pmatrix}
+\right).$$
+
+Quelle est la matrice de passage de $\mathcal{B}$ vers $\mathcal{B}'$ ?
+
+Comme la base de départ est la base canonique alors dans ce cas la matrice de passage est simplement la matrice dont les colonnes sont les vecteurs de la base $\mathcal{B}'$, ainsi :
+$$P = \begin{pmatrix}
+1 & 0 & 1 \\
+1 & 2 & 2 \\
+0 & 1 & 3
+\end{pmatrix}$$
+
+
+Nous aurons besoin de calculer son inverse. Après calculs :
+$$P^{-1} = \frac15 
+\begin{pmatrix}
+4 & 1 & -2 \\
+-3 & 3 & -1 \\
+1 & -1 & 2	
+\end{pmatrix}$$
+
+Considérons un vecteur dont les coordonnées dans la base $\mathcal{B}$ sont :
+$$X = \begin{pmatrix}5\\6\\8\end{pmatrix}$$
+Quelles sont les coordonnées $X'$ de ce même vecteur dans la base $\mathcal{B}'$ ?
+Comme $X = PX'$ alors $X' = P^{-1}X$, ainsi :
+$$X' = P^{-1} X = 
+\frac15 
+\begin{pmatrix}
+	4 & 1 & -2 \\
+	-3 & 3 & -1 \\
+	1 & -1 & 2	
+\end{pmatrix}
+\begin{pmatrix}5\\6\\8\end{pmatrix}
+= \begin{pmatrix}2\\-1\\3\end{pmatrix}.
+$$
+\end{exemple}
+
+
+
+%--------------------------------------------------------------------
+\subsection{Changement de base pour les matrices}
+
+Soit $F : \Rr^3 \to \Rr^3$ une application linéaire (c'est-à-dire une transformation vectorielle). Notons $A$ la matrice de $F$ dans la base $\mathcal{B}$.
+Ainsi si $f(\vec v) = \vec w$ et que $\vec v$ a pour coordonnées $X$ et $\vec w$ a pour coordonnées $Y$ (toujours dans la même base $\mathcal{B}$) alors
+\mybox{$Y = AX$}
+
+
+Très souvent, la base choisie est la base canonique et alors on définit une application linéaire par sa matrice. 
+Mais la relation est en général plus subtile :
+\mybox{(une matrice + le choix d'une base) $\longleftrightarrow$ une application linéaire}
+
+Donc dans une autre base $\mathcal{B}'$, la matrice de $F$ est différente : notons $B$ cette matrice.
+Comment exprimer $B$ en fonction de $A$ ? 
+
+La formule de changement de base pour une application linéaire est :
+\begin{proposition}
+\sauteligne
+\mybox{$B = P^{-1} A P$}
+\end{proposition}
+Comme auparavant, la matrice $P$ est la matrice de passage de la base $\mathcal{B}$ à la base $\mathcal{B}'$.
+
+
+\begin{exemple}
+Reprenons les deux bases de $\Rr^3$ de l'exemple du paragraphe \ref{ssec:chgtcoord} :
+$$\mathcal{B} =
+\left(
+\begin{pmatrix} 1\\0\\0\end{pmatrix},
+\begin{pmatrix} 0\\1\\0\end{pmatrix},
+\begin{pmatrix} 0\\0\\1\end{pmatrix}
+\right)
+\qquad \text{ et } \qquad
+\mathcal{B}' =
+\left(
+\begin{pmatrix} 1 \\ 1 \\ 0\end{pmatrix},
+\begin{pmatrix} 0 \\ 2 \\ 1\end{pmatrix},
+\begin{pmatrix} 1 \\ 2 \\ 3\end{pmatrix}
+\right).$$
+
+Considérons la rotation $F$ d'axe $(Oz)$ et d'angle $\frac\pi2$. Sa matrice dans la base $\mathcal{B}$ est 
+$$A = 
+\begin{pmatrix}
+0 & -1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1	
+\end{pmatrix}$$
+Autrement dit, dans la base $\mathcal{B}$ un vecteur de coordonnées $X$ s'envoie sur le vecteur de coordonnées $Y = AX$.
+Quelle est la matrice $B$ de cette même rotation, mais dans la base $\mathcal{B}'$ ?
+On cherche la matrice $B$ telle que dans la base $\mathcal{B}'$ cette fois un vecteur de coordonnées $X'$ s'envoie sur les coordonnées $Y' = BX'$.
+La formule de changement de base pour les matrices est $B = P^{-1}AP$, donc :
+$$B = P^{-1}AP
+= 
+\frac15 
+\begin{pmatrix}
+	4 & 1 & -2 \\
+	-3 & 3 & -1 \\
+	1 & -1 & 2	
+\end{pmatrix}
+\begin{pmatrix}
+	0 & -1 & 0 \\
+	1 & 0 & 0 \\
+	0 & 0 & 1	
+\end{pmatrix}
+\begin{pmatrix}
+	1 & 0 & 1 \\
+	1 & 2 & 2 \\
+	0 & 1 & 3
+\end{pmatrix}
+= \frac15\begin{pmatrix}
+-3 & -10 & -13 \\
+6 & 5 & 6 \\
+-2 & 0 & 3
+\end{pmatrix}.$$
+
+Par exemple, pour un vecteur ayant pour coordonnées 
+$X ' = \left(\begin{smallmatrix} 5 \\ 0 \\10 \end{smallmatrix}\right)$ dans la base $\mathcal{B}'$, alors son image par la rotation $F$ aura pour coordonnées $Y' = B X' = \left(\begin{smallmatrix} -29 \\ 18 \\ 4 \end{smallmatrix}\right)$ (toujours dans la base $\mathcal{B}'$).
+
+\end{exemple}
+
+%--------------------------------------------------------------------
+\subsection{Changement de base orthonormée}
+
+On rappelle qu'une base $\mathcal{B}$ est \defi{orthonormale}\index{base!orthonormale} si chaque vecteur est unitaire et si deux vecteurs distincts sont orthogonaux.
+
+Une matrice $A$ est \defi{orthogonale}\index{matrice!orthogonale} si $A^TA = I$, autrement dit si $A^{-1} = A^T$. 
+De façon équivalente, une matrice $A$ est orthogonale si ses vecteurs colonnes forment une base orthonormale.
+On note $O(3)$ l'ensemble des matrices orthogonales de taille $3\times3$.
+
+\begin{proposition} 
+Si $\mathcal{B}$ et $\mathcal{B}'$ sont deux bases orthonormales alors la matrice de passage $P$ de $\mathcal{B}$ à $\mathcal{B}'$ est une matrice orthogonale.
+\end{proposition}
+
+
+\myfigure{0.7}{
+	\tikzinput{fig-transformation-11}
+}
+
+
+Il faut aussi prendre garde qu'une transformation vectorielle ne préserve en général pas l'orthogonalité (même si c'est vrai pour les homothéties, les rotations, les symétries orthogonales). 
+
+
+\myfigure{0.9}{
+	\tikzinput{fig-transformation-12}
+}
+
+
+\begin{proposition}
+Soit $A$ la matrice d'une application linéaire $F$. 
+Si $A$ est une matrice orthogonale alors $F$ préserve le produit scalaire, c'est-à-dire 
+$ F(\vec u) \cdot F(\vec v) = \vec u \cdot \vec v$.
+En particulier $F$ préserve les angles et les longueurs ; ainsi $F$ préserve l'orthogonalité et envoie une base orthonormale sur une base orthonormale.
+\end{proposition} 
+
+Conséquence : si dans une base orthonormée $F$ a pour matrice la matrice orthogonale $A$, alors dans une autre base orthonormée $F$ a pour matrice $B$ qui est aussi orthogonale (c'est $B = P^{-1}AP$ avec $A$ et $P$ orthogonales).
+
+\begin{exercicecours}
+On considère la matrice 
+$$A = 
+\frac13
+\begin{pmatrix}
+2 & -1 & 2 \\
+-1 & 2 & 2 \\
+2 & 2 & -1
+\end{pmatrix}$$
+\begin{enumerate}
+	\item Vérifier que $A^{-1} = A^T$, en déduire que $A$ est une matrice orthogonale.
+	\item Montrer que les vecteurs de coordonnées
+	$X_1 = \begin{pmatrix}2\\3\\7\end{pmatrix}$ et 
+    $X_2 = \begin{pmatrix}2\\1\\-1\end{pmatrix}$ sont orthogonaux.
+    
+    \item Calculer les coordonnées $Y_1 = A X_1$ de l'image de $X_1$ par $A$. Idem pour $Y_2 = A X_2$. Vérifier que $Y_1$ et $Y_2$ sont encore des vecteurs orthogonaux.
+\end{enumerate}
+\end{exercicecours}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Coordonnées homogènes}
+
+\index{coordonnees@coordonnées!homogenes@homogènes}
+
+%--------------------------------------------------------------------
+\subsection{Motivation} 
+
+Il y a plusieurs inconvénients à la description des transformations vues lors des sections précédentes :
+la plupart des transformations étudiées jusqu'ici étaient des transformations vectorielles (où l'origine s'envoie sur l'origine) et les translations sont effectuées à part afin d'obtenir une transformation affine. D'autre part les ordinateurs savent multiplier très rapidement des matrices (pour composer les applications linéaires), mais les translations requièrent un traitement à part (une addition). Pourrait-on unifier la situation ?
+Un autre problème est de manipuler des objets à l'infini. Par exemple, pour un éclairage, il faut différencier un éclairage issu d'un point, d'un éclairage \og{}à l'infini\fg{} comme le Soleil. Encore une fois : comment unifier cette situation ?
+
+Ces deux problèmes sont réglés par les coordonnées homogènes. Il s'agit d'ajouter une coordonnée supplémentaire, ainsi un point de l'espace est codé avec $4$ nombres réels et une transformation qui inclut une translation est codée à l'aide d'une matrice $4 \times 4$. Les points à l'infini sont les points dont la dernière coordonnée est nulle.
+
+Pour mieux comprendre et pouvoir faire des dessins on commence par expliquer les coordonnées homogènes du plan.
+
+
+%--------------------------------------------------------------------
+\subsection{Coordonnées homogènes du plan}
+
+%-----
+\subsubsection{Définition}
+
+On note $(x:y:w)$ les \defi{coordonnées homogènes} du plan où $x$, $y$, $w$ sont des réels (pas tous les trois nuls en même temps).
+Ces coordonnées sont définies à un facteur près, c'est-à-dire que :
+\mybox{$(x:y:w) = (\lambda x : \lambda y : \lambda w) \qquad \text{ pour tout } \lambda \in \Rr^*$}
+
+Par exemple $(2:-1:1) = (4:-2:2) = (-6:3:-3)$ et $(2:3:0) = (4:6:0)$. Attention, le point \og{}$(0:0:0)$\fg{} n'existe pas.
+
+On appelle \defi{plan projectif}, noté $\Rr P^2$, l'ensemble de ces triplets $(x:y:w)$.
+
+\begin{itemize}
+  \item Si $(x,y) \in \Rr^2$ est un point du plan alors on lui associe les coordonnées homogènes $(x:y:1)$.
+  
+  \item Réciproquement à $(x:y:w)$ avec $w\neq 0$, on lui associe le point $(x/w,y/w)$. Noter que si $w\neq 0$ on a $(x:y:w) = (x/w:y/w:1)$.
+
+  \item Si $(v_x,v_y)$ est un vecteur du plan, on lui associe les coordonnées homogènes $(v_x:v_y:0)$, aussi appelé \og{}point à l'infini\fg{}.
+  Réciproquement à $(v_x:v_y:0)$, on associe le vecteur (ou la direction) $(v_x,v_y)$.
+\end{itemize}
+
+
+Pour décrire le plan projectif d'un point de vue géométrique, on part de l'espace $\Rr^3$ et on identifie les points qui sont situés sur une même droite passant par l'origine (car $(x:y:w) = (\lambda x : \lambda y : \lambda w)$).
+
+L'identification $(x:y:1)$ avec le point $(x,y)$ correspond à intersecter une droite vectorielle de l'espace avec le plan d'équation $(w=1)$.
+
+\myfigure{0.6}{
+	\tikzinput{fig-transformation-13}
+}
+
+%-----
+\subsubsection{Points à l'infini}
+
+On peut se représenter le plan projectif ainsi : une partie affine correspondant 
+aux points de coordonnées homogènes $(x:y:1)$ et un ensemble de points à l'infini de coordonnées homogènes $(v_x:v_y:0)$. Un point à l'infini $(v_x:v_y:0)$ correspond à une direction $\vec v =  (v_x,v_y)$.
+
+\myfigure{0.4}{
+	\tikzinput{fig-transformation-14}
+}
+
+Voyons maintenant comment uniformiser la position d'un éclairage.
+La source d'un éclairage est définie par un point $S \in \Rr P^2$ de coordonnées homogènes $(x_S:y_S:w_S)$ avec $w_S=0$ ou bien $w_S=1$.
+
+\begin{itemize}
+	\item \textbf{Lumière ponctuelle.} $S = (x_S:y_S:1)$. Dans ce cas la source lumineuse est en position $(x_S,y_S)$. Si $P(x,y)$ est un point du plan, alors un vecteur dirigé vers la source lumineuse est $\vec{PS}$.
+	
+	\item \textbf{Lumière directionnelle.} $S = (x_S:y_S:0)$. Dans ce cas la source lumineuse est \og{}à l'infini\fg{} et est caractérisée par la direction opposée à $\vec v =  (x_S,y_S)$. Pour n'importe quel point $P$ du plan, $\vec v$ est un vecteur dirigé vers la source lumineuse.
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{0.45\textwidth}
+	\myfigure{0.7}{\tikzinput{fig-transformation-15a}}
+\end{minipage} \quad	
+\begin{minipage}{0.45\textwidth}
+	\myfigure{0.7}{\tikzinput{fig-transformation-15b}}
+\end{minipage}
+\end{center}
+
+
+
+%-----
+\subsubsection{Transformation}
+
+\index{transformation!affine}
+
+Soit $F: \Rr^2 \to \Rr^2$ une transformation affine du plan :
+$$
+\begin{pmatrix}x \\ y \end{pmatrix} \mapsto \begin{pmatrix}a & b \\ c & d \\  \end{pmatrix}
+\begin{pmatrix}x \\ y \end{pmatrix} +\begin{pmatrix} e \\ f \end{pmatrix},$$
+où $a,b,c,d, e, f$ sont des réels quelconques.
+
+En d'autres termes, l'image d'un point $(x,y)$ du plan
+est le point $F(x,y) = (x',y')$ avec
+$$\left \{
+\begin{array}{rcl}
+    x' &=& ax + by + e \\
+    y' &=& cx + dy + f \\
+\end{array}
+\right..$$
+
+Si on note :
+$$
+A =\begin{pmatrix}a & b \\ c & d \\  \end{pmatrix}
+\qquad 
+T =\begin{pmatrix} e \\ f \\  \end{pmatrix}
+\qquad X = \begin{pmatrix}x \\ y \end{pmatrix} $$
+alors $F(X) = AX+T$.
+
+%-----
+\subsubsection{Problème de la composition}
+
+Composer deux transformations vectorielles est simple : si $F$ a pour matrice $A$ et $G$ a pour matrice $B$ alors $F \circ G$ a pour matrice $AB$. La composition correspond simplement au produit de matrices.
+
+Faisons maintenant le calcul avec des transformations affines $F :  X \mapsto AX+T$ et $G : X \mapsto BX+S$ :
+$$F \circ G (X) 
+= F\big( G(X) \big) 
+= F\big( BX+S \big) 
+= A(BX+S) + T
+= ABX + (AS+T).$$
+La formule n'est donc pas simple et se compliquerait encore si ajoutait des compositions.
+
+Calculons l'action de la transformation $F :  X \mapsto AX+T$ en coordonnées homogènes.
+$$\text{À} \quad X = \begin{pmatrix} x \\ y \end{pmatrix}
+\qquad \text{ on associe }\quad X_h = \begin{pmatrix} x \\ y \\ 1 \end{pmatrix}.$$
+Et à la transformation affine (de matrice $A$ et translation $T$) on associe la matrice :
+$$A_h 
+=  \begin{pmatrix}
+a & b & e \\
+c & d & f \\
+0 & 0 & 1 \\
+\end{pmatrix}$$
+
+Vérifions que $F(X_h) = A_h X_h$ (en identifiant un point $P_h =  \left(\begin{smallmatrix}x\\y\\1\end{smallmatrix}\right)$ avec $(x:y:1)$ et $(x,y)$) :
+$$A_h X_h = \begin{pmatrix}
+a & b & e \\
+c & d & f \\
+0 & 0 & 1 \\
+\end{pmatrix}
+\begin{pmatrix} x \\ y \\ 1 \end{pmatrix}
+= \begin{pmatrix} ax + by + e \\ cx + dy + f \\ 1 \end{pmatrix}
+= F(X_h).$$
+Ainsi en coordonnées homogènes, une transformation affine du plan correspond à la multiplication par une matrice $3\times 3$.
+
+Si $G : X \mapsto BX+S$ est une autre transformation affine et que l'on note $B_h$ la matrice $3 \times 3$ associée, alors 
+$$F \circ G (X_h) 
+= F\big( G(X) \big) 
+= F\big( B_hX_h \big) 
+= A_h (B_hX_h)
+= (A_hB_h)X_h.$$
+Ainsi, en coordonnées homogènes, la matrice associée à $F\circ G$ est naturellement le produit $A_h B_h$.
+
+
+%--------------------------------------------------------------------
+\subsection{Coordonnées homogènes de l'espace}
+
+Ajoutons une dimension supplémentaire afin de définir les coordonnées homogènes dans l'espace.
+
+\subsubsection*{Coordonnées homogènes}
+
+On note $(x:y:z:w)$ les \defi{coordonnées homogènes} de l'espace, où $x$, $y$, $z$ et $w$ sont des réels, pas tous les quatre nuls en même temps.
+Ces coordonnées sont définies à un facteur multiplicatif près, c'est-à-dire que :
+\mybox{
+$(x:y:z:w) = (\lambda x : \lambda y : \lambda z: \lambda w) \qquad \text{ pour tout } \lambda \in \Rr^*$}
+
+L'ensemble de ces éléments $(x:y:z:w)$, à équivalence près, s'appelle l'\defi{espace projectif}, noté $\Rr P^3$.
+
+
+Les coordonnées classiques correspondent aux coordonnées homogènes lorsque $w=1$. Plus précisément :
+\begin{itemize}
+	\item Si $X = (x,y,z) \in \Rr^3$ est un point de l'espace alors on lui associe les coordonnées homogènes $X_h = (x:y:z:1)$.
+	
+	\item Réciproquement à $(x:y:z:w)$ avec $w\neq 0$, on lui associe le point $(x/w,y/w,z/w)$. Noter que si $w\neq 0$ on a $(x:y:z:w) = (x/w:y/w:z/w:1)$.
+	
+	\item Si $(v_x,v_y,v_z)$ est un vecteur, on lui associe les coordonnées homogènes $(v_x:v_y:v_z:0)$, aussi appelé \og{}un point à l'infini\fg{}.
+	Réciproquement à $(v_x:v_y:v_z:0)$, on associe le vecteur (ou la direction) $(v_x,v_y,v_z)$.
+\end{itemize}
+
+\begin{exemple}
+	\sauteligne
+\begin{enumerate}
+	\item Le point $\bar A \in \Rr P^3$ de coordonnées homogènes $(-3:0:2:1)$ a aussi pour coordonnées homogènes $(-6:0:4:2)$.
+	Le point $A \in \Rr^3$ correspondant est $(-3,0,2)$.
+	
+	\item Le point $\bar B \in \Rr P^3$ de coordonnées $(2:3:-2:1)$ est associé à $B \in \Rr^3$ de coordonnées $(2,3,-2)$.
+	
+	\item Lorsque les coordonnées homogènes sont normalisées avec $w=1$ on peut soustraire deux points pour obtenir un vecteur :
+	$$\bar B - \bar A =(2:3:-2:1) - (-3:0:2:1) = (5:3:-4:0)$$
+	qui est un point à l'infini et correspond bien aux coordonnées homogènes du vecteur $\vec{AB}$.
+	
+\end{enumerate}	
+\end{exemple}
+
+	
+Il est difficile de visualiser l'espace projectif.
+Un premier point de vue est de partir de l'espace $\Rr^4$ (à quatre dimensions) et d'identifier les points qui sont situés sur une même droite vectorielle.
+Une autre vision est de considérer que $\Rr P^3$ correspond à l'ensemble des points de $\Rr^3$ auxquels on rajoute des points à l'infini (qui sont en fait en bijection avec le plan projectif $\Rr P^2$).  
+
+
+\subsubsection*{Transformations homogènes}
+
+Soit $F: \Rr^3 \to \Rr^3$ une transformation affine de l'espace définie par :
+$$F(X) = AX + T$$
+où $A \in M_3(\Rr)$ est une matrice $3\times 3$ et $T \in M_{3,1}(\Rr)$ est un vecteur colonne de taille $3$ correspondant à la translation.
+
+On note :
+\mybox{$\displaystyle 
+A_h 
+=  
+  \left(\begin{array}{@{}c|c@{}}
+  	A & T \\\hline
+  	0 & 1 
+\end{array}\right)
+\in M_4(\Rr)
+$}
+
+Autrement dit, si 
+$$A = \begin{pmatrix}
+a_{11} & a_{12} & a_{13}\\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33} \\
+\end{pmatrix}
+\qquad \text{ et } \qquad 
+T = \begin{pmatrix} t_1 \\ t_2 \\ t_3 \end{pmatrix}
+\qquad \text{ alors } \qquad 
+A_h 
+= \left(\begin{array}{@{}ccc|c@{}}
+	a_{11} & a_{12} & a_{13} & t_1 \\
+	a_{21} & a_{22} & a_{23} & t_2 \\
+	a_{31} & a_{32} & a_{33} & t_3 \\\hline
+	0      & 0      & 0      & 1 \\
+\end{array}\right).
+$$
+
+
+Vérifions que $F(X_h) = A_h X_h$ :
+$$A_h X_h = 
+\left(\begin{array}{@{}ccc|c@{}}
+	a_{11} & a_{12} & a_{13} & t_1 \\
+	a_{21} & a_{22} & a_{23} & t_2 \\
+	a_{31} & a_{32} & a_{33} & t_3 \\\hline
+	0      & 0      & 0      & 1 \\
+\end{array}\right)
+\begin{pmatrix} x \\ y \\z \\ 1 \end{pmatrix}
+= \begin{pmatrix} 
+	a_{11}x + a_{12}y + a_{13}z + t_1 \\
+	a_{21}x + a_{22}y + a_{23}z + t_2 \\
+	a_{31}x + a_{32}y + a_{33}z + t_3 \\ 
+	1 \end{pmatrix}
+= F(X_h).$$
+
+
+Ainsi, en coordonnées homogènes, une transformation affine de l'espace correspond à la multiplication par une matrice $4\times 4$.
+
+% \subsubsection*{Exemple}
+
+\begin{exemple}
+Soit $A_h$ la matrice homogène d'une transformation $F(X)=AX+T$ définie par  :
+$$
+ \left(\begin{array}{@{}ccc|c@{}}
+	1  & 0 & -1 & 1 \\
+	2  & 1 & 0  & 2 \\
+	-2 & 1 & 1  & 3 \\\hline
+	0  & 0 & 0  & 1 \\
+\end{array}\right).
+$$
+
+\begin{enumerate}
+	\item Calculons l'image d'un point de coordonnées $X = (4,-2,3)$ par la transformation $F$.
+
+    Ses coordonnées homogènes sont  $X_h= (4:-2:3:1)$.
+    Alors :
+    $$Y_h = A_h X_h 
+    = \begin{pmatrix}
+	1  & 0 & -1 & 1 \\
+    2  & 1 & 0  & 2 \\
+    -2 & 1 & 1  & 3 \\
+    0  & 0 & 0  & 1 \\    
+    \end{pmatrix}
+     \begin{pmatrix}4\\-2\\3\\1\end{pmatrix}
+    = \begin{pmatrix}2\\8\\-4\\1\end{pmatrix}.$$
+    Donc l'image de $X$ est le point de coordonnées $Y = (2,8,4)$.
+    
+    \item Si pour le même point $X$ on avait choisi les coordonnées homogènes 
+    $X'_h= (8:-4:6:2)$ alors on aurait obtenu
+    $$Y_h = A_h X'_h = \begin{pmatrix}4\\16\\-8\\2\end{pmatrix}$$
+    Mais $(4:16:-8:2)=(2:8:-4:1)$ et on retrouve les mêmes coordonnées $Y =(2,8,-4) \in \Rr^3$.
+    
+    \item Soit un point à l'infini de coordonnées homogènes $X_h =  (v_x:v_y:v_z:0)$.
+    Son image  
+    $$Y_h = A_h X_h = \left(\begin{smallmatrix}v_x-v_z\\2v_x+v_y\\-2v_x+v_y+v_z\\0\end{smallmatrix}\right)$$
+    est aussi un point à l'infini. C'est un phénomène général : un point à l'infini est envoyé sur un point à l'infini. Noter qu'en effectuant le calcul, on s'aperçoit que l'image d'un point à l'infini n'est pas affectée par la translation associée à $T$ mais uniquement par la transformation vectorielle associée à $A$.
+ \end{enumerate}   
+	
+\end{exemple}	
+
+
+\subsubsection*{Composition}
+
+La composition de transformations affines correspond à la multiplication des matrices homogènes associées.
+
+\begin{proposition}
+\label{prop:prodhomog}	
+Si $F(X) = AX + T$	et $G(X) = BX+S$ définissent deux transformations affines et que $A_h$ et $B_h$ sont leurs matrices homogènes associées, alors 
+la matrice homogène associée à $F \circ G$ (la transformation $G$ suivie de la transformation $F$) est $A_hB_h$.
+\end{proposition}
+
+\begin{proposition}
+\label{prop:invhomog}	
+Si $F(X) = AX + T$ est une transformation bijective, c'est-à-dire la matrice $A$ est inversible, alors la matrice homogène associée à $F^{-1}$ est :
+$$
+\left(\begin{array}{@{}c|c@{}}
+	A^{-1} & -A^{-1}T \\\hline
+	0 & 1 
+\end{array}\right).
+$$
+\end{proposition}
+
+\begin{exemple}
+Soit $F$ une rotation d'axe $(Oz)$ et d'angle $\frac\pi2$ suivie de la translation de vecteur $(1,2,1)$.
+Soit $G$ la symétrie orthogonale par rapport au plan $(Oyz)$ suivie d'une translation de vecteur $(1,1,0)$.
+
+\begin{enumerate}
+	\item \textbf{Matrices de $F$ et $G$.}
+$$A_h = 	
+\begin{pmatrix}	
+	0 & -1 & 0 & 1 \\
+	1 & 0 & 0 & 2 \\
+	0 & 0 & 1 & 1 \\
+	0 & 0 & 0 & 1
+\end{pmatrix}	
+\qquad\qquad
+B_h = 
+\begin{pmatrix}	
+	1 & 0 & 0 & 1 \\
+	0 & -1 & 0 & 1 \\
+	0 & 0 & -1 & 0 \\
+	0 & 0 & 0 & 1
+\end{pmatrix}$$
+	
+	 \item \textbf{Expressions de $F \circ G$ et $G \circ F$.}
+	 
+	 Par la proposition \ref{prop:prodhomog} ces matrices sont respectivement :
+$$
+A_hB_h = 
+\begin{pmatrix}
+	0 & 1 & 0 & 0 \\
+	1 & 0 & 0 & 3 \\
+	0 & 0 & -1 & 1 \\
+	0 & 0 & 0 & 1
+\end{pmatrix}
+\qquad\qquad
+B_h A_h = 	 
+\begin{pmatrix}	 
+	 0 & -1 & 0 & 2 \\
+	 -1 & 0 & 0 & -1 \\
+	 0 & 0 & -1 & -1 \\
+	 0 & 0 & 0 & 1
+\end{pmatrix}	 
+$$
+
+	 \item \textbf{Expressions de $F^{-1}$ et $G^{-1}$.}
+
+Notons $\tilde A_h$ la matrice associée à $F^{-1}$ et $\tilde B_h$ la matrice associée à $G^{-1}$. Par la proposition \ref{prop:invhomog} :
+$$		 
+\tilde A_h = 
+\begin{pmatrix}	
+	0 & 1 & 0 & -2 \\
+	-1 & 0 & 0 & 1 \\
+	0 & 0 & 1 & -1 \\
+	0 & 0 & 0 & 1
+\end{pmatrix}
+\qquad\qquad
+\tilde B_h =
+\begin{pmatrix}	
+	1 & 0 & 0 & -1 \\
+	0 & -1 & 0 & 1 \\
+	0 & 0 & -1 & 0 \\
+	0 & 0 & 0 & 1
+\end{pmatrix}$$
+	
+\end{enumerate}
+
+\end{exemple}
+
+		 
+\end{document}

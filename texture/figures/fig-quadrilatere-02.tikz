@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}[xshift=-0.5cm,scale=1.4]
+\draw[blue, fill=blue!5, very thick,] (0,0) rectangle (1,1);
+% \node at (0,0) [below left] {$A_0$};
+% \node at (1,0) [below right] {$B_0$};
+% \node at (1,1) [above right] {$C_0$};
+% \node at (0,1) [above left] {$D_0$};
+\end{scope}
+
+\draw[->,>=latex,line width =5pt, orange!20] (1.5,0.7) to[bend left] ++ (4,0);
+
+\begin{scope}[xshift=6cm,scale=0.9,]
+\draw[blue, fill=blue!5, very thick] (0,0) -- (1.5,2) -- (3.5,1.2) -- (4,-1) -- cycle;
+\node at (0,0) [below left] {$A$};
+\node at (4,-1) [below] {$B$};
+\node at (3.5,1.2) [right] {$C$};
+\node at (1.5,2) [above] {$D$};
+\end{scope}
+
+\end{tikzpicture}

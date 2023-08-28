@@ -1,0 +1,198 @@
+﻿\begin{tikzpicture}[scale=1]
+
+\begin{scope}
+\fill[gray!5] (0,0) rectangle ++(4,3);  % terrain normal
+
+\fill[blue!20] (1,2) rectangle ++(2,1);  % terrain difficile
+\fill[blue!20] (1,1) rectangle ++(1,1);  % terrain difficile
+
+\fill[green!30] (0,1) rectangle ++(1,1);  % départ
+\fill[red!20] (3,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(4,3);  % grille
+
+
+% Valeurs terrain
+\node[black] at (0.5,0.5) {\bf 1};
+\node[black] at (0.5,1.5) {\bf 1};
+\node[black] at (0.5,2.5) {\bf 1};
+
+\node[black] at (1.5,0.5) {\bf 1};
+\node[black] at (1.5,1.5) {\bf 5};
+\node[black] at (1.5,2.5) {\bf 5};
+
+\node[black] at (2.5,0.5) {\bf 1};
+\node[black] at (2.5,1.5) {\bf 1};
+\node[black] at (2.5,2.5) {\bf 5};
+
+
+\node[black] at (3.5,0.5) {\bf 1};
+\node[black] at (3.5,1.5) {\bf 1};
+\node[black] at (3.5,2.5) {\bf 1};
+
+\node at (2,-0.75){\bf (a) Terrain};
+\end{scope}
+
+
+\begin{scope}[xshift=7cm]
+\fill[gray!5] (0,0) rectangle ++(4,3);  % terrain normal
+
+\fill[blue!20] (1,2) rectangle ++(2,1);  % terrain difficile
+\fill[blue!20] (1,1) rectangle ++(1,1);  % terrain difficile
+
+\fill[green!30] (0,1) rectangle ++(1,1);  % départ
+\fill[red!20] (3,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(4,3);  % grille
+
+
+% Valeurs terrain
+\node[blue] at (0.5,0.5) {\bf };
+\node[blue] at (0.5,1.5) {\bf };
+\node[blue] at (0.5,2.5) {\bf };
+
+\node[blue] at (1.5,0.5) {\bf 3};
+\node[blue] at (1.5,1.5) {\bf 6};
+\node[blue] at (1.5,2.5) {\bf 11};
+
+\node[blue] at (2.5,0.5) {\bf 2};
+\node[blue] at (2.5,1.5) {\bf 1};
+\node[blue] at (2.5,2.5) {\bf 6};
+
+\node[blue] at (3.5,0.5) {\bf 1};
+\node[blue] at (3.5,1.5) {\bf 0};
+\node[blue] at (3.5,2.5) {\bf 1};
+
+\node at (2,-0.75)[text width=4cm, align=center]{\bf (b) Début du calcul de la \emph{heatmap}};
+\end{scope}
+
+
+\begin{scope}[xshift=14cm]
+\fill[gray!5] (0,0) rectangle ++(4,3);  % terrain normal
+
+\fill[blue!20] (1,2) rectangle ++(2,1);  % terrain difficile
+\fill[blue!20] (1,1) rectangle ++(1,1);  % terrain difficile
+
+\fill[green!30] (0,1) rectangle ++(1,1);  % départ
+\fill[red!20] (3,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(4,3);  % grille
+
+
+% Valeurs terrain
+\node[blue] at (0.5,0.5) {\bf};
+\node[blue] at (0.5,1.5) {\bf 7};
+\node[blue] at (0.5,2.5) {\bf };
+
+\node[blue] at (1.5,0.5) {\bf 3};
+\node[blue] at (1.5,1.5) {\bf 6};
+\node[blue] at (1.5,2.5) {\bf 11};
+
+\node[blue] at (2.5,0.5) {\bf 2};
+\node[blue] at (2.5,1.5) {\bf 1};
+\node[blue] at (2.5,2.5) {\bf 6};
+
+\node[blue] at (3.5,0.5) {\bf 1};
+\node[blue] at (3.5,1.5) {\bf 0};
+\node[blue] at (3.5,2.5) {\bf 1};
+
+\node at (2,-0.75)[text width=4cm, align=center]{\bf (c) Première valeur à la case verte};
+\end{scope}
+
+\begin{scope}[xshift=0cm, yshift=-5cm]
+\fill[gray!5] (0,0) rectangle ++(4,3);  % terrain normal
+
+\fill[blue!20] (1,2) rectangle ++(2,1);  % terrain difficile
+\fill[blue!20] (1,1) rectangle ++(1,1);  % terrain difficile
+
+\fill[green!30] (0,1) rectangle ++(1,1);  % départ
+\fill[red!20] (3,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(4,3);  % grille
+
+
+% Valeurs terrain
+\node[blue] at (0.5,0.5) {\bf 4};
+\node[blue] at (0.5,1.5) {\bf 7};
+\node[blue] at (0.5,2.5) {\bf };
+
+\node[blue] at (1.5,0.5) {\bf 3};
+\node[blue] at (1.5,1.5) {\bf 6};
+\node[blue] at (1.5,2.5) {\bf 11};
+
+\node[blue] at (2.5,0.5) {\bf 2};
+\node[blue] at (2.5,1.5) {\bf 1};
+\node[blue] at (2.5,2.5) {\bf 6};
+
+\node[blue] at (3.5,0.5) {\bf 1};
+\node[blue] at (3.5,1.5) {\bf 0};
+\node[blue] at (3.5,2.5) {\bf 1};
+
+\node at (2,-0.75){\bf (d) On continue};
+\end{scope}
+
+\begin{scope}[xshift=7cm, yshift=-5cm]
+\fill[gray!5] (0,0) rectangle ++(4,3);  % terrain normal
+
+\fill[blue!20] (1,2) rectangle ++(2,1);  % terrain difficile
+\fill[blue!20] (1,1) rectangle ++(1,1);  % terrain difficile
+
+\fill[green!30] (0,1) rectangle ++(1,1);  % départ
+\fill[red!20] (3,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(4,3);  % grille
+
+
+% Valeurs terrain
+\node[blue] at (0.5,0.5) {\bf 4};
+\node[red] at (0.5,1.5) {\bf 5};
+\node[blue] at (0.5,2.5) {\bf };
+
+\node[blue] at (1.5,0.5) {\bf 3};
+\node[blue] at (1.5,1.5) {\bf 6};
+\node[blue] at (1.5,2.5) {\bf 11};
+
+\node[blue] at (2.5,0.5) {\bf 2};
+\node[blue] at (2.5,1.5) {\bf 1};
+\node[blue] at (2.5,2.5) {\bf 6};
+
+\node[blue] at (3.5,0.5) {\bf 1};
+\node[blue] at (3.5,1.5) {\bf 0};
+\node[blue] at (3.5,2.5) {\bf 1};
+
+\node at (2,-0.75)[text width=4cm, align=center]{\bf (e) Mise à jour de la valeur à la case verte};
+\end{scope}
+
+
+\begin{scope}[xshift=14cm, yshift=-5cm]
+\fill[gray!5] (0,0) rectangle ++(4,3);  % terrain normal
+
+\fill[blue!20] (1,2) rectangle ++(2,1);  % terrain difficile
+\fill[blue!20] (1,1) rectangle ++(1,1);  % terrain difficile
+
+\fill[green!30] (0,1) rectangle ++(1,1);  % départ
+\fill[red!20] (3,1) rectangle ++ (1,1);  % arrivée
+
+\draw[gray!50,thick] (0,0) grid ++(4,3);  % grille
+
+
+% Valeurs terrain
+\node[blue] at (0.5,0.5) {\bf 4};
+\node[blue] at (0.5,1.5) {\bf 5};
+\node[blue] at (0.5,2.5) {\bf 6};
+
+\node[blue] at (1.5,0.5) {\bf 3};
+\node[blue] at (1.5,1.5) {\bf 6};
+\node[blue] at (1.5,2.5) {\bf 11};
+
+\node[blue] at (2.5,0.5) {\bf 2};
+\node[blue] at (2.5,1.5) {\bf 1};
+\node[blue] at (2.5,2.5) {\bf 6};
+
+\node[blue] at (3.5,0.5) {\bf 1};
+\node[blue] at (3.5,1.5) {\bf 0};
+\node[blue] at (3.5,2.5) {\bf 1};
+
+\node at (2,-0.75){\bf (f) La \emph{heatmap} complétée};
+\end{scope}
+\end{tikzpicture}
