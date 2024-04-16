@@ -74,8 +74,8 @@ $$A = \begin{pmatrix}k_x&0&0\\0&k_y&0\\0&0&k_z\end{pmatrix}.$$
 
 Les rotations seront étudiées en détail dans le chapitre \og{}Rotations de l'espace\fg{}.
 
-Par exemple la rotation d'axe $(Ox)$ et d'angle $\theta$ est la transformation $Y=AX$ avec
-$$A = 
+Par exemple la rotation d'axe $(Ox)$ et d'angle $\theta$ est la transformation $Y=R_x(\theta) X$ avec
+$$R_x(\theta) = 
 \begin{pmatrix}
 1 & 0 & 0 \\	
 0 & \cos(\theta) & - \sin(\theta) \\
@@ -88,7 +88,7 @@ $$A =
 
 Une rotation d'angle $\pi$ ($\ang{180}$) s'appelle un \defi{retournement}.
 Le retournement d'axe $(Ox)$ a pour matrice:
- $$A = 
+ $$R_x(\pi) = 
 \begin{pmatrix}
 1 & 0 & 0 \\
 0 & -1 & 0\\
@@ -101,14 +101,14 @@ Le retournement d'axe $(Ox)$ a pour matrice:
 
 Voici les matrices de rotations autour de l'axe $(Oy)$ et de l'axe $(Oz)$ :
 $$
-R_y = 
+R_y(\theta) = 
 \begin{pmatrix}
 	\cos(\theta) & 0 & \sin(\theta) \\
 	0 & 1 & 0 \\	
 	-\sin(\theta) & 0 & \cos(\theta) \\
 \end{pmatrix}
 \qquad \qquad 
-R_z = 
+R_z(\theta) = 
 \begin{pmatrix}
 	\cos(\theta) & - \sin(\theta) & 0 \\
 	\sin(\theta) & \cos(\theta) & 0\\
@@ -323,7 +323,7 @@ $$
 
 
 %--------------------------------------------------------------------
-\subsection{Changement de base pour les matrices}
+\subsection{Changement de base pour les fonctions}
 
 Soit $F : \Rr^3 \to \Rr^3$ une application linéaire (c'est-à-dire une transformation vectorielle). Notons $A$ la matrice de $F$ dans la base $\mathcal{B}$.
 Ainsi si $f(\vec v) = \vec w$ et que $\vec v$ a pour coordonnées $X$ et $\vec w$ a pour coordonnées $Y$ (toujours dans la même base $\mathcal{B}$) alors
@@ -520,9 +520,9 @@ Voyons maintenant comment uniformiser la position d'un éclairage.
 La source d'un éclairage est définie par un point $S \in \Rr P^2$ de coordonnées homogènes $(x_S:y_S:w_S)$ avec $w_S=0$ ou bien $w_S=1$.
 
 \begin{itemize}
-	\item \textbf{Lumière ponctuelle.} $S = (x_S:y_S:1)$. Dans ce cas la source lumineuse est en position $(x_S,y_S)$. Si $P(x,y)$ est un point du plan, alors un vecteur dirigé vers la source lumineuse est $\vec{PS}$.
+	\item \textbf{Lumière ponctuelle.} $S = (x_S:y_S:1)$. Dans ce cas la source lumineuse est en position $(x_S,y_S)$. Si $P(x,y)$ est un point du plan, alors un vecteur unitaire dirigé vers la source lumineuse est $\ell_P = \frac{\vec{PS}}{\|\vec{PS}\|}$.
 	
-	\item \textbf{Lumière directionnelle.} $S = (x_S:y_S:0)$. Dans ce cas la source lumineuse est \og{}à l'infini\fg{} et est caractérisée par la direction opposée à $\vec v =  (x_S,y_S)$. Pour n'importe quel point $P$ du plan, $\vec v$ est un vecteur dirigé vers la source lumineuse.
+	\item \textbf{Lumière directionnelle.} $S = (x_S:y_S:0)$. Dans ce cas la source lumineuse est \og{}à l'infini\fg{} et est caractérisée par la direction opposée à $\vec v =  (x_S,y_S)$. Pour n'importe quel point $P$ du plan, $\ell = \frac{\vec v}{\|\vec v\|}$ est un vecteur unitaire dirigé parallèlement aux rayons lumineux.
 \end{itemize}
 
 \begin{center}

@@ -281,7 +281,7 @@ La matrice des gains du jeu fournit la liste des gains : notons $g_A(S_A, S_B)$ 
 } 
 
 \begin{definition}
-Un couple $(S_A, S_B)$ et un \defi{équilibre de Nash} :
+Un couple $(S_A, S_B)$ est un \defi{équilibre de Nash} :
 \begin{itemize}
 	\item si $A$ n'a pas d'intérêt à changer sa stratégie $S_A$, sachant que $B$ joue $S_B$, c'est-à-dire :
 	$$\text{ pour toute stratégie } S \qquad g_A(S_A, S_B) \ge g_A(S, S_B)$$
@@ -300,6 +300,18 @@ Nous énonçons de manière informelle :
 
 Il y a une subtilité dans cette notion d'équilibre de Nash qui peut être \defi{pur} (c'est-à-dire issu de la liste originale des stratégies possibles) ou bien \defi{mixte} (les stratégies d'équilibres se forment par tirage aléatoire parmi les stratégies originales selon des probabilités précises).
 
+\bigskip
+\textbf{Trouver les équilibres de Nash purs.}
+
+Voici comment déterminer tous les équilibres de Nash purs à partir de la matrice de gains :
+
+
+\mybox{
+	\begin{minipage}{0.8\textwidth}
+		\center
+		Un équilibre de Nash pur est atteint en une case où le gain de A est le plus grand de sa colonne et, en même temps, le gain de B est le plus grand de sa ligne.
+	\end{minipage}
+}
 
 
 %--------------------------------------------------------------------
@@ -371,19 +383,9 @@ Autre exemple d'équilibre mixte : pour \og{}pierre/feuille/ciseaux\fg{} l'équi
 
 
 
+
 \bigskip
-\textbf{Trouver les équilibres de Nash purs.}
-
-Voici comment déterminer tous les équilibres de Nash purs à partir de la matrice de gains :
-
-
-\mybox{
-	\begin{minipage}{0.8\textwidth}
-		\center
-		Un équilibre de Nash est atteint en une case où le gain de A est le plus grand de sa colonne et, en même temps, le gain de B est le plus grand de sa ligne.
-	\end{minipage}
-	}
-
+\textbf{Exemple à trois stratégies.}
 
 Voici un exemple où le joueur A a trois stratégies possibles $S_1$, $S_2$, $S_3$ et le joueur B a trois autres stratégies possibles $S'_1$, $S'_2$, $S'_3$. Noter que les stratégies n'ont pas besoin d'être les mêmes pour A et B et que la matrice des gains n'est pas symétrique. 
 

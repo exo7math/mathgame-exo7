@@ -11,13 +11,13 @@
         % draw the unit circle
         \draw[thick] (0cm,0cm) circle(1cm);
 
-        \foreach \x in {0,30,...,360} {
+        \foreach \x in {0,30,45,60,90,120,135,150,180,210,225,240,270,300,315,330,360} {
                 % lines from center to point
                 \draw[gray] (0cm,0cm) -- (\x:1cm);
                 % dots at each point
                 \filldraw[black] (\x:1cm) circle(0.4pt);
                 % draw each angle in degrees
-                \draw (\x:0.6cm) node[fill=white] {$\x^\circ$};
+                \draw (\x:0.6cm) node[fill=white,scale=0.8] {$\x^\circ$};
         }
 
         % draw each angle in radians

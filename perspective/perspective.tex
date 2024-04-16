@@ -63,7 +63,7 @@ Le plan $\mathcal{P}$ de projection est le plan $(Oyz)$, c'est-à-dire d'équati
 
 
 \begin{proposition}
-Pour $P$ de coordonnées $(x,y,z)$ (avec $x \neq -f$) alors son image par la perspective linéaire est $P'$ de coordonnées $(X,Y)$ dans $\mathcal{P}$ avec :
+Pour $P$ de coordonnées $(x,y,z)$ (avec $x \neq f$) alors son image par la perspective linéaire est $P'$ de coordonnées $(X,Y)$ dans $\mathcal{P}$ avec :
 \mybox{$\displaystyle
 \left\{\begin{array}{rcl}
 X &=& \lambda y \\
@@ -326,12 +326,21 @@ Les angles déterminent $3$ vecteurs unitaires $\vec {f_1}$, $\vec {f_2}$, $\vec
   \item $\vec {f_2}$ forme un angle $\beta$ avec $\vec {f_3}$.
 \end{itemize}
 
+Les vecteurs $\vec {f_1}$, $\vec {f_2}$, $\vec {f_3}$ sont multipliés par par le facteur d'échelle correspondant à son axe :
+\begin{itemize}
+	\item $\vec {f_1'} = k_x \vec {f_1}$,
+	\item $\vec {f_2'} = k_y \vec {f_2}$,
+	\item $\vec {f_3'} = k_z \vec {f_3}$.		
+\end{itemize}
+
 
 \myfigure{1}{
 	 \tikzinput{fig-perspective-10} \qquad\qquad\qquad
      \tikzinput{fig-perspective-11}
 }
  
+Si $(\vec{e_1},\vec{e_2},\vec{e_3})$ est la base orthonormée canonique de $\Rr^3$, alors la projection chaque vecteur $\vec{e_i}$ se projette sur $\vec {f_i'}$.
+
 \myfigure{1}{ 
      \tikzinput{fig-perspective-12}
 }
@@ -359,11 +368,11 @@ Y &=&  k_x\cos(\alpha) \cdot x + k_y\cos(\beta) \cdot y + k_z \cdot z \\
 \end{proposition}
 
 
-L'idée de ces formules est simple. Si $(\vec{e_1},\vec{e_2},\vec{e_3})$ est la base orthonormée canonique de $\Rr^3$, alors chaque vecteur $\vec{e_i}$ se projette sur $\vec {e_i}'$ qui est un multiple de $\vec{f_i}$ :
+L'idée de ces formules est simple. Si $(\vec{e_1},\vec{e_2},\vec{e_3})$ est la base orthonormée canonique de $\Rr^3$, alors chaque vecteur $\vec{e_i}$ se projette sur $\vec {f_i'}$ qui est un multiple de $\vec{f_i}$ :
 \begin{itemize}
-  \item $\vec {e_1} \mapsto \vec {e_1}' = k_x \vec {f_1}$,
-  \item $\vec {e_2} \mapsto \vec {e_2}' = k_y \vec {f_2}$,
-  \item $\vec {e_3} \mapsto \vec {e_3}' = k_z \vec {f_3}$.
+  \item $\vec {e_1} \mapsto \vec {f_1'} = k_x \vec {f_1}$,
+  \item $\vec {e_2} \mapsto \vec {f_2'} = k_y \vec {f_2}$,
+  \item $\vec {e_3} \mapsto \vec {f_3'} = k_z \vec {f_3}$.
 \end{itemize}
 Ainsi trois vecteurs de l'espace s'envoient sur $3$ vecteurs du plan.
 
@@ -371,7 +380,7 @@ Ainsi trois vecteurs de l'espace s'envoient sur $3$ vecteurs du plan.
 Soit $P$ un point de coordonnées $\left(\begin{smallmatrix}x\\y\\z\end{smallmatrix}\right)$,
 c'est-à-dire :
 $$\overrightarrow{OP} = x\vec{e_1} + y\vec{e_2} + z \vec{e_3}.$$
-La projection parallèle envoie $\vec{e_i}$ sur $\vec{e_i}'$, donc
+La projection parallèle envoie $\vec{e_i}$ sur $\vec{f_i'}$, donc
 l'image de $\overrightarrow{OP}$ est :
 $$ x k_x \vec {f_1} + y k_y\vec {f_2} + z  k_z\vec {f_3}.$$
 
@@ -395,12 +404,12 @@ D'où le résultat.
 
 
 \textbf{Perspective axonométrique.}
-On retrouve cette projection déjà rencontrée pour $\alpha=\beta=\frac{2\pi}{3}$ et $k_x=k_y=k_z=\frac{\sqrt2}{\sqrt3}$.
+Cette projection est caractérisée par $\alpha=\beta=\frac{2\pi}{3}$ et $k_x=k_y=k_z=\frac{\sqrt2}{\sqrt3}$.
 
 \myfigure{1}{\tikzinput{fig-perspective-13}}
 
 \textbf{Perspective cavalière.} Très utilisée en dessins techniques faits à la main.
-On impose $\beta=\frac\pi2$ et $k_y=k_z=1$. Il reste deux paramètres $\alpha$ et $k_x$ à fixer. Des valeurs classiques sont $\alpha = \frac{3\pi}{2}$ et $k_x=\frac12$ ou $k_x = 1$.
+On impose $\beta=\frac\pi2$ et $k_y=k_z=1$. Il reste deux paramètres $\alpha$ et $k_x$ à fixer. Des valeurs classiques sont $\alpha = \frac{3\pi}{4}$ et $k_x=\frac12$ ou $k_x = 1$.
 
 \begin{center}
 \begin{minipage}{0.45\textwidth}
@@ -428,11 +437,11 @@ k_x \cos\alpha  & 0 & 1 \
 Le théorème de Pohlke (que nous admettrons) affirme que, quelles que soient nos données, il existe une projection parallèle correspondante.
 
 \begin{theoreme}[Pohlke]
-Tout triplet $(\vec {e_1}', \vec {e_2}', \vec {e_3}')$ qui engendre le plan $\Rr^2$ est l'image, à homothétie près, d'une base orthonormée $(\vec {e_1},\vec {e_2},\vec {e_3})$ de l'espace $\Rr^3$ par une projection parallèle.
-Autrement dit, il existe un cube de l'espace (de longueur de côté $k$) dont les côtés  de base sont $(k\vec {e_1}, k\vec {e_2}, k\vec {e_3})$ qui se projette parallèlement sur $(\vec {e_1}', \vec {e_2}', \vec {e_3}')$.
+Tout triplet $(\vec {f_1'}, \vec {f_2'}, \vec {f_3'})$ qui engendre le plan $\Rr^2$ est l'image, à homothétie près, d'une base orthonormée $(\vec {e_1},\vec {e_2},\vec {e_3})$ de l'espace $\Rr^3$ par une projection parallèle.
+Autrement dit, il existe un cube de l'espace (de longueur de côté $k$) dont les côtés  de base sont $(k\vec {e_1}, k\vec {e_2}, k\vec {e_3})$ qui se projette parallèlement sur $(\vec {f_1'}, \vec {f_2'}, \vec {f_3'})$.
 \end{theoreme}
 
-L'unique condition de ce théorème est que les trois vecteurs $\vec {e_1}',\vec {e_2}',\vec {e_3}'$ ne soient pas colinéaires.
+L'unique condition de ce théorème est que les trois vecteurs $\vec {f_1'},\vec {f_2'},\vec {f_3'}$ ne soient pas colinéaires.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -463,7 +472,7 @@ L'angle $\theta$ (donc $X$) varie de $-\pi$ à $\pi$ et $z$ (donc $Y$) appartien
 \end{minipage}
 \end{center}
 
-Cette projection cylindrique se retrouve dans la projection de Mercator pour représenter le globe terrestre à plat. Elle conduit à une forte distorsion au niveau des pôles.
+Cette projection cylindrique est du même type que la projection de Mercator pour représenter le globe terrestre à plat. Elle conduit à une forte distorsion au niveau des pôles.
 
 \myfigure{0.7}{\tikzinput{fig-perspective-19}}
 

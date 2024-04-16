@@ -366,7 +366,14 @@ On pourrait exprimer cette rotation par la notation matricielle $R_Z(\gamma) R_Y
 %--------------------------------------------------------------------
 \subsection{Équivalence entre $x$-$y$-$z$ et $z$-$y'$-$x''$}
 
-Nous allons montrer que les conventions $x$-$y$-$z$ et $z$-$y'$-$x''$ sont équivalentes.
+Nous allons montrer que les conventions $x$-$y$-$z$ et $z$-$y'$-$x''$ sont équivalentes :
+
+\mybox{$\displaystyle
+ R_z(\gamma) \, R_y(\beta) \, R_x(\alpha)
+ = 	 R_{x''}(\alpha) \,  R_{y'}(\beta) \, R_z(\gamma)
+$}
+
+
 Les calculs sont plutôt théoriques et peuvent être passés lors d'une première lecture.
 On commence par des rappels sur les changements de base.
 
@@ -593,7 +600,7 @@ Voici quelques notions et propriétés élémentaires. On note toujours $q = a +
 
   \item Le \defi{conjugué} de $q$ est $\bar q =  a - b\ii -c\jj -d\kk$. De sorte que $q \bar q = \|q\|^2$.
 
-  \item Pour un quaternion non nul (c'est-à-dire $(a,b,c,d) \neq (0,0,0,0)$), $$q^{-1} = \frac{1}{\|q\|^2} \bar q = \frac{a - b\ii -c\jj -d\kk}{\sqrt{a^2+b^2+c^2+d^2}}$$
+  \item Pour un quaternion non nul (c'est-à-dire $(a,b,c,d) \neq (0,0,0,0)$), $$q^{-1} = \frac{1}{\|q\|^2} \bar q = \frac{a - b\ii -c\jj -d\kk}{a^2+b^2+c^2+d^2}$$
   de sorte que $q q^{-1} = q^{-1}q = 1$.
 
   \item   Si la partie réelle d'un quaternion est nulle (c'est-à-dire $a=0$), on parle de \defi{quaternion vectoriel pur}. Le produit de deux quaternions vectoriels purs est un quaternion vectoriel pur.

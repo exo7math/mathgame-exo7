@@ -136,7 +136,7 @@ def perspective_lineaire(P,C):
     x, y, z = P
     xc, yc, zc = C
 
-    if y == yc:
+    if x == xc:
         return (+inf,+inf,0)
 
     k = -xc/(x-xc)

@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=2]
+\begin{tikzpicture}[scale=2]
 
 
 % projection parallele 
@@ -17,9 +17,9 @@
 \coordinate (ff2) at (90-\mybeta:\ky);
 \coordinate (ff3) at (90:\kz);
 
-\draw[red,  thick,->,>=latex] (0,0) -- (f1) node[below]{$\vec {f_1}$};
-\draw[red,  thick,->,>=latex] (0,0) -- (f2) node[below]{$\vec {f_2}$};
-\draw[red,  thick,->,>=latex] (0,0) -- (f3) node[right]{$\vec {f_3}$};
+\draw[orange,  thick,->,>=latex] (0,0) -- (f1) node[below]{$\vec {f_1}$};
+\draw[orange,  thick,->,>=latex] (0,0) -- (f2) node[below]{$\vec {f_2}$};
+\draw[orange,  thick,->,>=latex] (0,0) -- (f3) node[right]{$\vec {f_3}$};
 
 \draw[red, ultra thick,->,>=latex] (0,0) -- (ff1) node[midway, above,black] {$k_x$} node[below]{$\vec {f_1'}$};
 \draw[red, ultra thick,->,>=latex] (0,0) -- (ff2) node[midway, above,black] {$k_y$}  node[below]{$\vec {f_2'}$};

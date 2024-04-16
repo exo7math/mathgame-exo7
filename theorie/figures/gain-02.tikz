@@ -34,7 +34,7 @@
 	
 	\matrix [payoff matrix]{
 		        & {\bf S}      & {\bf T}    \\
-		{\bf S} & \pft{-1}{-1}  & \pft{0}{-5} \\
-		{\bf T} & \pft{-5}{0}  & \pft{-3}{-3} \\
+		{\bf S} & \pft{-1}{-1}  & \pft{-5}{0} \\
+		{\bf T} & \pft{0}{-5}  & \pft{-3}{-3} \\
 	};
 \end{tikzpicture}
