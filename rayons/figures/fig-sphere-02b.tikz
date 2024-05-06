@@ -60,7 +60,7 @@
 %   (P2) [dot] node[above right]{$P_2$}
  ;
 
-\node[] at (0,-4) {\bf Cas $OH \ge R$};
+\node[] at (0,-4) {\bf Cas $OH > R$};
 \node[] at (0,-5) {\bf aucune solution};
 
 \end{tikzpicture}
