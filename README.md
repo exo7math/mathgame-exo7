@@ -1,12 +1,12 @@
 
 
-Mathgame : Mathématiques pour les jeux vidéo 
+MathGame : Mathématiques pour les jeux vidéo 
 ============================================
 
 Livre
 =====
 
-Vous pouvez télécharger le livre sur ce site : [Livre 'Mathgame' (60 Mo)](livre-mathgame.pdf).
+Vous pouvez télécharger le livre sur ce site : [Livre 'MathGame' (60 Mo)](livre-mathgame.pdf).
 
 
 Chapitres
@@ -56,7 +56,7 @@ Partie IV - Théorie des jeux
 Codes
 =====
 
-Vous trouverez les fichiers sources en naviguant dans les répertoires de [GitHub "Mathgame"](https://github.com/exo7math/mathgame-exo7).
+Vous trouverez les fichiers sources en naviguant dans les répertoires de [GitHub "MathGame"](https://github.com/exo7math/mathgame-exo7).
 
 
 Erreurs
