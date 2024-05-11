@@ -3,10 +3,12 @@
 MathGame : Mathématiques pour les jeux vidéo 
 ============================================
 
-Livre
-=====
+Livre & vidéos
+==============
 
-Vous pouvez télécharger le livre sur ce site : [Livre 'MathGame' (60 Mo)](livre-mathgame.pdf).
+
+* Vous pouvez télécharger le livre sur ce site : [Livre 'MathGame' (60 Mo)](livre-mathgame.pdf).
+* La chaîne YouTube [MathGame](https://www.youtube.com/@MathGame-Exo7) propose des vidéos pour accompagner ce livre.
 
 
 Chapitres
