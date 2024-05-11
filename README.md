@@ -1,6 +1,6 @@
 
 
-MathGame : Mathématiques pour les jeux vidéo 
+MathGame : mathématiques pour les jeux vidéo 
 ============================================
 
 Livre & vidéos
@@ -81,3 +81,4 @@ Ce livre est diffusé sous la licence *Creative Commons -- BY-NC-SA -- 4.0 FR*.
 
 
 ![Logo Exo7](divers/logo_exo7.png "logo Exo7")
+![Logo MathGame](divers/logo_mathgame.png "logo MathGame")
