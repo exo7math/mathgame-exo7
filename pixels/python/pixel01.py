@@ -35,14 +35,17 @@ def affiche_pixels(liste_pixels, plot_true_line=True):
             rect = patches.Rectangle((i, j), 1, 1, color=str(1-c))
             ax.add_patch(rect)
 
-    # Grille    
-    for i in range(xmin, xmax+1):
-        plt.vlines(i, ymin, ymax+1)
-    for j in range(ymin, ymax+1):
-        plt.hlines(j, xmin, xmax+1)
+
 
     # Vrai segment
     if plot_true_line:
+
+        # Grille    
+        for i in range(xmin, xmax+1):
+            plt.vlines(i, ymin, ymax+1)
+        for j in range(ymin, ymax+1):
+            plt.hlines(j, xmin, xmax+1)
+
         plt.plot([xmin+0.5,xmax+0.5],[ymin+0.5,ymax+0.5],color="red")
 
     # plt.tight_layout()    
@@ -51,8 +54,8 @@ def affiche_pixels(liste_pixels, plot_true_line=True):
     plt.xlim([xmin, xmax+1])
     plt.ylim([ymin, ymax+1])
 
-    plt.xlabel("Axe x")
-    plt.ylabel("Axe y")
+    # plt.xlabel("Axe x")
+    # plt.ylabel("Axe y")
 
     plt.show()
 
@@ -97,8 +100,8 @@ def affiche_pixels_cercle(liste_pixels, x0, y0, r, plot_true_circle=True):
     plt.xlim([xmin, xmax+1])
     plt.ylim([ymin, ymax+1])
 
-    plt.xlabel("Axe x")
-    plt.ylabel("Axe y")
+    # plt.xlabel("Axe x")
+    # plt.ylabel("Axe y")
 
     plt.show()
 
@@ -173,9 +176,12 @@ def segment_bresenham(x1, y1, x2, y2):
 # Test  
 pix3 = segment_bresenham(0, 0, 8, 5)
 affiche_pixels(pix3)
+
+
 print(pix1==pix3)
 
-
+# pix4 = segment_bresenham(0, 0, 151, 67)
+# affiche_pixels(pix4, plot_true_line=False)
 
 def segment_antialiasing(x1, y1, x2, y2):
     """ Renvoie les pixels reliant (x1,y1) à (x2,y2).
