@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=1]
+\begin{tikzpicture}[scale=1]
 
 % Oeil
 % eye from Izaak Neutelings https://tikz.net/hyperbola/
@@ -23,7 +23,7 @@
 
 \draw[very thick,->,>=latex,red!50, line width=4pt] ($(C)!0.2!(P)$) -- ($(C)!0.97!(P)$);
 
-\draw[scale=0.7,step=0.5, gray] (-6,-4) grid ++(3.5,3);
+\draw[scale=0.7,step=0.5, gray] (-6,-4) grid ++(3,3);
 \fill[blue, scale=0.7] (-5,-3) rectangle ++ (0.5,0.5);
 
 \node[blue, scale=4] at (P) {};
