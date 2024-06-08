@@ -669,7 +669,7 @@ Soit la diagonale $[BC]$ est bonne, soit la diagonale $[AD]$ est bonne.
 
 L'une des deux diagonales est donc une bonne diagonale.
 Autrement dit, les deux diagonales ne peuvent être mauvaises simultanément.
-Le seul cas où les deux diagonales sont bonnes en même temps est lorsque les points $A$, $B$, $C$, $D$ sont cycliques.
+Le seul cas où les deux diagonales sont bonnes en même temps est lorsque les points $A$, $B$, $C$, $D$ sont cocycliques.
 
 \myfigure{0.45}{	
 	\tikzinput{delaunay-05}		
@@ -828,13 +828,14 @@ Les cellules de Voronoï correspondent au \emph{graphe dual} de la triangulation
 \begin{algorithme}
 \textbf{Algorithme des cellules de Voronoï.}
 
-\textbf{Entrée :} un ensemble de points $\mathcal{E}$ muni d'une triangulation $\mathcal{T}$.
+\textbf{Entrée :} un ensemble de points $\mathcal{E}$.
+% muni d'une triangulation $\mathcal{T}$.
 
 \textbf{Sortie :} le graphe $\mathcal{V}$ de Voronoï de $\mathcal{E}$.
 
 \begin{itemize}
 	\item Calculer la triangulation $\mathcal{T}$ de Delaunay de $\mathcal{E}$.
-	\item Les sommets de $\mathcal{V}$ sont les centres de cercles circonscrits des triangles de $\mathcal{T}$.
+	\item Les sommets de $\mathcal{V}$ sont les centres des cercles circonscrits des triangles de $\mathcal{T}$.
 	\item Les arêtes de $\mathcal{V}$ sont les portions de médiatrices des côtés des triangles de $\mathcal{T}$ joignant deux sommets voisins (ou infinies s'il n'y a pas de voisin).
 \end{itemize}	
 \end{algorithme}
