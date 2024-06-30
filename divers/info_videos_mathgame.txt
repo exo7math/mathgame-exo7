@@ -1,0 +1,1536 @@
+
+MathGame
+Mathématiques pour les jeux vidéo
+
+ARNAUD BODIN
+
+
+Tags youtube
+Mathématiques, Algèbre, Géométrie, Jeu vidéo, Graphisme, 2D, 3D, Informatique
+
+  (chaîne mathgame) https://www.youtube.com/channel/UCWHd0le5kBhLcEthYMiQ87Q
+  (chaîne mathgame) https://www.youtube.com/@MathGame-Exo7
+  (chaîne exo7) https://www.youtube.com/user/Exo7Math
+
+
+#---------------------------
+Teaser
+
+[MathGame] Mathématiques pour les jeux vidéo (teaser)
+https://youtu.be/k59Tuo3NUEI 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+Page https://exo7math.github.io/mathgame-exo7/
+
+Sources https://github.com/exo7math/mathgame-exo7
+
+Vidéos "MathGame" 
+  (chaîne mathgame) https://www.youtube.com/channel/UCWHd0le5kBhLcEthYMiQ87Q
+  (chaîne mathgame) https://www.youtube.com/@MathGame-Exo7
+
+
+
+Vous êtes fasciné par les jeux vidéo ? On va découvrir ensemble les rouages mathématiques qui se cachent derrière vos jeux préférés !
+
+Le but est de comprendre les concepts mathématiques permettant de réaliser des images et des animations captivantes. 
+
+Il y a une partie mathématique bien sûr, comme la représentation en perspective d'une scène ou le déplacement d'un objet dans l'espace grâce à la géométrie et au calcul vectoriel.
+
+Je vous expliquerai comment sont réalisées les images grâce au ray-tracing et à l'application de textures en décortiquant le lancer de rayons et l'éclairage.
+
+Nous continuerons avec des algorithmes et les formules qui se cachent derrière les mouvements fluides et la physique réaliste.
+
+Enfin, nous expliquerons les stratégies possibles pour remporter la victoire.
+
+Que vous soyez passionnés de jeux, étudiants en sciences ou simplement curieux, rejoignez-nous !
+
+
+#########################################
+#########################################
+Partie I - Géométrie
+
+#---------------------------
+Chapitre 1
+Trigonométrie
+
+#-----
+[MathGame] 1.1. Sinus, cosinus, tangente
+https://youtu.be/uDqBddWEuhg 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Trigonométrie" - Partie 1.1. Sinus, cosinus, tangente
+
+Plan : cercle trigonométrique, angles, degrés, radian, sinus, cosinus, tangente, arctan, arctan2.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 1
+Trigonométrie
+
+#-----
+[MathGame] 1.2. Coordonnées polaires, cylindriques, sphériques
+https://youtu.be/u7b6gpg1DIo 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Trigonométrie" - Partie 1.2. Coordonnées polaires, cylindriques, sphériques
+
+
+Plan : Coordonnées polaires, coordonnées cylindriques, coordonnées sphériques, latitude, longitude.
+
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 2
+Vecteurs
+
+#-----
+[MathGame] 2.1. Vecteurs du plan
+https://youtu.be/otlCEsD3fes
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Vecteurs" - Partie 2.1. Vecteurs du plan
+
+Plan : Somme, norme, vecteur unitaire, produit scalaire, angle, projeté orthogonal.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 2
+Vecteurs
+
+#-----
+[MathGame] 2.2. Vecteurs de l'espace
+https://youtu.be/l-961-zdOt8 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Vecteurs" - Partie 2.2. Vecteurs de l'espace
+
+Plan : Opérations, norme, produit scalaire, produit vectoriel, règle de la main droite, produit mixte, déterminant.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+#---------------------------
+Chapitre 3
+Matrices
+
+#-----
+[MathGame] 3.1. Multiplication de matrices
+https://youtu.be/Yprvjl5Qouk 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Matrices" - Partie 3.1. Multiplication de matrices
+
+Plan : Matrice, vecteur, produit scalire, produit matrice par vecteur, rotation, produit de deux matrices, exemples, le produit n'est pas commutatif.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 3
+Matrices
+
+#-----
+[MathGame] 3.2. Vocabulaire sur les matrices
+https://youtu.be/_vEIZQNYVCo
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Matrices" - Partie 3.2. Vocabulaire sur les matrices
+
+Plan : Matrice carrée, diagonale, identité, transposée, propriétés de la transposition.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 3
+Matrices
+
+#-----
+[MathGame] 3.3. Transformations du plan
+https://youtu.be/Vf-bdanGACE 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Matrices" - Partie 3.3. Transformations du plan
+
+Plan : Transformation affine, translation, rotation, homothétie, réflexion, déterminant.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 3
+Matrices
+
+#-----
+[MathGame] 3.4. Inverse d'une matrice
+https://youtu.be/97XxXl7nvq4 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Matrices" - Partie 3.4. Inverse d'une matrice
+
+Plan : Matrice inversible, formule dans le cas 2x2, propriétés de l'inverse, solution d'un système linéaire.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 4
+Transformations de l’espace
+#-----
+[MathGame] 4.1. Transformations affines
+https://youtu.be/E0pjufv5l-g 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Transformations de l’espace" - Partie 4.1. Transformations affines
+
+Plan : Translation, homothétie, rotation, projection, réflexion, transformation affine.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 4
+Transformations de l’espace
+
+#-----
+[MathGame] 4.2. Changement de repère
+https://youtu.be/HWyeyFh9kY0 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Transformations de l’espace" - Partie 4.2. Changement de repère
+
+Plan : changement de base, matrice de passage, applications linéaires, matrice orthogonale.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 4
+Transformations de l’espace
+
+#-----
+[MathGame] 4.3. Coordonnées homogènes du plan
+https://youtu.be/ScPW6k-cd9w
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Transformations de l’espace" - Partie 4.3. Coordonnées homogènes du plan
+
+Plan : coordonnées homogènes/projectives, plan projectif, points à l'infini, application à l'éclairage.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 4
+Transformations de l’espace
+
+#-----
+[MathGame] 4.4. Coordonnées homogènes de l'espace
+https://youtu.be/ThFe5sJ2v-8 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Transformations de l’espace" - Partie 4.4. Coordonnées homogènes de l'espace
+
+Plan : coordonnées homogènes/projectives, transformation homogène, composition des transformations affines.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 5
+Rotations de l’espace
+
+#-----
+[MathGame] 5.1. Rotations suivant un axe
+https://youtu.be/zYrPnHQ8BSE
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Rotations de l’espace" - Partie 5.1. Rotations suivant un axe 
+
+Plan : Rotation du plan, rotation de l'espace suivant l'axe (Ox) ou (Oy) ou (Oz), rotation selon un axe quelconque.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 5
+Rotations de l’espace
+
+#-----
+[MathGame] 5.2. Angles d'Euler
+https://youtu.be/xwzVp7-gKIo
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Rotations de l’espace" - Partie 5.2. Angles d'Euler
+
+Plan : Angles d'Euler, Convention x-y-z, lacet/tangage/roulis, yaw/pitch/roll, convention z-y'-x'', équivalence, blocage de cadran.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 5
+Rotations de l’espace
+
+#-----
+[MathGame] 5.3. Quaternions
+https://youtu.be/aqs3LRjbvyo
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Rotations de l’espace" - Partie 5.3. Quaternions
+
+Plan : Nombres complexes, définition des quaternions, produit, conjugué, norme, inverse, rotation, composée de deux rotations, exemple.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 6
+Perspective
+
+#-----
+[MathGame] 6.1. Perspective linéaire
+https://youtu.be/KdcVe0JTqHA 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Perspective" - Partie 6.1. Perspective linéaire
+
+Plan : Perspective linéaire/projection conique/perspective centrale. Cas simple, cas général, formules, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 6
+Perspective
+
+#-----
+[MathGame] 6.2. Projection orthogonale
+https://youtu.be/rpbTV0DzTk0 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Perspective" - Partie 6.2. Projection orthogonale
+
+Plan : Formule, exemples, matrice de la projection, projection sur un plan quelconque, perspective isométrique.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 6
+Perspective
+
+#-----
+[MathGame] 6.3. Projection parallèle
+https://youtu.be/KLFm0tHEJB4
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Perspective" - Partie 6.3. Projection parallèle
+
+Plan : Projection parallèle/axonométrie, exemples, données d'une axonométrie, formule, matrice, perspective cavalière.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 6
+Perspective
+
+#-----
+[MathGame] 6.4. Autres perspectives
+https://youtu.be/9RfMrmhaZ6M
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Perspective" - Partie 6.4. Autres perspectives
+
+Plan : Coordonnées cylindriques, coordonnées sphériques, perspective curviligne cylindrique, un exemple de perspective curviligne sphérique.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#########################################
+#########################################
+Partie II - Images
+
+7 Lancer de rayons I
+8 Lumière
+9 Pixels
+10 Texture
+11 Lancer de rayons II
+12 Triangulation
+13 Maillage
+
+
+
+#---------------------------
+Chapitre 7
+Lancer de rayons I
+
+#-----
+[MathGame] 7.1. Intersection d'un rayon avec un plan
+https://youtu.be/yrtAApbp6Kw 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons I" - Partie 7.1. Intersection avec un plan 
+
+Plan : Intersection d'un rayon avec une droite du plan, intersection avec un plan, intersection avec un triangle.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 7
+Lancer de rayons I
+
+#-----
+[MathGame] 7.2. Intersection d'un rayon avec une sphère
+https://youtu.be/EaOqEfC3iTk 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons I" - Partie 7.2. Intersection avec une sphère
+
+Plan : Intersection d'un rayon avec un cercle du plan, intersection avec une sphère, formule algébrique, formule géométrique.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 7
+Lancer de rayons I
+
+#-----
+[MathGame] 7.3. Intersection d'un rayon avec une boite
+https://youtu.be/2zSG4uHCQDY 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons I" - Partie 7.3. Intersection avec une boite
+
+Plan : Intersection d'un rayon avec une boite du plan, intersection avec une boite de l'espace.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 8
+Lumière
+
+#-----
+[MathGame] 8.1. Physique de la lumière
+https://youtu.be/FWJQdvgammE
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lumière" - Partie 8.1. Physique de la lumière
+
+Plan : Vue d'ensemble, physique, couleur, modèle RGB, addition et multiplication de couleur, notations.
+
+A 13:40, c'est bien le *minimum* à prendre dans la formule d'addition des couleurs
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 8
+Lumière
+
+#-----
+[MathGame] 8.2. Éclairage
+https://youtu.be/wHKEBiaweWA 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lumière" - Partie 8.2. Éclairage
+
+Plan : Lumière directionnelle, lumière ponctuelle, intensité, spot, atténuation.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 8
+Lumière
+
+#-----
+[MathGame] 8.3. Illumination ambiante
+https://youtu.be/-jQ2QT37kLU 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lumière" - Partie 8.3. Illumination ambiante
+https://youtu.be/
+
+Plan : Luminosité ambiante, luminosité diffuse, luminosité spéculaire, illumination, modèle de Phong, formule de la luminosité ambiante.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 8
+Lumière
+
+#-----
+[MathGame] 8.4. Illumination diffuse
+https://youtu.be/e9Oiqlsp-oo 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lumière" - Partie 8.4. Illumination diffuse
+
+Plan : Luminosité diffuse, schéma microscopique, formule, exemple, justification.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 8
+Lumière
+
+#-----
+[MathGame] 8.5. Illumination spéculaire
+https://youtu.be/eSjsNzvnRPE 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lumière" - Partie 8.5. Illumination spéculaire
+
+Plan : Exemple, cas du miroir, rayon réfléchi, axe principal de réflexion, formule, exposant de spécularité.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 9
+Pixels
+
+#-----
+[MathGame] 9.1. Pixels
+https://youtu.be/oDLcQuFOWRA
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Pixels" - Partie 9.1. Pixels
+
+Plan : Un pixel est un petit carré, résolution, acuité visuelle, écran, un pixel n'est *pas* un petit carré !
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 9
+Pixels
+
+#-----
+[MathGame] 9.2. Tracé d'un segment - Algorithme de Bresenham
+https://youtu.be/TFSAi9Ik-KM 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Pixels" - Partie 9.2. Tracé d'un segment - Algorithme de Bresenham
+
+Plan : Tracer un segment, exemples, solution réelle, algorithme du tracé élémentaire, algorithme de Bresenham, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 9
+Pixels
+
+#-----
+[MathGame] 9.3. Anticrénelage
+https://youtu.be/uJIw-2pnx0E 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Pixels" - Partie 9.3. Anticrénelage
+
+Plan : Anticrénelage, antialiasing, algorithme, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 9
+Pixels
+
+#-----
+[MathGame] 9.4. Tracé d'un cercle
+https://youtu.be/1oJdOlUeCmE 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Pixels" - Partie 9.4. Tracé d'un cercle
+
+Plan : Algorithme de Bresenham pour un cercle, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 9
+Pixels
+
+#-----
+[MathGame] 9.5. Colorier
+https://youtu.be/GP38pARmO9w 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Pixels" - Partie 9.5. Colorier
+
+Plan : Remplissage par l'algorithme de diffusion, remplissage par l'algorithme de balayge.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 9
+Pixels
+
+#-----
+[MathGame] 9.6. Animation 2D
+https://youtu.be/YmIPcqXAcPo 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Pixels" - Partie 9.6. Animation 2D
+
+Plan : Animation 2D, copie, screen buffer, blit, perspective atmosphérique, modèle couleur HSV, méthode 2.5D.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.1. Texture : motivation
+https://youtu.be/NyiBPs0jVas 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.1. Texture : motivation
+
+Plan : Exemples de textures, définition d'une texture (dimension 1), appliquer une texture, texturage indirect, interpolation inéaire.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.2.a. Texture en dimension 2
+https://youtu.be/p5GYcJlMd_E 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.2.a. Texture en dimension 2
+
+Plan : Exemples de textures,, définition d'une texture (dimension 2), appliquer une texture, texturage indirect, carte de hauteur, heightmap, vecteur normal simulé.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.2.b. Texture en dimension 2 (suite)
+https://youtu.be/E3eL3eFBtcI 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.2.b. Texture en dimension 2 (suite) 
+
+Plan : Vecteur normal simulé, bump map, normal map, dispalcement map, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.3. Appliquer une texture
+https://youtu.be/lImx3W35DCs 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.3.  Appliquer une texture
+
+Plan : Appliquer une texture sur un prallèlogramme, sur un cube, sur un cylindre, sur une sphère, uv-map, transformer un carré en un disque (et inversement).
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.4. Triangle - Coordonnées barycentriques
+https://youtu.be/ZuPIe0d5hsA 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.4. Triangle - Coordonnées barycentriques 
+
+Plan : Envoyer un triangle sur un triangle, barycentre, coordonnées barycentriques, exemples, calcul des coordonnées barycentriques via les aires, conversions (u,v), (alpha, beta, gamma), (x,y).
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.5.a. Texture - Interpolation
+https://youtu.be/zd5ysNx_WX8 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.5.a. Interpolation
+
+Plan : Motif, répétition, pixel le plus proche, conversion (u,v) <-> (i,j), problèmes.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.5.b. Interpolation bilinéaire
+https://youtu.be/9DELPmwkS9E 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.5.b. Interpolation bilinéaire
+
+Plan : Formule, coefficients, aires, interpolation et zoom d'une image.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 10
+Texture
+
+#-----
+[MathGame] 10.6. Texture - Quadrilatère
+https://youtu.be/v6L1tHulLLs 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Texture" - Partie 10.6. Quadrilatère
+
+Plan : Motivation, carré sur quadrilatère; interpolation bilinéaire, exemple, transformation projective, homographie, calcul des coefficients, exemple, application au redressement d'images.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.1. Les ancêtres du ray-tracing
+https://youtu.be/rFmoMpzw2H0 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.1. Les ancêtres du ray-tracing
+
+Plan : Algorithme du z-buffer, entrelacement, algorithme du peintre (z-sorting), coordonnées réelles d'un pixel.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.2. Principe du ray-tracing
+https://youtu.be/nnhgmU597hk 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.2. Principe du ray-tracing
+
+Plan : Une scène obtenue par ray-tracing, lancer de rayons depuis la source lumineuse vs depuis l'observateur, scène visible/frustrum, comment calculer la couleur d'un pixel ?
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.3. Ray-tracing - Lumière
+https://youtu.be/Tdb82sP0WOk 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.3. Lumière
+
+Plan : Éclairage direct, luminosité ambiante, luminosité diffuse, luminosité spéculaire.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.4. Ray-tracing - Ombre
+https://youtu.be/oDdt8kJX7_Y
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.4. Ombre
+
+Plan : Rayon d'ombre, zone éclairée/ombre, plusieurs éclairages, dégradé, source lumineuse non ponctuelle, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.5. Ray-tracing - Réflexions multiples
+https://youtu.be/Pf8LcQ5Vh78 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.5. Réflexions multiples
+
+Plan : Éclairage direct, éclairage indirect, réflexion, rayon réfléchi, facteur de réflexivité.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.6. Ray-tracing - Transparence
+https://youtu.be/5T7XJeVuiYY 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.6. Transparence
+
+Plan : Exemples, réfraction, changement de milieu, indice de réfraction, loi de Snell-Descartes, rayon réfracté, réflexion totale, arc-en-ciel.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.7. Ray-tracing - Mise en œuvre
+https://youtu.be/ZGj4y3bdIII 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.7. Mise en œuvre
+
+Plan : Lancer d'un rayon, éclairage direct, éclairage indirecte, réflexion, réfraction, transparence, algorithme du ray-tracing, condition d'arrêt, arbre de récursivité.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.8. Ray-tracing - Intersection avec un triangle
+https://youtu.be/Ax_jtF2Kjig 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.8. Intersection avec un triangle
+
+Plan : Intersection efficace d'un rayon avec un triangle, coordonnées barycentriques, mise en équation, résolution du système linéaire/matriciel, déterminant 3x3, méthode de Cramer.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 11
+Lancer de rayons II
+
+#-----
+[MathGame] 11.9. Ray-tracing - Boites englobantes
+https://youtu.be/SoHcqkSTcAE
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Lancer de rayons II" - Partie 11.9. Boites englobantes
+
+Plan : boite, utilité des volumes englobants, différentes types de volumes, hiérachie (BVH, bounding volume hierarchy).
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 12
+Triangulation
+
+#-----
+[MathGame] 12.1. Graphe
+https://youtu.be/6OG7cKedT_E 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Triangulation" - Partie 12.1. Graphe
+
+Plan : Vocaublaire, sommet, arête, chemin, cycle, graphe orienté, graphe connexe, arbre, degré d'un sommet, graphe complet, graphe pondéré, problème du voyageur de commerce, problème de coloration d'un graphe, lien sudoku/graphe.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 12
+Triangulation
+
+#-----
+[MathGame] 12.2. Graphe du plan
+https://youtu.be/0RR4afRrJHc 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Triangulation" - Partie 12.2. Graphe du plan 
+
+Plan : Définition, exemples et contre-exemples, sommets, arêtes, faces, formule d'Euler, théorème des 4 couleurs.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 12
+Triangulation
+
+#-----
+[MathGame] 12.3. Triangulation - Enveloppe convexe
+https://youtu.be/fWGoTUcE9N8 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Triangulation" - Partie 12.3. Triangulation - Enveloppe convexe
+
+Plan : Définition d'une triangulation, polygone convexe, polygone non convexe, enveloppe convexe d'un ensemble de points, algorithme de l'enroulement.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 12
+Triangulation
+
+#-----
+[MathGame] 12.4. Triangulation d'un ensemble de points
+https://youtu.be/0GlkWliN5ZQ 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Triangulation" - Partie 12.4. Triangulation d'un ensemble de points
+
+Plan : algorithme élémentaire, exemple, décider si un point est dans l'intérieur d'un triangle, nombre de triangles d'une triangulation.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 12
+Triangulation
+
+#-----
+[MathGame] 12.5. Triangulation de Delaunay
+https://youtu.be/2wraWknyBJo
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Triangulation" - Partie 12.5. Triangulation de Delaunay
+
+Plan : Exemples, bonne diagonale, mauvaise diagonale, basculement, cas cocyclique, définition d'une triangulation de Delaunay, théorème d'existence et d'unicité, algorithme de basculement, exemple étape par étape.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 12
+Triangulation
+
+#-----
+[MathGame] 12.6. Cellules de Voronoï
+https://youtu.be/_RbUIN_piUA 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Triangulation" - Partie 12.6. Cellules de Voronoï
+
+Plan : Motivation, deux, trois, quatre cellules, algorithme, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+
+
+#---------------------------
+Chapitre 13
+Maillage
+
+#-----
+[MathGame] 13.1. Maillage - Généralités
+https://youtu.be/uIDc1T220FM 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Maillage" - Partie 13.1. Maillage - Généralités
+
+Plan : Visualisation, définition, codage combinatoire, interpolation linéaire, lerp, interpolation circulaire, slerp, interpolation quadratique, courbe de Bézier (de degré 2).
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 13
+Maillage
+
+#-----
+[MathGame] 13.2. Maillage - Vecteur normal
+https://youtu.be/wMh3mDnvRis 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Maillage" - Partie 13.2. Vecteur normal
+
+Plan : Motivation, rendu lisse, un vecteur normal, plusieurs arêtes, une face, plusieurs faces.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 13
+Maillage
+
+#-----
+[MathGame] 13.3. Maillage - Subdivision
+https://youtu.be/4L8nlYjs0yo 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Maillage" - Partie 13.3. Subdivision
+
+Plan : Subdivision de Catmull-Clark, subdivision combinatoire, déplacement des sommets et des arêtes, visualisation.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#########################################
+#########################################
+Partie III - Applications
+
+
+#---------------------------
+Chapitre 14
+Mouvement
+
+#-----
+[MathGame] 14.1. Position, vitesse, accélération
+https://youtu.be/WOvUfrDJkeg 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Mouvement" - Partie 14.1. Position, vitesse, accélération
+
+Plan : Déplacement en coordonnées cartésiennes, déplacement en mode "tortue", vitesse, accéleration, courbe de poursuite.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 14
+Mouvement
+
+#-----
+[MathGame] 14.2. Labyrinthe
+https://youtu.be/pLXjjx9bwaY  
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Mouvement" - Partie 14.2. Labyrinthe
+
+Plan : Balayage, courbe de Hilbert, labyrinthe, labyrinthe simplement connexe, règle de la main droite, graphe associé à un labyrinthe, algorithme du calcul de la distance au départ (variante simple de Dijkstra), exemple, calcul du chemin vers la sortie, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 14
+Mouvement
+
+#-----
+[MathGame] 14.3. Terrain
+https://youtu.be/waV562nd5fM 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Mouvement" - Partie 14.3. Terrain
+
+Plan : Modélisation du terrain, normes  1, 2 et infinie, distance de Manhattan, distance euclidienne, distance de Tchebychev, heatmap/carte des chaleurs, algorithme du calcul de la heatmap, exemples, vecteur gradient.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 15
+Approximation et interpolation
+
+#-----
+[MathGame] 15.1. Approximation locale
+https://youtu.be/jaDoSxZ7zus 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Approximation et interpolation" - Partie 15.1. Approximation locale
+
+Plan : Développement limité à l'ordre 1, exemple, courbe approchée par une tangente, développement limité à l'ordre n, exemple, formules des DL des fonctions usuelles, cas de deux variables.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 15
+Approximation et interpolation
+
+#-----
+[MathGame] 15.2. Courbes de Bézier
+https://youtu.be/d9JvCZ_PFfM 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Approximation et interpolation" - Partie 15.2. Courbes de Bézier
+
+Plan : Cubique de Bézier, points de contrôle, exemples, vecteur tangent, vecteur normal, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 15
+Approximation et interpolation
+
+#-----
+[MathGame] 15.3. Interpolation
+https://youtu.be/qkaUzypbFV4  
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Approximation et interpolation" - Partie 15.3. Interpolation
+
+Plan : Approximation vs interpolation, interpolation de Lagrange, exemple.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 15
+Approximation et interpolation
+
+#-----
+[MathGame] 15.4. Approximation globale
+https://youtu.be/ImQjoDBa08A 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Approximation et interpolation" - Partie 15.4. Approximation globale
+
+Plan : Polynômes de Tchebychev, deux définitions, approximation de Tchebychev, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 16
+Équations différentielles
+
+#-----
+[MathGame] 16. Équations différentielles
+https://youtu.be/yHGv6VijlVE 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Équations différentielles" - Partie 16. Équations différentielles
+
+Plan : Résolution numérique des équations différentielles, qu'est-ce qu'une équation différentielle, exemple, méthode d'Euler, algorithme, discussion des méthodes de Runge-Kutta, en images : champs de vecteurs, problème des trois corps.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 17
+Fractales
+
+#-----
+[MathGame] 17.1. Fractales - Montagnes
+https://youtu.be/nfDxFGE1CbU  
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Fractales" - Partie 17.1. Montagnes
+
+Plan : Cas de la dimension 1, construction par le point milieu, exemples, aléa, amplitude, rugosité, cas de la dimension, algorithme diamant-carré, exemples, heightmap.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 17
+Fractales
+
+#-----
+[MathGame] 17.2. Fractales - IFS
+https://youtu.be/rpUqm1vYaf8  
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Fractales" - Partie 17.2. IFS
+
+Plan : IFS, Iterated Functions System, Système de Fonctions Itérées, triangle de Sierpinski, fougère de Barnsley, transformation affine, algoritme du jeu du chaos, cas du triangle de Sierpinski, exemples.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 17
+Fractales
+
+#-----
+[MathGame] 17.3. Fractales - L-systèmes (2D)
+https://youtu.be/Ykz_qhq8q0o  
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Fractales" - Partie 17.3. L-systèmes (2D)
+
+Plan : Tortue, instructions, L-système, une règle, plusieurs règles, exemples, flocon de Koch, plantes.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 17
+Fractales
+
+#-----
+[MathGame] 17.4.  Fractales - L-systèmes (3D)
+https://youtu.be/hMB_hDqel28 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Fractales" - Partie 17.4. L-systèmes (3D) 
+
+Plan : Lacet/tangage/roulis, yaw/pitch/roll, instructions tortue 3D, plantes 3D, cube de Hilbert.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#---------------------------
+Chapitre 18
+Physique
+
+#-----
+[MathGame] 18.1. Physique - Trajectoire
+https://youtu.be/ixN-MrsICvM  
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Physique" - Partie 18.1. Trajectoire
+
+Plan : Trajectoire d'un boulet de canon, tracé d'une trajectoire point par point, élément différentiel, rebonds, frottements.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 18
+Physique
+
+#-----
+[MathGame] 18.2. Physique - Ondes
+https://youtu.be/dLC8bHw8oGs
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Physique" - Partie 18.2. Ondes
+
+Plan : Définition d'une onde, formule d'une onde sinusoïdale, amplitude, longueur d'onde, période, fréquence, vitesse de l'onde, onde 2D, réflexion, billard, réfraction, loi de Snell-Descartes, indice du milieu selon la longueur d'onde, expéreince du prisme de newton, décomposition du spectre.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 18
+Physique
+
+#-----
+[MathGame] 18.3. Physique - Liquides et gaz
+https://youtu.be/JVY3wpKT7O4  
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Physique" - Partie 18.3. Liquides et gaz
+
+Plan : modélisation d'un fluide, réseau de Boltzmann, densité, vitesse, vortex.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+
+#########################################
+#########################################
+Partie IV - Théorie des jeux
+
+
+#---------------------------
+Chapitre 19
+Théorie des jeux
+
+#-----
+[MathGame] 19.1. Théorie des jeux - Quelques jeux
+https://youtu.be/hDLdCdI6obQ
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Théorie des jeux" - Partie 19.1. Quelques jeux
+
+Plan : Motivation, dilemme du prisonnier, matrice des gains, jeu du cerf, "tit-for-tat".
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 19
+Théorie des jeux
+
+#-----
+[MathGame] 19.2. Théorie des jeux - Types de jeux 
+https://youtu.be/C87rGPf6DJ0
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Théorie des jeux" - Partie 19.2. Types de jeux 
+
+Plan : coopératif/non coopératif, coups alternés/simultanés, aléa, jeu à somme nulle, jeu symétrique/asymétrique, information complète/incomplète, information parfaite/imparfaite.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+#---------------------------
+Chapitre 19
+Théorie des jeux
+
+#-----
+[MathGame] 19.3. Théorie des jeux - Équilibres de Nash
+https://youtu.be/bq91XJ2noJo 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Théorie des jeux" - Partie 19.3. Équilibres de Nash
+
+Plan : Motivation, définition d'un équilibre de Nash, théorème de Nash, équilibre de Nash pur, exemple du jeu du cerf, exemple du dilemme du prisonnier, équilibre de Nash pur, exemple du tir au but.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 20
+Minimax
+
+#-----
+[MathGame] 20.1. Arbres 
+https://youtu.be/A2fgPje1zPw
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Minimax" - Partie 20.1. Arbres
+
+Plan : Vocabulaire, parcours en profondeur, file, parcours en largeur.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 20
+Minimax
+
+#-----
+[MathGame] 20.2. Minimax - Fonction d'évaluation
+https://youtu.be/6lnzz4QwY9w 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Minimax" - Partie 20.2. Fonction d'évaluation
+
+Plan : Morpion, arbre de configurations, échecs, fonction d'évaluation, minimax avec un seul coup.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 20
+Minimax
+
+#-----
+[MathGame] 20.3. Algorithme minimax 
+https://youtu.be/sDOILCbrvhc 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Minimax" - Partie 20.3. Algorithme minimax  
+
+Plan : Arbre des configurations, exemples, minimax avec un seul coup, algorithme minimax, exemple, exercice.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 20
+Minimax
+
+#-----
+[MathGame] 20.4. Minimax - Élagage alpha-beta 
+https://youtu.be/YwVlAamXm6c 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Minimax" - Partie 20.4. Élagage alpha-beta 
+
+Plan : Motivation, coupure alpha, coupure beta, exemples simples, exemple détaillé, exercice.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+
+#---------------------------
+Chapitre 21
+Sociologie du joueur
+
+#-----
+[MathGame] 21.1. Sociologie du joueur - Jeu réel
+https://youtu.be/kGAyelI8Q78 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Sociologie du joueur" - Partie 21.1. Jeu réel
+
+Plan : Jeu de l'ultimatum, partage de Shapley.
+
+Retrouvez le livre sur http://exo7.emath.fr
+
+
+#---------------------------
+Chapitre 21
+Sociologie du joueur
+
+#-----
+[MathGame] 21.2. Qu'est-ce qu'un "bon" jeu ?
+https://youtu.be/d0IvtxPeDwI 
+
+[MathGame] Mathématiques pour les jeux vidéo
+
+Chapitre "Sociologie du joueur" - Partie 21.2. Qu'est-ce qu'un "bon" jeu ?
+
+Plan : Courbes d'apprentissage, jeu gagnable, jeu équitable (ressources, niveau, contrôle, chance), hasard, loi uniforme, loi normale/loi de Gauss.
+
+Retrouvez le livre sur http://exo7.emath.fr

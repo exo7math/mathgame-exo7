@@ -9,13 +9,22 @@
 \chapitre{Texture}
 %====================================================================
 
-%
-%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
-%
-%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
-%
-%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
 
+\insertvideo{NyiBPs0jVas}{partie 10.1. Texture : motivation}
+
+\insertvideo{p5GYcJlMd_E}{partie 10.2.a. Texture en dimension 2}
+
+\insertvideo{E3eL3eFBtcI}{partie 10.2.b. Texture en dimension 2 (suite)}
+
+\insertvideo{lImx3W35DCs}{partie 10.3. Appliquer une texture}
+
+\insertvideo{ZuPIe0d5hsA}{partie 10.4. Triangle - Coordonnées barycentriques}
+
+\insertvideo{zd5ysNx_WX8}{partie 10.5.a. Texture - Interpolation}
+
+\insertvideo{9DELPmwkS9E}{partie 10.5.b. Interpolation bilinéaire}
+
+\insertvideo{v6L1tHulLLs}{partie 10.6. Texture - Quadrilatère}
 
 
 \objectifs{Les textures permettent de rendre les objets 3D beaucoup plus réalistes en simulant la couleur et la forme d'une matière. Il s'agit principalement de transformer un carré du plan en une surface de l'espace.}
@@ -23,7 +32,7 @@
 \index{texture}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Motivation : texture en une dimension}
+\section{Motivation : texture en  dimension 1 et 2}
 
 
 %--------------------------------------------------------------------
@@ -397,7 +406,7 @@ au centre la \emph{normal map}, la surface réelle de l'objet n'est pas non plus
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Texture en deux dimensions}
+\section{Appliquer une texture}
 
 En partant d'une texture, comment l'appliquer sur l'objet réel ? Nous répondons à la question en fonction de la nature géométrique de la face des objets : triangle, rectangle, quadrilatère, cylindre ou sphère.
 
@@ -509,7 +518,7 @@ et $Q(\alpha':\beta':\gamma')$ est $\frac{P+Q}{2}$ de coordonnées barycentrique
 L'\defi{isobarycentre} $G$ de $A, B, C$ est $G = \frac{A+B+C}{3}$ et a pour coordonnées barycentriques $(\frac13:\frac13:\frac13) = (1:1:1)$.
 Il vérifie $\vec{GA} + \vec{GB} + \vec{GC} = \vec{0}$.
 
-Quelque remarques.
+Quelque remarques sur les coordonnées barycentriques normalisées ($\alpha+\beta+\gamma=1$).
 \begin{itemize}
 	\item Intuitivement, plus $P(\alpha:\beta:\gamma)$ est proche de $A$, plus $\alpha$ est grand ; plus $P$ est proche de $B$, plus $\beta$ est grand ; plus $P$ est proche de $C$, plus $\gamma$ est grand.
 	\item $P$ est situé dans le triangle $ABC$ si et seulement si $\alpha\ge0$, $\beta\ge0$ et $\gamma\ge0$.
@@ -686,7 +695,7 @@ $$(u,v) = \left(\frac{i+\frac12}{N}, \frac{j+\frac12}{N} \right)\in [0,1]^2$$
 
 Dans l'autre sens, c'est plus délicat, puisque $(u,v)$ ne correspond généralement pas au centre d'un pixel.
 On envoie donc $(u,v)$ sur le centre du pixel le plus proche :
-$$(i,j) = \left( \lfloor Nu \rfloor, \lfloor Nu \rfloor \right)$$
+$$(i,j) = \left( \lfloor Nu \rfloor, \lfloor Nv \rfloor \right)$$
 (sauf si $u=1$ auquel cas $i=N-1$ ou $v=1$ auquel cas $j=N-1$).
 On rappelle que $\lfloor x \rfloor$ désigne la partie entière de $x$.
 
@@ -771,7 +780,7 @@ Un \defi{quadrilatère} (\emph{quad}) de l'espace, ce sont $4$ points coplanaire
 }
 
 Imaginez que vous êtes dans une rue entourée de deux murs, ces deux murs sont des rectangles de l'espace, mais ce que vous voyez en perspective ce sont des quadrilatères.
-Représenter ce mur est donc lié à la vision d'un objet (ici un rectangle) dans l'espace et a été traité en détail dans le chapitre \og{}Perspective\fg{}. Cependant notre texture elle n'est pas un objet de l'espace. Il faut donc explicitement décrire l'application $\Phi$ qui permet de décorer ce mur (qui est un quadrilatère à l'écran).
+Représenter ce mur est donc lié à la vision d'un objet (ici un rectangle) dans l'espace et a été traité en détail dans le chapitre \og{}Perspective\fg{}. Cependant notre texture elle n'est pas un objet de l'espace. Il faut donc explicitement décrire l'application $\varphi$ qui permet de décorer ce mur (qui est un quadrilatère à l'écran).
 
 \myfigure{0.8}{
 	\tikzinput{fig-quadrilatere-03}
@@ -788,7 +797,7 @@ On considère le carré unité $A_0B_0C_0D_0$ de coordonnées $(u,v) \in [0,1]^2
 Soit un quadrilatère convexe $ABCD$. L'interpolation bilinéaire qui envoie 
 le carré sur le quadrilatère est :
 \begin{align*}
-\phi(u,v)  
+\varphi(u,v)  
 & = (1-u)(1-v) A  \\
 & \quad +  u(1-v) B \\
 & \quad\quad +   uv C \\

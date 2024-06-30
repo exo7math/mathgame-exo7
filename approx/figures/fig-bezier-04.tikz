@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=2]
+﻿\begin{tikzpicture}[scale=3]
 \tikzset{
 line/.style = {
  very thick
@@ -21,7 +21,6 @@ insert path={
 ;
 
 \foreach \k in {-1,-0.8,...,2.2}{
-
     \path
       (2+\k,0.5*\k*\k) coordinate (P3)
     ;
@@ -32,11 +31,13 @@ insert path={
       (P0)  .. controls (P1) and (P2) .. (P3)
     ;
     
+
+}
     \path
       (P0) [dot] node[below]{$P_0$}
       (P1) [dot] node[above]{$P_1$}
       (P2) [dot] node[above]{$P_2$}
-      (P3) [dot] node[below]{}
+      (P3) [dot] node[below right]{}
     ;
-}
+
 \end{tikzpicture}

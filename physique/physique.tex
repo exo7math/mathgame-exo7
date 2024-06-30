@@ -9,12 +9,12 @@
 \chapitre{Physique}
 %====================================================================
 
-%
-%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
-%
-%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
-%
-%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+\insertvideo{ixN-MrsICvM}{partie 18.1. Trajectoire}
+
+\insertvideo{dLC8bHw8oGs}{partie 18.2. Ondes}
+
+\insertvideo{JVY3wpKT7O4}{partie 18.3. Liquides et gaz}
 
 
 
@@ -80,7 +80,8 @@ Ci-dessous à gauche différents lancers pour différents angles mais une même 
 %--------------------------------------------------------------------
 \subsection{Éléments différentiels}
 
- On va tracer la trajectoire pas à pas en utilisant les éléments différentiels (comme dans le chapitre \og{}Équations différentielles\fg). Si $(x(t) , y(t))$ est la position de la balle au temps $t$ et $(v_x(t), v_y(t))$ sa vitesse, alors sa position à un temps $t + \dd t$ est donnée par :
+ On va tracer la trajectoire pas à pas en utilisant les éléments différentiels (comme dans le chapitre \og{}Équations différentielles\fg). Si $(x(t) , y(t))$ est la position de la balle au temps $t$ et $(v_x(t), v_y(t))$ sa vitesse, alors on a $v_x(t) = \frac{x(t + \dd t) - x(t)}{\dd t}$ et $v_y(t) = \frac{y(t + \dd t) - y(t)}{\dd t}$.  
+Ainsi la position à un temps $t + \dd t$ est donnée par :
 \begin{align*}
     x(t + \dd t) &= x(t) + v_x(t) \dd t \\
     y(t + \dd t) &= y(t) + v_y(t) \dd t
@@ -93,7 +94,7 @@ On peut ainsi construire une trajectoire point par point.
 On pose $(x_0, y_0) = (0, 0)$. On définit un intervalle élémentaire de temps $\dd t$ (par exemple $\dd t = 0.01$).  La formule de récurrence est alors :
 \begin{align*}
     x_{n+1} &= x_n + v_0  \cos(\alpha) \dd t \\
-    y_{n+1} &= y_n + v_0 \sin(\alpha) \dd t \\
+    y_{n+1} &= y_n + v_{y,n} \sin(\alpha) \dd t \\
     v_{y,n+1} &= v_{y,n} - g \dd t
 \end{align*}
 

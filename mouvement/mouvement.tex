@@ -9,12 +9,13 @@
 \chapitre{Mouvement}
 %====================================================================
 
-%
-%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
-%
-%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
-%
-%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+\insertvideo{WOvUfrDJkeg}{partie 14.1. Position, vitesse, accélération}
+
+\insertvideo{pLXjjx9bwaY}{partie 14.2. Labyrinthe}
+
+\insertvideo{waV562nd5fM}{partie 14.3. Terrain}
+
 
 
 \objectifs{Comment se déplacer dans le plan, dans l'espace, dans un labyrinthe, sur un terrain ?}
@@ -53,8 +54,15 @@ On repère une tortue en déplacement (comme dans le logiciel \emph{Scratch}) pa
 	\item L'instruction \emph{avancer} correspond à déplacer la tortue au point $P' = P  + \delta \vec u$ où $\delta$ correspond à un nombre de pas par exemple.
 
     \item L'instruction \emph{tourner} correspond à changer le vecteur de direction $\vec u$, en lui appliquant une rotation d'angle $\theta$.
-    Si $\vec u$ est un vecteur unitaire (c'est-à-dire $\| \vec u \| = 1$) alors le nouveau vecteur de direction est :    
-    $$\vec{u'} = \vec{u} + (\cos \theta, \sin\theta).$$
+    Ainsi le nouveau vecteur de direction est :    
+    $$\vec{u'} = R(\theta) \vec{u}$$
+    où
+    $$R(\theta) = 
+    \begin{pmatrix}
+    	\cos(\theta) & - \sin(\theta) \\
+    	\sin(\theta) & \cos(\theta) \\
+    \end{pmatrix}.
+    $$
 \end{itemize}
 
 \myfigure{0.7}{

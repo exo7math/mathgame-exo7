@@ -32,12 +32,14 @@ insert path={
     \draw[red, line]
       (P0)  .. controls (P1) and (P2) .. (P3)
     ;
-    
+    \path
+      (P1) [dot] node[above]{}
+      (P2) [dot] node[above]{}  
+; 
+}
     \path
       (P0) [dot] node[below]{$P_0$}
-      (P1) [dot] node[above]{}
-      (P2) [dot] node[above]{}
       (P3) [dot] node[below]{$P_3$}
     ;
-}
+
 \end{tikzpicture}

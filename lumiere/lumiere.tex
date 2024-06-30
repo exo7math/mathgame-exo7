@@ -12,12 +12,16 @@
 \chapitre{Lumière}
 %====================================================================
 
-%
-%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
-%
-%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
-%
-%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
+
+\insertvideo{FWJQdvgammE}{partie 8.1. Physique de la lumière}
+
+\insertvideo{wHKEBiaweWA}{partie 8.2. Éclairage}
+
+\insertvideo{-jQ2QT37kLU}{partie 8.3. Illumination ambiante}
+
+\insertvideo{e9Oiqlsp-oo}{partie 8.4. Illumination diffuse}
+
+\insertvideo{eSjsNzvnRPE}{partie 8.5. Illumination spéculaire}
 
 
 \objectifs{Comment une scène est-elle éclairée ? Quelle est la couleur des objets illuminés ?}
@@ -160,6 +164,7 @@ L'intensité $i_\ell$ et cette direction $\vec \ell $ sont constantes, quelle qu
 
 %--------------------------------------------------------------------
 \subsection{Lumière ponctuelle}
+\label{ssec:lumiere-ponctuelle}
 
 La lumière \og{}rayonne\fg{} dans toutes les directions depuis la source, comme par exemple une ampoule.
 
@@ -385,6 +390,7 @@ La lumière reçue se diffuse dans toutes les directions mais l'intensité diffu
 La formule de la couleur diffuse est résumée en :
 \mybox{$\displaystyle \Cl_{\text{diff}} = i_{\text{source}} \max(\vec\ell\cdot\vec n,0) \Cl_{\text{source}} \otimes_{cl} \Cl_{\text{objet}}$}
 où $i_{\text{source}}$ et $\Cl_{\text{source}}$ sont l'intensité et la couleur de la source lumineuse et $\Cl_{\text{objet}}$ est la couleur propre de l'objet.
+L'intensité $i_{\text{source}}$ de la source lumineuse peut être une constante, mais elle peut aussi varier en fonction de la distance entre la source et le point éclairé $P$ (voir la section \ref{ssec:lumiere-ponctuelle}).
 
 Expliquons le terme $\max(\vec\ell\cdot\vec n,0)$. Tout d'abord l'éclairage est situé derrière l'objet (autrement dit éclaire la face non visible) lorsque $\vec\ell\cdot\vec n < 0$, dans ce cas $\max(\vec\ell\cdot\vec n,0)=0$ et donc la couleur diffuse est noire $\Cl_{\text{diff}} = (0,0,0)$.
 

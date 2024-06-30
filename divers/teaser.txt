@@ -1,0 +1,18 @@
+
+Vous êtes fasciné par les jeux vidéo ? On va découvrir ensemble les rouages mathématiques qui se cachent derrière vos jeux préférés !
+
+Le but est de comprendre les concepts mathématiques permettant de réaliser des images et des animations captivantes. 
+
+
+Il y a une partie mathématique bien sûr, comme la représentation en perspective d'une scène ou le déplacement d'un objet dans l'espace grâce à la géométrie et au calcul vectoriel.
+
+
+Je vous expliquerai comment sont réalisées les images grâce au ray-tracing et à l'application de textures en décortiquant le lancer de rayons et l'éclairage.
+
+
+Nous continuerons avec des algorithmes et les formules qui se cachent derrière les mouvements fluides et la physique réaliste.
+
+
+Enfin, nous expliquerons les stratégies possibles pour remporter la victoire.
+
+Que vous soyez passionnés de jeux, étudiants en sciences ou simplement curieux, rejoignez-nous !

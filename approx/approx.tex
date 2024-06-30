@@ -9,13 +9,14 @@
 \chapitre{Approximation et interpolation}
 %====================================================================
 
-%
-%\insertvideo{yUgpElITYTg}{partie 5.1. Bits classiques}
-%
-%\insertvideo{iET0snUXj0k}{partie 5.2. Portes logiques}
-%
-%\insertvideo{JKmC2u5kvKg}{partie 5.3. Algorithme et complexité}
 
+\insertvideo{jaDoSxZ7zus}{partie 15.1. Approximation locale}
+
+\insertvideo{d9JvCZ_PFfM}{partie 15.2. Courbes de Bézier}
+
+\insertvideo{qkaUzypbFV4}{partie 15.3. Interpolation}
+
+\insertvideo{ImQjoDBa08A}{partie 15.4. Approximation globale}
 
 
 \objectifs{L'approximation a pour but de modéliser une situation à l'aide d'une fonction simple. 
@@ -407,7 +408,9 @@ $$L_0(X) = \frac{(X-1)(X-3)}{(0-1)(0-3)} = \frac{1}{3}(X^2-4X+3)$$
 $$L_1(X) = \frac{(X-0)(X-3)}{(1-0)(1-3)} = -\frac{1}{2}(X^2-3X)$$
 $$L_2(X) = \frac{(X-0)(X-1)}{(3-0)(3-1)} = \frac{1}{6}(X^2-X)$$
 et donc
-$$P(X) = \frac{2}{3}(X^2-4X+3) \ - \ \frac{1}{2}(X^2-3X) \  + \  \frac{4}{6}(X^2-X)
+$$P(X) 
+= 2 \cdot L_0 + 1 \cdot L_1 + 4 \cdot L_2
+= \frac{2}{3}(X^2-4X+3) \ - \ \frac{1}{2}(X^2-3X) \  + \  \frac{4}{6}(X^2-X)
 = \frac16(5X^2-11X+12)$$
 
 \begin{center}

@@ -10,7 +10,7 @@
 \node[blue,scale=4] at (P) {.};
 \node at (P) [below] {$P$};
 
-\draw[->,>=latex, red, ultra thick] (P) -- ++ (0.1,0.2,2) node[right]{$\vec{n_Q}$};
+\draw[->,>=latex, red, ultra thick] (P) -- ++ (0.1,0.2,2) node[right]{$\vec{n_P'}$};
 
 \node at (2.5,0.5,-1) {\bf \emph{Bump map}};
 \end{scope}
