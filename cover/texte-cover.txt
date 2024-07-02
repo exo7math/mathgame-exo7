@@ -1,0 +1,49 @@
+
+Commande ChatGPT
+ A partir du texte 1 et du texte 2 faire une courte synthèse en 3 ou 4 lignes pour une quatrième de couverture d'un livre.
+
+Texte 1:
+L'univers du jeu vidéo est une source inépuisable de créativité, où chaque joueur peut explorer des mondes virtuels uniques. Les possibilités sont infinies, mais derrière chaque aspect visuel et mécanique se cachent des fondements mathématiques essentiels.
+
+Dans ce livre, nous vous invitons à plonger dans les mécanismes fondamentaux qui font naître la magie des jeux vidéo. Que vous soyez passionné de jeux, étudiant en sciences ou simplement curieux, ce livre vous permettra de comprendre les principes mathématiques qui donnent vie aux mondes imaginaires que vous explorez.
+
+Texte 2:
+Vous êtes fasciné par les jeux vidéo ? On va découvrir ensemble les rouages mathématiques qui se cachent derrière vos jeux préférés !
+
+Le but est de comprendre les concepts mathématiques permettant de réaliser des images et des animations captivantes. 
+
+
+
+
+ChatGPT
+
+Découvrez les secrets mathématiques derrière vos jeux vidéo préférés ! Plongez dans les mécanismes fondamentaux qui donnent vie aux mondes virtuels et explorez comment les mathématiques transforment les idées en animations captivantes. Que vous soyez joueur, étudiant en sciences ou simplement curieux, ce livre vous dévoilera les principes essentiels pour comprendre et apprécier la magie des jeux vidéo.
+
+
+Plongez dans l'univers fascinant des jeux vidéo et découvrez les secrets mathématiques qui les animent ! Ce livre dévoile les mécanismes fondamentaux derrière les visuels et les animations captivantes, offrant une exploration enrichissante pour les passionnés de jeux, les étudiants en sciences ou les curieux avides de connaissances.
+
+
+Chapitres
+
+• Trigonométrie
+• Vecteurs
+• Matrices
+• Transformations de l’espace
+• Rotations de l’espace
+• Perspective
+• Lancer de rayons I
+• Lumière
+• Pixels
+• Texture
+• Lancer de rayons II
+
+• Triangulation
+• Maillage
+• Mouvement
+• Approximation et interpolation
+• Équations différentielles
+• Fractales
+• Physique
+• Théorie des jeux
+• Minimax
+• Sociologie du joueur

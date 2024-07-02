@@ -1,4 +1,4 @@
-﻿\tikzstyle{arrow} = [->,>=latex,thick]
+\tikzstyle{arrow} = [->,>=latex,thick]
 \begin{tikzpicture}[scale=1]
 
 \def\xmax{8}
@@ -62,8 +62,8 @@
 
 % \draw[blue!80, very thick] (0,0) -- (\a,\b);
 
-\cross{0}{0}{$P_1$};
-\cross{\a}{\b}{$P_2$};
+%\cross{0}{0}{$P_1$};
+%\cross{\a}{\b}{$P_2$};
 
 % 
 % \draw[dashed, blue] (4,-0.5) -- (4,2) -- (-0.5,2);

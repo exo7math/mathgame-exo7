@@ -1,12 +1,13 @@
-% Pixel art pour les dessin à chaque début de partie du livre	
+% Pixel art pour les dessin à chaque début de partie du livre
+\def\mygap{0.04}	
 \newcommand{\pixelpart}[3]{
-	\ifthenelse{#3=0} {\fill[white] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);} {}
-	\ifthenelse{#3=1} {\fill[black] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);} {}
-	\ifthenelse{#3=2} {\fill[yellow] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);} {}
-	\ifthenelse{#3=3} {\fill[green] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);} {}
-	\ifthenelse{#3=4} {\fill[violet!70] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);} {}
-	\ifthenelse{#3=5} {\fill[blue] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);} {}
-	\ifthenelse{#3=6} {\fill[cyan] (#1-0.48,#2-0.48) rectangle ++(0.96,0.96);} {}
+	\ifthenelse{#3=0} {\fill[white] (#1-0.5+\mygap,#2-0.5+\mygap) rectangle ++(1-2*\mygap,1-2*\mygap);} {}
+	\ifthenelse{#3=1} {\fill[black] (#1-0.5+\mygap,#2-0.5+\mygap) rectangle ++(1-2*\mygap,1-2*\mygap);} {}
+	\ifthenelse{#3=2} {\fill[yellow] (#1-0.5+\mygap,#2-0.5+\mygap) rectangle ++(1-2*\mygap,1-2*\mygap);} {}
+	\ifthenelse{#3=3} {\fill[green] (#1-0.5+\mygap,#2-0.5+\mygap) rectangle ++(1-2*\mygap,1-2*\mygap);} {}
+	\ifthenelse{#3=4} {\fill[violet!70] (#1-0.5+\mygap,#2-0.5+\mygap) rectangle ++(1-2*\mygap,1-2*\mygap);} {}
+	\ifthenelse{#3=5} {\fill[blue] (#1-0.5+\mygap,#2-0.5+\mygap) rectangle ++(1-2*\mygap,1-2*\mygap);} {}
+	\ifthenelse{#3=6} {\fill[cyan] (#1-0.5+\mygap,#2-0.5+\mygap) rectangle ++(1-2*\mygap,1-2*\mygap);} {}
 }
 	
 \newcommand\mypixelart[1]{	

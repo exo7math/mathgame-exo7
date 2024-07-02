@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=0.8]
+\begin{tikzpicture}[scale=0.8]
 
 \begin{scope}[yshift=0cm]
 
@@ -55,7 +55,7 @@
 \node[gray] at (9,0) {\bf Y};
 
 \draw[->,>=latex,very thick,red] (11.2,2)  to[bend right] (9.2,0.6);
-\node[right, align=center,text width=4cm] at (11,2) {Lire et retirer le dernier élément : "Y"};
+\node[right,align=center,text width=3.5cm] at (11,2) {Lire et retirer le dernier élément : "Y"};
 
 \end{scope}
 \end{tikzpicture}

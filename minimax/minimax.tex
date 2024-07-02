@@ -62,7 +62,7 @@ Nous souhaitons parcourir tous les sommets d'un arbre. Le \defi{parcours en prof
 } 
 
 L'algorithme est assez court mais comme c'est un algorithme récursif c'est toujours un peu délicat à comprendre.
-L'algorithme est donné sous la forme d'une fonction récursive \ci{parcours_profondeur(sommet)}. Pour parcourir tout l'arbre on l'appelle par 
+Il est donné sous la forme d'une fonction récursive \ci{parcours_profondeur(sommet)}. Pour parcourir tout l'arbre on l'appelle par 
 \ci{parcours_profondeur(racine)}. Dans cet algorithme, on peut effectuer une action sur le sommet à l'aide d'une fonction \ci{traiter(sommet)} à personnaliser : par exemple on affiche la donnée attachée à ce sommet.
 
 
@@ -112,7 +112,7 @@ Plus précisément voici les trois opérations de base :
 \end{itemize}
 
 
-\myfigure{0.7}{
+\myfigure{0.6}{
 	\tikzinput{fig-file}
 } 
 
@@ -668,7 +668,7 @@ def minimax(jeu, prof, coups_prec, joueur_maximise):
 			for coup in range(M):
 				nouv_jeu = joue_un_coup(jeu, coup)
 				score, nouv_coups_prec = 
-				              minimax(nouv_jeu,prof-1,coups_prec+[coup],False)
+				      minimax(nouv_jeu,prof-1,coups_prec+[coup],False)
 				if score > score_max:
 					score_max = score
 					coups_max = nouv_coups_prec
@@ -678,7 +678,7 @@ def minimax(jeu, prof, coups_prec, joueur_maximise):
 			for coup in range(M):
 				nouv_jeu = joue_un_coup(jeu, coup)
 				score, nouv_coups_prec = 
-				               minimax(nouv_jeu,prof-1,coups_prec+[coup],True)
+				       minimax(nouv_jeu,prof-1,coups_prec+[coup],True)
 				if score < score_min:
 					score_min = score
 					coups_min = nouv_coups_prec
@@ -845,7 +845,7 @@ L'implémentation ne pose pas de difficulté particulière, il suffit de modifie
 					score_max = score
 					coups_max = nouv_coups_prec
 				if score >= beta:  # Coupure alpha
-					break          # On arrête de chercher les coups suivants
+					break  # On arrête de chercher les coups suivants
 \end{lstlisting}
 
 
