@@ -1,11 +1,11 @@
 # Instructions pour la couverture
 
 
-MathGame - Mathématiques pour les jeux vidéol'informatique quantique
+MathGame - Mathématiques pour les jeux vidéo
 
 Algorithmes et mathématiques
 
-Livres Exo7 8
+Série : Livres Exo7  numéro 9
 
 Arnaud Bodin
 
@@ -18,16 +18,17 @@ Size 7.5 x 9.25 in (190.5mm x 234.9mm)
 Mathématiques
 Jeux vidéo
 Algorithmes
+Graphisme
+Géométrie
 
 
-Non-fiction > Mathématiques > Général
-Non-fiction > Ordinateurs > Programmation > Algorithmes
+Livres › Informatique et internet › Jeux › Graphisme 
+Livres › Sciences, Techniques et Médecine › Mathématiques › Géometrie et Trigonométrie 
+Livres › Études supérieures › Université › Mathématiques
 
 
-
-Code ISBN : 
-Marque éditoriale : Independently published 
-
+Code ISBN : 9798332082108
+Marque éditoriale : Independently published
 
 Date de publication 
 
