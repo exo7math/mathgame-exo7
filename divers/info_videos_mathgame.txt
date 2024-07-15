@@ -17,7 +17,8 @@ Mathématiques, Algèbre, Géométrie, Jeu vidéo, Graphisme, 2D, 3D, Informatiq
 Teaser
 
 [MathGame] Mathématiques pour les jeux vidéo (teaser)
-https://youtu.be/k59Tuo3NUEI 
+https://youtu.be/k59Tuo3NUEI (chaine MathGame)
+https://youtu.be/4FUk1CSdeHY (chaine Exo7)
 
 [MathGame] Mathématiques pour les jeux vidéo
 
@@ -30,6 +31,9 @@ Sources https://github.com/exo7math/mathgame-exo7
 Vidéos "MathGame" 
   (chaîne mathgame) https://www.youtube.com/channel/UCWHd0le5kBhLcEthYMiQ87Q
   (chaîne mathgame) https://www.youtube.com/@MathGame-Exo7
+
+Livre pdf : http://exo7.emath.fr
+Livre Amazon : https://www.amazon.fr/dp/B0D8PZGDRR
 
 
 
