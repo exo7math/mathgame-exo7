@@ -143,9 +143,15 @@ $$
 
 
 \textbf{Orientation.}
-L'espace est muni d'un repère orthonormé direct $(Oxyz)$.
-Si on se place à l'origine, à cheval sur un axe orienté dans le sens de la flèche, 
-alors une rotation d'angle positif correspond à tourner vers la droite pour les rotations d'axe $(Ox)$ et $(Oz)$ et vers la gauche pour la rotation d'axe $(Oy)$.
+Dans un repère orthonormé direct $(Oxyz)$, le sens positif d'une rotation est défini de manière géométrique par la \defi{règle de la main droite}. Si vous alignez le pouce de votre main droite sur l'axe de rotation (en pointant dans le sens de la flèche), vos autres doigts se referment naturellement dans le sens de la rotation d'angle positif.
+
+Ainsi, pour un angle $\theta > 0$ :
+\begin{itemize}
+	\item La rotation autour de $(Ox)$ amène l'axe $(Oy)$ vers l'axe $(Oz)$.
+	\item La rotation autour de $(Oy)$ amène l'axe $(Oz)$ vers l'axe $(Ox)$.
+	\item La rotation autour de $(Oz)$ amène l'axe $(Ox)$ vers l'axe $(Oy)$.
+\end{itemize}
+Mathématiquement, cela correspond à respecter l'ordre cyclique des axes ($x \to y \to z \to x$). 
 
 \myfigure{0.8}{
 	\tikzinput{fig-rotation-03}
